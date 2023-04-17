@@ -39,6 +39,15 @@ export let sixteen_nine: LayoutConf = {
                 width: 314,
                 height: 175,
             }
+        },
+        {
+            component: "gamedata",
+            layout: {
+                x: 3, 
+                y: 123,
+                width: 320,
+                height: 120,
+            }
         }
     ],
     holes: [

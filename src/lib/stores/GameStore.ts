@@ -10,7 +10,7 @@ export const metadata: Writable<StreamMetadata> = writable();
 export const currentGame = derived(
     [gamedata, metadata],
     ([$games, $meta]) => {
-        return $games.find((g) => g.id == $meta.current_game_id)
+        return $games.find((g) => g.id == $meta?.current_game_id)
     }
 );
 

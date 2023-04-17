@@ -7,6 +7,7 @@
 	import Clock from "./components/Clock.svelte";
 	import GameTimer from './components/GameTimer.svelte';
 	import PlayerName from './components/PlayerName.svelte';
+	import GameData from './components/GameData.svelte';
     
     
     export let client: ApiClient;
@@ -16,6 +17,7 @@
         clock: Clock,
         timer: GameTimer,
         playername: PlayerName,
+        gamedata: GameData,
     };
 
     const getComponent = (name: string) => {
