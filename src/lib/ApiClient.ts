@@ -1,3 +1,4 @@
+import type { Donation } from "./models/Donation";
 import type { GameInfo } from "./models/GameInfo";
 import type { PlayerInfo } from "./models/PlayerInfo";
 import type { StreamMetadata } from "./models/StreamMetadata";
@@ -67,5 +68,10 @@ export class ApiClient {
             games: value[1],
             meta: value[2]
         }
+    }
+
+    public async getDonations(): Promise<Donation[]> {
+        const donos_raw = await this.get('donations');
+        return donos_raw.map(ApiClient.adaptDates('timestamp'));
     }
 }

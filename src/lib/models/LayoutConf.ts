@@ -1,8 +1,8 @@
 export interface LayoutDimension {
     x: number;
     y: number;
-    width: number;
-    height: number;
+    width: number | string;
+    height: number | string;
 }
 
 export interface LayoutBorder {

@@ -4,15 +4,19 @@
     import type { LayoutField } from './models/LayoutConf';
 	import type { ApiClient } from './ApiClient';
     import { gamedata, metadata, playerdata } from "./stores/GameStore";
+	import { donationstore } from './stores/DonationsStore';
+
 	import Clock from "./components/Clock.svelte";
 	import GameTimer from './components/GameTimer.svelte';
 	import PlayerName from './components/PlayerName.svelte';
 	import GameData from './components/GameData.svelte';
 	import Upcoming from './components/Upcoming.svelte';
+	import DonationBar from './components/DonationBar.svelte';
     
     
     export let client: ApiClient;
     export let fields: Array<LayoutField> = [];
+    export let updateFreq = 5000;
     
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
@@ -20,6 +24,7 @@
         playername: PlayerName,
         gamedata: GameData,
         upcoming: Upcoming,
+        donation_bar: DonationBar,
     };
 
     const getComponent = (name: string) => {
@@ -27,16 +32,30 @@
     };
 
     onMount(async () => {
-        let {players, games, meta} = await client.getAll()
-        console.log(meta);
-        gamedata.set(games);
-        playerdata.set(players);
-        metadata.set(meta);
+        const gameInterval = setInterval(async () => {
+            let {players, games, meta} = await client.getAll();
+            metadata.set(meta);
+            playerdata.set(players);
+            gamedata.set(games);
+        }, updateFreq);
+
+        const donoInterval = setInterval(async () => {
+            let donations = await client.getDonations();
+            let meta = await client.getMetadata();
+
+            metadata.set(meta);
+            donationstore.set(donations);
+        }, 10000)
+
+        return () => {
+            clearInterval(gameInterval);
+            clearInterval(donoInterval);
+        }
     });
 </script>
 
 {#each fields as field}
-    <div>
+    <div style="width: {field.layout.width}; height: {field.layout.height};">
         <svelte:component this={getComponent(field.component)} {...field.data} />
     </div>
 {/each}

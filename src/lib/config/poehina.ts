@@ -26,6 +26,15 @@ export let poehina: LayoutConf = {
                 width: 320,
                 height: 120,
             }
+        },
+        {
+            component: "donation_bar",
+            layout: {
+                x: 0,
+                y: 1900,
+                width: '1080px',
+                height: '20px',
+            }
         }
     ],
     holes: [
