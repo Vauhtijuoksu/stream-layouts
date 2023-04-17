@@ -1,5 +1,6 @@
 import type { GameInfo } from "./models/GameInfo";
 import type { PlayerInfo } from "./models/PlayerInfo";
+import type { StreamMetadata } from "./models/StreamMetadata";
 
 export class ApiClient {
     baseUrl: string;
@@ -22,11 +23,49 @@ export class ApiClient {
         }
     }
 
+    private static adaptDates(...fields: string[]): (obj: any) => any {
+        return (obj: any) => {
+            for (let field of fields) {
+                obj[field] = new Date(obj[field]);
+            }
+            return obj;
+        }
+    }
+
     public async getPlayers(): Promise<PlayerInfo[]> {
         return await this.get('players');
     }
 
     public async getGames(): Promise<GameInfo[]> {
-        return await this.get('gamedata');
+        let games_raw = await this.get('gamedata');
+        return await games_raw.map(
+            ApiClient.adaptDates(
+                'start_time',
+                'end_time'
+            )
+        );
+    }
+
+    public async getMetadata(): Promise<StreamMetadata> {
+        const meta_raw = await this.get('stream-metadata');
+        return {
+            timers: meta_raw.timers.map(
+                ApiClient.adaptDates('start_time', 'end_time')
+            ),
+            ...meta_raw
+        }
+    }
+
+    public async getAll(): Promise<{players: PlayerInfo[], games: GameInfo[], meta: StreamMetadata}> {
+        const value = await Promise.all([
+            this.getPlayers(),
+            this.getGames(),
+            this.getMetadata(),
+        ]);
+        return {
+            players: value[0],
+            games: value[1],
+            meta: value[2]
+        }
     }
 }

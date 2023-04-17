@@ -6,7 +6,7 @@ export let sixteen_nine: LayoutConf = {
     height: 1080,
     fields: [
         {
-            component: "Clock",
+            component: "clock",
             name: "sponsors",
             layout: {
                 x: 3,
@@ -15,6 +15,19 @@ export let sixteen_nine: LayoutConf = {
                 height: 175,
             }
         },
+        {
+            component: "timer",
+            name: "timer",
+            data: {
+                index: 0
+            },
+            layout: {
+                x: 3,
+                y: 123,
+                width: 314,
+                height: 175,
+            }
+        }
     ],
     holes: [
         {

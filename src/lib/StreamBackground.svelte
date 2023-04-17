@@ -7,7 +7,7 @@
   export let holes: Array<LayoutHole> = [];
 
   function borderProps(border: LayoutBorder) {
-    let props = {};
+    let props:  { [key: string]: string } = {};
     for (const [key, value] of Object.entries(border)) {
       const propKey = key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
       props[propKey] = value;

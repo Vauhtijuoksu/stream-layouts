@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte";
 
     let time = new Date();
 
-    let pad = num => num.toString().padStart(2, '0');
+    const pad = (num: number) => num.toString().padStart(2, '0');
 
     $: hours = pad(time.getHours());
     $: minutes = pad(time.getMinutes());

@@ -12,12 +12,13 @@ export interface LayoutBorder {
 
 export interface LayoutField {
     component: string;
-    name: string;
+    name?: string;
+    data?: {[key: string]: any};
     layout: LayoutDimension;
 }
 
 export interface LayoutHole {
-    name: string;
+    name?: string;
     layout: LayoutDimension;
     border?: LayoutBorder;
 }
