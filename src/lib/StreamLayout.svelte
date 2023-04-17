@@ -4,8 +4,9 @@
 	import StreamBackground from "./StreamBackground.svelte";
     import { onMount } from "svelte";
 	import StreamData from "./StreamData.svelte";
+	import type { LayoutConf } from "./models/LayoutConf";
 
-    export let layout;
+    export let layout: LayoutConf;
 
     let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 
