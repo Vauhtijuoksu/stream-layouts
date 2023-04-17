@@ -8,6 +8,7 @@
 	import GameTimer from './components/GameTimer.svelte';
 	import PlayerName from './components/PlayerName.svelte';
 	import GameData from './components/GameData.svelte';
+	import Upcoming from './components/Upcoming.svelte';
     
     
     export let client: ApiClient;
@@ -18,6 +19,7 @@
         timer: GameTimer,
         playername: PlayerName,
         gamedata: GameData,
+        upcoming: Upcoming,
     };
 
     const getComponent = (name: string) => {
