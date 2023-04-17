@@ -4,10 +4,16 @@ export let poehina: LayoutConf = {
     name: 'poehina',
     width: 1920,
     height: 1080,
+    theme: {
+        '--donation-bar-fill': 'green',
+    },
     fields: [
         {
             component: "clock",
             name: "clock",
+            data: {
+                displaySeconds: true
+            },
             layout: {
                 x: 3,
                 y: 320,

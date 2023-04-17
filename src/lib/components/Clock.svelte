@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+    export let displaySeconds = false;
 
     let time = new Date();
 
@@ -28,10 +29,12 @@
     <div class="minutes">
         {minutes}
     </div>
+    {#if displaySeconds}
     <div class="colon">:</div>
     <div class="seconds">
         {seconds}
     </div>
+    {/if}
 </div>
 
 <style>

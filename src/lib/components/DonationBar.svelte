@@ -5,18 +5,18 @@
     $: fillWidth = `${Math.min(1, $donationSum / $metadata?.donation_goal) * 100}%`;
 </script>
 
-<div class="bar">
-    <div class="current">{$donationSum}</div>
+<div class="donationbar">
     <div class="fill" style="width: {fillWidth}"></div>
+    <div class="current">{$donationSum}</div>
     <div class="target">{$metadata?.donation_goal}</div>
 </div>
 
 <style>
-    .bar {
+    .donationbar {
         position: relative;
         width: 100%;
         height: 100%;
-        background-color: black;
+        background-color: var(--donation-bar-background, black);
     }
 
     .fill {
@@ -24,7 +24,7 @@
         left: 0;
         top: 0;
         bottom: 0;
-        background-color: green;
+        background-color: var(--donation-bar-fill);
     }
 
     .current {

@@ -27,6 +27,7 @@ export interface LayoutConf {
     name: string;
     width: number;
     height: number;
-    fields: Array<LayoutField>;
-    holes: Array<LayoutHole>;
+    theme?: {[key: string]: string};
+    fields: LayoutField[];
+    holes: LayoutHole[];
 }

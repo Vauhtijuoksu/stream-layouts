@@ -6,9 +6,16 @@
 
     export let layout: LayoutConf;
 
+    
+    let theme = () => {
+        if (layout?.theme) {
+            return Object.entries(layout.theme).reduce((prev, [key, val]) => prev + `${key}:${val};`, '');
+        }
+    }
+
     let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 </script>
-<div class="layout">
+<div class="layout" style="{theme()}">
     <div class="background">
         <StreamBackground holes={layout.holes} />
     </div>
