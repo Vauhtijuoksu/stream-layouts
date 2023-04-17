@@ -28,6 +28,15 @@ export let poehina: LayoutConf = {
             }
         },
         {
+            component: "incentives",
+            data: {
+                n: 3,
+            },
+            layout: {
+                x: 1, y: 2, width: 3, height: 4,
+            }
+        },
+        {
             component: "donation_bar",
             layout: {
                 x: 0,

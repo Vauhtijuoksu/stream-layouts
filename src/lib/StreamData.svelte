@@ -4,7 +4,7 @@
     import type { LayoutField } from './models/LayoutConf';
 	import type { ApiClient } from './ApiClient';
     import { gamedata, metadata, playerdata } from "./stores/GameStore";
-	import { donationstore } from './stores/DonationsStore';
+	import { donationstore, incentivestore } from './stores/DonationsStore';
 
 	import Clock from "./components/Clock.svelte";
 	import GameTimer from './components/GameTimer.svelte';
@@ -12,6 +12,7 @@
 	import GameData from './components/GameData.svelte';
 	import Upcoming from './components/Upcoming.svelte';
 	import DonationBar from './components/DonationBar.svelte';
+	import Incentives from './components/Incentives.svelte';
     
     
     export let client: ApiClient;
@@ -25,6 +26,7 @@
         gamedata: GameData,
         upcoming: Upcoming,
         donation_bar: DonationBar,
+        incentives: Incentives,
     };
 
     const getComponent = (name: string) => {
@@ -41,10 +43,12 @@
 
         const donoInterval = setInterval(async () => {
             let donations = await client.getDonations();
+            let incentives = await client.getIncentives();
             let meta = await client.getMetadata();
 
             metadata.set(meta);
             donationstore.set(donations);
+            incentivestore.set(incentives);
         }, 10000)
 
         return () => {

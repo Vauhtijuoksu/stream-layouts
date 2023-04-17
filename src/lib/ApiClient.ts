@@ -1,5 +1,6 @@
 import type { Donation } from "./models/Donation";
 import type { GameInfo } from "./models/GameInfo";
+import type { Incentive } from "./models/Incentive";
 import type { PlayerInfo } from "./models/PlayerInfo";
 import type { StreamMetadata } from "./models/StreamMetadata";
 
@@ -17,7 +18,6 @@ export class ApiClient {
     private async get(path: string): Promise<any> {
         try {
             const response = await fetch(this.url(path))
-            console.log(response);
             return await response.json();
         } catch (error) {
             console.log(error);
@@ -27,7 +27,11 @@ export class ApiClient {
     private static adaptDates(...fields: string[]): (obj: any) => any {
         return (obj: any) => {
             for (let field of fields) {
-                obj[field] = new Date(obj[field]);
+                try {
+                    obj[field] = new Date(obj[field]);
+                } catch (error) {
+                    // pass
+                }
             }
             return obj;
         }
@@ -73,5 +77,10 @@ export class ApiClient {
     public async getDonations(): Promise<Donation[]> {
         const donos_raw = await this.get('donations');
         return donos_raw.map(ApiClient.adaptDates('timestamp'));
+    }
+
+    public async getIncentives(): Promise<Incentive[]> {
+        const incentives = await this.get('incentives');
+        return incentives.map(ApiClient.adaptDates('end_time'));
     }
 }
