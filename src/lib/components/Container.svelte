@@ -29,8 +29,18 @@
     let component = components[field.component];
 </script>
 
-<svelte:component this={component} {...field.params}>
-{#each field.contents || [] as innerField}
-    <svelte:self field={innerField} />
-{/each}
-</svelte:component>
+{#if component}
+    <svelte:component this={component} {...field.params}>
+    {#each field.contents || [] as innerField}
+        <svelte:self field={innerField} />
+    {/each}
+    </svelte:component>
+{:else if field.component === 'raw'}
+    {field.raw}
+{:else}
+    <svelte:element this={field.component} {...field.params}>
+        {#each field.contents || [] as innerField}
+            <svelte:self field={innerField} />
+        {/each}
+    </svelte:element>
+{/if}

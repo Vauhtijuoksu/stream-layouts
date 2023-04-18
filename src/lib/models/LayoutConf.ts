@@ -16,6 +16,7 @@ export interface LayoutField {
     params?: {[key: string]: any};
     layout?: LayoutDimension;
     contents?: LayoutField[];
+    raw?: string;
 }
 
 export interface LayoutHole {
@@ -30,7 +31,6 @@ export interface LayoutConf {
     name: string;
     width: number;
     height: number;
-    theme?: LayoutTheme;
-    fields: LayoutField[];
+    contents: LayoutField[];
     holes: LayoutHole[];
 }

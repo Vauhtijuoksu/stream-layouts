@@ -17,7 +17,19 @@
     )
 </script>
 
-{#each $upcoming as game}
-    <div class="game">{game.game}</div>
-    <div class="time">{game.start_time.toLocaleTimeString("fi-FI")}</div>
-{/each}
+<div class="upcoming">
+    {#each $upcoming as game}
+        <div class="game">
+            <div class="title">{game.game}</div>
+            <div class="time">{game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}</div>
+        </div>
+    {/each}
+</div>
+
+<style>
+    .game {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+</style>

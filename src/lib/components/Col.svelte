@@ -1,9 +1,10 @@
 <script lang="ts">
-    export let maxWidth = 'auto';
     export let width = 'auto';
+    export let maxWidth = 'auto';
+    export let style = '';
 </script>
 
-<div class="col" style="width: {width}; maxWidth: {maxWidth};">
+<div class="col" style="width: {width}; max-width: {maxWidth}; {style}">
     <slot />
 </div>
 
@@ -12,7 +13,6 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        align-items: stretch;
-        justify-content: space-between;
+        overflow: hidden;
     }
 </style>

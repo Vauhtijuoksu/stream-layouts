@@ -1,9 +1,10 @@
 <script lang="ts">
     export let maxHeight = 'auto';
     export let height = 'auto';
+    export let style = '';
 </script>
 
-<div class="row" style="height: {height}; maxHeight: {maxHeight};">
+<div class="row" style="height: {height}; maxHeight: {maxHeight}; {style}">
     <slot />
 </div>
 
@@ -12,7 +13,6 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: stretch;
-        justify-content: space-between;
+        overflow: hidden;
     }
 </style>

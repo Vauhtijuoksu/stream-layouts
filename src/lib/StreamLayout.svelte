@@ -5,22 +5,16 @@
 	import type { LayoutConf, LayoutTheme } from "./models/LayoutConf";
 
     export let layout: LayoutConf;
-    export let theme: LayoutTheme;
-    
-    let themeStr = () => {
-        if (theme) {
-            return Object.entries(layout.theme).reduce((prev, [key, val]) => prev + `${key}:${val};`, '');
-        }
-    }
+    export let theme: string;
 
     let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 </script>
-<div class="layout" style="{themeStr()}">
+<div class="layout" style="{theme}">
     <div class="background">
         <StreamBackground holes={layout.holes} />
     </div>
-    <div class="content">
-        <StreamData client={apiClient} fields={layout.fields} />
+    <div class="content" style="width: {layout.width}px; height: {layout.height}px;">
+        <StreamData client={apiClient} contents={layout.contents} />
     </div>
 </div>
 

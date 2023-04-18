@@ -8,7 +8,7 @@
 	import Container from './components/Container.svelte';
 
     export let client: ApiClient;
-    export let fields: Array<LayoutField> = [];
+    export let contents: Array<LayoutField> = [];
     export let updateFreq = 5000;
 
     onMount(async () => {
@@ -36,6 +36,6 @@
     });
 </script>
 
-{#each fields as field}
+{#each contents as field}
     <Container {field} />
 {/each}
