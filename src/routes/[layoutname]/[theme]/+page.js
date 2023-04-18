@@ -1,4 +1,4 @@
-import { layouts } from "$lib/config";
+import { layouts } from "$lib/layouts";
 import { themes } from "$lib/themes";
 
 export function load({ params }) {

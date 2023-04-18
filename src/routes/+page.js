@@ -1,4 +1,4 @@
-import { layouts } from "$lib/config";
+import { layouts } from "$lib/layouts";
 
 export function load() {
     return {
