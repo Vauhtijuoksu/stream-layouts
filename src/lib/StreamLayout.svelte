@@ -36,5 +36,6 @@
 
     :global(*) {
         font-family: var(--font-family);
+        color: var(--font-color);
     }
 </style>

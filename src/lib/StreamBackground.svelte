@@ -29,6 +29,12 @@
         <rect {x} {y} {width} {height} />
       {/each}
     </mask>
+
+    <pattern id="testPattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#ffe2ef" />
+      <rect width="12" height="12" fill="#f0ddea" />
+      <rect x="12" y="12" width="12" height="12" fill="#f0ddea" />
+    </pattern>
   </defs>
   <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />
   {#each holes as {layout: {x, y, width, height}, borders}}
