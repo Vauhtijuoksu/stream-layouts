@@ -46,6 +46,9 @@ export let sixteen_nine: LayoutConf = {
   contents: [
     {
       component: 'row',
+      params: {
+        height: `${height - donationBarHeight}px`
+      },
       contents: [
         {
           component: 'col',
@@ -73,6 +76,17 @@ export let sixteen_nine: LayoutConf = {
               contents: bottomRow
             }
           ]
+        }
+      ]
+    },
+    {
+      component: 'row',
+      params: {
+        height: `${donationBarHeight}px`
+      },
+      contents: [
+        {
+          component: 'donation_bar'
         }
       ]
     }
