@@ -1,10 +1,8 @@
-import { layouts } from "$lib/config";
+import { themes } from "$lib/themes";
 
-export function load({ params, url }) {
-    let layoutName = params.layoutname;
-    let layout = layouts[layoutName];
+export function load({ params }) {
     return {
-        layoutName,
-        layout
+        themeNames: Object.keys(themes),
+        layoutName: params.layoutname,
     }
 }

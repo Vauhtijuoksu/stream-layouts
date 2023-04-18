@@ -23,11 +23,13 @@ export interface LayoutHole {
     border?: LayoutBorder;
 }
 
+export type LayoutTheme = {[key: string]: string}
+
 export interface LayoutConf {
     name: string;
     width: number;
     height: number;
-    theme?: {[key: string]: string};
+    theme?: LayoutTheme;
     fields: LayoutField[];
     holes: LayoutHole[];
 }

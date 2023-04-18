@@ -2,20 +2,20 @@
 	import { ApiClient } from "./ApiClient";
 	import StreamBackground from "./StreamBackground.svelte";
 	import StreamData from "./StreamData.svelte";
-	import type { LayoutConf } from "./models/LayoutConf";
+	import type { LayoutConf, LayoutTheme } from "./models/LayoutConf";
 
     export let layout: LayoutConf;
-
+    export let theme: LayoutTheme;
     
-    let theme = () => {
-        if (layout?.theme) {
+    let themeStr = () => {
+        if (theme) {
             return Object.entries(layout.theme).reduce((prev, [key, val]) => prev + `${key}:${val};`, '');
         }
     }
 
     let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 </script>
-<div class="layout" style="{theme()}">
+<div class="layout" style="{themeStr()}">
     <div class="background">
         <StreamBackground holes={layout.holes} />
     </div>
