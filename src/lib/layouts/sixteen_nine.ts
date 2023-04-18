@@ -1,77 +1,111 @@
-import type { LayoutConf } from "$lib/models/LayoutConf";
+import type { LayoutConf, LayoutField } from "$lib/models/LayoutConf";
+
+let width = 1920;
+let height = 1080;
+let gameWidth = 1520;
+let gameHeight = 855;
+let donationBarHeight = 25;
+let leftColWidth = width - gameWidth;
+let bottomHeight = height - gameHeight;
+let bottomRowHeight = bottomHeight - donationBarHeight;
+
+let leftCol: LayoutField[] = [
+  {
+    component: 'h1',
+    contents: [
+      { 
+        component: 'raw',
+        raw: 'Vauhtijuoksu'
+      }
+    ]
+  },
+  {
+    component: 'timer',
+    params: {
+      index: 0
+    }
+  }
+]
+
+let bottomRow: LayoutField[] = [
+  {
+    component: 'playername',
+    params: {
+      index: 0,
+    }
+  },
+  {
+    component: 'gamedata',
+  }
+]
 
 export let sixteen_nine: LayoutConf = {
-    name: 'sixteen_nine',
-    width: 1920,
-    height: 1080,
-    fields: [
+  name: 'sixteen_nine',
+  width,
+  height,
+  contents: [
+    {
+      component: 'row',
+      contents: [
         {
-            component: "clock",
-            name: "sponsors",
-            layout: {
-                x: 3,
-                y: 320,
-                width: 314,
-                height: 175,
-            }
+          component: 'col',
+          params: {
+            width: `${leftColWidth}px`,
+            style: `
+              padding-left: 5px;
+              padding-right: 5px;
+            `
+          },
+          contents: leftCol
         },
         {
-            component: "timer",
-            name: "timer",
-            params: {
-                index: 0
+          component: 'col',
+          contents: [
+            {
+              component: 'row',
+              params: { height: `${gameHeight}px` }
             },
-            layout: {
-                x: 3,
-                y: 123,
-                width: 314,
-                height: 175,
+            {
+              component: 'row',
+              params: {
+                height: `${bottomRowHeight}px`,
+              },
+              contents: bottomRow
             }
-        },
-        {
-            component: "playername",
-            params: {
-                index: 0
-            },
-            layout: {
-                x: 3,
-                y: 123,
-                width: 314,
-                height: 175,
-            }
-        },
-        {
-            component: "gamedata",
-            layout: {
-                x: 3, 
-                y: 123,
-                width: 320,
-                height: 120,
-            }
+          ]
         }
-    ],
+      ]
+    }
+  ],
+  background: {
     holes: [
-        {
-            name: "webcam",
-            layout: {
-                x: 3,
-                y: 3,
-                width: 314,
-                height: 175,
-            },
-            border: {
-                stroke: "red",
-                strokeWidth: "24px",
-            }
+      {
+        name: 'game',
+        layout: {
+          x: width - gameWidth,
+          y: 0,
+          width: gameWidth,
+          height: gameHeight,
         },
-        {
-            name: "game1",
-            layout: {
-                x: 320,
-                y: 0,
-                width: 1600,
-                height: 900,
-            }
+        borders: {
+          left: true,
+          bottom: true,
+        }
+      },
+      {
+        name: 'webcam',
+        layout: {
+          x: 3,
+          y: 800,
+          width: leftColWidth - 3,
+          height: 255,
         },
-    ],
-}
+        borders: {
+          top: true,
+          right: true,
+          bottom: true,
+        }
+      }
+    ]
+  }
+};

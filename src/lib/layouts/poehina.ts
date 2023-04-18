@@ -51,8 +51,8 @@ export let poehina: LayoutConf = {
           params: {
             width: '960px',
             style: `
-              padding-left: 10px;
-              padding-right: 10px;
+              padding-left: 15px;
+              padding-right: 15px;
             `
           },
           contents: leftCol
@@ -96,10 +96,10 @@ export let poehina: LayoutConf = {
         {
           name: "webcam",
           layout: {
-            x: 964,
-            y: 4,
-            width: 952,
-            height: 532,
+            x: 960,
+            y: 0,
+            width: 960,
+            height: 540,
           },
           borders: {
             left: true,

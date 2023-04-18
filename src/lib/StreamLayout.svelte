@@ -38,4 +38,8 @@
         font-family: var(--font-family);
         color: var(--font-color);
     }
+
+    :global(div) {
+        box-sizing: border-box;
+    }
 </style>
