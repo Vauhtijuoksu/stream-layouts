@@ -14,3 +14,15 @@ export const donationSum = derived(
     donationstore,
     $donations => $donations.reduce((sum, donation) => sum + donation.amount, 0)
 );
+
+export const upcomingIncentives = derived(
+    incentivestore,
+    $incentives => {
+        const now = new Date();
+        $incentives
+            .filter((incentive) => incentive.end_time === undefined || incentive.end_time > now)
+            .sort((inc1, inc2) => {
+                inc1.end_time > inc2.end_time
+        });
+    }
+)
