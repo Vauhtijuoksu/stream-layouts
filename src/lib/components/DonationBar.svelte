@@ -17,6 +17,7 @@
         width: 100%;
         height: 100%;
         background-color: var(--donation-bar-background, black);
+        padding: var(--donation-bar-padding);
     }
 
     .fill {

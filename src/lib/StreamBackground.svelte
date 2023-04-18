@@ -3,7 +3,7 @@
 
   export let width = 1920;
   export let height = 1080;
-  export let fill = "blue";
+  export let image = '';
   export let holes: Array<LayoutHole> = [];
 
   function borderProps(border: LayoutBorder) {
@@ -16,6 +16,11 @@
   }
 </script>
 
+{#if image}
+<div id="canvas">
+  <img src="{image}" alt="layout background" />
+</div>
+{:else}
 <svg id="canvas" {width} {height}>
   <defs>
     <mask id="holes">
@@ -25,18 +30,38 @@
       {/each}
     </mask>
   </defs>
-  <rect x="0" y="0" width="{width}" height="{height}" {fill} mask="url(#holes)" />
-  {#each holes as {layout: {x, y, width, height}, border}}
-    {#if border}
-      <rect {x} {y} {width} {height} {...borderProps(border)} fill="none" />
+  <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />
+  {#each holes as {layout: {x, y, width, height}, borders}}
+    {#if borders?.left}
+      <line class="border" x1={x} y1={y} x2={x} y2={y+height} {...borders.left} />
+    {/if}
+    {#if borders?.right}
+      <line class="border" x1={x+width} y1={y} x2={x+width} y2={y+height} {...borders.top} />
+    {/if}
+    {#if borders?.top}
+      <line class="border" x1={x} y1={y} x2={x+width} y2={y} {...borders.top} />
+    {/if}
+    {#if borders?.bottom}
+      <line class="border" x1={x} y1={y+height} x2={x+width} y2={y+height} {...borders.bottom} />
     {/if}
   {/each}
 </svg>
+{/if}
 
 <style>
   #canvas {
     position: fixed;
     left: 0;
     top: 0;
+  }
+
+  .background {
+    fill: var(--background-color);
+  }
+
+  .border {
+    stroke: var(--hole-border-stroke);
+    stroke-width: var(--hole-border-stroke-width);
+
   }
 </style>

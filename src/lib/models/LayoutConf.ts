@@ -1,14 +1,11 @@
 export interface LayoutDimension {
     x: number;
     y: number;
-    width: number | string;
-    height: number | string;
+    width: number;
+    height: number;
 }
 
-export interface LayoutBorder {
-    stroke: string;
-    strokeWidth: string;
-}
+
 
 export interface LayoutField {
     component: string;
@@ -19,18 +16,44 @@ export interface LayoutField {
     raw?: string;
 }
 
+export interface LayoutBorder {
+    stroke: string;
+    strokeWidth: string;
+}
+
 export interface LayoutHole {
     name?: string;
     layout: LayoutDimension;
-    border?: LayoutBorder;
+    borders?: {
+        top?: any,
+        right?: any,
+        bottom?: any,
+        left?: any,
+    };
 }
 
-export type LayoutTheme = {[key: string]: string}
+export interface LayoutBackground {
+    image?: string;
+    holes?: LayoutHole[];
+    style?: string;
+}
+
+export interface Font {
+    family: string;
+    url: string;
+    descriptors?: FontFaceDescriptors;
+}
+
+export interface LayoutTheme {
+    name?: string;
+    fonts?: Font[];
+    style?: string;
+}
 
 export interface LayoutConf {
     name: string;
     width: number;
     height: number;
     contents: LayoutField[];
-    holes: LayoutHole[];
+    background: LayoutBackground;
 }

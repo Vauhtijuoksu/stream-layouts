@@ -50,6 +50,10 @@ export let poehina: LayoutConf = {
           component: "col",
           params: {
             width: '960px',
+            style: `
+              padding-left: 10px;
+              padding-right: 10px;
+            `
           },
           contents: leftCol
         },
@@ -87,19 +91,21 @@ export let poehina: LayoutConf = {
       ]
     }
   ],
-  holes: [
-    {
-      name: "webcam",
-      layout: {
-        x: 964,
-        y: 4,
-        width: 952,
-        height: 532,
+  background: {
+    holes: [
+        {
+          name: "webcam",
+          layout: {
+            x: 964,
+            y: 4,
+            width: 952,
+            height: 532,
+          },
+          borders: {
+            left: true,
+            bottom: true
+          }
       },
-      border: {
-        stroke: "red",
-        strokeWidth: "24px",
-      }
-    },
-  ]
+    ]
+  }
 }
