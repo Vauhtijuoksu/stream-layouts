@@ -25,4 +25,4 @@ export const upcomingIncentives = derived(
                 inc1.end_time > inc2.end_time
         });
     }
-)
+);
