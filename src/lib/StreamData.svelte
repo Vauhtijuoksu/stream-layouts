@@ -1,37 +1,15 @@
 <script lang="ts">
-	import { onMount, type ComponentType } from 'svelte';
+	import { onMount } from 'svelte';
 
     import type { LayoutField } from './models/LayoutConf';
 	import type { ApiClient } from './ApiClient';
     import { gamedata, metadata, playerdata } from "./stores/GameStore";
 	import { donationstore, incentivestore } from './stores/DonationsStore';
+	import Container from './components/Container.svelte';
 
-	import Clock from "./components/Clock.svelte";
-	import GameTimer from './components/GameTimer.svelte';
-	import PlayerName from './components/PlayerName.svelte';
-	import GameData from './components/GameData.svelte';
-	import Upcoming from './components/Upcoming.svelte';
-	import DonationBar from './components/DonationBar.svelte';
-	import Incentives from './components/Incentives.svelte';
-    
-    
     export let client: ApiClient;
     export let fields: Array<LayoutField> = [];
     export let updateFreq = 5000;
-    
-    const components: {[key: string]: ComponentType} = {
-        clock: Clock,
-        timer: GameTimer,
-        playername: PlayerName,
-        gamedata: GameData,
-        upcoming: Upcoming,
-        donation_bar: DonationBar,
-        incentives: Incentives,
-    };
-
-    const getComponent = (name: string) => {
-        return components[name];
-    };
 
     onMount(async () => {
         const gameInterval = setInterval(async () => {
@@ -59,7 +37,5 @@
 </script>
 
 {#each fields as field}
-    <div style="width: {field.layout.width}; height: {field.layout.height};">
-        <svelte:component this={getComponent(field.component)} {...field.data} />
-    </div>
+    <Container {field} />
 {/each}

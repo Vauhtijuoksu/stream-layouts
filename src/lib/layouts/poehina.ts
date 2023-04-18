@@ -9,48 +9,56 @@ export let poehina: LayoutConf = {
     },
     fields: [
         {
-            component: "clock",
-            name: "clock",
-            data: {
-                displaySeconds: true
+            component: "col",
+            params: {
+                width: '960px',
             },
-            layout: {
-                x: 3,
-                y: 320,
-                width: 314,
-                height: 175,
-            }
+            contents: [
+                {
+                    component: "clock",
+                    name: "clock",
+                    params: {
+                        displaySeconds: true
+                    },
+                    layout: {
+                        x: 3,
+                        y: 320,
+                        width: 314,
+                        height: 175,
+                    }
+                },
+                {
+                    component: "upcoming",
+                    params: {
+                        n: 6,
+                    },
+                    layout: {
+                        x: 3, 
+                        y: 123,
+                        width: 320,
+                        height: 120,
+                    }
+                },
+                {
+                    component: "incentives",
+                    params: {
+                        n: 3,
+                    },
+                    layout: {
+                        x: 1, y: 2, width: 3, height: 4,
+                    }
+                },
+                {
+                    component: "donation_bar",
+                    layout: {
+                        x: 0,
+                        y: 1900,
+                        width: '1080px',
+                        height: '20px',
+                    }
+                }
+            ],
         },
-        {
-            component: "upcoming",
-            data: {
-                n: 6,
-            },
-            layout: {
-                x: 3, 
-                y: 123,
-                width: 320,
-                height: 120,
-            }
-        },
-        {
-            component: "incentives",
-            data: {
-                n: 3,
-            },
-            layout: {
-                x: 1, y: 2, width: 3, height: 4,
-            }
-        },
-        {
-            component: "donation_bar",
-            layout: {
-                x: 0,
-                y: 1900,
-                width: '1080px',
-                height: '20px',
-            }
-        }
     ],
     holes: [
         {
@@ -66,5 +74,5 @@ export let poehina: LayoutConf = {
                 strokeWidth: "24px",
             }
         },
-    ],
+    ]
 }

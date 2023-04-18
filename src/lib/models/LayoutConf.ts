@@ -13,8 +13,9 @@ export interface LayoutBorder {
 export interface LayoutField {
     component: string;
     name?: string;
-    data?: {[key: string]: any};
-    layout: LayoutDimension;
+    params?: {[key: string]: any};
+    layout?: LayoutDimension;
+    contents?: LayoutField[];
 }
 
 export interface LayoutHole {

@@ -18,7 +18,7 @@ export let sixteen_nine: LayoutConf = {
         {
             component: "timer",
             name: "timer",
-            data: {
+            params: {
                 index: 0
             },
             layout: {
@@ -30,7 +30,7 @@ export let sixteen_nine: LayoutConf = {
         },
         {
             component: "playername",
-            data: {
+            params: {
                 index: 0
             },
             layout: {
