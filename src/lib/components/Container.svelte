@@ -42,6 +42,9 @@
 {/if}
 
 <style>
+    .abs {
+        position: absolute;
+    }
     .col {
         display: flex;
         flex-direction: column;
