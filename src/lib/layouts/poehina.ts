@@ -2,35 +2,35 @@ import type { LayoutConf, LayoutField } from "$lib/models/LayoutConf";
 
 let leftCol: LayoutField[] = [
   {
-    component: "h1",
+    component: 'h1',
     params: {
-      style: "align-self: flex-start;"
+      style: 'align-self: flex-start;'
     },
     contents: [
       {
-        component: "raw",
-        raw: "VAUHTIJUOKSU"
+        component: 'raw',
+        raw: 'VAUHTIJUOKSU'
       }
     ]
   },
   {
-    component: "clock",
-    name: "clock",
+    component: 'clock',
+    name: 'clock',
     params: {
       displaySeconds: true
     },
   },
   {
-    component: "upcoming",
+    component: 'upcoming',
     params: {
       n: 6,
     },
   },
   {
-    component: "incentives",
+    component: 'incentives',
     params: {
       n: 3,
-      style: "align-self: flex-end;",
+      style: 'align-self: flex-end;',
     },
   },
 ];
@@ -41,16 +41,18 @@ export let poehina: LayoutConf = {
   height: 1080,
   contents: [
     {
-      component: "row",
+      component: 'div',
       params: {
-        height: "1050px",
+        class: 'row',
+        style: 'height: 1050px',
       },
       contents: [
         {
-          component: "col",
+          component: 'div',
           params: {
-            width: '960px',
+            class: "col",
             style: `
+              width: 960px;
               padding-left: 15px;
               padding-right: 15px;
             `
@@ -58,21 +60,24 @@ export let poehina: LayoutConf = {
           contents: leftCol
         },
         {
-          component: "col",
+          component: 'div',
           params: {
-            width: '960px',
+            class: 'col',
+            style: 'width: 960px;',
           },
           contents: [
             {
-              component: "row",
+              component: 'div',
               params: {
-                height: "540px",
+                class: 'row',
+                style: 'height: 540px;',
               }
             },
             {
-              component: "row",
+              component: 'div',
               params: {
-                height: "510px"
+                class: 'row',
+                style: 'height: 510px;',
               }
             }
           ]
@@ -80,13 +85,14 @@ export let poehina: LayoutConf = {
       ]
     },
     {
-      component: "row",
+      component: 'div',
       params: {
-        height: "30px",
+        class: 'row',
+        style: 'height: 30px;',
       },
       contents: [
         {
-          component: "donation_bar",
+          component: 'donation_bar',
         }
       ]
     }
@@ -94,7 +100,7 @@ export let poehina: LayoutConf = {
   background: {
     holes: [
         {
-          name: "webcam",
+          name: 'webcam',
           layout: {
             x: 960,
             y: 0,

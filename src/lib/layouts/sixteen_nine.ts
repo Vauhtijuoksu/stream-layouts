@@ -25,7 +25,7 @@ let leftCol: LayoutField[] = [
       index: 0
     }
   }
-]
+];
 
 let bottomRow: LayoutField[] = [
   {
@@ -36,8 +36,8 @@ let bottomRow: LayoutField[] = [
   },
   {
     component: 'gamedata',
-  }
-]
+  },
+];
 
 export let sixteen_nine: LayoutConf = {
   name: 'sixteen_nine',
@@ -45,33 +45,48 @@ export let sixteen_nine: LayoutConf = {
   height,
   contents: [
     {
-      component: 'row',
+      component: 'div',
       params: {
-        height: `${height - donationBarHeight}px`
+        class: 'row',
+        style: `
+          height: ${height - donationBarHeight}px;
+        `,
       },
       contents: [
         {
-          component: 'col',
+          component: 'div',
           params: {
-            width: `${leftColWidth}px`,
+            class: 'col',
             style: `
+              width: ${leftColWidth}px;
               padding-left: 5px;
               padding-right: 5px;
-            `
+            `,
           },
           contents: leftCol
         },
         {
-          component: 'col',
+          component: 'div',
+          params: {
+            class: 'col'
+          },
           contents: [
             {
-              component: 'row',
-              params: { height: `${gameHeight}px` }
+              component: 'div',
+              params: {
+                class: 'row',
+                style: `
+                  height: ${gameHeight}px;
+                `,
+              }
             },
             {
-              component: 'row',
+              component: 'div',
               params: {
-                height: `${bottomRowHeight}px`,
+                class: 'row',
+                style: `
+                  height: ${bottomRowHeight}px;
+                `
               },
               contents: bottomRow
             }
@@ -80,9 +95,12 @@ export let sixteen_nine: LayoutConf = {
       ]
     },
     {
-      component: 'row',
+      component: 'div',
       params: {
-        height: `${donationBarHeight}px`
+        class: 'row',
+        style: `
+          height: ${donationBarHeight}px;
+        `,
       },
       contents: [
         {

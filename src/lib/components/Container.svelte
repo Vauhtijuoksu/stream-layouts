@@ -9,8 +9,6 @@
 	import Upcoming from './Upcoming.svelte';
 	import DonationBar from './DonationBar.svelte';
 	import Incentives from './Incentives.svelte';
-	import Col from "./Col.svelte";
-	import Row from "./Row.svelte";
 
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
@@ -20,8 +18,6 @@
         upcoming: Upcoming,
         donation_bar: DonationBar,
         incentives: Incentives,
-        col: Col,
-        row: Row,
     };
 
     export let field: LayoutField;
@@ -44,3 +40,19 @@
         {/each}
     </svelte:element>
 {/if}
+
+<style>
+    .col {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+</style>
