@@ -1,14 +1,25 @@
 <script lang="ts">
 	import { donationSum } from "$lib/stores/DonationsStore";
     import { metadata } from "$lib/stores/GameStore";
+	import { circOut } from "svelte/easing";
+	import { tweened } from "svelte/motion";
 
-    $: fillWidth = `${Math.min(1, $donationSum / $metadata?.donation_goal) * 100}%`;
+    $: fillWidth = `${Math.min(1, $donationSumAnimated / $metadata?.donation_goal) * 100}%`;
+
+    let donationSumAnimated = tweened(
+        $donationSum,
+        {
+            duration: 3000,
+            easing: circOut,
+        }
+    );
+    $: $donationSumAnimated = $donationSum;
 </script>
 
 <div class="donationbar">
     <div class="fill" style="width: {fillWidth}"></div>
-    <div class="current">{$donationSum}</div>
-    <div class="target">{$metadata?.donation_goal}</div>
+    <div class="current donationsum">{Math.floor($donationSumAnimated)} €</div>
+    <div class="target donationsum">{$metadata?.donation_goal} €</div>
 </div>
 
 <style>
@@ -18,6 +29,7 @@
         height: 100%;
         background-color: var(--donation-bar-background, black);
         padding: var(--donation-bar-padding);
+        color: var(--donation-bar-font-color);
     }
 
     .fill {

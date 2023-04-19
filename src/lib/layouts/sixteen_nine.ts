@@ -52,6 +52,7 @@ let bottomRow: LayoutField = {
       left: ${leftColWidth}px;
       right: 0;
       bottom: ${donationBarHeight}px;
+      padding: 5px;
     `,
   },
   contents: [
