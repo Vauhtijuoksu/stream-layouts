@@ -1,7 +1,7 @@
-import { layouts } from "$lib/layouts";
+import { themes } from "$lib/themes";
 
 export function load() {
-    return {
-        layoutNames: Object.keys(layouts)
-    }
+  return {
+    themeNames: Object.keys(themes),
+  }
 }
