@@ -22,6 +22,8 @@ let leftCol: LayoutField = {
       width: ${leftColWidth}px;
       padding-left: 5px;
       padding-right: 5px;
+      --sponsors-height: 200px;
+      --sponsors-width: ${leftColWidth};
     `,
   },
   contents: [
@@ -33,6 +35,15 @@ let leftCol: LayoutField = {
           raw: 'Vauhtijuoksu'
         }
       ]
+    },
+    {
+      component: 'sponsors',
+      params: {
+        sponsors: [
+          '/sponsors/TEK.png',
+          '/sponsors/Bittium.png'
+        ]
+      }
     },
     {
       component: 'timer',

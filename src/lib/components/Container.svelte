@@ -9,6 +9,7 @@
 	import Upcoming from './Upcoming.svelte';
 	import DonationBar from './DonationBar.svelte';
 	import Incentives from './Incentives.svelte';
+	import Sponsors from "./Sponsors.svelte";
 
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
@@ -18,6 +19,7 @@
         upcoming: Upcoming,
         donation_bar: DonationBar,
         incentives: Incentives,
+        sponsors: Sponsors,
     };
 
     export let field: LayoutField;
