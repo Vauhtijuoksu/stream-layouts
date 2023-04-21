@@ -4,9 +4,9 @@ let width = 1920;
 let height = 1080;
 let gameWidth = 1520;
 let gameHeight = 855;
-let donationBarHeight = 25;
+let donationBarHeight = 50;
 let leftColWidth = width - gameWidth;
-let leftColHeight = gameHeight;
+let leftColHeight = gameHeight - 52;
 let bottomHeight = height - gameHeight;
 let bottomRowHeight = bottomHeight - donationBarHeight;
 
@@ -20,8 +20,6 @@ let leftCol: LayoutField = {
       left: 0;
       height: ${leftColHeight}px;
       width: ${leftColWidth}px;
-      padding-left: 5px;
-      padding-right: 5px;
       --sponsors-height: 200px;
       --sponsors-width: ${leftColWidth};
     `,
@@ -37,20 +35,40 @@ let leftCol: LayoutField = {
       ]
     },
     {
-      component: 'sponsors',
+      component: 'div',
       params: {
-        sponsors: [
-          '/sponsors/TEK.png',
-          '/sponsors/Bittium.png'
-        ]
-      }
+        style: `
+          box-sizing: content-box;
+          flex-grow: 1;
+        `
+      },
+      contents: [{
+        component: 'sponsors',
+        params: {
+          sponsors: [
+            '/sponsors/TEK.png',
+            '/sponsors/Bittium.png'
+          ],
+        }
+      }]
     },
     {
-      component: 'timer',
+      component: 'div',
       params: {
-        index: 0
-      }
-    }
+        style: `
+          margin-left: -20px;
+          margin-right: -2px;
+        `,
+      },
+      contents: [
+        {
+          component: 'playername',
+          params: {
+            index: 0,
+          }
+        }
+      ]
+    },
   ]
 };
 
@@ -68,9 +86,9 @@ let bottomRow: LayoutField = {
   },
   contents: [
     {
-      component: 'playername',
+      component: 'timer',
       params: {
-        index: 0,
+        index: 0
       }
     },
     {
@@ -112,28 +130,19 @@ export let sixteen_nine: LayoutConf = {
         name: 'game',
         layout: {
           x: width - gameWidth,
-          y: 0,
-          width: gameWidth,
-          height: gameHeight,
+          y: -20,
+          width: gameWidth + 20,
+          height: gameHeight + 20,
         },
-        borders: {
-          left: true,
-          bottom: true,
-        }
       },
       {
         name: 'webcam',
         layout: {
-          x: 3,
+          x: -20,
           y: 800,
-          width: leftColWidth - 3,
-          height: 255,
+          width: leftColWidth + 20,
+          height: 232,
         },
-        borders: {
-          top: true,
-          right: true,
-          bottom: true,
-        }
       }
     ]
   }
