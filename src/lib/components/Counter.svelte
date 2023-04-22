@@ -7,9 +7,9 @@
 
 </script>
 
-{#each counters as counter}
+{#each counters as counter, i}
 {#if counter > -1}
-<div class="counter">
+<div class="counter" style="filter: brightness(150%) hue-rotate(calc(60deg * {i}));">
     <img class="icon" src={icon} alt="counter" />
     <div class="number">
         {counter}
