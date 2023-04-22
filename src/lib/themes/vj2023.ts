@@ -9,7 +9,7 @@ export const vj2023: LayoutTheme =
       url: '/fonts/UbuntuTitling-Bold.ttf',
     }
   ],
-  borderWidth: 2,
+  borderWidth: 4,
   borderRadius: 20,
   style: `
     --font-family: UbuntuTitling;
@@ -19,6 +19,7 @@ export const vj2023: LayoutTheme =
     --border-color: #080808;
     --border-width: 4px;
     --border-radius: 20px;
+    --border: var(--border-width) var(--border-style) var(--border-color);
     --background: #080808 url('/images/vj2023bg.png') repeat 500px center;
     --donation-bar-font-color: white;
     --donation-bar-padding: 0 0;

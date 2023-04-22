@@ -30,19 +30,12 @@
         <rect {x} {y} {width} {height} rx="{theme?.borderRadius}" ry="{theme?.borderRadius}" />
       {/each}
     </mask>
-
-    <pattern id="vj2023" patternUnits="userSpaceOnUse" width="750" height="725">
-      <image href="/images/vj2023bg.png" x="0" y="0" width="750" height="725" />
-    </pattern>
-    <pattern id="testPattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-      <rect width="24" height="24" fill="#ffe2ef" />
-      <rect width="12" height="12" fill="#f0ddea" />
-      <rect x="12" y="12" width="12" height="12" fill="#f0ddea" />
-    </pattern>
   </defs>
   <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />
-  {#each holes as {layout: {x, y, width, height}, borders}}
+  {#each holes as {layout: {x, y, width, height}, name}}
+    {#if false}
     <rect class="border" {x} {y} {width} {height} rx="{theme?.borderRadius}" ry="{theme?.borderRadius}" fill="none" />
+    {/if}
   {/each}
 </svg>
 {/if}

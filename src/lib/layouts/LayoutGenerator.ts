@@ -99,7 +99,7 @@ function game_layout(
     cameraWidth ??= leftColWidth;
     cameraHeight ??= height - gameHeight;
     const leftColHeight = height - donationBarHeight - cameraHeight;
-    const bottomBarWidth = gameWidth;
+    const bottomBarWidth = width - cameraWidth;
     const bottomBarHeight = height - gameHeight - donationBarHeight;
     const bottomBarX = cameraWidth;
     const bottomBarY = gameHeight;
@@ -120,6 +120,7 @@ function game_layout(
           style: `
             flex-grow: 1;
             background: var(--background);
+            border-right: var(--border-style) var(--border-color) var(--border-width);
             border-bottom-right-radius: var(--border-radius);
           `
         }
@@ -143,6 +144,7 @@ function game_layout(
       bottomBarHeight,
       `
         background: var(--background);
+        border-top: var(--border-style) var(--border-color) var(--border-width);
         border-top-left-radius: var(--border-radius);
         border-bottom-left-radius: var(--border-radius);
       `
@@ -175,11 +177,20 @@ function game_layout(
         },
       },
     ]
+    const cameraFrame: LayoutField = abs_field(
+      'cameraframe',
+      'div', '', -borderRadius, leftColHeight - borderWidth, cameraWidth + borderRadius, cameraHeight + borderWidth * 2,
+      `
+        border: var(--border);
+        border-radius: var(--border-radius);
+      `
+    )
     return {
       contents: {
         leftBar: leftCol,
         bottomBar,
         donationBar,
+        cameraFrame,
       },
       background: {holes},
     }
@@ -227,7 +238,7 @@ export function sixteen_nine_divided({
   const gameWidth = gameHole.layout.width / 2;
   const gameHeight = gameHole.layout.height / 2;
 
-  layout.background.holes = layout.background.holes?.concat([
+  const gameHoles = [
     {
       name: 'game1',
       layout: {
@@ -264,18 +275,60 @@ export function sixteen_nine_divided({
         height: gameHeight,
       }
     },
-  ]);
+  ];
+  layout.background.holes?.push(...gameHoles);
+
+  const frameStyle = 'border: var(--border); border-radius: var(--border-radius);';
+  const gameFrames = gameHoles.map((hole, i) => {
+    let x = i % 2 + 1;
+    let y = Math.floor(i / 2) + 1;
+    return abs_field(
+      hole.name, 'div', '',
+      hole.layout.x - borderWidth,
+      hole.layout.y - borderWidth,
+      hole.layout.width + borderWidth,
+      hole.layout.height + borderWidth * y,
+      frameStyle
+    )
+  });
+  layout.contents.push(...gameFrames);
   return layout;
 }
-  /* TODO: 16:9 BIG CAM */
-  /*
-    game size 1520x855
-    donationbar 1920x65
-    bottombar (gamewidth) * (height - gameheight - donationbarheight)
-    camera (width - gamewidth)*(height-gameheight)
-    left bar (width - gamewidth)*(height-donationbarheight-cameraheight)
-  */
-  /* TODO: 16:9 divided + pnames x4 */
+
+export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+
+  const gameWidth = 1520;
+  const gameHeight = 855;
+  const donationBarHeight = 65;
+  const cameraWidth = 560;
+  const cameraHeight = 405;
+
+  const layout = game_layout(
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    donationBarHeight,
+    theme.borderWidth,
+    theme.borderRadius,
+    width,
+    cameraWidth,
+    cameraHeight
+  );
+
+  return {
+    name: 'sixteen_nine_bigcam',
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    contents: Object.values(layout.contents),
+    background: layout.background,
+  };
+}
+
   /* TODO: 16:9 x2 race */
 
   /* TODO: 4:3 */
