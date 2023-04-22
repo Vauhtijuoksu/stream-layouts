@@ -9,15 +9,15 @@
     $: start_time = $metadata?.timers[index].start_time;
     $: end_time = $metadata?.timers[index].end_time;
 
-    let hours = "00";
+    let hours = " 0";
     let minutes = "00";
     let seconds = "00";
     let millis = "00";
 
-    const pad = (num: number) => num.toString().padStart(2, '0');
+    const pad = (num: number, pad='0') => num.toString().padStart(2, pad);
 
     const reset = () => {
-        hours = "00";
+        hours = " 0";
         minutes = "00";
         seconds = "00";
         millis = "00";
@@ -29,7 +29,7 @@
             let end = end_time ? end_time : new Date();
 
             const diff = end.getTime() - start.getTime();
-            hours = pad(Math.floor(diff / 3600000));
+            hours = pad(Math.floor(diff / 3600000), ' ');
             minutes = pad(Math.floor(diff / 60000) % 60);
             seconds = pad(Math.floor(diff / 1000) % 60);
             millis = pad(Math.floor(diff % 1000 / 10));
@@ -42,20 +42,21 @@
 </script>
 
 <div class="clock">
-    <div class="hours">
-        {hours}
+    <div class="icon">
+        <img src="/images/stopwatch.png" />
     </div>
-    <div class="colon">:</div>
-    <div class="minutes">
-        {minutes}
-    </div>
-    <div class="colon">:</div>
-    <div class="seconds">
-        {seconds}
-    </div>
-    <div class="colon">.</div>
-    <div class="millis">
-        {millis}
+    <div class="numbers">
+        <div class="digit tenhour">{hours[0]}</div>
+        <div class="digit">{hours[1]}</div>
+        <div class="colon">:</div>
+        <div class="digit">{minutes[0]}</div>
+        <div class="digit">{minutes[1]}</div>
+        <div class="colon">:</div>
+        <div class="digit">{seconds[0]}</div>
+        <div class="digit">{seconds[1]}</div>
+        <div class="colon">.</div>
+        <div class="digit small">{millis[0]}</div>
+        <div class="digit small">{millis[1]}</div>
     </div>
 </div>
 
@@ -64,23 +65,31 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: center;
     }
 
-    .clock > div {
-        display: block;
-        font-size: 34px;
+    .numbers {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .digit {
+        width: .7em;
+        font-size: var(--timer-font-size);
+    }
+
+    .digit.tenhour {
+        width: .4em;
     }
 
     .colon {
-        width: .5em;
+        width: .4em;
+        font-size: var(--timer-font-size);
+        align-self: center;
     }
 
-    .hours, .minutes, .seconds {
-        width: 2em;
-    }
-
-    .millis {
-        font-size: 16px;
-        width: 2em;
+    .digit.small {
+        font-size: var(--timer-millis-font-size);
     }
 </style>

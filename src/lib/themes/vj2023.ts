@@ -36,5 +36,7 @@ export const vj2023: LayoutTheme =
     --playername-font-size: 32px;
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
+    --timer-font-size: 54px;
+    --timer-millis-font-size: 32px;
   `
 }
