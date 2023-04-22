@@ -1,38 +1,46 @@
 <script lang="ts">
-	import type { Timer } from "$lib/models/Timer";
 	import { onMount } from "svelte";
-    import { metadata } from "$lib/stores/GameStore";
-	import { derived } from "svelte/store";
+    import { currentGame, metadata } from "$lib/stores/GameStore";
+	import { dateRangeToDuration } from "$lib/utils/time";
 
     export let index = 0;
+    export let icon = '/images/stopwatch.png';
 
     $: start_time = $metadata?.timers[index].start_time;
     $: end_time = $metadata?.timers[index].end_time;
+    let estimate = {hours: 0, minutes: 0};
+    $: if ($currentGame) {
+        ({hours: estimate.hours, minutes: estimate.minutes} = dateRangeToDuration($currentGame.start_time, $currentGame.end_time))
+    };
 
     let hours = " 0";
     let minutes = "00";
     let seconds = "00";
     let millis = "00";
 
-    const pad = (num: number, pad='0') => num.toString().padStart(2, pad);
-
     const reset = () => {
         hours = " 0";
         minutes = "00";
         seconds = "00";
-        millis = "00";
+        millis = "0";
     };
+
+    const pad = (num: number, pad='0', padLength=2) => num.toString().padStart(padLength, pad);
 
     onMount(() => {
         const interval = setInterval(() => {
             let start = start_time ? start_time : new Date();
             let end = end_time ? end_time : new Date();
-
-            const diff = end.getTime() - start.getTime();
-            hours = pad(Math.floor(diff / 3600000), ' ');
-            minutes = pad(Math.floor(diff / 60000) % 60);
-            seconds = pad(Math.floor(diff / 1000) % 60);
-            millis = pad(Math.floor(diff % 1000 / 10));
+            let {
+                hours: hours_,
+                minutes: minutes_,
+                seconds: seconds_,
+                millis: millis_
+            } = dateRangeToDuration(start, end);
+            hours = pad(hours_, ' ');
+            minutes = pad(minutes_);
+            seconds = pad(seconds_)
+            millis = Math.floor(millis_ / 100).toString();
         }, 10);
 
         return () => {
@@ -42,21 +50,27 @@
 </script>
 
 <div class="clock">
+    {#if icon}
     <div class="icon">
-        <img src="/images/stopwatch.png" />
+        <img src="{icon}" alt="timer" />
     </div>
-    <div class="numbers">
-        <div class="digit tenhour">{hours[0]}</div>
-        <div class="digit">{hours[1]}</div>
-        <div class="colon">:</div>
-        <div class="digit">{minutes[0]}</div>
-        <div class="digit">{minutes[1]}</div>
-        <div class="colon">:</div>
-        <div class="digit">{seconds[0]}</div>
-        <div class="digit">{seconds[1]}</div>
-        <div class="colon">.</div>
-        <div class="digit small">{millis[0]}</div>
-        <div class="digit small">{millis[1]}</div>
+    {/if}
+    <div class="time">
+        <div class="numbers">
+                <div class="digit tenhour">{hours[0]}</div>
+            <div class="digit">{hours[1]}</div>
+            <div class="colon">:</div>
+            <div class="digit">{minutes[0]}</div>
+            <div class="digit">{minutes[1]}</div>
+            <div class="colon">:</div>
+            <div class="digit">{seconds[0]}</div>
+            <div class="digit">{seconds[1]}</div>
+            <div class="colon">.</div>
+            <div class="digit small">{millis}</div>
+        </div>
+        <div class="estimate">
+            Arvio: {#if estimate.hours}{estimate.hours}h {/if}{estimate.minutes}min
+        </div>
     </div>
 </div>
 
@@ -66,6 +80,17 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    .time {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .estimate {
+        font-size: var(--timer-estimate-font-size);
     }
 
     .numbers {

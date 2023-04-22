@@ -37,6 +37,7 @@ export const vj2023: LayoutTheme =
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
     --timer-font-size: 54px;
+    --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
   `
 }
