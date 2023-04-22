@@ -1,5 +1,6 @@
 import type { LayoutBackground, LayoutConf, LayoutField, LayoutHole, LayoutTheme } from "$lib/models/LayoutConf";
 
+export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
 function style_string(fields: {[key: string]: any}, unit = ''): string {
   return Object.entries(fields)
@@ -89,6 +90,8 @@ function game_layout(
     gameWidth: number,
     gameHeight: number,
     donationBarHeight: number,
+    borderWidth = 0,
+    borderRadius = 0,
     donationBarWidth?: number,
     cameraWidth?: number,
     cameraHeight?: number,
@@ -116,7 +119,11 @@ function game_layout(
     );
     leftBar.contents = [
       wrap(sponsors([]), 'div', {'flex-grow': '1'}),
-      wrap(player(0), 'div', {'margin-left': '-20px', 'margin-right': '-2px'}), // TODO: fix this margin thingy
+      wrap(player(0), 'div', 
+        {
+          'margin-left': `${-borderRadius}px`,
+          'margin-right': `${-borderWidth / 2}px`,
+        }),
     ];
 
     const bottomBar = abs_field(
@@ -141,17 +148,17 @@ function game_layout(
         name: 'game',
         layout: {
           x: width - gameWidth,
-          y: -20, // FIX
-          width: gameWidth + 20,
-          height: gameHeight + 20,
+          y: -borderRadius, // FIX
+          width: gameWidth + borderRadius,
+          height: gameHeight + borderRadius,
         },
       },
       {
         name: 'webcam',
         layout: {
-          x: 0,
+          x: -borderRadius,
           y: leftColHeight,
-          width: cameraWidth,
+          width: cameraWidth + borderRadius,
           height: cameraHeight,
         },
       }
@@ -166,7 +173,10 @@ function game_layout(
     }
 }
 
-export function sixteen_nine(): LayoutConf {
+export function sixteen_nine({
+  borderWidth = 0,
+  borderRadius = 0,
+}: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
 
@@ -180,6 +190,8 @@ export function sixteen_nine(): LayoutConf {
     gameWidth,
     gameHeight,
     donationBarHeight,
+    borderWidth,
+    borderRadius,
   );
 
   return {
@@ -188,7 +200,7 @@ export function sixteen_nine(): LayoutConf {
     height,
     contents: Object.values(layout.contents),
     background: layout.background,
-  }
+  };
 }
   /* TODO: 16:9 BIG CAM */
   /*

@@ -47,6 +47,7 @@ export interface Font {
 export interface LayoutTheme {
     name?: string;
     fonts?: Font[];
+    borderWidth?: number;
     borderRadius?: number;
     style?: string;
 }

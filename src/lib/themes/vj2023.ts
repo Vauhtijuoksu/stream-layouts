@@ -9,6 +9,7 @@ export const vj2023: LayoutTheme =
       url: '/fonts/UbuntuTitling-Bold.ttf',
     }
   ],
+  borderWidth: 2,
   borderRadius: 20,
   style: `
     --font-family: UbuntuTitling;

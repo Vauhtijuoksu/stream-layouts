@@ -1,9 +1,12 @@
 import { layouts } from "$lib/layouts";
+import { theme } from "$lib/stores/ThemeStore";
 import { themes } from "$lib/themes";
 
 export function load({ params }) {
-  let layout = layouts[params.layoutName];
-  let theme = themes[params.theme];
+  let layoutGen = layouts[params.layoutName];
+  let themeName: string = params.theme;
+  let theme = themes[themeName];
+  let layout = layoutGen(theme);
 
   return {
     layout,
