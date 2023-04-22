@@ -130,6 +130,7 @@ function game_layout(
     );
     bottomBar.contents = [
       timer(),
+      {component: 'counter'},
       gamedata(),
     ]
 
@@ -189,14 +190,6 @@ export function sixteen_nine(): LayoutConf {
     background: layout.background,
   }
 }
-  /* TODO: 16:9 */
-  /*
-    game size 1520x855
-    donationbar 1920x65
-    bottombar (gamewidth) * (height - gameheight - donationbarheight)
-    camera (width - gamewidth)*(height-gameheight)
-    left bar (width - gamewidth)*(height-donationbarheight-cameraheight)
-  */
   /* TODO: 16:9 BIG CAM */
   /*
     game size 1520x855

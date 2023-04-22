@@ -39,5 +39,6 @@ export const vj2023: LayoutTheme =
     --timer-font-size: 54px;
     --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
+    --counter-font-size: var(--timer-font-size);
   `
 }

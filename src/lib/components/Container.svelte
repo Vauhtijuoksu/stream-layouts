@@ -10,6 +10,7 @@
 	import DonationBar from './DonationBar.svelte';
 	import Incentives from './Incentives.svelte';
 	import Sponsors from "./Sponsors.svelte";
+	import Counter from "./Counter.svelte";
 
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
@@ -20,6 +21,7 @@
         donation_bar: DonationBar,
         incentives: Incentives,
         sponsors: Sponsors,
+        counter: Counter,
     };
 
     export let field: LayoutField;
