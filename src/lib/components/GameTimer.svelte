@@ -69,7 +69,11 @@
             <div class="digit small">{millis}</div>
         </div>
         <div class="estimate">
-            Arvio: {#if estimate.hours}{estimate.hours}h {/if}{estimate.minutes}min
+            Arvio: 
+            {#if estimate.hours}
+                {estimate.hours}h 
+            {/if}{
+            estimate.minutes}min
         </div>
     </div>
 </div>
