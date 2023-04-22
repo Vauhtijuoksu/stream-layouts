@@ -1,17 +1,22 @@
 <script lang="ts">
 	import { metadata } from "$lib/stores/GameStore";
 
+    $: counters = $metadata?.counters ?? [];
+
     let icon = '/images/counter.png';
 
-    $: count = $metadata?.counters[0];
 </script>
 
+{#each counters as counter}
+{#if counter > -1}
 <div class="counter">
     <img class="icon" src={icon} alt="counter" />
     <div class="number">
-        {count}
+        {counter}
     </div>
 </div>
+{/if}
+{/each}
 
 <style>
     .counter {
