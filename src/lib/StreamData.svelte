@@ -9,7 +9,7 @@
 
     export let client: ApiClient;
     export let contents: Array<LayoutField> = [];
-    export let updateFreq = 5000;
+    export let updateFreq = 1000;
 
     onMount(async () => {
         const gameInterval = setInterval(async () => {

@@ -37,10 +37,10 @@
                 seconds: seconds_,
                 millis: millis_
             } = dateRangeToDuration(start, end);
-            hours = pad(hours_, ' ');
-            minutes = pad(minutes_);
-            seconds = pad(seconds_)
-            millis = Math.floor(millis_ / 100).toString();
+            hours = pad(Math.max(hours_, 0), ' ');
+            minutes = pad(Math.max(minutes_, 0));
+            seconds = pad(Math.max(seconds_, 0))
+            millis = Math.floor(Math.max(millis_, 0) / 100).toString();
         }, 10);
 
         return () => {
