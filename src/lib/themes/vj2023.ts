@@ -19,6 +19,7 @@ export const vj2023: LayoutTheme =
     --border-color: #080808;
     --border-width: 4px;
     --border-radius: 20px;
+    --background: #080808 url('/images/vj2023bg.png') repeat 500px center;
     --donation-bar-font-color: white;
     --donation-bar-padding: 0 0;
     --donation-bar-background: white;
@@ -32,7 +33,6 @@ export const vj2023: LayoutTheme =
     --donation-bar-current-font-color: var(--font-color);
     --donation-bar-goal-bg: #ed87a6;
     --donation-bar-goal-font-color: var(--font-color);
-    --background-color: url(#vj2023);
     --playername-background: #f3eded;
     --playername-font-size: 32px;
     --hole-border-stroke: #080808;

@@ -12,13 +12,14 @@ function abs_field(
     name: string,
     component: string,
     orientation: 'col'|'row'|'',
-    x?: number,
-    y?: number,
-    width?: number,
-    height?: number,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    extraStyle: string = '',
   ): LayoutField {
 
-    let style = style_string({top: y, left: x, width, height}, 'px');
+    let style = style_string({top: y, left: x, width, height}, 'px') + extraStyle;
 
     return {
       name: name,
@@ -30,13 +31,11 @@ function abs_field(
     }
 }
 
-function wrap(child: LayoutField, parentComponent = 'div', parentStyle?: {[key: string]: string}): LayoutField {
+function wrap(child: LayoutField, parentComponent = 'div', parentParams?: {[key: string]: any}): LayoutField {
   return {
     component: parentComponent,
     contents: [child],
-    params: {
-      style: parentStyle ? style_string(parentStyle) : undefined,
-    },
+    params: parentParams,
   }
 }
 
@@ -108,21 +107,29 @@ function game_layout(
     const donationBarY = height - donationBarHeight;
     donationBarWidth ??= width;
 
-    const leftBar = abs_field(
-      'leftCol',
-      'div',
-      'col',
-      0,
-      0,
-      leftColWidth,
-      leftColHeight,
+    const leftCol = abs_field(
+      'leftCol', 'div', 'col',
+      0, 0, leftColWidth, leftColHeight,
     );
-    leftBar.contents = [
-      wrap(sponsors([]), 'div', {'flex-grow': '1'}),
-      wrap(player(0), 'div', 
+    leftCol.contents = [
+      wrap(
+        wrap(sponsors([]), 'div'),
+        'div',
         {
-          'margin-left': `${-borderRadius}px`,
-          'margin-right': `${-borderWidth / 2}px`,
+          class: 'col',
+          style: `
+            flex-grow: 1;
+            background: var(--background);
+            border-bottom-right-radius: var(--border-radius);
+          `
+        }
+      ),
+      wrap(player(0), 'div',
+        {
+          style: `
+            margin-left: ${-borderRadius}px;
+            margin-right: ${-borderWidth / 2}px;
+          `,
         }),
     ];
 
@@ -134,6 +141,11 @@ function game_layout(
       bottomBarY,
       bottomBarWidth,
       bottomBarHeight,
+      `
+        background: var(--background);
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+      `
     );
     bottomBar.contents = [
       timer(),
@@ -145,6 +157,15 @@ function game_layout(
 
     const holes: LayoutHole[] = [
       {
+        name: 'webcam',
+        layout: {
+          x: -borderRadius,
+          y: leftColHeight,
+          width: cameraWidth + borderRadius,
+          height: cameraHeight,
+        },
+      },
+      {
         name: 'game',
         layout: {
           x: width - gameWidth,
@@ -153,19 +174,10 @@ function game_layout(
           height: gameHeight + borderRadius,
         },
       },
-      {
-        name: 'webcam',
-        layout: {
-          x: -borderRadius,
-          y: leftColHeight,
-          width: cameraWidth + borderRadius,
-          height: cameraHeight,
-        },
-      }
     ]
     return {
       contents: {
-        leftBar,
+        leftBar: leftCol,
         bottomBar,
         donationBar,
       },
@@ -198,9 +210,62 @@ export function sixteen_nine({
     name: 'sixteen_nine',
     width,
     height,
+    gameWidth,
+    gameHeight,
     contents: Object.values(layout.contents),
     background: layout.background,
   };
+}
+
+export function sixteen_nine_divided({
+  borderRadius = 0,
+  borderWidth = 0,
+}: LayoutTheme): LayoutConf {
+  const layout = sixteen_nine({borderRadius, borderWidth});
+  const gameHole: LayoutHole = layout.background.holes?.pop();
+
+  const gameWidth = gameHole.layout.width / 2;
+  const gameHeight = gameHole.layout.height / 2;
+
+  layout.background.holes = layout.background.holes?.concat([
+    {
+      name: 'game1',
+      layout: {
+        x: gameHole.layout.x,
+        y: gameHole.layout.y,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+    {
+      name: 'game2',
+      layout: {
+        x: gameHole.layout.x + gameWidth,
+        y: gameHole.layout.y,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+    {
+      name: 'game3',
+      layout: {
+        x: gameHole.layout.x,
+        y: gameHole.layout.y + gameHeight,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+    {
+      name: 'game4',
+      layout: {
+        x: gameHole.layout.x + gameWidth,
+        y: gameHole.layout.y + gameHeight,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+  ]);
+  return layout;
 }
   /* TODO: 16:9 BIG CAM */
   /*

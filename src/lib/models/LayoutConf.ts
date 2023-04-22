@@ -56,6 +56,8 @@ export interface LayoutConf {
     name: string;
     width: number;
     height: number;
+    gameWidth?: number;
+    gameHeight?: number;
     contents: LayoutField[];
     background: LayoutBackground;
 }

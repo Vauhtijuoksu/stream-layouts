@@ -60,7 +60,7 @@
   }
 
   .background {
-    fill: var(--background-color);
+    fill: var(--border-color);
   }
 
   .border {
