@@ -29,8 +29,8 @@
 
     onMount(() => {
         const interval = setInterval(() => {
-            let start = start_time ? start_time : new Date();
-            let end = end_time ? end_time : new Date();
+            let start = start_time ?? new Date();
+            let end = end_time ?? new Date();
             let {
                 hours: hours_,
                 minutes: minutes_,
@@ -57,7 +57,7 @@
     {/if}
     <div class="time">
         <div class="numbers">
-                <div class="digit tenhour">{hours[0]}</div>
+            <div class="digit tenhour">{hours[0]}</div>
             <div class="digit">{hours[1]}</div>
             <div class="colon">:</div>
             <div class="digit">{minutes[0]}</div>

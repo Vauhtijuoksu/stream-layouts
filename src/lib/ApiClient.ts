@@ -28,7 +28,7 @@ export class ApiClient {
         return (obj: any) => {
             for (let field of fields) {
                 try {
-                    obj[field] = new Date(obj[field]);
+                    obj[field] = obj[field] ? new Date(obj[field]) : null;
                 } catch (error) {
                     // pass
                 }
