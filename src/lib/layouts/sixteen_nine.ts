@@ -187,9 +187,6 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0}: LayoutTheme):
     abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'background: var(--background); border'),
     abs_field('bottomLeft', 'div', 'row', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'),
     abs_field('bottomRight', 'div', 'row', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'),
-    abs_field('game1frame', 'div', '', -borderRadius, topBarHeight, gameWidth+borderRadius, gameHeight, 'border: var(--border); border-radius: var(--border-radius);' ),
-    abs_field('game2frame', 'div', '', gameWidth, topBarHeight, gameWidth+borderRadius, gameHeight, 'border: var(--border); border-radius: var(--border-radius);' ),
-    abs_field('cameraframe', 'div', '', cameraX, cameraY - borderWidth / 2, cameraWidth, cameraHeight + borderWidth, 'border: var(--border); border-radius: var(--border-radius);' ),
     donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
   ];
 
@@ -199,26 +196,26 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0}: LayoutTheme):
         name: 'game1',
         layout: {
           x: -borderRadius,
-          y: topBarHeight,
-          width: gameWidth+borderRadius,
-          height: gameHeight,
+          y: topBarHeight + borderWidth,
+          width: gameWidth+borderRadius-borderWidth/2,
+          height: gameHeight-borderWidth*2,
         }
       },
       {
         name: 'game2',
         layout: {
-          x: gameWidth,
-          y: topBarHeight,
+          x: gameWidth+borderWidth/2,
+          y: topBarHeight+borderWidth,
           width: gameWidth+borderRadius,
-          height: gameHeight,
+          height: gameHeight-borderWidth*2,
         }
       },
       {
         name: 'camera',
         layout: {
-          x: bottomSideWidth,
+          x: bottomSideWidth+borderWidth,
           y: bottomBarY,
-          width: cameraWidth,
+          width: cameraWidth-2*borderWidth,
           height: cameraHeight,
         },
       }

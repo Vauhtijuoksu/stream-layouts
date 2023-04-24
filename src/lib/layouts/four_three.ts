@@ -41,3 +41,64 @@ export function four_three({
     background: layout.background,
   }
 }
+
+export function four_three_race({borderRadius=0, borderWidth=0}: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+  const gameWidth = 960;
+  const gameHeight = 720;
+  const donationBarHeight = 65;
+  const bottomBarHeight = height - gameHeight - donationBarHeight;
+  const cameraHeight = bottomBarHeight;
+  const cameraWidth = 400;
+  const bottomSideWidth = (width - cameraWidth) / 2;
+  const bottomBarY = gameHeight;
+  const cameraX = bottomSideWidth;
+  const cameraY = gameHeight;
+
+  const contents: LayoutField[] = [
+    abs_field('bottomLeft', 'div', 'row', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'),
+    abs_field('bottomLeft', 'div', 'row', bottomSideWidth+cameraWidth, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'),
+    donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
+  ];
+
+  const background: LayoutBackground = {
+    holes: [
+      {
+        name: 'game1',
+        layout: {
+          x: 0 - borderRadius,
+          y: 0 - borderRadius,
+          width: gameWidth+borderRadius-borderWidth/2,
+          height: gameHeight+borderRadius-borderWidth,
+        },
+      },
+      {
+        name: 'game2',
+        layout: {
+          x: gameWidth+borderWidth/2,
+          y: -borderRadius,
+          width: gameWidth+borderRadius,
+          height: gameHeight+borderRadius-borderWidth,
+        }
+      },
+      {
+        name: 'camera',
+        layout: {
+          x: cameraX + borderWidth,
+          y: cameraY,
+          width: cameraWidth - 2*borderWidth,
+          height: cameraHeight,
+        }
+      }
+    ]
+  }
+
+  return {
+    name: 'four_three_race',
+    width,
+    height,
+    contents,
+    background
+  }
+}
