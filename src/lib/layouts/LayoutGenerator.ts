@@ -485,9 +485,9 @@ export function four_three({
 }
 
 export function setuptime({
-  borderWidth = 0,
-  borderRadius = 0,
-}: LayoutTheme): LayoutConf {
+    borderWidth = 0,
+    borderRadius = 0,
+  }: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
   const cameraX = width / 2;
@@ -563,6 +563,31 @@ export function setuptime({
   }
 }
 
+export function poehina({
+    borderRadius=0,
+    borderWidth=0,
+  }: LayoutTheme): LayoutConf {
+    return {
+      name: 'poehina',
+      width: 1920,
+      height: 1080,
+      contents: [
+        donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
+      ],
+      background: {
+        holes: [
+          {
+            name: 'camera',
+            layout: {
+              x: -borderRadius, y: -borderRadius,
+              width: 1920+borderRadius*2, height: 1015+borderRadius
+            }
+          }
+        ]
+      }
+    };
+}
+
   /* TODO: 16:9 x2 race */
 
   /* TODO: 4:3 x2 co-op  playernames x8 */
@@ -570,6 +595,3 @@ export function setuptime({
 
   /* TODO: Pokemoncustomlayout 1 */
   /* TODO: Pokemoncustomlayout 2 */
-
-  /* TODO: tauko */
-  /* TODO: pöhinä */
