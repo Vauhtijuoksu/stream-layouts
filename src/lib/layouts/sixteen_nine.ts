@@ -66,8 +66,9 @@ export function sixteen_nine({
 export function sixteen_nine_divided({
   borderRadius = 0,
   borderWidth = 0,
+  sponsors = [],
 }: LayoutTheme): LayoutConf {
-  const layout = sixteen_nine({ borderRadius, borderWidth });
+  const layout = sixteen_nine({ borderRadius, borderWidth, sponsors });
   // @ts-expect-error
   const gameHole: LayoutHole = layout.background.holes?.pop();
 

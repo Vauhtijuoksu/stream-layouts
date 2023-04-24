@@ -25,6 +25,11 @@ export const vj2023: LayoutTheme =
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background: #080808 url('/images/vj2023bg.png') repeat 500px fixed;
+    --setuptime-background: url('#vj2023');
+    --font-size-lg: 32px;
+    --font-size-md: 24px;
+    --font-size-sm: 20px;
+    --font-size-xs: 16px;
     --sponsors-font-size: 24px;
     --donation-bar-font-color: white;
     --donation-bar-padding: 0 0;

@@ -20,7 +20,7 @@
 </script>
 
 <div class="layout" style={theme.style}>
-	<div class="background">
+	<div class="background" style="{layout.background.style}">
 		<StreamBackground width={layout.width} height={layout.height} {...layout.background} {theme} />
 	</div>
 	<div class="content" style="width: {layout.width}px; height: {layout.height}px;">

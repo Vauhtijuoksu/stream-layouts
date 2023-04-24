@@ -1,5 +1,5 @@
-import type { LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
-import { abs_field, camera_hole, donation_bar, sponsors_field } from "./utils";
+import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
+import { abs_field, camera_hole, donation_bar, sponsors_field, wrap } from "./utils";
 
 export function setuptime({
     borderWidth = 0,
@@ -24,10 +24,18 @@ export function setuptime({
   const bottomRightHeight = height - cameraHeight - donationBarHeight;
 
   const topLeft: LayoutField = abs_field(
-    'topLeft', 'div', 'col', 0, 0, topLeftWidth, topLeftHeight, 'background: var(--background)'
+    'topLeft', 'div', 'col', 0, 0, topLeftWidth, topLeftHeight, 
+    'background: var(--background); align-items: center; justify-content: center;'
   );
   topLeft.contents = [
-    {component: 'upcoming'},
+    wrap(
+      {component: 'upcoming'},
+      'div',
+      {
+        class: 'col',
+        style: 'max-height: 90%; max-width: 80%; align-self: center;'
+      },
+    )
   ];
 
   const bottomLeft: LayoutField = abs_field(
@@ -65,12 +73,13 @@ export function setuptime({
     bottomRight,
     cameraFrame,
     donation_bar({x: 0, y: 1015, width, height: donationBarHeight}),
-  ]
-  const background = {
+  ];
+  const background: LayoutBackground = {
     holes: [
       camera_hole({x: cameraX, y: cameraY, width: cameraWidth, height: cameraHeight}, borderRadius, 'top right')
-    ]
-  }
+    ],
+    style: '--override-background: var(--setuptime-background);'
+  };
 
   return {
     name: 'setuptime',

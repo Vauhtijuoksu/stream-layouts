@@ -30,6 +30,10 @@
         <rect {x} {y} {width} {height} rx="{theme?.borderRadius}" ry="{theme?.borderRadius}" />
       {/each}
     </mask>
+
+    <pattern id="vj2023" patternUnits="userSpaceOnUse" width="750" height="725">
+      <image href="/images/vj2023bg.png" x="0" y="0" width="750" height="725" />
+    </pattern>
   </defs>
   <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />
   {#each holes as {layout: {x, y, width, height}, name}}
@@ -53,7 +57,7 @@
   }
 
   .background {
-    fill: var(--border-color);
+    fill: var(--override-background, var(--background));
   }
 
   .border {
