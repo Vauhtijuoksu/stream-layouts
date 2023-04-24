@@ -1,5 +1,5 @@
-import type { LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
-import { abs_field, game_layout_fields, gamedata, left_col_wrapper, player, sponsors, timer, wrap } from "./utils";
+import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
+import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors, timer, wrap } from "./utils";
 
 function sixteen_nine_leftcol_contents(
   borderWidth = 0,
@@ -164,4 +164,72 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
     contents: Object.values(layout.contents),
     background: layout.background,
   };
+}
+
+export function sixteen_nine_race({borderRadius=0, borderWidth=0}: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+  const gameWidth = 960;
+  const gameHeight = 540;
+  const topBarHeight = 120;
+  const donationBarHeight = 65;
+  const bottomBarHeight = height - topBarHeight - gameHeight - donationBarHeight;
+  const bottomBarY = topBarHeight + gameHeight;
+  
+  const cameraHeight = bottomBarHeight;
+  const cameraWidth = 500;
+  const bottomSideWidth = (width - cameraWidth) / 2;
+  const bottomBarRightX = bottomSideWidth + cameraWidth;
+  const cameraX = bottomSideWidth;
+  const cameraY = bottomBarY;
+
+  const contents: LayoutField[] = [
+    abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'background: var(--background); border'),
+    abs_field('bottomLeft', 'div', 'row', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'),
+    abs_field('bottomRight', 'div', 'row', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'),
+    abs_field('game1frame', 'div', '', -borderRadius, topBarHeight, gameWidth+borderRadius, gameHeight, 'border: var(--border); border-radius: var(--border-radius);' ),
+    abs_field('game2frame', 'div', '', gameWidth, topBarHeight, gameWidth+borderRadius, gameHeight, 'border: var(--border); border-radius: var(--border-radius);' ),
+    abs_field('cameraframe', 'div', '', cameraX, cameraY - borderWidth / 2, cameraWidth, cameraHeight + borderWidth, 'border: var(--border); border-radius: var(--border-radius);' ),
+    donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
+  ];
+
+  const background: LayoutBackground = {
+    holes: [
+      {
+        name: 'game1',
+        layout: {
+          x: -borderRadius,
+          y: topBarHeight,
+          width: gameWidth+borderRadius,
+          height: gameHeight,
+        }
+      },
+      {
+        name: 'game2',
+        layout: {
+          x: gameWidth,
+          y: topBarHeight,
+          width: gameWidth+borderRadius,
+          height: gameHeight,
+        }
+      },
+      {
+        name: 'camera',
+        layout: {
+          x: bottomSideWidth,
+          y: bottomBarY,
+          width: cameraWidth,
+          height: cameraHeight,
+        },
+      }
+    ]
+  }
+
+  return {
+    name: 'sixteen_nine_race',
+    width,
+    height,
+    contents,
+    background,
+  }
 }
