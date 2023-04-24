@@ -1,4 +1,4 @@
-import type { LayoutBackground, LayoutConf, LayoutField, LayoutHole, LayoutTheme } from "$lib/models/LayoutConf";
+import type { LayoutBackground, LayoutConf, LayoutDimension, LayoutField, LayoutHole, LayoutTheme } from "$lib/models/LayoutConf";
 
 export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
@@ -72,7 +72,7 @@ function gamedata(): LayoutField {
   };
 }
 
-function donation_bar(x: number, y: number, width: number, height: number): LayoutField {
+function donation_bar({x, y, width, height}: LayoutDimension): LayoutField {
   const wrapper = abs_field(
     'donationBarWrapper', 'div', '',
     x, y, width, height,
@@ -83,7 +83,153 @@ function donation_bar(x: number, y: number, width: number, height: number): Layo
   return wrapper;
 }
 
-function game_layout(
+function left_col({x, y, width, height}: LayoutDimension): LayoutField {
+  return abs_field(
+    'leftCol',
+    'div',
+    'col',
+    x, y, width, height,
+  );
+}
+
+function left_col_wrapper(contents: LayoutField[]): LayoutField {
+  return {
+    component: 'div',
+    params: {
+      class: 'col',
+      style: `
+        flex-grow: 1;
+        background: var(--background);
+        border-right: var(--border-style) var(--border-color) var(--border-width);
+        border-bottom-right-radius: var(--border-radius);
+      `
+    },
+    contents
+  }  
+}
+
+function bottom_bar({x, y, width, height}: LayoutDimension): LayoutField {
+  return abs_field(
+    'bottomRow',
+    'div',
+    'row',
+    x,
+    y,
+    width,
+    height,
+    `
+      background: var(--background);
+      border-top: var(--border-style) var(--border-color) var(--border-width);
+      border-top-left-radius: var(--border-radius);
+      border-bottom-left-radius: var(--border-radius);
+    `
+  );
+}
+
+function camera_hole({x, y, width, height}: LayoutDimension, borderRadius: number): LayoutHole {
+  return {
+    name: 'webcam',
+    layout: {
+      x: x - borderRadius,
+      y: y,
+      width: width + borderRadius,
+      height: height,
+    },
+  };
+}
+
+function camera_frame({x, y, width, height}: LayoutDimension, borderRadius: number, borderWidth: number): LayoutField {
+  return abs_field(
+    'cameraframe',
+    'div',
+    '',
+    x - borderRadius,
+    y - borderWidth,
+    width + borderRadius,
+    height + borderWidth * 2,
+    `
+      border: var(--border);
+      border-radius: var(--border-radius);
+    `
+  );
+}
+
+function game_hole({x, y, width, height}: LayoutDimension, borderRadius: number): LayoutHole {
+  return {
+    name: 'game',
+    layout: {
+      x: x,
+      y: y - borderRadius,
+      width: width + borderRadius,
+      height: height + borderRadius,
+    }
+  };
+}
+
+function game_dimensions(
+    width: number = 1920,
+    height: number = 1080,
+    gameWidth: number,
+    gameHeight: number,
+    donationBarHeight: number,
+    donationBarWidth?: number,
+    cameraWidth?: number,
+    cameraHeight?: number,
+  ) {
+  const leftColWidth = width - gameWidth;
+  cameraWidth ??= leftColWidth;
+  cameraHeight ??= height - gameHeight;
+  const leftColHeight = height - donationBarHeight - cameraHeight;
+  const bottomBarWidth = width - cameraWidth;
+  const bottomBarHeight = height - gameHeight - donationBarHeight;
+  const bottomBarX = cameraWidth;
+  const bottomBarY = gameHeight;
+  const donationBarX = 0;
+  const donationBarY = height - donationBarHeight;
+  donationBarWidth ??= width;
+  const leftColX = 0;
+  const leftColY = 0;
+  const cameraX = 0;
+  const cameraY = leftColHeight;
+  const gameX = leftColWidth;
+  const gameY = 0;
+
+  return {
+    leftCol: {
+      x: leftColX,
+      y: leftColY,
+      width: leftColWidth,
+      height: leftColHeight,
+    },
+    bottomBar: {
+      x: bottomBarX,
+      y: bottomBarY,
+      width: bottomBarWidth,
+      height: bottomBarHeight,
+    },
+    camera: {
+      x: cameraX,
+      y: cameraY,
+      width: cameraWidth,
+      height: cameraHeight,
+    },
+    game: {
+      x: gameX,
+      y: gameY,
+      width: gameWidth,
+      height: gameHeight,
+    },
+    donationBar: {
+      x: donationBarX,
+      y: donationBarY,
+      width: donationBarWidth,
+      height: donationBarHeight,
+    },
+  }
+}
+
+
+function game_layout_fields(
     width: number = 1920,
     height: number = 1080,
     gameWidth: number,
@@ -95,105 +241,57 @@ function game_layout(
     cameraWidth?: number,
     cameraHeight?: number,
   ) {
-    const leftColWidth = width - gameWidth;
-    cameraWidth ??= leftColWidth;
-    cameraHeight ??= height - gameHeight;
-    const leftColHeight = height - donationBarHeight - cameraHeight;
-    const bottomBarWidth = width - cameraWidth;
-    const bottomBarHeight = height - gameHeight - donationBarHeight;
-    const bottomBarX = cameraWidth;
-    const bottomBarY = gameHeight;
-    const donationBarX = 0;
-    const donationBarY = height - donationBarHeight;
-    donationBarWidth ??= width;
+    const {
+      leftCol,
+      bottomBar,
+      donationBar,
+      camera,
+      game,
+    } = game_dimensions(width, height, gameWidth, gameHeight, donationBarHeight, donationBarWidth, cameraWidth, cameraHeight);
 
-    const leftCol = abs_field(
-      'leftCol', 'div', 'col',
-      0, 0, leftColWidth, leftColHeight,
-    );
-    leftCol.contents = [
-      wrap(
-        wrap(sponsors([]), 'div'),
-        'div',
-        {
-          class: 'col',
-          style: `
-            flex-grow: 1;
-            background: var(--background);
-            border-right: var(--border-style) var(--border-color) var(--border-width);
-            border-bottom-right-radius: var(--border-radius);
-          `
-        }
+    const leftColField = left_col(leftCol);
+    const bottomBarField = bottom_bar(bottomBar);
+    const donationBarField = donation_bar(donationBar);
+    const holes: LayoutHole[] = [
+      camera_hole(camera, borderRadius),
+      game_hole(game, borderRadius),
+    ];
+    const cameraFrame: LayoutField = camera_frame(camera, borderRadius, borderWidth);
+
+    return {
+      contents: {
+        leftCol: leftColField,
+        bottomBar: bottomBarField,
+        donationBar: donationBarField,
+        cameraFrame,
+      },
+      background: {holes},
+    }
+}
+
+function sixteen_nine_leftcol_contents(
+    borderWidth = 0,
+    borderRadius = 0,
+  ): LayoutField[] {
+    return [
+      left_col_wrapper(
+        [wrap(sponsors([]), 'div')]
       ),
       wrap(player(0), 'div',
         {
           style: `
             margin-left: ${-borderRadius}px;
-            margin-right: ${-borderWidth / 2}px;
           `,
-        }),
+      }),
     ];
+}
 
-    const bottomBar = abs_field(
-      'bottomRow',
-      'div',
-      'row',
-      bottomBarX,
-      bottomBarY,
-      bottomBarWidth,
-      bottomBarHeight,
-      `
-        background: var(--background);
-        border-top: var(--border-style) var(--border-color) var(--border-width);
-        border-top-left-radius: var(--border-radius);
-        border-bottom-left-radius: var(--border-radius);
-      `
-    );
-    bottomBar.contents = [
-      timer(),
-      {component: 'counter'},
-      gamedata(),
-    ]
-
-    const donationBar = donation_bar(donationBarX, donationBarY, donationBarWidth, donationBarHeight);
-
-    const holes: LayoutHole[] = [
-      {
-        name: 'webcam',
-        layout: {
-          x: -borderRadius,
-          y: leftColHeight,
-          width: cameraWidth + borderRadius,
-          height: cameraHeight,
-        },
-      },
-      {
-        name: 'game',
-        layout: {
-          x: width - gameWidth,
-          y: -borderRadius, // FIX
-          width: gameWidth + borderRadius,
-          height: gameHeight + borderRadius,
-        },
-      },
-    ]
-    const cameraFrame: LayoutField = abs_field(
-      'cameraframe',
-      'div', '', -borderRadius, leftColHeight - borderWidth, cameraWidth + borderRadius, cameraHeight + borderWidth * 2,
-      `
-        border: var(--border);
-        border-radius: var(--border-radius);
-      `
-    )
-    return {
-      contents: {
-        leftBar: leftCol,
-        bottomBar,
-        donationBar,
-        cameraFrame,
-      },
-      background: {holes},
-    }
+function sixteen_nine_bottombar_contents(): LayoutField[] {
+  return [
+    timer(),
+    {component: 'counter'},
+    gamedata(),
+  ];
 }
 
 export function sixteen_nine({
@@ -207,7 +305,7 @@ export function sixteen_nine({
   const gameHeight = 855;
   const donationBarHeight = 65;
 
-  let layout = game_layout(
+  let layout = game_layout_fields(
     width,
     height,
     gameWidth,
@@ -216,6 +314,9 @@ export function sixteen_nine({
     borderWidth,
     borderRadius,
   );
+
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderWidth, borderRadius);
+  layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
 
   return {
     name: 'sixteen_nine',
@@ -233,6 +334,7 @@ export function sixteen_nine_divided({
   borderWidth = 0,
 }: LayoutTheme): LayoutConf {
   const layout = sixteen_nine({borderRadius, borderWidth});
+  // @ts-expect-error
   const gameHole: LayoutHole = layout.background.holes?.pop();
 
   const gameWidth = gameHole.layout.width / 2;
@@ -305,7 +407,7 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
   const cameraWidth = 560;
   const cameraHeight = 405;
 
-  const layout = game_layout(
+  const layout = game_layout_fields(
     width,
     height,
     gameWidth,
@@ -318,6 +420,9 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
     cameraHeight
   );
 
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(theme.borderRadius, theme.borderWidth);
+  layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
+
   return {
     name: 'sixteen_nine_bigcam',
     width,
@@ -329,9 +434,48 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
   };
 }
 
+export function four_three({
+  borderWidth = 0,
+  borderRadius = 0,
+}: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+  const gameWidth = 1353;
+  const gameHeight = 1015;
+  const donationBarHeight = 65;
+  const cameraHeight = 250;
+
+  const layout = game_layout_fields(width, height, gameWidth, gameHeight, donationBarHeight, borderWidth, borderRadius, undefined, undefined, cameraHeight);
+
+  layout.contents.leftCol.contents = [
+    left_col_wrapper([
+      wrap(sponsors([]), 'div', {style: 'flex-grow: 3;'}),
+      gamedata(),
+      timer(0),
+    ]),
+    wrap(
+      player(0), 
+      'div',
+      {
+        style: `
+          margin-left: ${-borderRadius}px;
+        `,
+    }),
+  ];
+
+  return {
+    name: 'four_three',
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    contents: Object.values(layout.contents),
+    background: layout.background,
+  }
+}
+
   /* TODO: 16:9 x2 race */
 
-  /* TODO: 4:3 */
   /* TODO: 4:3 x2 co-op  playernames x8 */
   /* TODO: 4:3 x2 race */
 
