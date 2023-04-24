@@ -1,5 +1,10 @@
-import { sixteen_nine_divided, type LayoutGenerator, sixteen_nine_bigcam, four_three, setuptime, poehina } from "./LayoutGenerator"
-import { sixteen_nine } from "./LayoutGenerator";
+import type { LayoutConf, LayoutTheme } from "$lib/models/LayoutConf";
+import { four_three } from "./four_three";
+import { poehina } from "./poehina";
+import { setuptime } from "./setuptime";
+import { sixteen_nine, sixteen_nine_bigcam, sixteen_nine_divided } from "./sixteen_nine";
+
+export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
 export const layouts: {[key: string]: LayoutGenerator} = {
     four_three: four_three,
@@ -9,3 +14,11 @@ export const layouts: {[key: string]: LayoutGenerator} = {
     setuptime: setuptime,
     poehina: poehina,
 }
+
+  /* TODO: 16:9 x2 race */
+
+  /* TODO: 4:3 x2 co-op  playernames x8 */
+  /* TODO: 4:3 x2 race */
+
+  /* TODO: Pokemoncustomlayout 1 */
+  /* TODO: Pokemoncustomlayout 2 */

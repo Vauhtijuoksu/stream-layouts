@@ -1,149 +1,167 @@
-import type { LayoutConf, LayoutField } from "$lib/models/LayoutConf";
+import type { LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
+import { abs_field, game_layout_fields, gamedata, left_col_wrapper, player, sponsors, timer, wrap } from "./utils";
 
-let width = 1920;
-let height = 1080;
-let gameWidth = 1520;
-let gameHeight = 855;
-let donationBarHeight = 50;
-let leftColWidth = width - gameWidth;
-let leftColHeight = gameHeight - 52;
-let bottomHeight = height - gameHeight;
-let bottomRowHeight = bottomHeight - donationBarHeight;
-
-let leftCol: LayoutField = {
-  component: 'div',
-  name: 'leftCol',
-  params: {
-    class: 'abs col',
-    style: `
-      top: 0;
-      left: 0;
-      height: ${leftColHeight}px;
-      width: ${leftColWidth}px;
-      --sponsors-height: 200px;
-      --sponsors-width: ${leftColWidth};
-    `,
-  },
-  contents: [
-    {
-      component: 'h1',
-      contents: [
-        {
-          component: 'raw',
-          raw: 'Vauhtijuoksu'
-        }
-      ]
-    },
-    {
-      component: 'div',
-      params: {
+function sixteen_nine_leftcol_contents(
+  borderWidth = 0,
+  borderRadius = 0,
+): LayoutField[] {
+  return [
+    left_col_wrapper(
+      [wrap(sponsors([]), 'div')]
+    ),
+    wrap(player(0), 'div',
+      {
         style: `
-          box-sizing: content-box;
-          flex-grow: 1;
-        `
-      },
-      contents: [{
-        component: 'sponsors',
-        params: {
-          sponsors: [
-            '/sponsors/TEK.png',
-            '/sponsors/Bittium.png'
-          ],
-        }
-      }]
-    },
-    {
-      component: 'div',
-      params: {
-        style: `
-          margin-left: -20px;
-          margin-right: -2px;
+          margin-left: ${-borderRadius}px;
         `,
-      },
-      contents: [
-        {
-          component: 'playername',
-          params: {
-            index: 0,
-          }
-        }
-      ]
-    },
-  ]
-};
+      }),
+  ];
+}
 
-let bottomRow: LayoutField = {
-  component: 'div',
-  params: {
-    class: 'abs row',
-    style: `
-      top: ${gameHeight}px;
-      left: ${leftColWidth}px;
-      right: 0;
-      bottom: ${donationBarHeight}px;
-      padding: 5px;
-    `,
-  },
-  contents: [
+function sixteen_nine_bottombar_contents(): LayoutField[] {
+  return [
+    timer(),
+    { component: 'counter' },
+    gamedata(),
+  ];
+}
+
+export function sixteen_nine({
+  borderWidth = 0,
+  borderRadius = 0,
+}: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+
+  const gameWidth = 1520;
+  const gameHeight = 855;
+  const donationBarHeight = 65;
+
+  let layout = game_layout_fields(
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    donationBarHeight,
+    borderWidth,
+    borderRadius,
+  );
+
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderWidth, borderRadius);
+  layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
+
+  return {
+    name: 'sixteen_nine',
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    contents: Object.values(layout.contents),
+    background: layout.background,
+  };
+}
+
+export function sixteen_nine_divided({
+  borderRadius = 0,
+  borderWidth = 0,
+}: LayoutTheme): LayoutConf {
+  const layout = sixteen_nine({ borderRadius, borderWidth });
+  // @ts-expect-error
+  const gameHole: LayoutHole = layout.background.holes?.pop();
+
+  const gameWidth = gameHole.layout.width / 2;
+  const gameHeight = gameHole.layout.height / 2;
+
+  const gameHoles = [
     {
-      component: 'timer',
-      params: {
-        index: 0
+      name: 'game1',
+      layout: {
+        x: gameHole.layout.x,
+        y: gameHole.layout.y,
+        width: gameWidth,
+        height: gameHeight,
       }
     },
     {
-      component: 'gamedata',
-    },
-  ]
-};
-
-let donationBar: LayoutField = {
-  component: 'div',
-  params: {
-    class: 'abs',
-    style: `
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: ${donationBarHeight}px;
-    `,
-  },
-  contents: [
-    {
-      component: 'donation_bar'
-    }
-  ]
-};
-
-export let sixteen_nine: LayoutConf = {
-  name: 'sixteen_nine',
-  width,
-  height,
-  contents: [
-    leftCol,
-    bottomRow,
-    donationBar,
-  ],
-  background: {
-    holes: [
-      {
-        name: 'game',
-        layout: {
-          x: width - gameWidth,
-          y: -20,
-          width: gameWidth + 20,
-          height: gameHeight + 20,
-        },
-      },
-      {
-        name: 'webcam',
-        layout: {
-          x: -20,
-          y: 800,
-          width: leftColWidth + 20,
-          height: 232,
-        },
+      name: 'game2',
+      layout: {
+        x: gameHole.layout.x + gameWidth,
+        y: gameHole.layout.y,
+        width: gameWidth,
+        height: gameHeight,
       }
-    ]
-  }
-};
+    },
+    {
+      name: 'game3',
+      layout: {
+        x: gameHole.layout.x,
+        y: gameHole.layout.y + gameHeight,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+    {
+      name: 'game4',
+      layout: {
+        x: gameHole.layout.x + gameWidth,
+        y: gameHole.layout.y + gameHeight,
+        width: gameWidth,
+        height: gameHeight,
+      }
+    },
+  ];
+  layout.background.holes?.push(...gameHoles);
+
+  const frameStyle = 'border: var(--border); border-radius: var(--border-radius);';
+  const gameFrames = gameHoles.map((hole, i) => {
+    let x = i % 2 + 1;
+    let y = Math.floor(i / 2) + 1;
+    return abs_field(
+      hole.name, 'div', '',
+      hole.layout.x - borderWidth,
+      hole.layout.y - borderWidth,
+      hole.layout.width + borderWidth,
+      hole.layout.height + borderWidth * y,
+      frameStyle
+    )
+  });
+  layout.contents.push(...gameFrames);
+  return layout;
+}
+
+export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
+  const width = 1920;
+  const height = 1080;
+
+  const gameWidth = 1520;
+  const gameHeight = 855;
+  const donationBarHeight = 65;
+  const cameraWidth = 560;
+  const cameraHeight = 405;
+
+  const layout = game_layout_fields(
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    donationBarHeight,
+    theme.borderWidth,
+    theme.borderRadius,
+    width,
+    cameraWidth,
+    cameraHeight
+  );
+
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(theme.borderRadius, theme.borderWidth);
+  layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
+
+  return {
+    name: 'sixteen_nine_bigcam',
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    contents: Object.values(layout.contents),
+    background: layout.background,
+  };
+}

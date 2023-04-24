@@ -1,117 +1,27 @@
-import type { LayoutConf, LayoutField } from "$lib/models/LayoutConf";
+import type { LayoutConf, LayoutTheme } from "$lib/models/LayoutConf";
+import { donation_bar } from "./utils";
 
-let leftCol: LayoutField[] = [
-  {
-    component: 'h1',
-    params: {
-      style: 'align-self: flex-start;'
-    },
+export function poehina({
+  borderRadius=0,
+  borderWidth=0,
+}: LayoutTheme): LayoutConf {
+  return {
+    name: 'poehina',
+    width: 1920,
+    height: 1080,
     contents: [
-      {
-        component: 'raw',
-        raw: 'VAUHTIJUOKSU'
-      }
-    ]
-  },
-  {
-    component: 'clock',
-    name: 'clock',
-    params: {
-      displaySeconds: true
-    },
-  },
-  {
-    component: 'upcoming',
-    params: {
-      n: 6,
-    },
-  },
-  {
-    component: 'incentives',
-    params: {
-      n: 3,
-      style: 'align-self: flex-end;',
-    },
-  },
-];
-
-export let poehina: LayoutConf = {
-  name: 'poehina',
-  width: 1920,
-  height: 1080,
-  contents: [
-    {
-      component: 'div',
-      params: {
-        class: 'row',
-        style: 'height: 1050px',
-      },
-      contents: [
+      donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
+    ],
+    background: {
+      holes: [
         {
-          component: 'div',
-          params: {
-            class: "col",
-            style: `
-              width: 960px;
-              padding-left: 15px;
-              padding-right: 15px;
-            `
-          },
-          contents: leftCol
-        },
-        {
-          component: 'div',
-          params: {
-            class: 'col',
-            style: 'width: 960px;',
-          },
-          contents: [
-            {
-              component: 'div',
-              params: {
-                class: 'row',
-                style: 'height: 540px;',
-              }
-            },
-            {
-              component: 'div',
-              params: {
-                class: 'row',
-                style: 'height: 510px;',
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      component: 'div',
-      params: {
-        class: 'row',
-        style: 'height: 30px;',
-      },
-      contents: [
-        {
-          component: 'donation_bar',
+          name: 'camera',
+          layout: {
+            x: -borderRadius, y: -borderRadius,
+            width: 1920+borderRadius*2, height: 1015+borderRadius
+          }
         }
       ]
     }
-  ],
-  background: {
-    holes: [
-        {
-          name: 'webcam',
-          layout: {
-            x: 960,
-            y: 0,
-            width: 960,
-            height: 540,
-          },
-          borders: {
-            left: true,
-            bottom: true
-          }
-      },
-    ]
-  }
+  };
 }
