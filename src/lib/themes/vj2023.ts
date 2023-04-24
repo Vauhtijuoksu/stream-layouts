@@ -20,7 +20,7 @@ export const vj2023: LayoutTheme =
     --border-width: 4px;
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
-    --background: #080808 url('/images/vj2023bg.png') repeat 500px center;
+    --background: #080808 url('/images/vj2023bg.png') repeat 500px fixed;
     --donation-bar-font-color: white;
     --donation-bar-padding: 0 0;
     --donation-bar-background: white;
