@@ -17,4 +17,5 @@ export interface Incentive {
     option_parameters?: string[];
     open_char_limit?: string;
     status: IncentiveStatus[];
+    total_amount: number;
 }

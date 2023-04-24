@@ -27,7 +27,7 @@
             metadata.set(meta);
             donationstore.set(donations);
             incentivestore.set(incentives);
-        }, 10000)
+        }, 5000)
 
         return () => {
             clearInterval(gameInterval);

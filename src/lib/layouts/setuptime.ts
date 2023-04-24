@@ -33,7 +33,7 @@ export function setuptime({
       'div',
       {
         class: 'col',
-        style: 'max-height: 90%; max-width: 80%; align-self: center;'
+        style: 'max-height: 90%; width: 80%; align-self: center;'
       },
     )
   ];
@@ -42,7 +42,14 @@ export function setuptime({
     'bottomLeft', 'div', 'col', 0, bottomLeftY, bottomLeftWidth, bottomLeftHeight, 'background: var(--background);'
   );
   bottomLeft.contents = [
-    {component: 'incentives'},
+    wrap(
+      {component: 'incentives'},
+      'div',
+      {
+        class: 'col',
+        style: 'max-height: 90%; width: 80%; align-self: center;'
+      },
+    ),
   ];
 
   const bottomRight: LayoutField = abs_field(
