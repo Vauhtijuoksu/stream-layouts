@@ -1,4 +1,4 @@
-import type { LayoutDimension, LayoutField, LayoutHole } from "$lib/models/LayoutConf";
+import type { LayoutDimension, LayoutField, LayoutHole, Sponsor } from "$lib/models/LayoutConf";
 
 export function style_string(fields: { [key: string]: any }, unit = ''): string {
   return Object.entries(fields)
@@ -37,11 +37,11 @@ export function wrap(child: LayoutField, parentComponent = 'div', parentParams?:
   }
 }
 
-export function sponsors(sponsor_images: string[]): LayoutField {
+export function sponsors_field(sponsors: Sponsor[]): LayoutField {
   return {
     component: 'sponsors',
     params: {
-      sponsors: sponsor_images,
+      sponsors: sponsors,
     },
   };
 }

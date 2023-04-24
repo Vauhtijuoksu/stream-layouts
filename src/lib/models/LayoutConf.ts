@@ -44,12 +44,19 @@ export interface Font {
     descriptors?: FontFaceDescriptors;
 }
 
+export interface Sponsor {
+    name: string;
+    img_url: string;
+    duration?: number;
+}
+
 export interface LayoutTheme {
     name?: string;
     fonts?: Font[];
     borderWidth?: number;
     borderRadius?: number;
     style?: string;
+    sponsors: Sponsor[];
 }
 
 export interface LayoutConf {

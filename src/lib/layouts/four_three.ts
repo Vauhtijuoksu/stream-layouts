@@ -1,10 +1,11 @@
 import type { LayoutBackground, LayoutConf, LayoutDimension, LayoutField, LayoutHole, LayoutTheme } from "$lib/models/LayoutConf";
-import { abs_field, camera_hole, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors, timer, wrap } from "./utils";
+import { abs_field, camera_hole, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors_field, timer, wrap } from "./utils";
 
 
 export function four_three({
   borderWidth = 0,
   borderRadius = 0,
+  sponsors = [],
 }: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
@@ -17,7 +18,7 @@ export function four_three({
 
   layout.contents.leftCol.contents = [
     left_col_wrapper([
-      wrap(sponsors([]), 'div', {style: 'flex-grow: 3;'}),
+      wrap(sponsors_field(sponsors), 'div', {style: 'flex-grow: 3;'}),
       gamedata(),
       timer(0),
     ]),

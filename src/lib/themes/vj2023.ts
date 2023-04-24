@@ -3,6 +3,10 @@ import type { LayoutTheme } from "$lib/models/LayoutConf";
 export const vj2023: LayoutTheme =
 {
   name: 'vj2023',
+  sponsors: [
+    {name: 'Bittium', img_url: '/sponsors/Bittium.png'},
+    {name: 'TEK', img_url: '/sponsors/TEK.png'},
+  ],
   fonts: [
     {
       family: 'UbuntuTitling',
@@ -21,13 +25,14 @@ export const vj2023: LayoutTheme =
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background: #080808 url('/images/vj2023bg.png') repeat 500px fixed;
+    --sponsors-font-size: 24px;
     --donation-bar-font-color: white;
     --donation-bar-padding: 0 0;
     --donation-bar-background: white;
     --donation-bar-border-style: var(--border-style);
     --donation-bar-border-color: var(--border-color);
     --donation-bar-border-width: var(--border-width);
-    --donation-bar-border-radius: 15px;
+    --donation-bar-border-radius: 20px;
     --donation-bar-font-size: 32px;
     --donation-bar-fill: #1b92b3;
     --donation-bar-current-bg: #ecff6e;

@@ -1,7 +1,9 @@
 <script lang="ts">
+	import type { Sponsor } from '$lib/models/LayoutConf';
 	import { onMount } from 'svelte';
   import { fly, slide } from 'svelte/transition';
-  export let sponsors: string[];
+  export let sponsors: Sponsor[];
+  export let duration = 3000;
   
   let i = 0;
   $: sponsor = sponsors[i];
@@ -11,33 +13,37 @@
     return setTimeout(() => {
       i += 1;
       i = i >= sponsors.length ? 0 : i;
-      timeout = swap(delay);
+      timeout = swap(sponsors[i].duration ?? duration);
     }, delay);
   };
 
   onMount(() => {
-    swap(2000);
+    swap(sponsor.duration ?? duration);
     return () => clearTimeout(timeout);
   })
 </script>
 
+<h1 class="header">Yhteistyössä</h1>
 <div class="sponsors">
   {#key sponsor}
   <img
-    src="{sponsor}"
+    src="{sponsor.img_url}"
     class="sponsor"
     transition:slide="{{ axis: 'x', duration: 1000 }}"
-    alt="sponsor"
+    alt="{sponsor.name}"
     />
   {/key}
 </div>
 
 <style>
+  .header {
+    height: 10%;
+    font-size: var(--sponsors-font-size);
+  }
   .sponsors {
     position: relative;
-    height: var(--sponsors-height);
-    width: var(--sponsort-width);
 		image-rendering: auto;
+    height: 90%;
   }
 
   .sponsor {

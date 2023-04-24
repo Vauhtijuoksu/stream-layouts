@@ -1,9 +1,10 @@
 import type { LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
-import { abs_field, camera_hole, donation_bar, sponsors } from "./utils";
+import { abs_field, camera_hole, donation_bar, sponsors_field } from "./utils";
 
 export function setuptime({
     borderWidth = 0,
     borderRadius = 0,
+    sponsors = [],
   }: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
@@ -40,7 +41,7 @@ export function setuptime({
     'bottomRight', 'div', 'col', bottomRightX, bottomRightY, bottomRightWidth, bottomRightHeight, 'background: var(--background);'
   );
   bottomRight.contents = [
-    sponsors([]),
+    sponsors_field(sponsors),
   ];
   const cameraFrame = abs_field(
     'cameraframe',

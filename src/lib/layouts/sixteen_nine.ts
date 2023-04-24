@@ -1,13 +1,14 @@
-import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme } from "$lib/models/LayoutConf";
-import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors, timer, wrap } from "./utils";
+import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme, Sponsor } from "$lib/models/LayoutConf";
+import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors_field, timer, wrap } from "./utils";
 
 function sixteen_nine_leftcol_contents(
   borderWidth = 0,
   borderRadius = 0,
+  sponsors: Sponsor[] = [],
 ): LayoutField[] {
   return [
     left_col_wrapper(
-      [wrap(sponsors([]), 'div')]
+      [wrap(sponsors_field(sponsors), 'div')]
     ),
     wrap(player(0), 'div',
       {
@@ -29,6 +30,7 @@ function sixteen_nine_bottombar_contents(): LayoutField[] {
 export function sixteen_nine({
   borderWidth = 0,
   borderRadius = 0,
+  sponsors = [],
 }: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
@@ -47,7 +49,7 @@ export function sixteen_nine({
     borderRadius,
   );
 
-  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderWidth, borderRadius);
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderWidth, borderRadius, sponsors);
   layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
 
   return {
@@ -129,7 +131,11 @@ export function sixteen_nine_divided({
   return layout;
 }
 
-export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
+export function sixteen_nine_bigcam({
+  borderRadius = 0,
+  borderWidth = 0,
+  sponsors = [],
+}: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
 
@@ -145,14 +151,14 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
     gameWidth,
     gameHeight,
     donationBarHeight,
-    theme.borderWidth,
-    theme.borderRadius,
+    borderWidth,
+    borderRadius,
     width,
     cameraWidth,
     cameraHeight
   );
 
-  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(theme.borderRadius, theme.borderWidth);
+  layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderRadius, borderWidth, sponsors);
   layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
 
   return {
@@ -166,7 +172,7 @@ export function sixteen_nine_bigcam(theme: LayoutTheme): LayoutConf {
   };
 }
 
-export function sixteen_nine_race({borderRadius=0, borderWidth=0}: LayoutTheme): LayoutConf {
+export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
   const gameWidth = 960;
