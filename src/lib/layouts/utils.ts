@@ -59,7 +59,7 @@ export function timer(index = 0): LayoutField {
   return {
     component: 'timer',
     params: {
-      index
+      index,
     },
   };
 }
@@ -100,6 +100,7 @@ export function left_col_wrapper(contents: LayoutField[]): LayoutField {
         background: var(--background);
         border-right: var(--border-style) var(--border-color) var(--border-width);
         border-bottom-right-radius: var(--border-radius);
+        justify-content: space-between;
     `
     },
     contents
@@ -120,6 +121,7 @@ export function bottom_bar({ x, y, width, height }: LayoutDimension): LayoutFiel
     border-top: var(--border-style) var(--border-color) var(--border-width);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
+    justify-content: space-between;
     `
   );
 }

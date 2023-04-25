@@ -21,9 +21,9 @@ function sixteen_nine_leftcol_contents(
 
 function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
-    timer(),
+    wrap(timer(), 'div', {class: 'row', style: 'justify-content: center; flex-grow: 1;'}),
     { component: 'counter' },
-    gamedata(),
+    wrap(gamedata(), 'div', {class: 'row', style: 'flex-grow: 1;'}),
   ];
 }
 
@@ -68,7 +68,32 @@ export function sixteen_nine_divided({
   borderWidth = 0,
   sponsors = [],
 }: LayoutTheme): LayoutConf {
-  const layout = sixteen_nine({ borderRadius, borderWidth, sponsors });
+  const width = 1920;
+  const height = 1080;
+  const fullGameWidth = 1520;
+  const fullGameHeight = 855;
+  const donationBarHeight = 65;
+
+  let layout = game_layout_fields(
+    width,
+    height,
+    fullGameWidth,
+    fullGameHeight,
+    donationBarHeight,
+    borderWidth,
+    borderRadius
+  );
+
+  layout.contents.leftCol.contents = [
+    left_col_wrapper(
+      [
+        sponsors_field(sponsors),
+      ]
+    )
+  ]
+
+  layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
+
   // @ts-expect-error
   const gameHole: LayoutHole = layout.background.holes?.pop();
 
@@ -128,8 +153,15 @@ export function sixteen_nine_divided({
       frameStyle
     )
   });
-  layout.contents.push(...gameFrames);
-  return layout;
+  return {
+    name: 'sixteen_nine_divided',
+    width,
+    height,
+    gameWidth,
+    gameHeight,
+    contents: Object.values(layout.contents).concat(...gameFrames),
+    background: layout.background,
+  };
 }
 
 export function sixteen_nine_bigcam({

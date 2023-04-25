@@ -18,8 +18,9 @@ export function four_three({
 
   layout.contents.leftCol.contents = [
     left_col_wrapper([
-      wrap(sponsors_field(sponsors), 'div', {style: 'flex-grow: 3;'}),
-      gamedata(),
+      wrap(sponsors_field(sponsors), 'div', {style: 'height: 400px;'}),
+      wrap(gamedata(), 'div', {class: 'row'}),
+      wrap({component: 'counter'}, 'div', {class: 'row', style: 'justify-content: space-evenly;'}),
       timer(0),
     ]),
     wrap(
