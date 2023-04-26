@@ -11,8 +11,6 @@ export function load({ params }) {
 
   return {
     layout,
-    theme,
     layoutName: params.layoutName,
-    themeName: params.theme,
   }
 }

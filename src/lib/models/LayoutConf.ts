@@ -56,6 +56,13 @@ export interface LayoutTheme {
     borderWidth?: number;
     borderRadius?: number;
     style?: string;
+    images?: {
+        logo?: string,
+        logoSmall?: string,
+        skull?: string,
+        timer?: string,
+        defaultConsole?: string,
+    };
     sponsors: Sponsor[];
 }
 

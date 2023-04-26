@@ -28,6 +28,7 @@ export function setuptime({
     'background: var(--background); align-items: center; justify-content: center;'
   );
   topLeft.contents = [
+    {component: 'logo'},
     wrap(
       {component: 'upcoming'},
       'div',

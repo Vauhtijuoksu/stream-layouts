@@ -8,7 +8,10 @@ function sixteen_nine_leftcol_contents(
 ): LayoutField[] {
   return [
     left_col_wrapper(
-      [wrap(sponsors_field(sponsors), 'div')]
+      [
+        wrap({component: 'logo'}, 'div', {style: 'padding: 10px'}),
+        wrap(sponsors_field(sponsors), 'div', {style: 'flex-grow: 1'}),
+      ]
     ),
     wrap(player(0), 'div',
       {
@@ -87,6 +90,7 @@ export function sixteen_nine_divided({
   layout.contents.leftCol.contents = [
     left_col_wrapper(
       [
+        wrap({component: 'logo'}, 'div', {style: 'padding: 10px;'}),
         sponsors_field(sponsors),
       ]
     )
@@ -222,10 +226,30 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   const cameraX = bottomSideWidth;
   const cameraY = bottomBarY;
 
+  const topBar = abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'align-items: flex-end; justify-content: space-between; background: var(--background); border')
+  const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);')
+  const bottomRight = abs_field('bottomRight', 'div', 'col', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
+  
+  topBar.contents = [
+    wrap(player(0), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+    wrap({component: 'logo'}, 'div', {style: `height: ${topBarHeight}px; width: 50%;`}),
+    wrap(player(1), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+  ]
+
+  bottomLeft.contents = [
+    timer(0),
+    wrap(gamedata(), 'div', {class: 'row'}),
+  ]
+
+  bottomRight.contents = [
+    timer(1),
+    wrap(sponsors_field(sponsors), 'div', {class: 'col'}),
+  ]
+
   const contents: LayoutField[] = [
-    abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'background: var(--background); border'),
-    abs_field('bottomLeft', 'div', 'row', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'),
-    abs_field('bottomRight', 'div', 'row', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'),
+    topBar,
+    bottomLeft,
+    bottomRight,
     donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
   ];
 

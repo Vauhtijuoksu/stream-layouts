@@ -11,6 +11,7 @@
 	import Incentives from './Incentives.svelte';
 	import Sponsors from "./Sponsors.svelte";
 	import Counter from "./Counter.svelte";
+	import Logo from "./Logo.svelte";
 
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
@@ -22,6 +23,7 @@
         incentives: Incentives,
         sponsors: Sponsors,
         counter: Counter,
+        logo: Logo,
     };
 
     export let field: LayoutField;

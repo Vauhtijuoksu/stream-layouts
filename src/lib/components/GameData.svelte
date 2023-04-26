@@ -61,6 +61,7 @@
 
     .gametitle, .published {
         font-size: var(--game-title-font-size, 34px);
+        text-align: right;
     }
     .category, .device {
         font-size: var(--game-category-font-size, 24px);

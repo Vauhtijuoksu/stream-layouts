@@ -36,8 +36,6 @@
 		margin: 0;
 		padding: 0;
 		text-align: center;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
 	}
 
 	.layout,

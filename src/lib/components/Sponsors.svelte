@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { Sponsor } from '$lib/models/LayoutConf';
+	import { themestore } from '$lib/stores/ThemeStore';
 	import { onMount } from 'svelte';
   import { fly, slide } from 'svelte/transition';
-  export let sponsors: Sponsor[];
+  export let sponsors: Sponsor[] = $themestore.sponsors;
   export let duration = 3000;
   
   let i = 0;
@@ -42,7 +43,6 @@
   }
   .sponsors {
     position: relative;
-		image-rendering: auto;
     height: 90%;
   }
 
