@@ -45,7 +45,7 @@ export function four_three({
   }
 }
 
-export function four_three_race({borderRadius=0, borderWidth=0}: LayoutTheme): LayoutConf {
+export function four_three_race({borderRadius=0, borderWidth=0, sponsors}: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
   const gameWidth = 960;
@@ -59,9 +59,22 @@ export function four_three_race({borderRadius=0, borderWidth=0}: LayoutTheme): L
   const cameraX = bottomSideWidth;
   const cameraY = gameHeight;
 
+  const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);');
+  const bottomRight = abs_field('bottomRight', 'div', 'col', bottomSideWidth+cameraWidth, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
+  
+  bottomLeft.contents = [
+    timer(0),
+    wrap(gamedata(), 'div', {class: 'row'}),
+  ];
+
+  bottomRight.contents = [
+    timer(1),
+    wrap(sponsors_field(sponsors), 'div', {class: 'col'})
+  ]
+  
   const contents: LayoutField[] = [
-    abs_field('bottomLeft', 'div', 'row', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'),
-    abs_field('bottomLeft', 'div', 'row', bottomSideWidth+cameraWidth, bottomBarY, bottomSideWidth, bottomBarHeight, 'background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'),
+    bottomLeft,
+    bottomRight,
     donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
   ];
 
