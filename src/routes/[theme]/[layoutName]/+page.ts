@@ -6,7 +6,10 @@ export function load({ params }) {
   let layoutGen = layouts[params.layoutName];
   let themeName: string = params.theme;
   let theme = themes[themeName];
-  let layout = layoutGen(theme);
+  let layout;
+  if (layoutGen) {
+    layout = layoutGen(theme);
+  } 
   themestore.set(theme);
 
   return {
