@@ -126,7 +126,7 @@ export function bottom_bar({ x, y, width, height }: LayoutDimension): LayoutFiel
   );
 }
 
-export function camera_hole({ x, y, width, height }: LayoutDimension, borderRadius: number, position = 'left'): LayoutHole {
+export function camera_hole({ x, y, width, height }: LayoutDimension, borderRadius: number = 0, position = 'left'): LayoutHole {
   let layout: LayoutDimension = { x, y, width, height };
   if (position.match('left')) {
     layout.x -= borderRadius;
@@ -164,7 +164,7 @@ export function camera_frame({ x, y, width, height }: LayoutDimension, borderRad
   );
 }
 
-export function game_hole({ x, y, width, height }: LayoutDimension, borderRadius: number): LayoutHole {
+export function game_hole({ x, y, width, height }: LayoutDimension, borderRadius: number = 0): LayoutHole {
   return {
     name: 'game',
     layout: {

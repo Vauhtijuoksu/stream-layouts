@@ -36,6 +36,7 @@
     });
 </script>
 
+<slot />
 {#each contents as field}
     <Container {field} />
 {/each}

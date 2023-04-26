@@ -4,7 +4,9 @@
 	export let data;
 </script>
 
-{#if data.layout}
+{#if data.component}
+	<svelte:component this={data.component} />
+{:else if data.layout}
 	<StreamLayout layout={data.layout} />
 {:else}
 	<div>No layout {data.layoutName} found</div>

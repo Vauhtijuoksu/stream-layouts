@@ -22,10 +22,14 @@
 
 <div class="layout" style={theme.style}>
 	<div class="background" style="{layout.background.style}">
-		<StreamBackground width={layout.width} height={layout.height} {...layout.background} {theme} />
+		<slot name="background">
+			<StreamBackground width={layout.width} height={layout.height} {...layout.background} {theme} />
+		</slot>
 	</div>
 	<div class="content" style="width: {layout.width}px; height: {layout.height}px;">
-		<StreamData client={apiClient} contents={layout.contents} />
+		<StreamData client={apiClient} contents={layout.contents}>
+			<slot name="foreground" />
+		</StreamData>
 	</div>
 </div>
 
@@ -38,11 +42,11 @@
 		text-align: center;
 	}
 
-	.layout,
-	.layout > * {
+	.layout {
 		position: absolute;
 		top: 0;
 		left: 0;
+		overflow: hidden;
 	}
 
 	.content {
@@ -53,4 +57,22 @@
 	:global(div) {
 		box-sizing: border-box;
 	}
+
+
+    :global(.abs) {
+        position: absolute;
+    }
+    :global(.col) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+
+    :global(.row) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
 </style>
