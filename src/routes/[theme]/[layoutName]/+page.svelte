@@ -5,7 +5,7 @@
 </script>
 
 {#if data.layout}
-	<StreamLayout layout={data.layout} theme={data.theme} />
+	<StreamLayout layout={data.layout} />
 {:else}
 	<div>No layout {data.layoutName} found</div>
 {/if}

@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { ApiClient } from './ApiClient';
+	import { themestore } from '$lib/stores/ThemeStore';
 	import StreamBackground from './StreamBackground.svelte';
 	import StreamData from './StreamData.svelte';
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
 
 	export let layout: LayoutConf;
-	export let theme: LayoutTheme;
+	export let theme: LayoutTheme = $themestore;
 
 	let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 
