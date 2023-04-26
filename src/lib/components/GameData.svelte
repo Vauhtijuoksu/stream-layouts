@@ -9,7 +9,7 @@
 </script>
 
 <div class="gamedata">
-    <div class="icon">
+    <div class="game icon">
         <img src="/gameicons/{img_filename}"  alt="{img_filename}"/>
     </div>
     <div class="gameinfo">
@@ -23,8 +23,8 @@
 </div>
 
 <div class="consoledata">
-    <div class="icon">
-        <img src="/consoles/{deviceImg}.png" alt="{device}" />
+    <div class="console icon">
+        <img src="/consoles/{deviceImg}.png" onerror="this.src = '/consoles/default.png'" alt="{device}" />
     </div>
     <div class="consoleinfo">
         <div class="device">
@@ -44,8 +44,12 @@
         justify-content: center;
         align-items: center;
     }
-    .icon > img {
-        max-height: 180px;
+    .game.icon > img {
+        max-height: 150px;
+    }
+
+    .console.icon > img {
+        max-height: 100px;
     }
 
     .gameinfo, .consoleinfo {

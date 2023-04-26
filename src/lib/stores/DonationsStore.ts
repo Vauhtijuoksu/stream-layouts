@@ -20,7 +20,7 @@ export const upcomingIncentives = derived(
   incentivestore,
   $incentives => {
     const now = new Date();
-    $incentives
+    return $incentives
       .filter((incentive) => incentive.end_time === undefined || incentive.end_time > now)
       .sort((inc1, inc2) => {
         inc1.end_time > inc2.end_time

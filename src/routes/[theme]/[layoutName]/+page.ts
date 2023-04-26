@@ -1,5 +1,4 @@
 import { layouts } from "$lib/layouts";
-import { theme } from "$lib/stores/ThemeStore";
 import { themes } from "$lib/themes";
 
 export function load({ params }) {

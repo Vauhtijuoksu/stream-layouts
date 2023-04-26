@@ -3,7 +3,7 @@
 
     $: counters = $metadata?.counters ?? [];
 
-    let icon = '/images/counter.png';
+    let icon = '/images/skull.png';
 
 </script>
 

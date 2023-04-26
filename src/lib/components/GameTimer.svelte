@@ -4,7 +4,7 @@
 	import { dateRangeToDuration } from "$lib/utils/time";
 
     export let index = 0;
-    export let icon = '/images/stopwatch.png';
+    export let icon = '/images/timer.png';
 
     $: start_time = $metadata?.timers[index].start_time;
     $: end_time = $metadata?.timers[index].end_time;
@@ -84,6 +84,10 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    .icon > img {
+        max-width: 100px;
     }
 
     .time {
