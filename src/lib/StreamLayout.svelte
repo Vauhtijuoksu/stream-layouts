@@ -21,7 +21,7 @@
 </script>
 
 <div class="layout" style={theme.style}>
-	<div class="background" style="{layout.background.style}">
+	<div class="background" style="{layout.background?.style}">
 		<slot name="background">
 			<StreamBackground width={layout.width} height={layout.height} {...layout.background} {theme} />
 		</slot>
