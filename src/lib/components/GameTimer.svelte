@@ -6,8 +6,8 @@
     export let index = 0;
     export let icon = '/images/timer.png';
 
-    $: start_time = $metadata?.timers[index].start_time;
-    $: end_time = $metadata?.timers[index].end_time;
+    $: start_time = $metadata?.timers[index]?.start_time;
+    $: end_time = $metadata?.timers[index]?.end_time;
     let estimate = {hours: 0, minutes: 0};
     $: if ($currentGame) {
         ({hours: estimate.hours, minutes: estimate.minutes} = dateRangeToDuration($currentGame.start_time, $currentGame.end_time))

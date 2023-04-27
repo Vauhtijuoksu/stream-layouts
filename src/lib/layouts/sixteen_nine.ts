@@ -84,7 +84,11 @@ export function sixteen_nine_divided({
     fullGameHeight,
     donationBarHeight,
     borderWidth,
-    borderRadius
+    borderRadius,
+    undefined,
+    undefined,
+    undefined,
+    4
   );
 
   layout.contents.leftCol.contents = [
@@ -98,72 +102,13 @@ export function sixteen_nine_divided({
 
   layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
 
-  // @ts-expect-error
-  const gameHole: LayoutHole = layout.background.holes?.pop();
-
-  const gameWidth = gameHole.layout.width / 2;
-  const gameHeight = gameHole.layout.height / 2;
-
-  const gameHoles = [
-    {
-      name: 'game1',
-      layout: {
-        x: gameHole.layout.x,
-        y: gameHole.layout.y,
-        width: gameWidth,
-        height: gameHeight,
-      }
-    },
-    {
-      name: 'game2',
-      layout: {
-        x: gameHole.layout.x + gameWidth,
-        y: gameHole.layout.y,
-        width: gameWidth,
-        height: gameHeight,
-      }
-    },
-    {
-      name: 'game3',
-      layout: {
-        x: gameHole.layout.x,
-        y: gameHole.layout.y + gameHeight,
-        width: gameWidth,
-        height: gameHeight,
-      }
-    },
-    {
-      name: 'game4',
-      layout: {
-        x: gameHole.layout.x + gameWidth,
-        y: gameHole.layout.y + gameHeight,
-        width: gameWidth,
-        height: gameHeight,
-      }
-    },
-  ];
-  layout.background.holes?.push(...gameHoles);
 
   const frameStyle = 'border: var(--border); border-radius: var(--border-radius);';
-  const gameFrames = gameHoles.map((hole, i) => {
-    let x = i % 2 + 1;
-    let y = Math.floor(i / 2) + 1;
-    return abs_field(
-      hole.name, 'div', '',
-      hole.layout.x - borderWidth,
-      hole.layout.y - borderWidth,
-      hole.layout.width + borderWidth,
-      hole.layout.height + borderWidth * y,
-      frameStyle
-    )
-  });
   return {
     name: 'sixteen_nine_divided',
     width,
     height,
-    gameWidth,
-    gameHeight,
-    contents: Object.values(layout.contents).concat(...gameFrames),
+    contents: Object.values(layout.contents),
     background: layout.background,
   };
 }

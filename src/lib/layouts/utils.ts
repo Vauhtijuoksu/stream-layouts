@@ -164,16 +164,57 @@ export function camera_frame({ x, y, width, height }: LayoutDimension, borderRad
   );
 }
 
-export function game_hole({ x, y, width, height }: LayoutDimension, borderRadius: number = 0): LayoutHole {
-  return {
-    name: 'game',
-    layout: {
-      x: x,
-      y: y - borderRadius,
-      width: width + borderRadius,
-      height: height + borderRadius,
-    }
-  };
+export function game_holes({ x, y, width, height }: LayoutDimension, borderRadius: number = 0, borderWidth = 0, divisions: number = 1): LayoutHole[] {
+  if (divisions === 1) {
+    return  [{
+      name: 'game',
+      layout: {
+        x: x,
+        y: y - borderRadius,
+        width: width + borderRadius,
+        height: height + borderRadius,
+      }
+    }];
+  } else if (divisions === 4) {
+    const gameWidth = width / 2;
+    const gameHeight = height / 2;
+    const halfBorder = borderWidth / 2;
+    return [
+      {
+        name: 'game1',
+        layout: {
+          x: x,
+          y: y - borderRadius,
+          width: gameWidth - halfBorder,
+          height: gameHeight + borderRadius - halfBorder,
+        }
+      }, {
+        name: 'game2',
+        layout: {
+          x: x + gameWidth + halfBorder,
+          y: y - borderRadius,
+          width: gameWidth + borderRadius,
+          height: gameHeight + borderRadius - halfBorder,
+        }
+      }, {
+        name: 'game3',
+        layout: {
+          x: x,
+          y: y + gameHeight + halfBorder,
+          width: gameWidth - halfBorder,
+          height: gameHeight - halfBorder,
+        }
+      }, {
+        name: 'game4',
+        layout: {
+          x: x + gameWidth + halfBorder,
+          y: y + gameHeight + halfBorder,
+          width: gameWidth + borderRadius,
+          height: gameHeight - halfBorder
+        }
+      }
+    ]
+  }
 }
 
 export function game_dimensions(
@@ -250,6 +291,7 @@ export function game_layout_fields(
   donationBarWidth?: number,
   cameraWidth?: number,
   cameraHeight?: number,
+  divisions = 1,
 ) {
   const {
     leftCol,
@@ -264,7 +306,7 @@ export function game_layout_fields(
   const donationBarField = donation_bar(donationBar);
   const holes: LayoutHole[] = [
     camera_hole(camera, borderRadius),
-    game_hole(game, borderRadius),
+    ...game_holes(game, borderRadius, borderWidth, divisions),
   ];
   const cameraFrame: LayoutField = camera_frame(camera, borderRadius, borderWidth);
 

@@ -42,7 +42,7 @@
 
 </script>
 
-<div on:mousedown={mouseDown} style="left: {left}px; top: {top}px; {style}">
+<div on:mousedown|preventDefault={mouseDown} style="left: {left}px; top: {top}px; {style}">
 	<slot />
 </div>
 
