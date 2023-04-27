@@ -4,6 +4,7 @@
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import Incentives from "$lib/components/Incentives.svelte";
 	import Logo from "$lib/components/Logo.svelte";
+	import NowPlaying from "$lib/components/NowPlaying.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import Upcoming from "$lib/components/Upcoming.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
@@ -69,7 +70,11 @@
       name="camera"
       {...cameraFrame}
       style="border-bottom: var(--border);border-left: var(--border);border-bottom-left-radius: var(--border-radius);"
-      />
+      >
+      <div class="np">
+        <NowPlaying />
+      </div>
+    </AbsDiv>
     <AbsDiv
       name="donationBar"
       {...donationBar}>
@@ -79,6 +84,12 @@
 </StreamLayout>
 
 <style>
+  .np {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
   .wrapper {
     max-height: 90%;
     width: 80%;
