@@ -1,6 +1,7 @@
 <script lang="ts">
 	import StreamLayout from "$lib/StreamLayout.svelte";
 	import AbsDiv from "$lib/components/AbsDiv.svelte";
+	import DonationBar from "$lib/components/DonationBar.svelte";
 	import Incentives from "$lib/components/Incentives.svelte";
 	import Logo from "$lib/components/Logo.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
@@ -30,6 +31,7 @@
   const bottomLeft = {x: 0, y: bottomLeftY, width: bottomLeftWidth, height: bottomLeftHeight};
   const bottomRight = {x: bottomRightX, y: bottomRightY, width: bottomRightWidth, height: bottomRightHeight};
   const cameraFrame = {x: cameraX, y: cameraY, width: cameraWidth, height: cameraHeight};
+  const donationBar = {x: 0, y: height - donationBarHeight, width: width, height: donationBarHeight};
 
   let background: LayoutBackground = {
     holes: [
@@ -68,6 +70,11 @@
       {...cameraFrame}
       style="border-bottom: var(--border);border-left: var(--border);border-bottom-left-radius: var(--border-radius);"
       />
+    <AbsDiv
+      name="donationBar"
+      {...donationBar}>
+      <DonationBar />
+    </AbsDiv>
   </svelte:fragment>
 </StreamLayout>
 
