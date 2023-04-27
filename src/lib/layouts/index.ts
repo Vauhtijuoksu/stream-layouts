@@ -25,7 +25,6 @@ export const components: {[key: string]: ComponentType} = {
 }
 
   /* TODO: 4:3 x2 co-op  playernames x8 */
-  /* TODO: 4:3 x2 race */
 
   /* TODO: Pokemoncustomlayout 1 */
   /* TODO: Pokemoncustomlayout 2 */
