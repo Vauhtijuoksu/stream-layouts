@@ -5,6 +5,7 @@ import { poehina } from "./poehina";
 import { setuptime } from "./setuptime";
 import { sixteen_nine, sixteen_nine_bigcam, sixteen_nine_divided, sixteen_nine_race } from "./sixteen_nine";
 
+import SetupTime from './SetupTime.svelte';
 import SixteenNine from '$lib/layouts/SixteenNine.svelte';
 import SixteenNine4Way from '$lib/layouts/SixteenNine4Way.svelte';
 
@@ -22,6 +23,7 @@ export const layouts: {[key: string]: LayoutGenerator} = {
 }
 
 export const components: {[key: string]: ComponentType} = {
+  SetupTime,
   SixteenNine,
   SixteenNine4Way,
 }
