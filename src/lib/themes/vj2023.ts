@@ -15,6 +15,15 @@ export const vj2023: LayoutTheme =
   ],
   borderWidth: 4,
   borderRadius: 20,
+  images:{
+    counter: [
+      '/images/skull.png',
+      '/images/lightning.png',
+      '/images/diamond.png',
+      '/images/coin.png',
+      '/images/heart.png',
+    ],
+  },
   style: `
     --font-family: UbuntuTitling;
     --font-color: black;

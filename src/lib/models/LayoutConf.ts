@@ -59,9 +59,9 @@ export interface LayoutTheme {
     images?: {
         logo?: string,
         logoSmall?: string,
-        skull?: string,
         timer?: string,
         defaultConsole?: string,
+        counter?: string[],
     };
     sponsors: Sponsor[];
 }

@@ -20,67 +20,61 @@
 	export let gameWidth = 1520;
 	export let gameHeight = 855;
 	export let donationBarHeight = 65;
-  export let donationBarWidth = width;
-  export let cameraWidth;
-  export let cameraHeight;
+	export let donationBarWidth = width;
+	export let cameraWidth;
+	export let cameraHeight;
 
-  const {
-    leftCol,
-    bottomBar,
-    donationBar,
-    camera,
-    game,
-  } = game_dimensions(
-    width,
-    height,
-    gameWidth,
-    gameHeight,
-    donationBarHeight,
-    donationBarWidth,
-    cameraWidth,
-    cameraHeight
-  )
+	const { leftCol, bottomBar, donationBar, camera, game } = game_dimensions(
+		width,
+		height,
+		gameWidth,
+		gameHeight,
+		donationBarHeight,
+		donationBarWidth,
+		cameraWidth,
+		cameraHeight
+	);
 
-  let background: LayoutBackground = {};
-  $: background = {
-    holes: [
-      camera_hole(camera, $themestore.borderRadius),
-      game_hole(game, $themestore.borderRadius),
-    ]
-  }
+	let background: LayoutBackground = {};
+	$: background = {
+		holes: [
+			camera_hole(camera, $themestore.borderRadius),
+			game_hole(game, $themestore.borderRadius)
+		]
+	};
 
 	let layout: LayoutConf;
-  $: layout = {
+	$: layout = {
 		name: 'SixteenNine',
 		width,
 		height,
 		contents: [],
-		background,
+		background
 	};
 </script>
 
 <StreamLayout {layout}>
 	<svelte:fragment slot="foreground">
 		<AbsDiv name="leftCol" cls="col" {...leftCol}>
-      <div id="leftColWrapper" class="col">
-        <Logo />
-        <Sponsors />
+			<div id="leftColWrapper" class="col">
+				<Logo />
+				<Sponsors />
+				<Counter />
 			</div>
 			<div id="playername">
-        <PlayerName index={0} />
+				<PlayerName index={0} />
 			</div>
-    </AbsDiv>
+		</AbsDiv>
 		<AbsDiv name="bottomBar" cls="row" {...bottomBar}>
-      <div id="bottomBarWrapper" class="row">
-        <GameTimer index={0} />
-        <Counter />
-        <GameData />
-      </div>
-    </AbsDiv>
+			<div id="bottomBarWrapper" class="row">
+				<GameTimer index={0} />
+				<GameData />
+			</div>
+		</AbsDiv>
 		<div id="donationbar">
 			<DonationBar />
 		</div>
-    <Frame {...camera}/>
+		<Frame {...camera} />
 	</svelte:fragment>
 </StreamLayout>
 
@@ -88,21 +82,21 @@
 	#leftColWrapper {
 		flex-grow: 1;
 		background: var(--background);
-    border: var(--border);
-    border-top: none;
-    border-left: none;
-    border-bottom-right-radius: var(--border-radius);
-    margin-bottom: calc(0px - var(--border-width));
+		border: var(--border);
+		border-top: none;
+		border-left: none;
+		border-bottom-right-radius: var(--border-radius);
+		margin-bottom: calc(0px - var(--border-width));
 	}
 	#bottomBarWrapper {
-    width: calc(100% + var(--border-width));
+		width: calc(100% + var(--border-width));
 		background: var(--background);
-    border: var(--border);
-    border-right: none;
+		border: var(--border);
+		border-right: none;
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
-    margin-left: calc(0px - var(--border-width));
-    margin-bottom: calc(0px - var(--border-width));
+		margin-left: calc(0px - var(--border-width));
+		margin-bottom: calc(0px - var(--border-width));
 	}
 	#donationbar {
 		position: absolute;
