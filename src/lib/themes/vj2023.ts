@@ -61,5 +61,9 @@ export const vj2023: LayoutTheme =
     --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
     --counter-font-size: var(--timer-font-size);
+    --pill-background-1: #ffaa88;
+    --pill-font-color-1: #004477;
+    --pill-background-2: #88ffaa;
+    --pill-font-color-2: #770044;
   `
 }

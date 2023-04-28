@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { donationSum } from "$lib/stores/DonationsStore";
+	import { donationSum, donationstore } from "$lib/stores/DonationsStore";
     import { metadata } from "$lib/stores/GameStore";
 	import { circOut } from "svelte/easing";
 	import { tweened } from "svelte/motion";
+    import Marquee from "svelte-fast-marquee";
+	import Pill from "./Pill.svelte";
 
     $: fillWidth = `${Math.min(1, $donationSumAnimated / $metadata?.donation_goal) * 100}%`;
 
+    $: lastDonations = $donationstore.slice(0, 5);
     let donationSumAnimated = tweened(
         $donationSum,
         {
@@ -20,6 +23,13 @@
     <div class="current donationsum">{Math.floor($donationSumAnimated)} €</div>
     <div class="fill-container">
         <div class="fill" style="width: {fillWidth}"></div>
+        <div class="donationpills">
+            <Marquee speed={50}>
+                {#each lastDonations as donation}
+                    <Pill>{donation.name}: {donation.amount}</Pill>
+                {/each}
+            </Marquee>
+        </div>
     </div>
     <div class="target donationsum">{$metadata?.donation_goal} €</div>
 </div>
@@ -33,7 +43,6 @@
         height: 100%;
         background-color: var(--donation-bar-background, black);
         padding: var(--donation-bar-padding);
-        color: var(--donation-bar-font-color);
         font-size: var(--donation-bar-font-size);
         border: var(--donation-bar-border-style) var(--donation-bar-border-width) var(--donation-bar-border-color);
         border-left: 0;
@@ -93,4 +102,14 @@
         padding-right: 5px;
         padding-left: var(--donation-bar-border-radius, var(--border-radius));
     }
+    .donationpills {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-top: auto;
+        padding-bottom: auto;
+    }
+
 </style>
