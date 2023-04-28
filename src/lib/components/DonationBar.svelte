@@ -72,7 +72,6 @@
 
     .current {
         left: 0;
-        color: var(--donation-bar-current-font-color);
         background-color: var(--donation-bar-current-bg);
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -85,7 +84,6 @@
 
     .target {
         right: 0;
-        color: var(--donation-bar-goal-font-color);
         background-color: var(--donation-bar-goal-bg);
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;

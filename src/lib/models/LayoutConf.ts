@@ -63,7 +63,7 @@ export interface LayoutTheme {
         defaultConsole?: string,
         counter?: string[],
     };
-    sponsors: Sponsor[];
+    sponsors?: Sponsor[];
 }
 
 export interface LayoutConf {

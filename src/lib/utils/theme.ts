@@ -1,6 +1,6 @@
-export interface Breakpoint {
+export interface Breakpoint<T> {
     key: number;
-    value: number;
+    value: T;
 }
 
 /**
@@ -10,7 +10,7 @@ export interface Breakpoint {
  * 
  * @returns interpolated value or -1 if not found
  */
-export function interpolate(key: number, breakpoints: Breakpoint[]): number {
+export function interpolate(key: number, breakpoints: Breakpoint<number>[]): number {
     let lowerBound = -1;
     let lowerKey = 0;
     let upperBound = -1;
@@ -32,4 +32,22 @@ export function interpolate(key: number, breakpoints: Breakpoint[]): number {
     const valueRange = (upperBound - lowerBound);
     const keyRange = (upperKey - lowerKey);
     return lowerBound + valueRange * (key - lowerKey) / keyRange;
+}
+
+export function hexToRgba(color: string): [number, number, number, number] {
+    let rgba = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
+    return rgba ? [
+        parseInt(rgba[1], 16),
+        parseInt(rgba[2], 16),
+        parseInt(rgba[3], 16),
+        parseInt(rgba[4], 16) || 1,
+    ]: [0, 0, 0, 1];
+}
+
+export function rgbaToHex(rgba: [number, number, number, number]): string {
+    return '#' + rgba.map((c) => c.toString(16).padStart(2, '0')).join('');
+}
+
+export function interpolateHexColors(color1: string, color2: string, value: number): string {
+    
 }
