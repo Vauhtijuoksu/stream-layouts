@@ -43,7 +43,7 @@
   }
   .sponsors {
     position: relative;
-    height: 90%;
+    flex-grow: 1;
   }
 
   .sponsor {
