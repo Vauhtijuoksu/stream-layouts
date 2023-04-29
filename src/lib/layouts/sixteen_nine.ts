@@ -1,5 +1,5 @@
 import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme, Sponsor } from "$lib/models/LayoutConf";
-import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors_field, timer, wrap } from "./utils";
+import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors_field, timer, wrap, logo } from "./utils";
 
 function sixteen_nine_leftcol_contents(
   borderWidth = 0,
@@ -9,7 +9,7 @@ function sixteen_nine_leftcol_contents(
   return [
     left_col_wrapper(
       [
-        wrap({component: 'logo'}, 'div', {style: 'padding: 10px'}),
+        wrap(logo('withpillows'), 'div', {style: 'padding: 10px'}),
         wrap(sponsors_field(sponsors), 'div', {style: 'flex-grow: 1'}),
       ]
     ),
@@ -24,8 +24,8 @@ function sixteen_nine_leftcol_contents(
 
 function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
-    wrap(timer(), 'div', {class: 'row', style: 'justify-content: center; flex-grow: 1;'}),
     { component: 'counter' },
+    wrap(timer(), 'div', {class: 'row', style: 'justify-content: center; flex-grow: 1;'}),
     wrap(gamedata(), 'div', {class: 'row', style: 'flex-grow: 1;'}),
   ];
 }

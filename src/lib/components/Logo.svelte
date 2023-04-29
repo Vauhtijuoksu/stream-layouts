@@ -1,5 +1,13 @@
+<script lang="ts">
+    export let logo = "";
+</script>
+
 <div class="logo">
-    <img src="/logos/logo2023.png" alt="logo" />
+    {#if logo === "withpillows"}
+        <img src="/logos/logowithpillows.png" alt="logo" />
+    {:else}
+        <img src="/logos/logo2023.png" alt="logo" />
+    {/if}
 </div>
 
 <style>

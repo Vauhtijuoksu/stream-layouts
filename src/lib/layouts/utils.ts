@@ -46,6 +46,15 @@ export function sponsors_field(sponsors: Sponsor[]): LayoutField {
   };
 }
 
+export function logo(logo = ''): LayoutField {
+  return {
+    component: 'logo',
+    params: {
+      logo
+    },
+  };
+}
+
 export function player(index = 0): LayoutField {
   return {
     component: 'playername',

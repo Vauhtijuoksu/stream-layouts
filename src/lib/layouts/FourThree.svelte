@@ -48,7 +48,7 @@
   <svelte:fragment slot="foreground">
     <AbsDiv name="leftCol" cls="col" {...leftCol}>
       <div id="leftColWrapper" class="col">
-        <Logo />
+        <Logo logo="withpillows"/>
         <Sponsors />
         <div class="row">
           <GameData />
