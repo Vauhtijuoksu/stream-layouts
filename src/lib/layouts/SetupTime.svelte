@@ -53,7 +53,7 @@
 <StreamLayout {layout}>
   <svelte:fragment slot="foreground">
     <AbsDiv name="topLeft" cls="col" {...topLeft}>
-      <Logo />
+      <Logo logo="setuptime"/>
       <div class="col wrapper">
         <Upcoming />
       </div>

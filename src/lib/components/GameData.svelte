@@ -45,11 +45,11 @@
         align-items: center;
     }
     .game.icon > img {
-        max-height: 150px;
+        max-height: 180px;
     }
 
     .console.icon > img {
-        max-height: 100px;
+        max-height: 120px;
     }
 
     .gameinfo, .consoleinfo {

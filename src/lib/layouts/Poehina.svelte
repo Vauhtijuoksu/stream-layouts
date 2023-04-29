@@ -31,9 +31,15 @@
   <div class="donationBar" slot="foreground">
     <DonationBar />
   </div>
+  <!--<img class="pohoverlay" src="/logos/pohinaoverlay.png" alt="logo" /> -->
 </StreamLayout>
 
 <style>
+  .pohoverlay{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
   .donationBar {
     position: absolute;
     bottom: calc(0px - var(--border-width));
