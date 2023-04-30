@@ -4,6 +4,7 @@
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import { themestore } from "$lib/stores/ThemeStore";
 	import Sponsors from "$lib/components/Sponsors.svelte";
+	import Heartrate from "$lib/components/Heartrate.svelte";
 
   let radius = ($themestore.borderRadius ?? 0);
   let background: LayoutBackground =  {

@@ -5,6 +5,7 @@
 	import StreamBackground from './StreamBackground.svelte';
 	import StreamData from './StreamData.svelte';
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
+	import Heartrate from './components/Heartrate.svelte';
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
@@ -21,7 +22,7 @@
 </script>
 
 <div class="layout" style={theme.style}>
-	<div class="background" style="{layout.background?.style}">
+	<div class="background" style="{layout.background?.style ?? ''}">
 		<slot name="background">
 			<StreamBackground width={layout.width} height={layout.height} {...layout.background} {theme} />
 		</slot>
@@ -30,6 +31,9 @@
 		<StreamData client={apiClient} contents={layout.contents}>
 			<slot name="foreground" />
 		</StreamData>
+	</div>
+	<div class="controls" style="top: {layout.height}px;">
+		<Heartrate />
 	</div>
 </div>
 
@@ -42,16 +46,26 @@
 		text-align: center;
 	}
 
+	.controls {
+		position: absolute;
+	}
+
 	.layout {
 		position: absolute;
 		top: 0;
 		left: 0;
-		overflow: hidden;
+		overflow: visible;
 	}
 
-	.content {
+	.content, .background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		font-family: var(--font-family);
 		color: var(--font-color);
+		overflow: hidden;
 	}
 
 	:global(div) {

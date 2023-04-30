@@ -65,5 +65,6 @@ export const vj2023: LayoutTheme =
     --pill-font-color-1: #004477;
     --pill-background-2: #88ffaa;
     --pill-font-color-2: #770044;
+    --heart-rate-font-color: #ffffff;
   `
 }
