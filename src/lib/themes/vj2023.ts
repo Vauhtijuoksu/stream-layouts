@@ -33,7 +33,7 @@ export const vj2023: LayoutTheme =
     --border-width: 4px;
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
-    --background: #080808 url('/images/vj2023bg.png') repeat 500px fixed;
+    --background: #080808 url('/images/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
     --font-size-md: 24px;
