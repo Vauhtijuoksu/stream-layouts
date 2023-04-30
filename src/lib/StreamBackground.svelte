@@ -51,11 +51,6 @@
     top: 0;
   }
 
-  rect {
-    rx: 10;
-    ry: 10;
-  }
-
   .background {
     fill: var(--override-background, var(--background));
   }
