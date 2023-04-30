@@ -52,7 +52,7 @@
   }
 
   .background {
-    fill: var(--override-background, var(--background));
+    fill: var(--override-background, var(--border-color));
   }
 
   .border {
