@@ -3,6 +3,7 @@
 	import StreamLayout from "$lib/StreamLayout.svelte";
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import { themestore } from "$lib/stores/ThemeStore";
+	import Sponsors from "$lib/components/Sponsors.svelte";
 
   let radius = ($themestore.borderRadius ?? 0);
   let background: LayoutBackground =  {
@@ -28,10 +29,17 @@
 </script>
 
 <StreamLayout {layout}>
-  <div class="donationBar" slot="foreground">
-    <DonationBar />
+  <div slot="foreground">
+    <div class="donationBar">
+      <DonationBar />
+    </div>
+    <div class="pohoverlay">
+      <img class="pohoverlay" src="/logos/pohinaoverlay.png" alt="logo" />
+      <div class="sponsors">
+        <Sponsors />
+      </div>
+    </div>
   </div>
-  <!--<img class="pohoverlay" src="/logos/pohinaoverlay.png" alt="logo" /> -->
 </StreamLayout>
 
 <style>
@@ -39,6 +47,18 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 100;
+  }
+
+  .sponsors {
+    z-index: 101;
+    position: absolute;
+    right: 0;
+    bottom: 65px;
+    height: 330px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
   }
   .donationBar {
     position: absolute;

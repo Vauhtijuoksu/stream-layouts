@@ -12,7 +12,6 @@ import SixteenNine4Way from '$lib/layouts/SixteenNine4Way.svelte';
 export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
 export const layouts: {[key: string]: LayoutGenerator} = {
-    four_three: four_three,
     four_three_race: four_three_race,
     sixteen_nine_bigcam: sixteen_nine_bigcam,
     sixteen_nine_race: sixteen_nine_race,
