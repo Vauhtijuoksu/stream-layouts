@@ -76,6 +76,18 @@ const vj2023base: LayoutTheme = {
     --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
     --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
     --heart-rate-font-color: #ffffff;
+    --screen-overlay-item-text-shadow:
+      -3px -3px 0 var(--screen-overlay-item-stroke-color),
+      3px -3px 0 var(--screen-overlay-item-stroke-color),
+      -3px 3px 0 var(--screen-overlay-item-stroke-color),
+      3px 3px 0 var(--screen-overlay-item-stroke-color),
+      -3px 0px 0 var(--screen-overlay-item-stroke-color),
+      3px 0px 0 var(--screen-overlay-item-stroke-color),
+      0px 3px 0 var(--screen-overlay-item-stroke-color),
+      0px 3px 0 var(--screen-overlay-item-stroke-color);
+    --screen-player-name-text-shadow: var(--screen-overlay-item-text-shadow);
+    --screen-player-name-font-color: var(--screen-timer-color);
+    --screen-player-name-font-size: var(--font-size-md);
   `
 }
 
