@@ -29,10 +29,17 @@ export function abs_field(
   }
 }
 
-export function wrap(child: LayoutField, parentComponent = 'div', parentParams?: { [key: string]: any }): LayoutField {
+type LayoutFields = LayoutField | LayoutField[]
+
+export function wrap(child: LayoutFields, parentComponent = 'div', parentParams?: { [key: string]: any }): LayoutField {
+  const single = !Array.isArray(child);
+  const children: LayoutField[] = single
+    ? [child]
+    : child;
+  
   return {
     component: parentComponent,
-    contents: [child],
+    contents: children,
     params: parentParams,
   }
 }

@@ -176,9 +176,23 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   const bottomRight = abs_field('bottomRight', 'div', 'col', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
   
   topBar.contents = [
-    wrap(player(0), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+    wrap(
+      [
+        wrap(player(0), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+        {component: 'counter', params: {index: 0}},
+        {component: 'counter', params: {index: 2}},
+      ],
+      'div', {class: 'row', style: 'align-items: flex-end;'}
+    ),
     wrap({component: 'logo'}, 'div', {style: `height: ${topBarHeight}px; width: 50%;`}),
-    wrap(player(1, 'right'), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+    wrap(
+      [
+        {component: 'counter', params: {index: 3}},
+        {component: 'counter', params: {index: 1}},
+        wrap(player(1, 'right'), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+      ],
+      'div', {class: 'row', style: 'align-items: flex-end;'}
+    )
   ]
 
   bottomLeft.contents = [
