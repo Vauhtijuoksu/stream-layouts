@@ -5,6 +5,8 @@
 
     export let name = '1';
     export let icon = '/images/timer.png';
+    export let showEstimate = true;
+    export let showIcon = true;
 
     $: start_time = $metadata?.timers?.find(timer => timer.name === name)?.start_time;
     $: end_time = $metadata?.timers?.find(timer => timer.name === name)?.end_time;
@@ -50,7 +52,7 @@
 </script>
 
 <div class="clock">
-    {#if icon}
+    {#if icon && showIcon}
     <div class="icon">
         <img src="{icon}" alt="timer" />
     </div>
@@ -68,6 +70,7 @@
             <div class="colon">.</div>
             <div class="digit small">{millis}</div>
         </div>
+        {#if showEstimate}
         <div class="estimate">
             Arvio: 
             {#if estimate.hours}
@@ -75,6 +78,7 @@
             {/if}{
             estimate.minutes}min
         </div>
+        {/if}
     </div>
 </div>
 

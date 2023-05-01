@@ -178,7 +178,7 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   topBar.contents = [
     wrap(player(0), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
     wrap({component: 'logo'}, 'div', {style: `height: ${topBarHeight}px; width: 50%;`}),
-    wrap(player(1), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+    wrap(player(1, 'right'), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
   ]
 
   bottomLeft.contents = [
@@ -187,8 +187,7 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   ]
 
   bottomRight.contents = [
-    timer('2'),
-    wrap(sponsors_field(sponsors), 'div', {class: 'col'}),
+    wrap(sponsors_field(sponsors), 'div', {class: 'col', style: 'flex-grow: 1;'}),
   ]
 
   const contents: LayoutField[] = [

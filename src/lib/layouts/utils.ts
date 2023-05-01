@@ -46,13 +46,13 @@ export function sponsors_field(sponsors: Sponsor[]): LayoutField {
   };
 }
 
-export function player(index = 0): LayoutField {
-  return {
+export function player(index = 0, side='left'): LayoutField {
+  return wrap({
     component: 'playername',
     params: {
       index
     },
-  };
+  }, 'playernamewrapper', {side});
 }
 
 export function timer(name = '1'): LayoutField {

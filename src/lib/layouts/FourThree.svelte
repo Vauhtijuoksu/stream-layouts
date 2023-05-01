@@ -7,6 +7,7 @@
 	import GameTimer from "$lib/components/GameTimer.svelte";
 	import Logo from "$lib/components/Logo.svelte";
 	import PlayerName from "$lib/components/PlayerName.svelte";
+	import PlayerNameWrapper from "$lib/components/PlayerNameWrapper.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
   import { themestore } from "$lib/stores/ThemeStore";
@@ -81,7 +82,9 @@
           <GameTimer />
         </div>
       </div>
-      <PlayerName />
+      <PlayerNameWrapper>
+        <PlayerName />
+      </PlayerNameWrapper>
     </AbsDiv>
     <div id="donationbar">
       <DonationBar />

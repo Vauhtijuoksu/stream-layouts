@@ -5,6 +5,7 @@
 	import Clock from "./Clock.svelte";
 	import GameTimer from './GameTimer.svelte';
 	import PlayerName from './PlayerName.svelte';
+	import PlayerNameWrapper from "./PlayerNameWrapper.svelte";
 	import GameData from './GameData.svelte';
 	import Upcoming from './Upcoming.svelte';
 	import DonationBar from './DonationBar.svelte';
@@ -17,6 +18,7 @@
         clock: Clock,
         timer: GameTimer,
         playername: PlayerName,
+        playernamewrapper: PlayerNameWrapper,
         gamedata: GameData,
         upcoming: Upcoming,
         donation_bar: DonationBar,
