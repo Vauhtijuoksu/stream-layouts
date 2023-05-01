@@ -3,6 +3,7 @@
 	import Marquee from "svelte-fast-marquee";
 	import Pill from "./Pill.svelte";
   export let donations: Donation[] = [];
+  export let fancyMaxAge = 2;
 
   function ageInMinutes(date: Date) {
     return (new Date().getTime() - date.getTime()) / (1000 * 60);
@@ -11,7 +12,7 @@
 
 
 {#each donations as donation, i}
-  {#if i < 3}
+  {#if ageInMinutes(donation.timestamp) < fancyMaxAge }
   <Pill style="fancy">{donation.name}: {donation.amount}€</Pill>
   {:else}
   <Pill>{donation.name}: {donation.amount}€</Pill>

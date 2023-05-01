@@ -10,9 +10,9 @@
 	import Motd from './Motd.svelte';
 	import IncentiveBar from './IncentiveBar.svelte';
 
-	const displays = ['donations', 'incentives', 'upcoming', 'motd'];
+	export let displays = ['donations', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
-	$: display = displays[i];
+	let display = displays[i];
 	let delay = 10000;
 
 	let forcedDisplay = false;

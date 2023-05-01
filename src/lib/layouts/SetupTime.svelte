@@ -76,7 +76,7 @@
       </div>
     </AbsDiv>
     <div id="donationbar">
-      <DonationBar />
+      <DonationBar displays={['donations', 'motd']} />
     </div>
   </svelte:fragment>
 </StreamLayout>
