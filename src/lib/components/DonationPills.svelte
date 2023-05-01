@@ -1,16 +1,19 @@
 <script lang="ts">
-	import { donationstore, lastDonation } from "$lib/stores/DonationsStore";
+	import type { Donation } from "$lib/models/Donation";
 	import Marquee from "svelte-fast-marquee";
 	import Pill from "./Pill.svelte";
+  export let donations: Donation[] = [];
 
-    $: console.log($lastDonation);
-
-  	$: lastDonations = $donationstore.slice(0, 5);
+  function ageInMinutes(date: Date) {
+    return (new Date().getTime() - date.getTime()) / (1000 * 60);
+  }
 </script>
 
 
-<Marquee speed={50}>
-  {#each lastDonations as donation}
-    <Pill>{donation.name}: {donation.amount}€</Pill>
-  {/each}
-</Marquee>
+{#each donations as donation, i}
+  {#if i < 3}
+  <Pill style="fancy">{donation.name}: {donation.amount}€</Pill>
+  {:else}
+  <Pill>{donation.name}: {donation.amount}€</Pill>
+  {/if}
+{/each}

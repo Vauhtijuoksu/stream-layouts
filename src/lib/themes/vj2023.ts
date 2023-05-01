@@ -65,6 +65,8 @@ export const vj2023: LayoutTheme =
     --pill-font-color-1: #004477;
     --pill-background-2: #88ffaa;
     --pill-font-color-2: #770044;
+    --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
+    --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
     --heart-rate-font-color: #ffffff;
   `
 }

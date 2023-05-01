@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { donationSum, donationstore, upcomingIncentives } from '$lib/stores/DonationsStore';
+	import { donationSum, donationstore, latestDonations, upcomingIncentives } from '$lib/stores/DonationsStore';
 	import { metadata } from '$lib/stores/GameStore';
 	import { circOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
@@ -10,10 +10,14 @@
 	import Motd from './Motd.svelte';
 	import IncentiveBar from './IncentiveBar.svelte';
 
-	const displays = ['donationbar', 'incentives', 'upcoming', 'motd'];
+	const displays = ['donations', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
-	$: display = 'incentives'; //displays[i];
+	$: display = displays[i];
 	let delay = 10000;
+
+	let forcedDisplay = false;
+	let forcedDisplayTimeout = -1;
+	const forcedDisplayDelay = 30 * 1000;
 
 	$: fillWidth = `${Math.min(1, $donationSumAnimated / $metadata?.donation_goal) * 100}%`;
 
@@ -23,12 +27,34 @@
 	});
 	$: $donationSumAnimated = $donationSum;
 
+	let donations: Donation[] = [];
+
 	onMount(() => {
 		let interval = setInterval(() => {
-			i = (i + 1) % displays.length;
+			if (!forcedDisplay) {
+				i = (i + 1) % displays.length;
+				display = displays[i];
+			}
 		}, delay);
 
-		return () => clearInterval(interval);
+		
+		let unsub = latestDonations.subscribe((ds) => {
+			donations = ds;
+			display = 'donations';
+			forcedDisplay = true;
+			if (forcedDisplayTimeout) {
+				clearTimeout(forcedDisplayTimeout);
+			}
+			forcedDisplayTimeout = setTimeout(() => {
+				display = displays[i];
+				forcedDisplay = false;
+			}, forcedDisplayDelay);
+		});
+
+		return () => {
+			clearInterval(interval);
+			unsub();
+		}
 	});
 </script>
 
@@ -36,16 +62,16 @@
 	<div class="current donationsum">{Math.floor($donationSumAnimated)} €</div>
 	<div class="fill-container">
     <div class="fill" style="width: {fillWidth}" />
-		{#if display === 'donationbar'}
-			<div class="donationpills">
-				<DonationPills />
+		{#if display === 'donations'}
+			<div class="fill-content">
+				<DonationPills {donations}/>
 			</div>
 		{:else if display === 'incentives'}
-			<div class="incentives">
+			<div class="fill-content">
 				<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
 			</div>
 		{:else if display === 'motd'}
-			<div class="motd">
+			<div class="fill-content">
 				<Motd messages={$metadata?.donatebar_info} />
 			</div>
 		{/if}
@@ -69,7 +95,7 @@
 		border-right: 0;
 	}
 
-	.incentives, .motd {
+	.fill-content {
 		padding-left: var(--border-radius);
 		position: absolute;
 		top: 0;
@@ -80,6 +106,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		overflow: hidden;
 	}
 
 	.fill-container {
@@ -100,6 +127,7 @@
 	}
 
 	.donationsum {
+		white-space: nowrap;
 		margin-top: calc(0px - var(--donation-bar-border-width));
 		margin-bottom: calc(0px - var(--donation-bar-border-width));
 		border-color: var(--donation-bar-border-color, var(--border-color));
@@ -108,9 +136,11 @@
 		border-style: var(--donation-bar-border-style, var(--border-style));
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		height: 100%;
 		box-sizing: content-box;
 		z-index: 10;
+		width: 120px;
 	}
 
 	.current {
@@ -124,6 +154,7 @@
 		padding-left: 5px;
 		padding-right: var(--donation-bar-border-radius, var(--border-radius));
 		align-items: center;
+		text-align: right;
 	}
 
 	.target {
