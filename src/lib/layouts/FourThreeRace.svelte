@@ -2,6 +2,7 @@
 	import StreamLayout from "$lib/StreamLayout.svelte";
 	import AbsDiv from "$lib/components/AbsDiv.svelte";
 	import Counter from "$lib/components/Counter.svelte";
+	import Counters from "$lib/components/Counters.svelte";
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
@@ -22,7 +23,7 @@
   const donationBarHeight = 65;
   const bottomBarHeight = height - gameHeight - donationBarHeight;
   const cameraHeight = bottomBarHeight;
-  const cameraWidth = 400;
+  const cameraWidth = 480;
   const bottomSideWidth = (width - cameraWidth) / 2;
   const bottomBarY = gameHeight;
   const cameraX = bottomSideWidth;
@@ -96,7 +97,7 @@
         layout: {
           x: -borderRadius,
           y: cameraY,
-          width: cameraWidth + borderRadius,
+          width: cameraWidth + borderRadius - borderWidth,
           height: cameraHeight,
         }
       },
@@ -104,7 +105,7 @@
       {
         name: 'camera2',
         layout: {
-          x: cameraWidth + bottomCenterWidth,
+          x: cameraWidth + bottomCenterWidth + borderWidth,
           y: cameraY,
           width: cameraWidth + borderRadius,
           height: cameraHeight,
@@ -164,6 +165,10 @@
   {:else}
 
   <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
+    <div class="col">
+      <GameTimer />
+      <Counters />
+    </div>
     <GameData />
     <div class="col">
       <Sponsors />
