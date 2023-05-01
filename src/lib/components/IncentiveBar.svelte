@@ -25,7 +25,7 @@
 
 {#key incentive}
 <span class="incentive">{title} {getGame(incentive?.game_id)?.game ?? ''} - {incentive?.title}</span>
-{#each incentive?.status as status}
+{#each incentive?.status ?? [] as status}
 <Pill>{status.option}: {status.amount}€</Pill>
 {/each}
 {/key}
