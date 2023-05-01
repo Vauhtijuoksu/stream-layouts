@@ -10,25 +10,29 @@
     export let client: ApiClient;
     export let contents: LayoutField[] = [];
     export let updateFreq = 1000;
+    export let donoUpdateFreq = 5000;
+
+    async function updateAll() {
+        let players = await client.getPlayers();
+        let games = await client.getGames();
+        let meta = await client.getMetadata();
+        metadata.set(meta);
+        playerdata.set(players);
+        gamedata.set(games);
+    }
+
+    async function updateDonos() {
+        let donations = await client.getDonations();
+        let incentives = await client.getIncentives();
+        incentivestore.set(incentives);
+        donationstore.set(donations);
+    }
 
     onMount(async () => {
-        const gameInterval = setInterval(async () => {
-            let {players, games, meta} = await client.getAll();
-            metadata.set(meta);
-            playerdata.set(players);
-            gamedata.set(games);
-        }, updateFreq);
-
-        const donoInterval = setInterval(async () => {
-            let donations = await client.getDonations();
-            let incentives = await client.getIncentives();
-            let meta = await client.getMetadata();
-
-            metadata.set(meta);
-            donationstore.set(donations);
-            incentivestore.set(incentives);
-        }, 5000)
-
+        const gameInterval = setInterval(updateAll, updateFreq);
+        const donoInterval = setInterval(updateDonos, donoUpdateFreq);
+        updateAll();
+        updateDonos();
         return () => {
             clearInterval(gameInterval);
             clearInterval(donoInterval);
