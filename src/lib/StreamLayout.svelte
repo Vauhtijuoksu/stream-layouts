@@ -49,6 +49,12 @@
 				Hide game data
 			</label>
 		</div>
+		{#if $$slots.controls}
+		<h1>Extra controls</h1>
+		<div>
+			<slot name="controls" />
+		</div>
+		{/if}
 	</div>
 </div>
 
