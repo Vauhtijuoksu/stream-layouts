@@ -6,7 +6,7 @@
 
   export let index = -1;
   export let i = 0;
-  export let counter: number;
+  export let counter: number = -1;
 
   $: if (index > -1) {
     counter = $metadata?.counters[index];

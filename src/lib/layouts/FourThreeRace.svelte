@@ -1,6 +1,7 @@
 <script lang="ts">
 	import StreamLayout from "$lib/StreamLayout.svelte";
 	import AbsDiv from "$lib/components/AbsDiv.svelte";
+	import Counter from "$lib/components/Counter.svelte";
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
@@ -77,14 +78,26 @@
   <svelte:fragment slot="foreground">
 
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
-      <GameTimer index={0} />
-    <div class="row">
-      <GameData />
-    </div>
+      <div class="row">
+        <GameTimer name="0" />
+        <div class="row counters">
+          <Counter index={0} i={0} />
+          <Counter index={2} i={0} />
+        </div>
+      </div>
+      <div class="row">
+        <GameData />
+      </div>
   </AbsDiv>
   
-  <AbsDiv name="bottomRight" cls="col" {...bottomRight}>
-    <Sponsors />
+  <AbsDiv name="bottomRight" cls="row" {...bottomRight}>
+    <div class="row counters">
+      <Counter index={1} i={2} />
+      <Counter index={3} i={2} />
+    </div>
+    <div class="col sponsors">
+      <Sponsors />
+    </div>
   </AbsDiv>
   
   <div id="donationbar">
@@ -101,4 +114,16 @@
 		bottom: calc(0px - var(--border-width));
 		height: calc(65px + var(--border-width));
 	}
+
+  .row {
+    justify-content: space-between;
+  }
+
+  .row.counters {
+    align-items: flex-start;
+  }
+  .sponsors {
+    flex-grow: 1;
+    overflow: visible;
+  }
 </style>
