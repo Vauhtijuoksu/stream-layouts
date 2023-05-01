@@ -2,7 +2,7 @@
 	import StreamBackground from '$lib/StreamBackground.svelte';
 	import StreamLayout from '$lib/StreamLayout.svelte';
 	import AbsDiv from '$lib/components/AbsDiv.svelte';
-	import Counter from '$lib/components/Counter.svelte';
+	import Counters from '$lib/components/Counters.svelte';
 	import DonationBar from '$lib/components/DonationBar.svelte';
 	import Frame from '$lib/components/Frame.svelte';
 	import GameData from '$lib/components/GameData.svelte';
@@ -58,7 +58,7 @@
 			<div id="leftColWrapper" class="col">
 				<Logo logo="sixteennine" />
 				<Sponsors />
-				<Counter />
+				<Counters />
 			</div>
 			<slot name="leftColBottom" />
 		</AbsDiv>

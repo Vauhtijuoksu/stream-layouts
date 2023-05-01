@@ -21,7 +21,7 @@ export function four_three({
       wrap({component: 'logo'}, 'div', {style: 'padding: 10px;'}),
       wrap(sponsors_field(sponsors), 'div', {style: 'height: 200px;'}),
       wrap(gamedata(), 'div', {class: 'row'}),
-      wrap({component: 'counter'}, 'div', {class: 'row', style: 'justify-content: space-evenly;'}),
+      wrap({component: 'counters'}, 'div', {class: 'row', style: 'justify-content: space-evenly;'}),
       timer('1'),
     ]),
     wrap(

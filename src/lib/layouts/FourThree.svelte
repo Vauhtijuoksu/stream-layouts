@@ -1,7 +1,7 @@
 <script lang="ts">
 	import StreamLayout from "$lib/StreamLayout.svelte";
 	import AbsDiv from "$lib/components/AbsDiv.svelte";
-	import Counter from "$lib/components/Counter.svelte";
+	import Counters from "$lib/components/Counters.svelte";
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
@@ -78,7 +78,7 @@
           <GameData />
         </div>
         <div class="row">
-          <Counter />
+          <Counters />
           <GameTimer />
         </div>
       </div>

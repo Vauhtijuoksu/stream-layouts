@@ -24,7 +24,7 @@ function sixteen_nine_leftcol_contents(
 
 function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
-    { component: 'counter' },
+    { component: 'counters' },
     wrap(timer(), 'div', {class: 'row', style: 'justify-content: center; flex-grow: 1;'}),
     wrap(gamedata(), 'div', {class: 'row', style: 'flex-grow: 1;'}),
   ];
