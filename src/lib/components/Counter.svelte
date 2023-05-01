@@ -26,7 +26,6 @@
 
 <style>
 .counter {
-        padding: 0 8px;
         display: flex;
         flex-direction: column;
         justify-content: center;;

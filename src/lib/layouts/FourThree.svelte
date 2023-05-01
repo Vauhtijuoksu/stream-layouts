@@ -78,14 +78,14 @@
       <div id="leftColWrapper" class="col">
         <Logo logo="fourthree" />
         <div class="row" style="flex-grow: 1;">
-          <div style="align-self: flex-end;">
-            <GameIcon img_filename={$currentGame?.img_filename} />
+          <div class="gameicon">
+            <img src="/gameicons/{$currentGame?.img_filename}"  alt="{$currentGame?.img_filename}"/>
           </div>
-          <div class="col" style="flex-grow: 1">
+          <div class="sponsor col" style="flex-grow: 1">
             <Sponsors />
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="gap: 20px; margin: 0 10px 0 4px; justify-content: right">
           <GameData showGameIcon={false} />
         </div>
         <div class="row">
@@ -109,6 +109,20 @@
 </StreamLayout>
 
 <style>
+  .gameicon{
+    align-self: flex-end;
+    z-index: 100;
+    margin-left: -60px;
+    margin-right: -20px;
+  }
+  .gameicon > img {
+    margin-bottom: -20px;
+    max-height: 300px;
+    z-index: 100;
+  }
+  .sponsor{
+    overflow: visible;
+  }
   #leftColWrapper {
 		flex-grow: 1;
 		background: var(--background);

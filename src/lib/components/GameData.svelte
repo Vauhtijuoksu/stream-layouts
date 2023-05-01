@@ -10,6 +10,8 @@
     $: device = $currentGame?.device;
     $: deviceImg = device?.replaceAll(' ', '').toLowerCase();
     $: published = $currentGame?.published;
+
+
 </script>
 
 {#if $hideGameData}
@@ -38,7 +40,7 @@
         <img src="/consoles/{deviceImg}.png" onerror="this.src = '/consoles/default.png'" alt="{device}" />
     </div>
     <div class="consoleinfo">
-        <div class="device">
+        <div class="device" class:shortestname={(device?.length ?? 0) <= 3} class:shortername={(device?.length ?? 0) <= 4} class:shortname={(device?.length ?? 0) <= 5} >
             {device}
         </div>
         <div class="published">
@@ -73,7 +75,9 @@
         justify-content: center;
         align-items: flex-end;
     }
-
+    .consoleinfo{
+        align-items: center;
+    }
     .gametitle, .published {
         font-size: var(--game-title-font-size, 34px);
         text-align: right;
@@ -81,4 +85,19 @@
     .category, .device {
         font-size: var(--game-category-font-size, 24px);
     }
+
+    .category {
+        text-align: right;
+    }
+    .shortname {
+        font-size: 32px;
+    }
+    .shortername {
+        font-size: 38px;
+    }
+    .shortestname {
+        font-size: 50px;
+    }
+
+
 </style>

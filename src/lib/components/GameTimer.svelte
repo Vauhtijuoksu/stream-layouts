@@ -112,6 +112,7 @@
 
     .icon > img {
         max-width: 100px;
+        margin-right: -20px;
     }
 
     .time {
