@@ -14,13 +14,7 @@
 
 </script>
 
-{#if $hideGameData}
-<div class="hidegame">
-    <div class="console icon">
-        <img src="/consoles/default.png" alt="mystery" />
-    </div>
-</div>
-{:else}
+{#if !$hideGameData}
 <div class="gamedata">
     {#if showGameIcon}
     <GameIcon {img_filename} />
