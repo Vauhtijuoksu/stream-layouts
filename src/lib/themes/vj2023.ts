@@ -13,7 +13,7 @@ export const vj2023: LayoutTheme =
       url: '/fonts/UbuntuTitling-Bold.ttf',
     }
   ],
-  borderWidth: 4,
+  borderWidth: 3,
   borderRadius: 20,
   images:{
     counter: [
@@ -26,14 +26,15 @@ export const vj2023: LayoutTheme =
   },
   style: `
     --font-family: UbuntuTitling;
-    --font-color: black;
+    --font-color: #212126;
     --padding: 10px;
     --border-style: solid;
-    --border-color: #080808;
-    --border-width: 4px;
+    --border-color: #212126;
+    --border-width: 3px;
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
-    --background: #080808 url('/images/vj2023bg.png') repeat fixed top left;
+    --background: #ebebeb url('/images/vj2023bg.png') repeat fixed top left;
+    --background-secondary: #94dfe7 url('/images/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
     --font-size-md: 24px;
@@ -48,18 +49,21 @@ export const vj2023: LayoutTheme =
     --donation-bar-border-width: var(--border-width);
     --donation-bar-border-radius: 20px;
     --donation-bar-font-size: 32px;
-    --donation-bar-fill: #1b92b3;
-    --donation-bar-current-bg: #ecff6e;
+    --donation-bar-fill: #d4fffd;
+    --donation-bar-current-bg: #eaff66;
     --donation-bar-current-font-color: var(--font-color);
-    --donation-bar-goal-bg: #ed87a6;
+    --donation-bar-goal-bg: #a5b624;
     --donation-bar-goal-font-color: var(--font-color);
-    --playername-background: #f3eded;
+    --playername-background: #e6f5d8;
     --playername-font-size: 32px;
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
     --timer-font-size: 54px;
     --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
+    --stopped-screen-timer-color: #2b84a5;
+    --stopped-timer-color: #121b2c;
+    --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
     --pill-background-1: #ffaa88;
     --pill-font-color-1: #004477;

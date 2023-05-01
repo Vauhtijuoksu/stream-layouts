@@ -60,10 +60,10 @@
     <BottomBar height={donationBarHeight}>
       <DonationBar />
     </BottomBar>
-    <AbsDiv name="bottomRight" cls="row" {...bottomRight}>
+    <AbsDiv name="bottomRight" cls="row" {...bottomRight} style="overflow: visible">
       <div class="bottomright row">
         <div class="viuhti">
-          <img src="/gameicons/generic-03.png" alt="viuhtista" />
+          <img src="/logos/pohinaoverlay.png" alt="viuhtista" />
         </div>
         <div class="col sponsors">
           <Sponsors />
@@ -74,19 +74,30 @@
 </StreamLayout>
 
 <style>
-    .bottomright {
-      flex-grow: 1;
-      background: var(--background);
-      border: var(--border);
-      border-right: none;
-      border-bottom-left-radius: var(--border-radius);
-      border-top-left-radius: var(--border-radius);
-      margin-left: calc(0px - (var(--border-width) / 2));
-      margin-bottom: calc(0px - var(--border-width));
-      justify-content: flex-end;
-	}
+  .viuhti{
+    margin-left: -170px;
+    margin-top: -60px;
+    width: 500px;
+    z-index: 100;
+  }
+  .viuhti > img {
+      height: 532px;
+    }
+  .bottomright {
+    flex-grow: 1;
+    background: var(--background);
+    border: var(--border);
+    border-right: none;
+    border-bottom-left-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    margin-left: calc(0px - (var(--border-width) / 2));
+    margin-bottom: calc(0px - var(--border-width));
+    justify-content: flex-end;
+    overflow: visible;
+  }
 
   .sponsors {
     flex-grow: 1;
+    overflow: visible;
   }
 </style>

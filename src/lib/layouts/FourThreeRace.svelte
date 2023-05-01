@@ -91,13 +91,15 @@
     </div>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
       <div class="row">
+        <div class="centerchild">
         <RaceTimer />
+        </div>
         <div class="row counters">
           <Counter index={0} i={0} />
           <Counter index={2} i={0} />
         </div>
       </div>
-      <div class="row">
+      <div class="row gamedatarow">
         <GameData />
       </div>
   </AbsDiv>
@@ -129,10 +131,16 @@
 		height: calc(65px + var(--border-width));
 	}
 
+  .gamedatarow{
+    gap: 10px
+  }
+  .centerchild{
+    flex-grow: 1;
+    justify-content: center;
+  }
   .row {
     justify-content: space-between;
   }
-
   .row.counters {
     align-items: flex-start;
   }

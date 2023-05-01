@@ -34,6 +34,7 @@
     <div class="donationBar">
       <DonationBar />
     </div>
+    <div class="cornercase"></div>
     <div class="pohoverlay">
       <img class="pohoverlay" src="/logos/pohinaoverlay.png" alt="logo" />
       <div class="sponsors">
@@ -44,6 +45,18 @@
 </StreamLayout>
 
 <style>
+  .cornercase{
+    position: absolute;
+    height: 750px;
+    width: 1200px;
+    bottom: -390px;
+    right: -350px;
+    transform: rotate(-30deg);
+    background: var(--background);
+    border: var(--border);
+    z-index: -1;
+  }
+
   .pohoverlay{
     position: absolute;
     right: 0;
@@ -52,7 +65,6 @@
   }
 
   .sponsors {
-    z-index: 101;
     position: absolute;
     right: 0;
     bottom: 65px;
