@@ -6,15 +6,16 @@
 	import Marquee from 'svelte-fast-marquee';
 	import Pill from './Pill.svelte';
 	import { onMount } from 'svelte';
+	import DonationPills from './DonationPills.svelte';
+	import Motd from './Motd.svelte';
 
-	const displays = ['donationbar', 'incentives'];
+	const displays = ['donationbar', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
 	$: display = displays[i];
 	let delay = 10000;
 
 	$: fillWidth = `${Math.min(1, $donationSumAnimated / $metadata?.donation_goal) * 100}%`;
 
-	$: lastDonations = $donationstore.slice(0, 5);
 	let donationSumAnimated = tweened($donationSum, {
 		duration: 3000,
 		easing: circOut
@@ -36,11 +37,7 @@
     <div class="fill" style="width: {fillWidth}" />
 		{#if display === 'donationbar'}
 			<div class="donationpills">
-				<Marquee speed={50}>
-					{#each lastDonations as donation}
-						<Pill>{donation.name}: {donation.amount}€</Pill>
-					{/each}
-				</Marquee>
+				<DonationPills />
 			</div>
 		{:else if display === 'incentives'}
 			<div class="incentives">
@@ -50,6 +47,10 @@
 						<Pill>{incentive.title}: {incentive.total_amount}€</Pill>
 					{/each}
 				</Marquee>
+			</div>
+		{:else if display === 'motd'}
+			<div class="motd">
+				<Motd messages={$metadata?.donatebar_info} />
 			</div>
 		{/if}
 	</div>
@@ -72,7 +73,7 @@
 		border-right: 0;
 	}
 
-	.incentives {
+	.incentives, .motd {
 		position: absolute;
 		top: 0;
 		bottom: 0;

@@ -42,7 +42,7 @@
           y: camera.y,
           width: camera.width + borderRadius - borderWidth,
           height: camera.height,
-        }
+        },
       },
       {
         name: 'game',
@@ -51,7 +51,7 @@
           y: game.y - borderRadius,
           height: game.height + borderRadius,
           width: game.width + borderRadius,
-      }
+        },
       },
     ]
   }
