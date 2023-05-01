@@ -71,13 +71,21 @@ export function gamedata(): LayoutField {
 }
 
 export function donation_bar({ x, y, width, height }: LayoutDimension): LayoutField {
-  const wrapper = abs_field(
-    'donationBarWrapper', 'div', '',
-    x, y, width, height,
-  );
-  wrapper.contents = [{
-    component: 'donation_bar',
-  }];
+  let wrapper: LayoutField = {
+    component: 'div',
+    params: {
+      style: `
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(0px - var(--border-width));
+        height: calc(${height}px + var(--border-width));
+      `
+    },
+    contents: [{
+      component: 'donation_bar',
+    }],
+  }
   return wrapper;
 }
 

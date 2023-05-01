@@ -60,9 +60,9 @@
       </div>
       <PlayerName />
     </AbsDiv>
-    <AbsDiv {...donationBar}>
+    <div id="donationbar">
       <DonationBar />
-    </AbsDiv>
+    </div>
   </svelte:fragment>
 </StreamLayout>
 
@@ -75,5 +75,12 @@
 		border-left: none;
 		border-bottom-right-radius: var(--border-radius);
 		margin-bottom: calc(0px - var(--border-width));
+	}
+	#donationbar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: calc(0px - var(--border-width));
+		height: calc(65px + var(--border-width));
 	}
 </style>

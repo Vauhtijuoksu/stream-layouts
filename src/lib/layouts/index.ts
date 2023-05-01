@@ -6,6 +6,7 @@ import { sixteen_nine, sixteen_nine_bigcam, sixteen_nine_divided, sixteen_nine_r
 import FourThree from './FourThree.svelte';
 import FourThreeRace from './FourThreeRace.svelte';
 import Poehina from './Poehina.svelte';
+import TuplaPoehina from './TuplaPoehina.svelte';
 import SetupTime from './SetupTime.svelte';
 import SixteenNine from '$lib/layouts/SixteenNine.svelte';
 import SixteenNine4Way from '$lib/layouts/SixteenNine4Way.svelte';
@@ -13,7 +14,6 @@ import SixteenNine4Way from '$lib/layouts/SixteenNine4Way.svelte';
 export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
 export const layouts: {[key: string]: LayoutGenerator} = {
-    four_three_race: four_three_race,
     sixteen_nine_bigcam: sixteen_nine_bigcam,
     sixteen_nine_race: sixteen_nine_race,
 }
@@ -22,6 +22,7 @@ export const components: {[key: string]: ComponentType} = {
   FourThree,
   FourThreeRace,
   Poehina,
+  TuplaPoehina,
   SetupTime,
   SixteenNine,
   SixteenNine4Way,
