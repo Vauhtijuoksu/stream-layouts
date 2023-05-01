@@ -2,14 +2,22 @@
 	import { onMount } from "svelte";
     import { currentGame, metadata } from "$lib/stores/GameStore";
 	import { dateRangeToDuration } from "$lib/utils/time";
+	import type { Timer } from "$lib/models/Timer";
 
     export let name = '1';
     export let icon = '/images/timer.png';
     export let showEstimate = true;
     export let showIcon = true;
+    export let showWhen: "always" | "stopped" = "always";
+    export let timer: Timer | undefined = undefined;
 
-    $: start_time = $metadata?.timers?.find(timer => timer.name === name)?.start_time;
-    $: end_time = $metadata?.timers?.find(timer => timer.name === name)?.end_time;
+    $: if (name === '1' || name === '2') {
+        timer = $metadata?.timers?.find(timer => timer.name === name);
+    }
+
+    $: start_time = timer?.start_time;
+    $: end_time = timer?.end_time;
+
     let estimate = {hours: 0, minutes: 0};
     $: if ($currentGame) {
         ({hours: estimate.hours, minutes: estimate.minutes} = dateRangeToDuration($currentGame.start_time, $currentGame.end_time))
@@ -19,6 +27,10 @@
     let minutes = "00";
     let seconds = "00";
     let millis = "00";
+
+    let stopped = false;
+
+    $: show = (showWhen === "always") || stopped;
 
     const reset = () => {
         hours = " 0";
@@ -32,6 +44,11 @@
     onMount(() => {
         const interval = setInterval(() => {
             let start = start_time ?? new Date();
+            if (end_time) {
+                stopped = true;
+            } else {
+                stopped = false;
+            }
             let end = end_time ?? new Date();
             let {
                 hours: hours_,
@@ -51,7 +68,8 @@
     });
 </script>
 
-<div class="clock">
+{#if show}
+<div class="clock" id="{timer?.name}">
     {#if icon && showIcon}
     <div class="icon">
         <img src="{icon}" alt="timer" />
@@ -81,6 +99,7 @@
         {/if}
     </div>
 </div>
+{/if}
 
 <style>
     .clock {

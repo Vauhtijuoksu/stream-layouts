@@ -9,8 +9,8 @@ function sixteen_nine_leftcol_contents(
   return [
     left_col_wrapper(
       [
-        wrap({component: 'logo'}, 'div', {style: 'padding: 10px'}),
-        wrap(sponsors_field(sponsors), 'div', {style: 'flex-grow: 1'}),
+        wrap({ component: 'logo' }, 'div', { style: 'padding: 10px' }),
+        wrap(sponsors_field(sponsors), 'div', { style: 'flex-grow: 1' }),
       ]
     ),
     wrap(player(0), 'div',
@@ -25,8 +25,8 @@ function sixteen_nine_leftcol_contents(
 function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
     { component: 'counters' },
-    wrap(timer(), 'div', {class: 'row', style: 'justify-content: center; flex-grow: 1;'}),
-    wrap(gamedata(), 'div', {class: 'row', style: 'flex-grow: 1;'}),
+    wrap(timer(), 'div', { class: 'row', style: 'justify-content: center; flex-grow: 1;' }),
+    wrap(gamedata(), 'div', { class: 'row', style: 'flex-grow: 1;' }),
   ];
 }
 
@@ -94,7 +94,7 @@ export function sixteen_nine_divided({
   layout.contents.leftCol.contents = [
     left_col_wrapper(
       [
-        wrap({component: 'logo'}, 'div', {style: 'padding: 10px;'}),
+        wrap({ component: 'logo' }, 'div', { style: 'padding: 10px;' }),
         sponsors_field(sponsors),
       ]
     )
@@ -154,7 +154,7 @@ export function sixteen_nine_bigcam({
   };
 }
 
-export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: LayoutTheme): LayoutConf {
+export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors = [] }: LayoutTheme): LayoutConf {
   const width = 1920;
   const height = 1080;
   const gameWidth = 960;
@@ -163,7 +163,7 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   const donationBarHeight = 65;
   const bottomBarHeight = height - topBarHeight - gameHeight - donationBarHeight;
   const bottomBarY = topBarHeight + gameHeight;
-  
+
   const cameraHeight = bottomBarHeight;
   const cameraWidth = 500;
   const bottomSideWidth = (width - cameraWidth) / 2;
@@ -174,41 +174,83 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   const topBar = abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'align-items: flex-end; justify-content: space-between; background: var(--background); border')
   const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);')
   const bottomRight = abs_field('bottomRight', 'div', 'col', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
-  
+
   topBar.contents = [
     wrap(
       [
-        wrap(player(0), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
-        {component: 'counter', params: {index: 0}},
-        {component: 'counter', params: {index: 2}},
+        wrap(player(0), 'div', { style: `margin-bottom: ${-borderWidth}px;` }),
+        { component: 'counter', params: { index: 0 } },
+        { component: 'counter', params: { index: 2 } },
       ],
-      'div', {class: 'row', style: 'align-items: flex-end;'}
+      'div', { class: 'row', style: 'align-items: flex-end;' }
     ),
-    wrap({component: 'logo'}, 'div', {style: `height: ${topBarHeight}px; width: 50%;`}),
+    wrap({ component: 'logo' }, 'div', { style: `height: ${topBarHeight}px; width: 50%;` }),
     wrap(
       [
-        {component: 'counter', params: {index: 3}},
-        {component: 'counter', params: {index: 1}},
-        wrap(player(1, 'right'), 'div', {style: `margin-bottom: ${-borderWidth}px;`}),
+        { component: 'counter', params: { index: 3 } },
+        { component: 'counter', params: { index: 1 } },
+        wrap(player(1, 'right'), 'div', { style: `margin-bottom: ${-borderWidth}px;` }),
       ],
-      'div', {class: 'row', style: 'align-items: flex-end;'}
+      'div', { class: 'row', style: 'align-items: flex-end;' }
     )
   ]
 
   bottomLeft.contents = [
-    timer('1'),
-    wrap(gamedata(), 'div', {class: 'row'}),
+    { component: 'racetimer' },
+    wrap(gamedata(), 'div', { class: 'row' }),
   ]
 
   bottomRight.contents = [
-    wrap(sponsors_field(sponsors), 'div', {class: 'col', style: 'flex-grow: 1;'}),
+    wrap(sponsors_field(sponsors), 'div', { class: 'col', style: 'flex-grow: 1;' }),
   ]
+
+  const timer1 = wrap(
+    {
+      component: 'timer',
+      params: {
+        name: '1',
+        showWhen: 'stopped',
+        showIcon: false,
+        showEstimate: false,
+      }
+    },
+    'div',
+    {
+      style: `
+          position: absolute;
+          bottom: ${donationBarHeight + bottomBarHeight}px;
+          left: 0;
+        `
+    }
+  )
+
+  const timer2 = wrap(
+    {
+      component: 'timer',
+      params: {
+        name: '2',
+        showWhen: 'stopped',
+        showIcon: false,
+        showEstimate: false,
+      }
+    },
+    'div',
+    {
+      style: `
+          position: absolute;
+          bottom: ${donationBarHeight + bottomBarHeight}px;
+          right: 0;
+        `
+    }
+  )
 
   const contents: LayoutField[] = [
     topBar,
     bottomLeft,
     bottomRight,
-    donation_bar({x: 0, y: 1015, width: 1920, height: 65}),
+    timer1,
+    timer2,
+    donation_bar({ x: 0, y: 1015, width: 1920, height: 65 }),
   ];
 
   const background: LayoutBackground = {
@@ -218,25 +260,25 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
         layout: {
           x: -borderRadius,
           y: topBarHeight + borderWidth,
-          width: gameWidth+borderRadius-borderWidth/2,
-          height: gameHeight-borderWidth*2,
+          width: gameWidth + borderRadius - borderWidth / 2,
+          height: gameHeight - borderWidth * 2,
         }
       },
       {
         name: 'game2',
         layout: {
-          x: gameWidth+borderWidth/2,
-          y: topBarHeight+borderWidth,
-          width: gameWidth+borderRadius,
-          height: gameHeight-borderWidth*2,
+          x: gameWidth + borderWidth / 2,
+          y: topBarHeight + borderWidth,
+          width: gameWidth + borderRadius,
+          height: gameHeight - borderWidth * 2,
         }
       },
       {
         name: 'camera',
         layout: {
-          x: bottomSideWidth+borderWidth,
+          x: bottomSideWidth + borderWidth,
           y: bottomBarY,
-          width: cameraWidth-2*borderWidth,
+          width: cameraWidth - 2 * borderWidth,
           height: cameraHeight,
         },
       }

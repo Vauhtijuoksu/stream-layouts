@@ -5,6 +5,7 @@
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
+	import RaceTimer from "$lib/components/RaceTimer.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
 	import { themestore } from "$lib/stores/ThemeStore";
@@ -76,10 +77,16 @@
 
 <StreamLayout {layout}>
   <svelte:fragment slot="foreground">
+    <div class="clock1" style="position: absolute; bottom: {bottomBarHeight + donationBarHeight}px; left: 0;">
+      <GameTimer name="1" showWhen="stopped" showEstimate={false} showIcon={false}/>
+    </div>
 
+    <div class="clock2" style="position: absolute; bottom: {bottomBarHeight + donationBarHeight}px; right: 0;">
+      <GameTimer name="2" showWhen="stopped" showEstimate={false} showIcon={false}/>
+    </div>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
       <div class="row">
-        <GameTimer name="0" />
+        <RaceTimer />
         <div class="row counters">
           <Counter index={0} i={0} />
           <Counter index={2} i={0} />

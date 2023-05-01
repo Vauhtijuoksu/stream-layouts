@@ -14,10 +14,12 @@
 	import Counter from "./Counter.svelte";
 	import Counters from "./Counters.svelte";
 	import Logo from "./Logo.svelte";
+	import RaceTimer from "./RaceTimer.svelte";
 
     const components: {[key: string]: ComponentType} = {
         clock: Clock,
         timer: GameTimer,
+        racetimer: RaceTimer,
         playername: PlayerName,
         playernamewrapper: PlayerNameWrapper,
         gamedata: GameData,
