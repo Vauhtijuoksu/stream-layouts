@@ -4,9 +4,9 @@
     export let index = -1;
     let text = '';
     $: if (index == -1) {
-        text = $currentPlayers.map((p) => p.display_name).join(', ');
+        text = $currentPlayers?.map((p) => p.display_name).join(', ');
     } else {
-        text = $currentPlayers[index].display_name;
+        text = $currentPlayers[index]?.display_name;
     }
 </script>
 
