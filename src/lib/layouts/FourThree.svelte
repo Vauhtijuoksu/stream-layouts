@@ -8,7 +8,7 @@
 	import Logo from "$lib/components/Logo.svelte";
 	import PlayerName from "$lib/components/PlayerName.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
-	import type { LayoutBackground } from "$lib/models/LayoutConf";
+	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
   import { themestore } from "$lib/stores/ThemeStore";
 	import { game_dimensions, game_layout_fields } from "./utils";
 
@@ -19,6 +19,11 @@
   const donationBarHeight = 65;
   const cameraHeight = 250;
 
+  let borderWidth = 0;
+  let borderRadius = 0;
+  $: borderWidth = $themestore?.borderWidth ?? 0;
+  $: borderRadius = $themestore?.borderRadius ?? 0;
+
   let {
     leftCol,
     bottomBar,
@@ -27,13 +32,31 @@
     game,
   } = game_dimensions(width, height, gameWidth, gameHeight, donationBarHeight, width, undefined, cameraHeight);
 
-  let background: LayoutBackground = {
+  let background: LayoutBackground;
+  $: background = {
     holes: [
-      {name: 'camera', layout: camera},
-      {name: 'game', layout: game},
+      {
+        name: 'camera',
+        layout: {
+          x: camera.x - borderRadius,
+          y: camera.y,
+          width: camera.width + borderRadius - borderWidth,
+          height: camera.height,
+        }
+      },
+      {
+        name: 'game',
+        layout: {
+          x: game.x,
+          y: game.y - borderRadius,
+          height: game.height + borderRadius,
+          width: game.width + borderRadius,
+      }
+      },
     ]
   }
-  const layout = {
+  let layout: LayoutConf;
+  $: layout = {
     name: 'FourThree',
     width,
     height,

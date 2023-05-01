@@ -4,7 +4,7 @@
   export let width = 1920;
   export let height = 1080;
   export let image = '';
-  export let holes: Array<LayoutHole> = [];
+  export let holes: LayoutHole[] = [];
   export let theme: LayoutTheme;
 
   function borderProps(border: LayoutBorder) {
