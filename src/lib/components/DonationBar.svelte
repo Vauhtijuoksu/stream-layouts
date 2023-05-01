@@ -175,12 +175,4 @@
 		padding-right: 5px;
 		padding-left: var(--donation-bar-border-radius, var(--border-radius));
 	}
-	.donationpills {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		margin: auto;
-	}
 </style>

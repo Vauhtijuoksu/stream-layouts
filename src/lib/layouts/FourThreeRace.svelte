@@ -27,16 +27,21 @@
   const bottomBarY = gameHeight;
   const cameraX = bottomSideWidth;
   const cameraY = gameHeight;
+  const bottomCenterWidth = width - 2*cameraWidth;
+  const bottomCenterX = cameraWidth;
 
   const bottomLeft = {x: 0, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'};
   const bottomRight = {x: bottomSideWidth+cameraWidth, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'};
+  const bottomCenter = {x: bottomCenterX, y: bottomBarY, width: bottomCenterWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-radius: var(--border-radius); '}
   const donationBar = {x: 0, y: 1015, width: 1920, height: 65};
+
+  let splitBottom = true;
 
   $: borderRadius = $themestore?.borderRadius ?? 0;
   $: borderWidth = $themestore?.borderWidth ?? 0;
 
   let background: LayoutBackground;
-  $: background = {
+  $: background = splitBottom ? {
     holes: [
       {
         name: 'game1',
@@ -66,6 +71,46 @@
         }
       }
     ]
+  } : {
+    holes: [
+      {
+        name: 'game1',
+        layout: {
+          x: 0 - borderRadius,
+          y: 0 - borderRadius,
+          width: gameWidth+borderRadius-borderWidth/2,
+          height: gameHeight+borderRadius-borderWidth,
+        },
+      },
+      {
+        name: 'game2',
+        layout: {
+          x: gameWidth+borderWidth/2,
+          y: -borderRadius,
+          width: gameWidth+borderRadius,
+          height: gameHeight+borderRadius-borderWidth,
+        }
+      },
+      {
+        name: 'camera1',
+        layout: {
+          x: -borderRadius,
+          y: cameraY,
+          width: cameraWidth + borderRadius,
+          height: cameraHeight,
+        }
+      },
+
+      {
+        name: 'camera2',
+        layout: {
+          x: cameraWidth + bottomCenterWidth,
+          y: cameraY,
+          width: cameraWidth + borderRadius,
+          height: cameraHeight,
+        }
+      }
+    ]
   };
 
   let layout: LayoutConf;
@@ -89,6 +134,8 @@
     <div class="clock2" style="position: absolute; bottom: {bottomBarHeight + donationBarHeight}px; right: 0;">
       <GameTimer name="2" cls="screentimer" showWhen="stopped" showEstimate={false} showIcon={false}/>
     </div>
+
+    {#if splitBottom}
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
       <div class="row">
         <div class="centerchild">
@@ -114,12 +161,30 @@
     </div>
   </AbsDiv>
 
+  {:else}
+
+  <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
+    <GameData />
+    <div class="col">
+      <Sponsors />
+    </div>
+  </AbsDiv>
+
+  {/if}
   <PlayerNamesGrid top={0} left={0} right={0} bottom={donationBarHeight+bottomBarHeight} />
 
   <div id="donationbar">
     <DonationBar />
   </div>
 </svelte:fragment>
+<div slot="controls">
+  <div>
+    <label>
+      <input type="checkbox" bind:checked={splitBottom}>
+      Split bottom bar
+    </label>
+  </div>
+</div>
 </StreamLayout>
 
 <style>
