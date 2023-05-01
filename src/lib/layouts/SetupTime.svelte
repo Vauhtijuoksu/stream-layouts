@@ -55,7 +55,7 @@
     <AbsDiv name="topLeft" cls="col" {...topLeft}>
       <Logo logo="setuptime"/>
       <div class="col wrapper">
-        <Upcoming />
+        <Upcoming style="list" offset={0} />
       </div>
     </AbsDiv>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>

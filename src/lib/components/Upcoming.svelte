@@ -3,13 +3,15 @@
 	import { derived } from "svelte/store";
 
     export let n = 4;
+    export let style = 'list';
+    export let offset = 1;
 
     const upcoming = derived(
         [gamedata, metadata],
         ([$games, $meta]) => {
             const i = $games.findIndex((g) => g.id === $meta?.current_game_id);
             if (i >= 0) {
-                return $games.slice(i, i + n);
+                return $games.slice(i + offset, i + offset + n);
             } else {
                 return [];
             }
@@ -23,8 +25,9 @@
     }
 </script>
 
+{#if style === "list"}
 <h1>Seuraana vuorossa</h1>
-<div class="upcoming">
+<div class="list">
     {#each $upcoming as game}
         <div class="game">
             <div class="title">{game.game}</div>
@@ -35,23 +38,47 @@
         </div>
     {/each}
 </div>
+{:else if style === "bar"}
+<div class="row">
+    {#each $upcoming as game, i}
+    <div class="game">
+        {game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}
+        -
+        {game.game} - {game.category} - {playerNames(game.players)}
+    </div>
+    {#if i+1 < $upcoming.length}
+    <div class="divider">&#x2747;</div>
+    {/if}
+    {/each}
+</div>
+{/if}
 
 <style>
-    .upcoming {
+    .list {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-    .game {
+    .list > .game {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         font-size: var(--font-size-lg);
     }
 
-    .players {
+    .list > .players {
         font-size: var(--font-size-md);
         align-self: flex-start;
+    }
+
+    .row {
+        gap: 10px;
+        align-items: baseline;
+    }
+
+    .row > .game, .row >.divider {
+        white-space: nowrap;
+        font-size: var(--font-size-md);
     }
 </style>

@@ -15,5 +15,6 @@
     color: var(--motd-color);
 		font-size: var(--motd-font-size, var(--font-size-md));
     margin: 0;
+    white-space: nowrap;
   }
 </style>

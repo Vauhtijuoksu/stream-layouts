@@ -9,6 +9,7 @@
 	import DonationPills from './DonationPills.svelte';
 	import Motd from './Motd.svelte';
 	import IncentiveBar from './IncentiveBar.svelte';
+	import Upcoming from './Upcoming.svelte';
 
 	export let displays = ['donations', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
@@ -40,7 +41,7 @@
 		
 		let unsub = latestDonations.subscribe((ds) => {
 			donations = ds;
-			display = 'donations';
+			display = 'upcoming';
 			forcedDisplay = true;
 			if (forcedDisplayTimeout) {
 				clearTimeout(forcedDisplayTimeout);
@@ -62,19 +63,17 @@
 	<div class="current donationsum">{Math.floor($donationSumAnimated)} €</div>
 	<div class="fill-container">
     <div class="fill" style="width: {fillWidth}" />
+		<div class="fill-content">
 		{#if display === 'donations'}
-			<div class="fill-content">
-				<DonationPills {donations}/>
-			</div>
+			<DonationPills {donations}/>
 		{:else if display === 'incentives'}
-			<div class="fill-content">
-				<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
-			</div>
+			<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
 		{:else if display === 'motd'}
-			<div class="fill-content">
-				<Motd messages={$metadata?.donatebar_info} />
-			</div>
+			<Motd messages={$metadata?.donatebar_info} />
+		{:else if display === 'upcoming'}
+			<Upcoming style="bar" />
 		{/if}
+		</div>
 	</div>
 	<div class="target donationsum">{$metadata?.donation_goal} €</div>
 </div>
