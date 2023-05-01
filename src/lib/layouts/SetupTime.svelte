@@ -28,7 +28,7 @@
   const bottomRightWidth = cameraWidth;
   const bottomRightHeight = height - cameraHeight - donationBarHeight;
 
-  const topLeft = {x: 0, y: 0, width: topLeftWidth, height: topLeftHeight}
+  const topLeft = {x: 0, y: 0, width: topLeftWidth, height: topLeftHeight, style: 'overflow: visible;'}
   const bottomLeft = {x: 0, y: bottomLeftY, width: bottomLeftWidth, height: bottomLeftHeight};
   const bottomRight = {x: bottomRightX, y: bottomRightY, width: bottomRightWidth, height: bottomRightHeight};
   const cameraFrame = {x: cameraX, y: cameraY, width: cameraWidth, height: cameraHeight};
@@ -53,9 +53,11 @@
 <StreamLayout {layout}>
   <svelte:fragment slot="foreground">
     <AbsDiv name="topLeft" cls="col" {...topLeft}>
-      <Logo logo="setuptime"/>
+      <div class="logo">
+        <Logo logo="setuptime"/>
+      </div>
       <div class="col wrapper">
-        <Upcoming style="list" offset={0} />
+        <Upcoming style="list" offset={0} n={3} />
       </div>
     </AbsDiv>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
@@ -88,10 +90,14 @@
     justify-content: flex-end;
     align-items: flex-end;
   }
+  .logo {
+    margin-bottom: -60px;
+  }
   .wrapper {
-    max-height: 90%;
+    flex-grow: 1;
     width: 80%;
     align-self: center;
+    overflow: visible;
   }
 
   #donationbar {

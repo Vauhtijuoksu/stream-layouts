@@ -29,13 +29,21 @@
 <h1>Seuraana vuorossa</h1>
 <div class="list">
     {#each $upcoming as game}
-        <div class="game">
-            <div class="title">{game.game}</div>
-            <div class="time">{game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}</div>
+    <div class="gamerow">
+        <div class="icon">
+            <!-- svelte-ignore a11y-missing-attribute -->
+            <img src="/gameicons/{game.img_filename}" />
         </div>
-        <div class="players">
-            {playerNames(game.players)}
+        <div class="col">
+            <div class="game">
+                <div class="title">{game.game}</div>
+                <div class="time">{game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}</div>
+            </div>
+            <div class="players">
+                {playerNames(game.players)}
+            </div>
         </div>
+    </div>
     {/each}
 </div>
 {:else if style === "bar"}
@@ -60,16 +68,34 @@
         flex-direction: column;
         justify-content: space-between;
     }
-    .list > .game {
+    .gamerow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .gamerow .icon {
+        display: flex;
+        width: 140px;
+        margin: -10px -10px -30px -10px;
+    }
+    .gamerow .icon > img {
+        max-width: 100%;
+    }
+    .gamerow .col {
+        flex-grow: 1;
+    }
+    .gamerow .game {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         font-size: var(--font-size-lg);
     }
 
-    .list > .players {
+    .gamerow .players {
         font-size: var(--font-size-md);
         align-self: flex-start;
+        align-content: flex-start;
+        text-align: start;
     }
 
     .row {
