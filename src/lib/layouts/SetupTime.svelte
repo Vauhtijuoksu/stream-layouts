@@ -38,7 +38,7 @@
     holes: [
       camera_hole({x: cameraX, y: cameraY, width: cameraWidth, height: cameraHeight}, $themestore.borderRadius, 'top right')
     ],
-    style: '--override-background: var(--setuptime-background);'
+    style: '--override-background-color: var(--background-color); --override-background: var(--setuptime-background);'
   };
 
   const layout: LayoutConf = {

@@ -35,6 +35,7 @@
       <image href="/images/vj2023bg.png" x="0" y="0" width="750" height="725" />
     </pattern>
   </defs>
+  <rect class="background-color" x="0" y="0" {width} {height} mask="url(#holes)" />
   <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />
   {#each holes as {layout: {x, y, width, height}, name}}
     {#if false}
@@ -50,7 +51,9 @@
     left: 0;
     top: 0;
   }
-
+  .background-color {
+    fill: var(--override-background-color, none);
+  }
   .background {
     fill: var(--override-background, var(--border-color));
   }
