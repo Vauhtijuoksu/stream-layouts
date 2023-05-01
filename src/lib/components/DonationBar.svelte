@@ -42,7 +42,7 @@
 			</div>
 		{:else if display === 'incentives'}
 			<div class="incentives">
-				<IncentiveBar />
+				<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
 			</div>
 		{:else if display === 'motd'}
 			<div class="motd">

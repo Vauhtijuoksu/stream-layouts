@@ -9,9 +9,10 @@
   .pill {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 5px;
+    padding: .25em;
     border: var(--pill-border, var(--border));
     border-radius: var(--pill-border-radius, var(--border-radius));
+    font-size: var(--pill-font-size, var(--font-size-md));
   }
   .pill:nth-of-type(2n) {
     background-color: var(--pill-background-1);

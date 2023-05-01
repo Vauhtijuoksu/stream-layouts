@@ -1,14 +1,12 @@
 <script lang="ts">
 	import type { Incentive } from "$lib/models/Incentive";
-	import { upcomingIncentives } from "$lib/stores/DonationsStore";
 	import { getGame } from "$lib/stores/GameStore";
 	import Pill from "./Pill.svelte";
 	import { onMount } from "svelte";
 
   export let title = "Tuleva kannustin:";
   export let delay = 5000;
-  export let incentives: Incentive[] = $upcomingIncentives.slice(0, 5);
-
+  export let incentives: Incentive[] = [];
   let current = 0;
   $: incentive = incentives[current];
 
@@ -24,9 +22,13 @@
 
 
 {#key incentive}
-<span class="incentive">{title} {getGame(incentive?.game_id)?.game ?? ''} - {incentive?.title}</span>
+  <span class="incentive">{title} {getGame(incentive?.game_id)?.game ?? ''} - {incentive?.title}</span>
 {#each incentive?.status ?? [] as status}
-<Pill>{status.option}: {status.amount}€</Pill>
+  {#if status.type === 'milestone'}
+  <Pill>{incentive?.total_amount} / {status.milestone_goal}€</Pill>
+  {:else}
+  <Pill>{status.option}: {status.amount}€</Pill>
+  {/if}
 {/each}
 {/key}
 
