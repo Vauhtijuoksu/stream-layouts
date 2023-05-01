@@ -81,10 +81,6 @@
 	.amount {
 		font-size: var(--font-size-md);
 	}
-	.game {
-		font-size: var(--font-size-sm);
-		align-self: flex-start;
-	}
 
 	.option,
 	.milestone {
