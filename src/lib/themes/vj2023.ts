@@ -1,7 +1,8 @@
 import type { LayoutTheme } from "$lib/models/LayoutConf";
+import type { Breakpoint } from "$lib/utils/theme";
+import { ThemeInterpolator } from "./ThemeInterpolator";
 
-export const vj2023: LayoutTheme =
-{
+const vj2023base: LayoutTheme = {
   name: 'vj2023',
   sponsors: [
     {name: 'Bittium', img_url: '/sponsors/Bittium.png'},
@@ -75,3 +76,57 @@ export const vj2023: LayoutTheme =
     --heart-rate-font-color: #ffffff;
   `
 }
+
+const vj2023light: LayoutTheme = {
+  name: 'vj2023light',
+  style: `
+  `
+}
+
+const vj2023dark: LayoutTheme = {
+  name: 'vj2023dark',
+  style: `
+    --background-color: #8989ab;
+  `
+}
+
+const breakpoints: Breakpoint<LayoutTheme>[] = [
+  {
+    key: 0,
+    value: vj2023dark,
+  },
+  {
+    key: 7,
+    value: vj2023dark,
+  },
+  {
+    key: 9,
+    value: vj2023light,
+  },
+  {
+    key: 20,
+    value: vj2023light,
+  },
+  {
+    key: 22,
+    value: vj2023dark,
+  }
+];
+
+const keyGenSeconds = () => {
+  const d = new Date();
+  return d.getSeconds() % 24;
+}
+
+const keyGenHours = () => {
+  const d = new Date();
+  return d.getHours();
+}
+
+export const vj2023 = new ThemeInterpolator(
+  'vj2023',
+  vj2023base,
+  breakpoints,
+  keyGenSeconds,
+  // keyGenHours,
+);

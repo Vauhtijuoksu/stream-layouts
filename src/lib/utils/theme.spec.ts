@@ -1,4 +1,4 @@
-import { interpolate } from "./theme";
+import { hexToRgba, interpolate, rgbaToHex } from "./theme";
 
 test('interpolate with single breakpoint', () => {
     const breakpoints = [
@@ -55,4 +55,19 @@ describe('interpolate varying values', () => {
             expect(interpolate(key, breakpoints)).toBe(expected);
         }
     )
-})
+});
+
+
+describe('test rgba-hex conversions', () => {
+    const testPairs: [string, [number, number, number, number]][] = [
+        ['#00000000', [0, 0, 0, 0]],
+        ['#ffffffff', [255, 255, 255, 1]],
+    ]
+    test.each(testPairs)(
+        'should convert %p to %p and back',
+        (hex, rgba) => {
+            expect(rgbaToHex(rgba)).toBe(hex);
+            expect(hexToRgba(hex)).toBe(rgba);
+        }
+    )
+});

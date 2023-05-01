@@ -7,11 +7,20 @@
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
 	import Heartrate from './components/Heartrate.svelte';
 	import { fixedPlayerNames, hideGameData } from './stores/ConfStore';
+	import { onMount } from 'svelte';
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
 
 	let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
+
+	onMount(async () => {
+		const interval = setInterval(() => {
+			theme = $themestore;
+		}, 1000)
+
+		return async () => clearInterval(1000);
+	});
 
 	$: if (browser && theme?.fonts) {
 		theme.fonts.forEach(async (font) => {
@@ -33,9 +42,12 @@
 			<slot name="foreground" />
 		</StreamData>
 	</div>
-	<div class="controls" style="top: {layout.height}px;">
+	<div class="controls" style="top: {layout.height}px; left: 0; right: 0;">
 		<div style="height: 65px;">
 			<Heartrate />
+		</div>
+		<div>
+			Current theme: {theme.name}
 		</div>
 		<div>
 			<label>
@@ -69,6 +81,13 @@
 
 	.controls {
 		position: absolute;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.controls > * {
+		padding-top: 5px;
+		white-space: nowrap;
 	}
 
 	.layout {
