@@ -10,6 +10,7 @@
     export let showIcon = true;
     export let showWhen: "always" | "stopped" = "always";
     export let timer: Timer | undefined = undefined;
+    export let cls = '';
 
     $: if (name === '1' || name === '2') {
         timer = $metadata?.timers?.find(timer => timer.name === name);
@@ -75,7 +76,7 @@
         <img src="{icon}" alt="timer" />
     </div>
     {/if}
-    <div class="time">
+    <div class="time {cls}" class:stopped>
         <div class="numbers">
             <div class="digit tenhour">{hours[0]}</div>
             <div class="digit">{hours[1]}</div>
@@ -118,6 +119,15 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
+    }
+
+    .screentimer {
+        font-size: var(--screen-timer-font-size, var(--font-size-md));
+        color: var(--screen-timer-color, #888);
+    }
+
+    .stopped {
+        color: var(--stopper-timer-color, #345);
     }
 
     .estimate {

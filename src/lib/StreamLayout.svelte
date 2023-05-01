@@ -6,6 +6,7 @@
 	import StreamData from './StreamData.svelte';
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
 	import Heartrate from './components/Heartrate.svelte';
+	import { fixedPlayerNames } from './stores/ConfStore';
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
@@ -33,7 +34,15 @@
 		</StreamData>
 	</div>
 	<div class="controls" style="top: {layout.height}px;">
-		<Heartrate />
+		<div style="height: 65px;">
+			<Heartrate />
+		</div>
+		<div>
+			<label>
+				<input type="checkbox" bind:checked={$fixedPlayerNames}>
+				Fixed player names
+			</label>
+		</div>
 	</div>
 </div>
 

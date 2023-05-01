@@ -9,7 +9,7 @@ function sixteen_nine_leftcol_contents(
   return [
     left_col_wrapper(
       [
-        wrap({ component: 'logo' }, 'div', { style: 'padding: 10px' }),
+        wrap({ component: 'logo', params: {logo: 'sixteennine'} }, 'div', { style: 'padding: 10px' }),
         wrap(sponsors_field(sponsors), 'div', { style: 'flex-grow: 1' }),
       ]
     ),
@@ -94,7 +94,7 @@ export function sixteen_nine_divided({
   layout.contents.leftCol.contents = [
     left_col_wrapper(
       [
-        wrap({ component: 'logo' }, 'div', { style: 'padding: 10px;' }),
+        wrap({ component: 'logo' }, 'div', { style: 'padding: 10px;', logo: 'sixteennine'}),
         sponsors_field(sponsors),
       ]
     )
@@ -212,6 +212,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
         showWhen: 'stopped',
         showIcon: false,
         showEstimate: false,
+        cls: 'screentimer',
       }
     },
     'div',
@@ -232,6 +233,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
         showWhen: 'stopped',
         showIcon: false,
         showEstimate: false,
+        cls: 'screentimer',
       }
     },
     'div',

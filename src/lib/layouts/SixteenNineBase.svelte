@@ -8,10 +8,16 @@
 	import GameData from '$lib/components/GameData.svelte';
 	import GameTimer from '$lib/components/GameTimer.svelte';
 	import Logo from '$lib/components/Logo.svelte';
+	import PlayerName from '$lib/components/PlayerName.svelte';
+	import PlayerNameWrapper from '$lib/components/PlayerNameWrapper.svelte';
+	import PositioningGrid from '$lib/components/PositioningGrid.svelte';
 	import Sponsors from '$lib/components/Sponsors.svelte';
 	import type { LayoutBackground, LayoutConf, LayoutHole } from '$lib/models/LayoutConf';
+	import { fixedPlayerNames } from '$lib/stores/ConfStore';
 	import { themestore } from '$lib/stores/ThemeStore';
 	import { camera_hole, game_dimensions, game_holes } from './utils';
+	import { currentPlayers } from '$lib/stores/GameStore';
+	import GridItem from '$lib/components/GridItem.svelte';
 
 	export let width = 1920;
 	export let height = 1080;
@@ -24,7 +30,7 @@
 	export let cameraHeight = undefined;
 	export let divisions = 1;
 
-	const { leftCol, bottomBar, donationBar, camera, game } = game_dimensions(
+	export const { leftCol, bottomBar, donationBar, camera, game } = game_dimensions(
 		width,
 		height,
 		gameWidth,
@@ -60,7 +66,11 @@
 				<Sponsors />
 				<Counters />
 			</div>
-			<slot name="leftColBottom" />
+			{#if $fixedPlayerNames}
+			<PlayerNameWrapper>
+					<PlayerName index={0} />
+			</PlayerNameWrapper>
+			{/if}
 		</AbsDiv>
 		<AbsDiv name="bottomBar" cls="row" {...bottomBar}>
 			<div id="bottomBarWrapper" class="row">
@@ -72,6 +82,16 @@
 			<DonationBar />
 		</div>
 		<Frame {...camera} />
+
+		{#if !$fixedPlayerNames}
+			<PositioningGrid left={leftCol.width} bottom={donationBarHeight+bottomBar.height}>
+			{#each $currentPlayers as player, i}
+				<GridItem {i}>
+					{player.display_name}
+				</GridItem>
+				{/each}
+			</PositioningGrid>
+		{/if}
     <slot />
 	</svelte:fragment>
 </StreamLayout>

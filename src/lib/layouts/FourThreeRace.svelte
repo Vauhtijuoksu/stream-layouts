@@ -5,9 +5,12 @@
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
+	import GridItem from "$lib/components/GridItem.svelte";
+	import PositioningGrid from "$lib/components/PositioningGrid.svelte";
 	import RaceTimer from "$lib/components/RaceTimer.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
+	import { currentPlayers } from "$lib/stores/GameStore";
 	import { themestore } from "$lib/stores/ThemeStore";
 
   const width = 1920;
@@ -78,11 +81,11 @@
 <StreamLayout {layout}>
   <svelte:fragment slot="foreground">
     <div class="clock1" style="position: absolute; bottom: {bottomBarHeight + donationBarHeight}px; left: 0;">
-      <GameTimer name="1" showWhen="stopped" showEstimate={false} showIcon={false}/>
+      <GameTimer name="1" cls="screentimer" showWhen="stopped" showEstimate={false} showIcon={false}/>
     </div>
 
     <div class="clock2" style="position: absolute; bottom: {bottomBarHeight + donationBarHeight}px; right: 0;">
-      <GameTimer name="2" showWhen="stopped" showEstimate={false} showIcon={false}/>
+      <GameTimer name="2" cls="screentimer" showWhen="stopped" showEstimate={false} showIcon={false}/>
     </div>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
       <div class="row">
@@ -106,6 +109,14 @@
       <Sponsors />
     </div>
   </AbsDiv>
+
+  <PositioningGrid top={0} left={0} right={0} bottom={donationBarHeight+bottomBarHeight}>
+    {#each $currentPlayers as player, i}
+    <GridItem {i}>
+      {player.display_name}
+    </GridItem>
+    {/each}
+  </PositioningGrid>
   
   <div id="donationbar">
     <DonationBar />
