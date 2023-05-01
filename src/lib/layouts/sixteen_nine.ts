@@ -13,7 +13,7 @@ function sixteen_nine_leftcol_contents(
         wrap(sponsors_field(sponsors), 'div', { style: 'flex-grow: 1' }),
       ]
     ),
-    wrap(player(0), 'div',
+    wrap(player(-1), 'div',
       {
         style: `
           margin-left: ${-borderRadius}px;

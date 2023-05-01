@@ -69,7 +69,7 @@
 			</div>
 			{#if $fixedPlayerNames}
 			<PlayerNameWrapper>
-					<PlayerName index={0} />
+					<PlayerName />
 			</PlayerNameWrapper>
 			{/if}
 		</AbsDiv>
