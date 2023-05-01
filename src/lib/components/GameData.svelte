@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { currentGame } from "$lib/stores/GameStore";
+    import { hideGameData } from "$lib/stores/ConfStore";
+import { currentGame } from "$lib/stores/GameStore";
     $: img_filename = $currentGame?.img_filename;
     $: game = $currentGame?.game;
     $: category = $currentGame?.category;
@@ -8,6 +9,13 @@
     $: published = $currentGame?.published;
 </script>
 
+{#if $hideGameData}
+<div class="hidegame">
+    <div class="console icon">
+        <img src="/consoles/default.png" alt="mystery" />
+    </div>
+</div>
+{:else}
 <div class="gamedata">
     <div class="game icon">
         <img src="/gameicons/{img_filename}"  alt="{img_filename}"/>
@@ -35,10 +43,17 @@
         </div>
     </div>
 </div>
+{/if}
+
 
 <style>
-    .gamedata, .consoledata {
+    .hidegame {
         flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .gamedata, .consoledata {
         display: flex;
         flex-direction: row;
         justify-content: center;

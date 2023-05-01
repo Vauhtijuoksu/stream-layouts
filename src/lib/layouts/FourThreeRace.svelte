@@ -6,10 +6,12 @@
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
 	import GridItem from "$lib/components/GridItem.svelte";
+	import PlayerNamesGrid from "$lib/components/PlayerNamesGrid.svelte";
 	import PositioningGrid from "$lib/components/PositioningGrid.svelte";
 	import RaceTimer from "$lib/components/RaceTimer.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
+	import { fixedPlayerNames } from "$lib/stores/ConfStore";
 	import { currentPlayers } from "$lib/stores/GameStore";
 	import { themestore } from "$lib/stores/ThemeStore";
 
@@ -110,14 +112,8 @@
     </div>
   </AbsDiv>
 
-  <PositioningGrid top={0} left={0} right={0} bottom={donationBarHeight+bottomBarHeight}>
-    {#each $currentPlayers as player, i}
-    <GridItem {i}>
-      {player.display_name}
-    </GridItem>
-    {/each}
-  </PositioningGrid>
-  
+  <PlayerNamesGrid top={0} left={0} right={0} bottom={donationBarHeight+bottomBarHeight} />
+
   <div id="donationbar">
     <DonationBar />
   </div>

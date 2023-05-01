@@ -18,6 +18,7 @@
 	import { camera_hole, game_dimensions, game_holes } from './utils';
 	import { currentPlayers } from '$lib/stores/GameStore';
 	import GridItem from '$lib/components/GridItem.svelte';
+	import PlayerNamesGrid from '$lib/components/PlayerNamesGrid.svelte';
 
 	export let width = 1920;
 	export let height = 1080;
@@ -84,13 +85,7 @@
 		<Frame {...camera} />
 
 		{#if !$fixedPlayerNames}
-			<PositioningGrid left={leftCol.width} bottom={donationBarHeight+bottomBar.height}>
-			{#each $currentPlayers as player, i}
-				<GridItem {i}>
-					{player.display_name}
-				</GridItem>
-				{/each}
-			</PositioningGrid>
+			<PlayerNamesGrid left={leftCol.width} bottom={donationBarHeight+bottomBar.height} />
 		{/if}
     <slot />
 	</svelte:fragment>

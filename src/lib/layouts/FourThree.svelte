@@ -8,8 +8,10 @@
 	import Logo from "$lib/components/Logo.svelte";
 	import PlayerName from "$lib/components/PlayerName.svelte";
 	import PlayerNameWrapper from "$lib/components/PlayerNameWrapper.svelte";
+	import PlayerNamesGrid from "$lib/components/PlayerNamesGrid.svelte";
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
+	import { fixedPlayerNames } from "$lib/stores/ConfStore";
   import { themestore } from "$lib/stores/ThemeStore";
 	import { game_dimensions, game_layout_fields } from "./utils";
 
@@ -82,10 +84,15 @@
           <GameTimer />
         </div>
       </div>
+      {#if $fixedPlayerNames}
       <PlayerNameWrapper>
         <PlayerName />
       </PlayerNameWrapper>
+      {/if}
     </AbsDiv>
+    {#if !$fixedPlayerNames}
+    <PlayerNamesGrid left={leftCol.width} bottom={donationBarHeight} />
+    {/if}
     <div id="donationbar">
       <DonationBar />
     </div>

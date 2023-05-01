@@ -6,7 +6,7 @@
 	import StreamData from './StreamData.svelte';
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
 	import Heartrate from './components/Heartrate.svelte';
-	import { fixedPlayerNames } from './stores/ConfStore';
+	import { fixedPlayerNames, hideGameData } from './stores/ConfStore';
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
@@ -41,6 +41,12 @@
 			<label>
 				<input type="checkbox" bind:checked={$fixedPlayerNames}>
 				Fixed player names
+			</label>
+		</div>
+		<div>
+			<label>
+				<input type="checkbox" bind:checked={$hideGameData}>
+				Hide game data
 			</label>
 		</div>
 	</div>
