@@ -4,6 +4,7 @@
 	import Counters from "$lib/components/Counters.svelte";
 	import DonationBar from "$lib/components/DonationBar.svelte";
 	import GameData from "$lib/components/GameData.svelte";
+	import GameIcon from "$lib/components/GameIcon.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
 	import Logo from "$lib/components/Logo.svelte";
 	import PlayerName from "$lib/components/PlayerName.svelte";
@@ -12,6 +13,7 @@
 	import Sponsors from "$lib/components/Sponsors.svelte";
 	import type { LayoutBackground, LayoutConf } from "$lib/models/LayoutConf";
 	import { fixedPlayerNames } from "$lib/stores/ConfStore";
+	import { currentGame } from "$lib/stores/GameStore";
   import { themestore } from "$lib/stores/ThemeStore";
 	import { game_dimensions, game_layout_fields } from "./utils";
 
@@ -75,9 +77,16 @@
     <AbsDiv name="leftCol" cls="col" {...leftCol}>
       <div id="leftColWrapper" class="col">
         <Logo logo="fourthree" />
-        <Sponsors />
+        <div class="row" style="flex-grow: 1;">
+          <div style="align-self: flex-end;">
+            <GameIcon img_filename={$currentGame?.img_filename} />
+          </div>
+          <div class="col" style="flex-grow: 1">
+            <Sponsors />
+          </div>
+        </div>
         <div class="row">
-          <GameData />
+          <GameData showGameIcon={false} />
         </div>
         <div class="row">
           <Counters />

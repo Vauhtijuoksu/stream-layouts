@@ -1,6 +1,9 @@
 <script lang="ts">
     import { hideGameData } from "$lib/stores/ConfStore";
-import { currentGame } from "$lib/stores/GameStore";
+    import { currentGame } from "$lib/stores/GameStore";
+	import GameIcon from "./GameIcon.svelte";
+    export let showGameIcon = true;
+
     $: img_filename = $currentGame?.img_filename;
     $: game = $currentGame?.game;
     $: category = $currentGame?.category;
@@ -17,9 +20,9 @@ import { currentGame } from "$lib/stores/GameStore";
 </div>
 {:else}
 <div class="gamedata">
-    <div class="game icon">
-        <img src="/gameicons/{img_filename}"  alt="{img_filename}"/>
-    </div>
+    {#if showGameIcon}
+    <GameIcon {img_filename} />
+    {/if}
     <div class="gameinfo">
         <div class="gametitle">
             {game}
@@ -58,9 +61,6 @@ import { currentGame } from "$lib/stores/GameStore";
         flex-direction: row;
         justify-content: center;
         align-items: center;
-    }
-    .game.icon > img {
-        max-height: 180px;
     }
 
     .console.icon > img {
