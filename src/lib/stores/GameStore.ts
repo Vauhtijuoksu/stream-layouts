@@ -1,4 +1,4 @@
-import { writable, derived, type Writable } from 'svelte/store';
+import { writable, derived, type Writable, get } from 'svelte/store';
 import type { GameInfo } from '../models/GameInfo';
 import type { PlayerInfo } from '$lib/models/PlayerInfo';
 import type { StreamMetadata } from '$lib/models/StreamMetadata';
@@ -26,3 +26,11 @@ export const currentPlayers = derived(
         return players;
     }
 )
+
+export function getGame(game_id?: string): GameInfo | undefined {
+    return get(gamedata).find((g) => g.id === game_id);
+}
+
+export function getPlayer(player_id: string): PlayerInfo | undefined {
+    return get(playerdata).find((p) => p.id === player_id);
+}

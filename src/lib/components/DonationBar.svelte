@@ -8,10 +8,11 @@
 	import { onMount } from 'svelte';
 	import DonationPills from './DonationPills.svelte';
 	import Motd from './Motd.svelte';
+	import IncentiveBar from './IncentiveBar.svelte';
 
 	const displays = ['donationbar', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
-	$: display = displays[i];
+	$: display = 'incentives'; //displays[i];
 	let delay = 10000;
 
 	$: fillWidth = `${Math.min(1, $donationSumAnimated / $metadata?.donation_goal) * 100}%`;
@@ -41,12 +42,7 @@
 			</div>
 		{:else if display === 'incentives'}
 			<div class="incentives">
-				<Marquee speed={5}>
-					<span>Kannustimet:</span>
-					{#each $upcomingIncentives.slice(0, 10) as incentive}
-						<Pill>{incentive.title}: {incentive.total_amount}€</Pill>
-					{/each}
-				</Marquee>
+				<IncentiveBar />
 			</div>
 		{:else if display === 'motd'}
 			<div class="motd">
@@ -74,14 +70,20 @@
 	}
 
 	.incentives, .motd {
+		padding-left: var(--border-radius);
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		text-align: left;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 
 	.fill-container {
+		position: relative;
 		flex-grow: 1;
 		height: 100%;
 		z-index: 5;
