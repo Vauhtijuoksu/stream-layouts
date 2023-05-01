@@ -22,7 +22,7 @@ export function four_three({
       wrap(sponsors_field(sponsors), 'div', {style: 'height: 200px;'}),
       wrap(gamedata(), 'div', {class: 'row'}),
       wrap({component: 'counter'}, 'div', {class: 'row', style: 'justify-content: space-evenly;'}),
-      timer(0),
+      timer('1'),
     ]),
     wrap(
       player(0), 
@@ -63,12 +63,12 @@ export function four_three_race({borderRadius=0, borderWidth=0, sponsors}: Layou
   const bottomRight = abs_field('bottomRight', 'div', 'col', bottomSideWidth+cameraWidth, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
   
   bottomLeft.contents = [
-    timer(0),
+    timer('1'),
     wrap(gamedata(), 'div', {class: 'row'}),
   ];
 
   bottomRight.contents = [
-    timer(1),
+    timer('1'),
     wrap(sponsors_field(sponsors), 'div', {class: 'col'})
   ]
   

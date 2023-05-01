@@ -64,7 +64,7 @@
 		</AbsDiv>
 		<AbsDiv name="bottomBar" cls="row" {...bottomBar}>
 			<div id="bottomBarWrapper" class="row">
-				<GameTimer index={0} />
+				<GameTimer name={'1'} />
 				<GameData />
 			</div>
 		</AbsDiv>

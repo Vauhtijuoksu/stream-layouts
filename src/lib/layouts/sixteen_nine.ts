@@ -182,12 +182,12 @@ export function sixteen_nine_race({borderRadius=0, borderWidth=0, sponsors=[]}: 
   ]
 
   bottomLeft.contents = [
-    timer(0),
+    timer('1'),
     wrap(gamedata(), 'div', {class: 'row'}),
   ]
 
   bottomRight.contents = [
-    timer(1),
+    timer('2'),
     wrap(sponsors_field(sponsors), 'div', {class: 'col'}),
   ]
 

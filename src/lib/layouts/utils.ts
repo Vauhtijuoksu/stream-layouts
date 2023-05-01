@@ -55,11 +55,11 @@ export function player(index = 0): LayoutField {
   };
 }
 
-export function timer(index = 0): LayoutField {
+export function timer(name = '1'): LayoutField {
   return {
     component: 'timer',
     params: {
-      index,
+      name,
     },
   };
 }
