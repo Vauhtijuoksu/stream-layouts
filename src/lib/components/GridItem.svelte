@@ -24,10 +24,14 @@
     i = (i+1) % positions.length;
     position = positions[i];
   }
+  function cycleBack() {
+    i = (i-1) % positions.length;
+    position = positions[i];
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="item {position}" on:click={cycle}>
+<div class="item {position}" on:click={cycle} on:contextmenu|preventDefault={cycleBack}>
   <slot />
 </div>
 

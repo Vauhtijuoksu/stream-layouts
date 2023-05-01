@@ -24,12 +24,13 @@
   const bottomBarHeight = height - gameHeight - donationBarHeight;
   const cameraHeight = bottomBarHeight;
   const cameraWidth = 480;
+  const smallCameraWidth = 360;
   const bottomSideWidth = (width - cameraWidth) / 2;
   const bottomBarY = gameHeight;
   const cameraX = bottomSideWidth;
   const cameraY = gameHeight;
-  const bottomCenterWidth = width - 2*cameraWidth;
-  const bottomCenterX = cameraWidth;
+  const bottomCenterWidth = width - 2*smallCameraWidth;
+  const bottomCenterX = smallCameraWidth;
 
   const bottomLeft = {x: 0, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'};
   const bottomRight = {x: bottomSideWidth+cameraWidth, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'};
@@ -97,7 +98,7 @@
         layout: {
           x: -borderRadius,
           y: cameraY,
-          width: cameraWidth + borderRadius - borderWidth,
+          width: smallCameraWidth + borderRadius - borderWidth,
           height: cameraHeight,
         }
       },
@@ -105,9 +106,9 @@
       {
         name: 'camera2',
         layout: {
-          x: cameraWidth + bottomCenterWidth + borderWidth,
+          x: smallCameraWidth + bottomCenterWidth + borderWidth,
           y: cameraY,
-          width: cameraWidth + borderRadius,
+          width: smallCameraWidth + borderRadius,
           height: cameraHeight,
         }
       }
@@ -169,8 +170,10 @@
       <GameTimer />
       <Counters />
     </div>
-    <GameData />
-    <div class="col">
+    <div class="col midgamedata">
+      <GameData />
+    </div>
+    <div class="col sponsors">
       <Sponsors />
     </div>
   </AbsDiv>
@@ -213,6 +216,9 @@
   }
   .row.counters {
     align-items: flex-start;
+  }
+  .midgamedata {
+    flex-shrink: 1;
   }
   .sponsors {
     flex-grow: 1;
