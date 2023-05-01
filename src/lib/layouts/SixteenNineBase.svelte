@@ -103,7 +103,7 @@
 	}
 	#bottomBarWrapper {
 		width: calc(100% + var(--border-width));
-		background: var(--background);
+		background: var(--background-2);
 		border: var(--border);
 		border-right: none;
 		border-top-left-radius: var(--border-radius);

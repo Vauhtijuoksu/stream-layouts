@@ -1,7 +1,6 @@
 import type { LayoutConf, LayoutTheme } from "$lib/models/LayoutConf";
 import type { ComponentType } from "svelte";
-import { four_three, four_three_race } from "./four_three";
-import { sixteen_nine, sixteen_nine_bigcam, sixteen_nine_divided, sixteen_nine_race } from "./sixteen_nine";
+import { sixteen_nine_bigcam, sixteen_nine_race } from "./sixteen_nine";
 
 import FourThree from './FourThree.svelte';
 import FourThreeRace from './FourThreeRace.svelte';

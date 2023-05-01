@@ -35,7 +35,9 @@ const vj2023base: LayoutTheme = {
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background-color: #ebebeb;
+    --background-color-2: #acacac;
     --background: var(--background-color) url('/images/vj2023bg.png') repeat fixed top left;
+    --background-2: var(--background-color-2) url('/images/vj2023bg.png') repeat fixed top left;
     --background-secondary: #94dfe7 url('/images/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
@@ -87,6 +89,7 @@ const vj2023dark: LayoutTheme = {
   name: 'vj2023dark',
   style: `
     --background-color: #8989ab;
+    --background-color-2: #a189ab;
   `
 }
 

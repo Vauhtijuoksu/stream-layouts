@@ -132,7 +132,7 @@ export function bottom_bar({ x, y, width, height }: LayoutDimension): LayoutFiel
     width,
     height,
     `
-    background: var(--background);
+    background: var(--background-2);
     border-top: var(--border-style) var(--border-color) var(--border-width);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
