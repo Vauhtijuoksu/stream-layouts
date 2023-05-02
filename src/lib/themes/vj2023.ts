@@ -150,7 +150,7 @@ const breakpoints: Breakpoint<LayoutTheme>[] = [
     value: vj2023dark,
   },
   {
-    key: 9,
+    key: 8,
     value: vj2023light,
   },
   {
