@@ -14,7 +14,7 @@
 	export let displays = ['donations', 'incentives', 'upcoming', 'motd'];
 	let i = 0;
 	let display = displays[i];
-	let delay = 10000;
+	let delay = 20000;
 
 	let forcedDisplay = false;
 	let forcedDisplayTimeout = -1;
