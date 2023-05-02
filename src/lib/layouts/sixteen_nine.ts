@@ -10,7 +10,7 @@ function sixteen_nine_leftcol_contents(
     left_col_wrapper(
       [
         wrap({ component: 'logo', params: {logo: 'sixteennine'} }, 'div', { style: 'padding: 10px' }),
-        wrap(sponsors_field(sponsors), 'div', { style: 'flex-grow: 1' }),
+        wrap(sponsors_field(sponsors), 'div', { class: 'col', style: 'flex-grow: 1' }),
       ]
     ),
     wrap(player(-1), 'div',

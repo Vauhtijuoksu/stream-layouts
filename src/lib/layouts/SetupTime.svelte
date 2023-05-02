@@ -65,7 +65,7 @@
         <Incentives />
       </div>
     </AbsDiv>
-    <AbsDiv name="bottomRight" cls="col" {...bottomRight}>
+    <AbsDiv name="bottomRight" cls="col" style="overflow: visible;" {...bottomRight}>
       <Sponsors />
     </AbsDiv>
     <AbsDiv

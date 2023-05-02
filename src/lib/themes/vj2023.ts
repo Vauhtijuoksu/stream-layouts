@@ -5,7 +5,7 @@ import { ThemeInterpolator } from "./ThemeInterpolator";
 const vj2023base: LayoutTheme = {
   name: 'vj2023',
   sponsors: [
-    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-blue.jpg'},
+    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-blue.png'},
     {name: 'Buutti', img_url: '/sponsors/2023/Buutti-dark.png'},
     {name: 'Codemate', img_url: '/sponsors/2023/Codemate-black.png'},
     {name: 'Digious', img_url: '/sponsors/2023/Digious-black.png'},

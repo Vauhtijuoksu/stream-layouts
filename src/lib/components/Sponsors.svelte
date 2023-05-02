@@ -44,6 +44,8 @@
   .sponsors {
     position: relative;
     flex-grow: 1;
+    padding: 10px;
+    overflow: visible;
   }
 
   .sponsor {
