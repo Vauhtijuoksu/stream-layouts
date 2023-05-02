@@ -111,6 +111,22 @@ const vj2023light: LayoutTheme = {
 
 const vj2023dark: LayoutTheme = {
   name: 'vj2023dark',
+  sponsors: [
+    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-white.png'},
+    {name: 'Buutti', img_url: '/sponsors/2023/Buutti-white.png'},
+    {name: 'Codemate', img_url: '/sponsors/2023/Codemate-white.png'},
+    {name: 'Digious', img_url: '/sponsors/2023/Digious-white.png'},
+    {name: 'Fingersoft', img_url: '/sponsors/2023/Fingersoft-white.png'},
+    {name: 'Jimms', img_url: '/sponsors/2023/Jimms-white.png'},
+    {name: 'Mallaskellari', img_url: '/sponsors/2023/Make-white.png'},
+    {name: 'Pullapirtti', img_url: '/sponsors/2023/Pullapirtti-red.png'},
+    {name: 'RattoRadio', img_url: '/sponsors/2023/RR-white.png'},
+    {name: 'Saagasi', img_url: '/sponsors/2023/Saagasi-orange.png'},
+    {name: 'Teekkarilupi', img_url: '/sponsors/2023/Lupi-dark.png'},
+    {name: 'TEK', img_url: '/sponsors/2023/TEK-white.png'},
+    {name: 'Vectorama', img_url: '/sponsors/2023/Vectorama-white.png'},
+    {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE.png'},
+  ],
   style: `
     --background-color: #789daa;
     --background-color-2: #3ea0c5;
