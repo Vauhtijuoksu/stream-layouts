@@ -5,8 +5,20 @@ import { ThemeInterpolator } from "./ThemeInterpolator";
 const vj2023base: LayoutTheme = {
   name: 'vj2023',
   sponsors: [
-    {name: 'Bittium', img_url: '/sponsors/Bittium.png'},
-    {name: 'TEK', img_url: '/sponsors/TEK.png'},
+    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-blue.jpg'},
+    {name: 'Buutti', img_url: '/sponsors/2023/Buutti-dark.png'},
+    {name: 'Codemate', img_url: '/sponsors/2023/Codemate-black.png'},
+    {name: 'Digious', img_url: '/sponsors/2023/Digious-black.png'},
+    {name: 'Fingersoft', img_url: '/sponsors/2023/Fingersoft-black.png'},
+    {name: 'Jimms', img_url: '/sponsors/2023/Jimms-black.png'},
+    {name: 'Mallaskellari', img_url: '/sponsors/2023/Make-black.png'},
+    {name: 'Pullapirtti', img_url: '/sponsors/2023/Pullapirtti-red.png'},
+    {name: 'RattoRadio', img_url: '/sponsors/2023/RR-orange.png'},
+    {name: 'Saagasi', img_url: '/sponsors/2023/Saagasi-orange.png'},
+    {name: 'Teekkarilupi', img_url: '/sponsors/2023/Lupi-dark.png'},
+    {name: 'TEK', img_url: '/sponsors/2023/TEK-black.png'},
+    {name: 'Vectorama', img_url: '/sponsors/2023/Vectorama-black.png'},
+    {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE.png'},
   ],
   fonts: [
     {
