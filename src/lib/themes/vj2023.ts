@@ -149,6 +149,6 @@ export const vj2023 = new ThemeInterpolator(
   'vj2023',
   vj2023base,
   breakpoints,
-  keyGenSeconds,
-  // keyGenHours,
+  // keyGenSeconds, // use this to see theme changes in action
+  keyGenHours,
 );
