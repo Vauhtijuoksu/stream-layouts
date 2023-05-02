@@ -1,14 +1,23 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+
   export let messages: string[] = [];
+  export let delay = 5000;
+
+  let i = 0;
+  $: message = messages[i % messages?.length ?? 0] ?? '';
+
+  onMount(() => {
+    let interval = setInterval(() => {
+      i += 1
+    }, delay);
+    return () => clearInterval(interval);
+  });
 </script>
 
-{#if messages}
-  {#each messages as message}
-    <p class="msg">{message}</p>
-  {/each}
-{:else}
-  <slot />
-{/if}
+{#key message}
+  <p class="msg">{message}</p>
+{/key}
 
 <style>
   p.msg {
