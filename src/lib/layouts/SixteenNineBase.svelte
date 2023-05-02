@@ -99,7 +99,7 @@
 		border-top: none;
 		border-left: none;
 		border-bottom-right-radius: var(--border-radius);
-		margin-bottom: calc(0px - var(--border-width));
+		margin-bottom: 0px;
 	}
 	#bottomBarWrapper {
 		width: calc(100% + var(--border-width));

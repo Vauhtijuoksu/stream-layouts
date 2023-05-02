@@ -9,6 +9,7 @@
 <style>
   .playernameWrapper {
     padding: var(--playername-padding, var(--padding));
+    margin-top: calc(0px - var(--border-width));
     background-color: var(--playername-background);
     border-style: var(--playername-border-style, var(--border-style));
     border-color: var(--playername-border-color, var(--border-color));
