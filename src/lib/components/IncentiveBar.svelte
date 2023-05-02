@@ -34,7 +34,7 @@
 
 <style>
   .incentive {
-    font-size: var(--font-size-md);
+    font-size:  var(--donation-bar-info-font-size);
     margin-right: .75em;
   }
 </style>

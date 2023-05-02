@@ -13,7 +13,7 @@
 <style>
   p.msg {
     color: var(--motd-color);
-		font-size: var(--motd-font-size, var(--font-size-md));
+		font-size: var(--motd-font-size, var(--donation-bar-info-font-size));
     margin: 0;
     white-space: nowrap;
   }

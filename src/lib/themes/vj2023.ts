@@ -34,11 +34,10 @@ const vj2023base: LayoutTheme = {
     --border-width: 3px;
     --border-radius: 20px;
     --border: var(--border-width) var(--border-style) var(--border-color);
-    --background-color: #ebebeb;
-    --background-color-2: #acacac;
+    --background-color: #f1eeea;
+    --background-color-2: #7acfd8;
     --background: var(--background-color) url('/images/vj2023bg.png') repeat fixed top left;
     --background-2: var(--background-color-2) url('/images/vj2023bg.png') repeat fixed top left;
-    --background-secondary: #94dfe7 url('/images/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
     --font-size-md: 24px;
@@ -58,6 +57,7 @@ const vj2023base: LayoutTheme = {
     --donation-bar-current-font-color: var(--font-color);
     --donation-bar-goal-bg: #a5b624;
     --donation-bar-goal-font-color: var(--font-color);
+    --donation-bar-info-font-size: 28px;
     --playername-background: #e6f5d8;
     --playername-font-size: 32px;
     --hole-border-stroke: #080808;
@@ -69,10 +69,10 @@ const vj2023base: LayoutTheme = {
     --stopped-timer-color: #121b2c;
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
-    --pill-background-1: #ffaa88;
-    --pill-font-color-1: #004477;
-    --pill-background-2: #88ffaa;
-    --pill-font-color-2: #770044;
+    --pill-background-1: #fdc5d6;
+    --pill-font-color-1: var(--font-color);
+    --pill-background-2: #ffce8d;
+    --pill-font-color-2: #var(--font-color);
     --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
     --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
     --heart-rate-font-color: #ffffff;
@@ -100,8 +100,15 @@ const vj2023light: LayoutTheme = {
 const vj2023dark: LayoutTheme = {
   name: 'vj2023dark',
   style: `
-    --background-color: #8989ab;
-    --background-color-2: #a189ab;
+    --background-color: #789daa;
+    --background-color-2: #3ea0c5;
+    --playername-background: #c1cdb6;
+    --donation-bar-fill: #00a6c3;
+    --donation-bar-background: #d2d4cf;
+    --donation-bar-current-bg: #a5b624;
+    --donation-bar-goal-bg: #727e15;
+    --pill-background-1: #df5e6d;
+    --pill-background-2: #ef9a2b;
   `
 }
 

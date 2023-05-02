@@ -133,7 +133,7 @@
                 -3px 0px 0 var(--screen-overlay-item-stroke-color),
                 3px 0px 0 var(--screen-overlay-item-stroke-color),
                 0px 3px 0 var(--screen-overlay-item-stroke-color),
-                0px 3px 0 var(--screen-overlay-item-stroke-color);
+                0px -3px 0 var(--screen-overlay-item-stroke-color);
 
     }
 

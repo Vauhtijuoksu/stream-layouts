@@ -8,6 +8,6 @@
 
 <style>
   .game.icon > img {
-    max-height: 180px;
+    max-height: 200px;
   }
 </style>

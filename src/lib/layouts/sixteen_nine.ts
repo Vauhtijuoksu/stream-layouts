@@ -114,7 +114,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
 
   bottomLeft.contents = [
     { component: 'racetimer' },
-    wrap(gamedata(), 'div', { class: 'row' }),
+    wrap(gamedata(), 'div', { class: 'row', style: 'gap: 20px'}),
   ]
 
   bottomRight.contents = [

@@ -44,10 +44,10 @@
     <div class="game">
         {game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}
         -
-        {game.game} - {game.category} - {playerNames(game.players)}
+        {game.game} - {playerNames(game.players)}
     </div>
     {#if i+1 < $upcoming.length}
-    <div class="divider">&#x2747;</div>
+        <img class="divider" src="/images/divider.png" alt="divider" />
     {/if}
     {/each}
 </div>
@@ -74,11 +74,14 @@
 
     .row {
         gap: 10px;
-        align-items: baseline;
+        align-items: center;
     }
 
     .row > .game, .row >.divider {
         white-space: nowrap;
-        font-size: var(--font-size-md);
+        font-size: var(--donation-bar-info-font-size);
+    }
+    .divider {
+        height: 32px;
     }
 </style>

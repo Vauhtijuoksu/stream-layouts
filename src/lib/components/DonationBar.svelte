@@ -92,15 +92,6 @@
 			var(--donation-bar-border-color);
 		border-left: 0;
 		border-right: 0;
-        text-shadow:
-                -2px -2px 0 var(--donation-bar-background),
-                2px -2px 0 var(--donation-bar-background),
-                -2px 2px 0 var(--donation-bar-background),
-                2px 2px 0 var(--donation-bar-background),
-                -2px 0px 0 var(--donation-bar-background),
-                2px 0px 0 var(--donation-bar-background),
-                0px 2px 0 var(--donation-bar-background),
-                0px 2px 0 var(--donation-bar-background);
 	}
 
 	.fill-content {
@@ -115,6 +106,15 @@
 		flex-direction: row;
 		align-items: center;
 		overflow: hidden;
+        text-shadow:
+                -2px -2px 0 var(--donation-bar-background),
+                2px -2px 0 var(--donation-bar-background),
+                -2px 2px 0 var(--donation-bar-background),
+                2px 2px 0 var(--donation-bar-background),
+                -2px 0px 0 var(--donation-bar-background),
+                2px 0px 0 var(--donation-bar-background),
+                0px 2px 0 var(--donation-bar-background),
+                0px -2px 0 var(--donation-bar-background);
 	}
 
 	.fill-container {
