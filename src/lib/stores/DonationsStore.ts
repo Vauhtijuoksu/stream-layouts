@@ -21,10 +21,7 @@ export const upcomingIncentives = derived(
   $incentives => {
     const now = new Date();
     return $incentives
-      .filter((incentive) => incentive.end_time === undefined || incentive.end_time > now)
-      .sort((inc1, inc2) => {
-        inc1.end_time > inc2.end_time
-      });
+      .filter((incentive) => incentive.end_time === undefined || incentive.end_time > now);
   }
 );
 

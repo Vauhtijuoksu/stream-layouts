@@ -39,6 +39,7 @@
                 <div class="title">{game.game}</div>
                 <div class="time">{game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}</div>
             </div>
+            <div class="category">{game.category}</div>
             <div class="players">
                 {playerNames(game.players)}
             </div>
@@ -75,7 +76,7 @@
     }
     .gamerow .icon {
         display: flex;
-        width: 140px;
+        width: 160px;
         margin: -10px -10px -30px -10px;
     }
     .gamerow .icon > img {
@@ -90,7 +91,10 @@
         justify-content: space-between;
         font-size: var(--font-size-lg);
     }
-
+    .gamerow .category {
+        text-align: start;
+        font-size: var(--font-size-sm);
+    }
     .gamerow .players {
         font-size: var(--font-size-md);
         align-self: flex-start;
