@@ -11,7 +11,7 @@
 	import IncentiveBar from './IncentiveBar.svelte';
 	import Upcoming from './Upcoming.svelte';
 
-	export let displays = ['donations', 'incentives', 'upcoming', 'motd'];
+	export let displays = ['incentives', 'upcoming', 'motd'];
 	let i = 0;
 	let display = displays[i];
 	let delay = 20000;
@@ -41,7 +41,7 @@
 		
 		let unsub = latestDonations.subscribe((ds) => {
 			donations = ds;
-			display = 'upcoming';
+			display = 'donations';
 			forcedDisplay = true;
 			if (forcedDisplayTimeout) {
 				clearTimeout(forcedDisplayTimeout);
