@@ -10,6 +10,7 @@
 	import Motd from './Motd.svelte';
 	import IncentiveBar from './IncentiveBar.svelte';
 	import Upcoming from './Upcoming.svelte';
+	import type { Donation } from '$lib/models/Donation';
 
 	export let displays = ['incentives', 'upcoming', 'motd'];
 	let i = 0;
