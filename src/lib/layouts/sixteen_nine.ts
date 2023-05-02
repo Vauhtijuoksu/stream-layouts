@@ -95,7 +95,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
   topBar.contents = [
     wrap(
       [
-        wrap(player(0), 'div', { style: `margin-bottom: ${-borderWidth}px;` }),
+        wrap(player(0), 'div', { style: `margin-bottom: ${-borderWidth}px; margin-top: ${borderWidth}px;` }),
         { component: 'counter', params: { index: 0 } },
         { component: 'counter', params: { index: 2 } },
       ],
@@ -106,7 +106,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
       [
         { component: 'counter', params: { index: 3 } },
         { component: 'counter', params: { index: 1 } },
-        wrap(player(1, 'right'), 'div', { style: `margin-bottom: ${-borderWidth}px;` }),
+        wrap(player(1, 'right'), 'div', { style: `margin-bottom: ${-borderWidth}px; margin-top: ${borderWidth}px;` }),
       ],
       'div', { class: 'row', style: 'align-items: flex-end;' }
     )
