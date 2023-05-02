@@ -4,6 +4,7 @@ import { sixteen_nine_bigcam, sixteen_nine_race } from "./sixteen_nine";
 
 import FourThree from './FourThree.svelte';
 import FourThreeRace from './FourThreeRace.svelte';
+import JustNowPlaying from './JustNowPlaying.svelte';
 import Poehina from './Poehina.svelte';
 import TuplaPoehina from './TuplaPoehina.svelte';
 import SetupTime from './SetupTime.svelte';
@@ -20,6 +21,7 @@ export const layouts: {[key: string]: LayoutGenerator} = {
 export const components: {[key: string]: ComponentType} = {
   FourThree,
   FourThreeRace,
+  JustNowPlaying,
   Poehina,
   TuplaPoehina,
   SetupTime,
