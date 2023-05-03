@@ -44,7 +44,7 @@
 	</div>
 </div>
 
-<div class="controls" style="top: {layout.height}px; left: 0;">
+<div class="controls" style="top: {layout.height}px; left: 0; width: {layout.width}px;">
 	<div class="col">
 		<div style="height: 65px; width: 300px;">
 			<Heartrate />
