@@ -97,7 +97,15 @@ const vj2023base: LayoutTheme = {
       3px 0px 0 var(--screen-overlay-item-stroke-color),
       0px 3px 0 var(--screen-overlay-item-stroke-color),
       0px -3px 0 var(--screen-overlay-item-stroke-color);
-    --screen-player-name-text-shadow: var(--screen-overlay-item-text-shadow);
+    --screen-player-name-text-shadow: 
+      -2px -2px 0 var(--screen-overlay-item-stroke-color),
+      2px -2px 0 var(--screen-overlay-item-stroke-color),
+      -2px 2px 0 var(--screen-overlay-item-stroke-color),
+      2px 2px 0 var(--screen-overlay-item-stroke-color),
+      -2px 0px 0 var(--screen-overlay-item-stroke-color),
+      2px 0px 0 var(--screen-overlay-item-stroke-color),
+      0px 2px 0 var(--screen-overlay-item-stroke-color),
+      0px -2px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
   `
