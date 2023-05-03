@@ -3,7 +3,7 @@
 	import Marquee from "svelte-fast-marquee";
 	import Pill from "./Pill.svelte";
   export let donations: Donation[] = [];
-  export let fancyMaxAge = 2;
+  export let fancyMaxAge = 4;
 
   function ageInMinutes(date: Date) {
     return (new Date().getTime() - date.getTime()) / (1000 * 60);

@@ -167,11 +167,13 @@
 
   <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
     <div class="col">
-      <GameTimer />
-      <Counters />
-    </div>
-    <div class="col midgamedata">
-      <GameData />
+      <div class="row">
+        <GameTimer />
+        <Counters />
+      </div>
+      <div class="row">
+        <GameData />
+      </div>
     </div>
     <div class="col sponsors">
       <Sponsors />
@@ -216,9 +218,6 @@
   }
   .row.counters {
     align-items: flex-start;
-  }
-  .midgamedata {
-    flex-shrink: 1;
   }
   .sponsors {
     flex-grow: 1;

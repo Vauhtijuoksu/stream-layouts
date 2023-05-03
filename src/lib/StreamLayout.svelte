@@ -42,8 +42,11 @@
 			<slot name="foreground" />
 		</StreamData>
 	</div>
-	<div class="controls" style="top: {layout.height}px; left: 0; right: 0;">
-		<div style="height: 65px;">
+</div>
+
+<div class="controls" style="top: {layout.height}px; left: 0; width: {layout.width}px;">
+	<div class="col">
+		<div style="height: 65px; width: 300px;">
 			<Heartrate />
 		</div>
 		<div>
@@ -61,13 +64,15 @@
 				Hide game data
 			</label>
 		</div>
-		{#if $$slots.controls}
+	</div>
+	{#if $$slots.controls}
+	<div class="col">
 		<h1>Extra controls</h1>
 		<div>
 			<slot name="controls" />
 		</div>
-		{/if}
 	</div>
+	{/if}
 </div>
 
 <style>
@@ -82,7 +87,9 @@
 	.controls {
 		position: absolute;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		color: black;
+		background-color: white;
 	}
 
 	.controls > * {
