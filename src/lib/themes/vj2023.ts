@@ -125,7 +125,7 @@ const vj2023dark: LayoutTheme = {
     {name: 'Teekkarilupi', img_url: '/sponsors/2023/Lupi-dark.png'},
     {name: 'TEK', img_url: '/sponsors/2023/TEK-white.png'},
     {name: 'Vectorama', img_url: '/sponsors/2023/Vectorama-white.png'},
-    {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE.png'},
+    {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE-light.png'},
   ],
   style: `
     --background-color: #789daa;
