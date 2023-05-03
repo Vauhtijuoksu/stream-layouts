@@ -26,7 +26,7 @@
 </script>
 
 {#if style === "list"}
-<h1>Seuraana vuorossa</h1>
+<h1>Seuraavana vuorossa</h1>
 <div class="list">
     {#each $upcoming as game}
     <div class="gamerow">
