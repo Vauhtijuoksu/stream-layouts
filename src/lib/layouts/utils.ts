@@ -44,12 +44,9 @@ export function wrap(child: LayoutFields, parentComponent = 'div', parentParams?
   }
 }
 
-export function sponsors_field(sponsors: Sponsor[]): LayoutField {
+export function sponsors_field(): LayoutField {
   return {
     component: 'sponsors',
-    params: {
-      sponsors: sponsors,
-    },
   };
 }
 

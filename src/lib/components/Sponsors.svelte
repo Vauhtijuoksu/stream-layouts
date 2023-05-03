@@ -3,17 +3,16 @@
 	import { themestore } from '$lib/stores/ThemeStore';
 	import { onMount } from 'svelte';
   import { fade, fly, slide, type SlideParams } from 'svelte/transition';
-  export let sponsors: Sponsor[] = $themestore.sponsors;
   export let duration = 5000;
   
   let i = 0;
-  $: sponsor = sponsors[i];
+  $: sponsor = $themestore.sponsors[i];
   let timeout: NodeJS.Timeout;
 
   const swap = (delay: number) => {
     return setTimeout(() => {
-      i = (i + 1) % sponsors.length;
-      timeout = swap(sponsors[i].duration ?? duration);
+      i = (i + 1) % $themestore.sponsors.length;
+      timeout = swap($themestore.sponsors[i].duration ?? duration);
     }, delay);
   };
 

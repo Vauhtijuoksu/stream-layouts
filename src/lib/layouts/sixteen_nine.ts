@@ -4,13 +4,12 @@ import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, le
 function sixteen_nine_leftcol_contents(
   borderWidth = 0,
   borderRadius = 0,
-  sponsors: Sponsor[] = [],
 ): LayoutField[] {
   return [
     left_col_wrapper(
       [
         wrap({ component: 'logo', params: {logo: 'sixteennine'} }, 'div', { style: 'padding: 10px' }),
-        wrap(sponsors_field(sponsors), 'div', { class: 'col', style: 'flex-grow: 1' }),
+        wrap(sponsors_field(), 'div', { class: 'col', style: 'flex-grow: 1' }),
       ]
     ),
     wrap(player(-1), 'div',
@@ -118,7 +117,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
   ]
 
   bottomRight.contents = [
-    wrap(sponsors_field(sponsors), 'div', { class: 'col', style: 'flex-grow: 1;' }),
+    wrap(sponsors_field(), 'div', { class: 'col', style: 'flex-grow: 1;' }),
   ]
 
   const timer1 = wrap(
