@@ -174,8 +174,8 @@ const breakpoints: Breakpoint<LayoutTheme>[] = [
 ];
 
 const keyGenSeconds = () => {
-  const d = new Date();
-  return (d.getSeconds() / 2) % 24;
+  const d = Date.now();
+  return (d / 1000) % 24;
 }
 
 const keyGenHours = () => {

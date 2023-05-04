@@ -6,7 +6,7 @@
   export let fancyMaxAge = 4;
 
   function ageInMinutes(date: Date) {
-    return (new Date().getTime() - date.getTime()) / (1000 * 60);
+    return (Date.now() - date.getTime()) / (1000 * 60);
   }
 </script>
 

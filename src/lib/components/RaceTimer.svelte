@@ -8,9 +8,9 @@ import { metadata } from "$lib/stores/GameStore";
   $: timer2 = $metadata?.timers.find((t) => t.name === "2");
   let timer = timer1;
   $: if (timer1?.start_time && timer2?.start_time) {
-    const now = new Date();
-    const time1 = timeDiff(timer1.start_time, timer1.end_time ?? now);
-    const time2 = timeDiff(timer2.start_time, timer2.end_time ?? now);
+    const now = Date.now();
+    const time1 = timer1.end_time?.getTime() ?? now - timer1.start_time.getTime();
+    const time2 = timer2.end_time?.getTime() ?? now - timer2.start_time.getTime();
     if (time1 > time2) {
       timer = timer1;
     } else {

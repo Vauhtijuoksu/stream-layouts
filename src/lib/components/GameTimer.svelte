@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
     import { currentGame, metadata } from "$lib/stores/GameStore";
-	import { dateRangeToDuration } from "$lib/utils/time";
+	import { dateRangeToDuration, millisToDuration } from "$lib/utils/time";
 	import type { Timer } from "$lib/models/Timer";
 
     export let name = '1';
@@ -44,19 +44,19 @@
 
     onMount(() => {
         const interval = setInterval(() => {
-            let start = start_time ?? new Date();
+            let start = start_time?.getTime() ?? Date.now();
             if (end_time) {
                 stopped = true;
             } else {
                 stopped = false;
             }
-            let end = end_time ?? new Date();
+            let end = end_time?.getTime() ?? Date.now();
             let {
                 hours: hours_,
                 minutes: minutes_,
                 seconds: seconds_,
                 millis: millis_
-            } = dateRangeToDuration(start, end);
+            } = millisToDuration(end - start);
             hours = pad(Math.max(hours_, 0), ' ');
             minutes = pad(Math.max(minutes_, 0));
             seconds = pad(Math.max(seconds_, 0))
