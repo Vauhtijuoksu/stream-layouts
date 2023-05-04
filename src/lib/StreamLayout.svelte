@@ -19,7 +19,7 @@
 			theme = $themestore;
 		}, 1000)
 
-		return async () => clearInterval(1000);
+		return async () => clearInterval(interval);
 	});
 
 	$: if (browser && theme?.fonts) {

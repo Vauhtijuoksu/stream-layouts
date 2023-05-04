@@ -42,29 +42,33 @@
 
     const pad = (num: number, pad='0', padLength=2) => num.toString().padStart(padLength, pad);
 
+    let timeout: string | number | NodeJS.Timeout | undefined;
+    const cycle = () => {
+        let start = start_time?.getTime() ?? Date.now();
+        if (end_time) {
+            stopped = true;
+        } else {
+            stopped = false;
+        }
+        let end = end_time?.getTime() ?? Date.now();
+        let {
+            hours: hours_,
+            minutes: minutes_,
+            seconds: seconds_,
+            millis: millis_
+        } = millisToDuration(end - start);
+        hours = pad(Math.max(hours_, 0), ' ');
+        minutes = pad(Math.max(minutes_, 0));
+        seconds = pad(Math.max(seconds_, 0))
+        millis = Math.floor(Math.max(millis_, 0) / 100).toString();
+        timeout = setTimeout(cycle, 30);
+    };
+
     onMount(() => {
-        const interval = setInterval(() => {
-            let start = start_time?.getTime() ?? Date.now();
-            if (end_time) {
-                stopped = true;
-            } else {
-                stopped = false;
-            }
-            let end = end_time?.getTime() ?? Date.now();
-            let {
-                hours: hours_,
-                minutes: minutes_,
-                seconds: seconds_,
-                millis: millis_
-            } = millisToDuration(end - start);
-            hours = pad(Math.max(hours_, 0), ' ');
-            minutes = pad(Math.max(minutes_, 0));
-            seconds = pad(Math.max(seconds_, 0))
-            millis = Math.floor(Math.max(millis_, 0) / 100).toString();
-        }, 10);
+        cycle();
 
         return () => {
-            clearInterval(interval);
+            clearTimeout(timeout);
         }
     });
 </script>
