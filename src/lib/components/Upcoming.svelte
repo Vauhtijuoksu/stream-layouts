@@ -18,9 +18,10 @@
         }
     );
     function playerNames(pids: string[]) {
-        return $playerdata
-            .filter((p) => pids.includes(p.id))
-            .map((p) => p.display_name)
+        return pids
+            .map((pid) => $playerdata.find((p) => p.id === pid))
+            .map((p) => p?.display_name)
+            .filter((pname) => pname !== undefined)
             .join(' & ');
     }
 </script>
