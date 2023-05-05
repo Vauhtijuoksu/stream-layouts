@@ -150,6 +150,7 @@
         <div class="row counters">
           <Counter index={0} i={0} />
           <Counter index={2} i={0} />
+          <Counter index={4} i={0} />
         </div>
       </div>
       <div class="row gamedatarow">
@@ -231,6 +232,7 @@
   }
   .row.counters {
     align-items: flex-start;
+    overflow: visible;
   }
   .sponsors {
     flex-grow: 1;
