@@ -143,7 +143,7 @@
 
     {#if splitBottom}
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
-      <div class="row">
+      <div class="row" style="overflow: visible">
         <div class="centerchild">
         <RaceTimer />
         </div>
