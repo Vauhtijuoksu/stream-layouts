@@ -7,6 +7,8 @@
 	import GameData from "$lib/components/GameData.svelte";
 	import GameTimer from "$lib/components/GameTimer.svelte";
 	import GridItem from "$lib/components/GridItem.svelte";
+	import PlayerName from "$lib/components/PlayerName.svelte";
+	import PlayerNameWrapper from "$lib/components/PlayerNameWrapper.svelte";
 	import PlayerNamesGrid from "$lib/components/PlayerNamesGrid.svelte";
 	import PositioningGrid from "$lib/components/PositioningGrid.svelte";
 	import RaceTimer from "$lib/components/RaceTimer.svelte";
@@ -31,7 +33,9 @@
   const cameraY = gameHeight;
   const bottomCenterWidth = width - 2*smallCameraWidth;
   const bottomCenterX = smallCameraWidth;
+  const bottomNamesHeight = 72;
 
+  const bottomNames = {x: bottomSideWidth, y: bottomBarY, width: cameraWidth, height: bottomNamesHeight, style: "--playername-font-size: 22px;"};
   const bottomLeft = {x: 0, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'};
   const bottomRight = {x: bottomSideWidth+cameraWidth, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);'};
   const bottomCenter = {x: bottomCenterX, y: bottomBarY, width: bottomCenterWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-radius: var(--border-radius); '}
@@ -67,9 +71,9 @@
         name: 'camera',
         layout: {
           x: cameraX + borderWidth,
-          y: cameraY,
+          y: $fixedPlayerNames ? cameraY + bottomNamesHeight - borderWidth : cameraY,
           width: cameraWidth - 2*borderWidth,
-          height: cameraHeight,
+          height: $fixedPlayerNames ? cameraHeight - bottomNamesHeight + borderWidth : cameraHeight,
         }
       }
     ]
@@ -152,7 +156,15 @@
         <GameData />
       </div>
   </AbsDiv>
-  
+
+  {#if $fixedPlayerNames}
+  <AbsDiv name="bottomNames" cls="col" {...bottomNames}>
+    <PlayerNameWrapper side="middle">
+      <PlayerName />
+    </PlayerNameWrapper>
+  </AbsDiv>
+  {/if}
+
   <AbsDiv name="bottomRight" cls="row" {...bottomRight}>
     <div class="row counters">
       <Counter index={1} i={2} />
@@ -181,8 +193,9 @@
   </AbsDiv>
 
   {/if}
+  {#if !$fixedPlayerNames}
   <PlayerNamesGrid top={0} left={0} right={0} bottom={donationBarHeight+bottomBarHeight} />
-
+  {/if}
   <div id="donationbar">
     <DonationBar />
   </div>
