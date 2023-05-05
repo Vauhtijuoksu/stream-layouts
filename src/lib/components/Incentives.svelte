@@ -22,6 +22,10 @@
 		return `${(amount / max) * 100}%`;
 	}
 
+	function statusSorted() {
+   		return (incentive?.status ?? []).slice().sort((a, b) => (b.amount ?? 0) - (a.amount ?? 0));
+  	}
+
 	onMount(() => {
 		const interval = setInterval(() => {
 			i += 1;
@@ -45,7 +49,7 @@
 		<div class="options">
 			{#if incentive?.status?.length}
 				<div class="options">
-				{#each incentive.status as option}
+				{#each statusSorted() as option}
 					{#if incentive.type === 'milestone'}
 					<Pill>
 						{incentive.total_amount} / {option.milestone_goal}€

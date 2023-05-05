@@ -18,12 +18,16 @@
     return () => clearInterval(interval);
   });
 
+  function statusSorted() {
+    return (incentive?.status ?? []).slice().sort((a, b) => (b.amount ?? 0) - (a.amount ?? 0));
+  }
+
 </script>
 
 
 {#key incentive}
   <span class="incentive">{title} {getGame(incentive?.game_id)?.game ?? ''} - {incentive?.title}</span>
-{#each incentive?.status ?? [] as status}
+{#each statusSorted() as status}
   {#if status.type === 'milestone'}
   <Pill>{incentive?.total_amount} / {status.milestone_goal}€</Pill>
   {:else}
