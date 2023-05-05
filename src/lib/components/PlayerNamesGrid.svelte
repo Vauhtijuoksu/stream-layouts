@@ -12,7 +12,7 @@
   {#each $currentPlayers as player, i}
     <GridItem {i}>
       <span class="playername">
-        {player.display_name}
+        {player?.display_name}
       </span>
     </GridItem>
   {/each}

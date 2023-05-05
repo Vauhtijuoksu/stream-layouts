@@ -17,12 +17,10 @@ export const currentGame = derived(
 export const currentPlayers = derived(
     [playerdata, currentGame],
     ([$players, $game]) => {
-        let players = [];
-        for (const p of $players) {
-            if ($game?.players.includes(p.id)) {
-                players.push(p);
-            }
-        }
+        let players = $game
+            ?.players
+            ?.map((p_id) =>  $players?.find((p) => p.id === p_id))
+            .filter((p) => p !== undefined) ?? [];
         return players;
     }
 )
