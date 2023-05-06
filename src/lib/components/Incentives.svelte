@@ -10,7 +10,7 @@
 	export let n = 10;
 
 	let i = 0;
-	$: incentive = $upcomingIncentives[i % n];
+	$: incentive = $upcomingIncentives[i % Math.min(n, $upcomingIncentives.length)];
 
 	function game(game_id?: string) {
 		return $gamedata.find((g) => g.id === game_id);
