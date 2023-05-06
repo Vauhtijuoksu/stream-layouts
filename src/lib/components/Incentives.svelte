@@ -38,6 +38,7 @@
 <div class="incentives">
   <h1>Tulevat kannustimet</h1>
 	<div class="incentive-wrapper">
+	{#if incentive}
 	{#key incentive?.id}
 	<div class="incentive" out:fade={{duration:500}} in:fade={{duration: 500, delay: 500}}>
 		<div class="gametitle">
@@ -71,6 +72,7 @@
 		</div>
 	</div>
 	{/key}
+	{/if}
 		
 	</div>
 	<div class="link">
