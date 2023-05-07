@@ -61,9 +61,14 @@
       </div>
     </AbsDiv>
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
+      <!--
       <div class="col wrapper">
         <Incentives />
       </div>
+      -->
+      <img class="noincentive" src="/images/viuhti_2.png" alt="noincentives" />
+
+
     </AbsDiv>
     <AbsDiv name="bottomRight" cls="col" style="overflow: visible;" {...bottomRight}>
       <Sponsors />
@@ -84,6 +89,11 @@
 </StreamLayout>
 
 <style>
+  .noincentive {
+    padding-top: 20px;
+    margin: auto;
+    max-height: 400px;
+  }
   .np {
     height: 100%;
     display: flex;

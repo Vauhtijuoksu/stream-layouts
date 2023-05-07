@@ -12,7 +12,8 @@
 	import Upcoming from './Upcoming.svelte';
 	import type { Donation } from '$lib/models/Donation';
 
-	export let displays = ['incentives', 'upcoming', 'motd'];
+	//export let displays = ['incentives', 'upcoming', 'motd'];
+	export let displays = ['upcoming', 'motd'];
 	let i = 0;
 	let display = displays[i];
 	let delay = 20000;
