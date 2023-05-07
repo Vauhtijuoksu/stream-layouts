@@ -27,6 +27,7 @@
 </script>
 
 {#if style === "list"}
+{#if $upcoming.length}
 <h1>Seuraavana vuorossa</h1>
 <div class="list">
     {#each $upcoming as game}
@@ -48,8 +49,15 @@
     </div>
     {/each}
 </div>
+{:else}
+<div class="empty col">
+    <h1>Ohjelma päättyy</h1>
+    <p>Kiitos kaikille katsojille ja lahjoittajille!</p>
+</div>
+{/if}
 {:else if style === "bar"}
 <div class="row">
+    {#if $upcoming.length}
     {#each $upcoming as game, i}
     <div class="game">
         {game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}
@@ -60,6 +68,11 @@
         <img class="divider" src="/images/divider.png" alt="divider" />
     {/if}
     {/each}
+    {:else}
+    <div class="game">
+        Ohjelma lähestyy loppuaan, kiitos kaikille katsojille ja lahjoittajille!
+    </div>
+    {/if}
 </div>
 {/if}
 
@@ -101,6 +114,17 @@
         align-self: flex-start;
         align-content: flex-start;
         text-align: start;
+    }
+
+    .empty {
+        height: 100%;
+        justify-content: center;
+    }
+    .empty > h1 {
+        font-size: var(--font-size-lg);
+    }
+    .empty > p {
+        font-size: var(--font-size-md);
     }
 
     .row {
