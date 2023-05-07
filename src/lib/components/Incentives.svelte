@@ -35,10 +35,10 @@
 	})
 </script>
 
+{#if incentive}
 <div class="incentives">
   <h1>Tulevat kannustimet</h1>
 	<div class="incentive-wrapper">
-	{#if incentive}
 	{#key incentive?.id}
 	<div class="incentive" out:fade={{duration:500}} in:fade={{duration: 500, delay: 500}}>
 		<div class="gametitle">
@@ -72,15 +72,22 @@
 		</div>
 	</div>
 	{/key}
-	{/if}
 		
 	</div>
 	<div class="link">
 		vauhtijuoksu.fi/kannustimet
 	</div>
 </div>
+{:else}
+<img class="noincentive" src="/images/viuhti_2.png" alt="noincentives" />
+{/if}
 
 <style>
+	.noincentive {
+	  padding-top: 20px;
+	  margin: auto;
+	  max-height: 400px;
+	}
 	.incentives {
 		display: flex;
 		flex-direction:column;

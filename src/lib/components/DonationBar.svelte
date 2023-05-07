@@ -12,8 +12,7 @@
 	import Upcoming from './Upcoming.svelte';
 	import type { Donation } from '$lib/models/Donation';
 
-	//export let displays = ['incentives', 'upcoming', 'motd'];
-	export let displays = ['upcoming', 'motd'];
+	export let displays = ['incentives', 'upcoming', 'motd'];
 	let i = 0;
 	let display = displays[i];
 	let delay = 20000;
@@ -68,7 +67,7 @@
 		<div class="fill-content">
 		{#if display === 'donations'}
 			<DonationPills {donations}/>
-		{:else if display === 'incentives'}
+		{:else if display === 'incentives' && $upcomingIncentives.length }
 			<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
 		{:else if display === 'motd'}
 			<Motd messages={$metadata?.donatebar_info} />

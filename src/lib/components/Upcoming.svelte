@@ -105,6 +105,9 @@
         justify-content: space-between;
         font-size: var(--font-size-lg);
     }
+    .gamerow .game .title {
+        text-align: left;
+    }
     .gamerow .category {
         text-align: start;
         font-size: var(--font-size-sm);
