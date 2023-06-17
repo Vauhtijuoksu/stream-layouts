@@ -42,7 +42,6 @@
 
     const pad = (num: number, pad='0', padLength=2) => num.toString().padStart(padLength, pad);
 
-    let timeout: string | number | NodeJS.Timeout | undefined;
     const cycle = () => {
         let start = start_time?.getTime() ?? Date.now();
         if (end_time) {
@@ -61,14 +60,13 @@
         minutes = pad(Math.max(minutes_, 0));
         seconds = pad(Math.max(seconds_, 0))
         millis = Math.floor(Math.max(millis_, 0) / 100).toString();
-        timeout = setTimeout(cycle, 30);
     };
 
     onMount(() => {
-        cycle();
+        const interval = setInterval(cycle, 30);
 
         return () => {
-            clearTimeout(timeout);
+            clearInterval(interval);
         }
     });
 </script>
