@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
     import { currentGame, metadata } from "$lib/stores/GameStore";
+    import { clockoffsetms } from "$lib/stores/ConfStore";
 	import { dateRangeToDuration, millisToDuration } from "$lib/utils/time";
 	import type { Timer } from "$lib/models/Timer";
 
@@ -43,6 +44,7 @@
     const pad = (num: number, pad='0', padLength=2) => num.toString().padStart(padLength, pad);
 
     const cycle = () => {
+        let offset = $clockoffsetms ?? 0;
         let start = start_time?.getTime() ?? Date.now();
         if (end_time) {
             stopped = true;
@@ -55,7 +57,7 @@
             minutes: minutes_,
             seconds: seconds_,
             millis: millis_
-        } = millisToDuration(end - start);
+        } = millisToDuration(end - start + offset);
         hours = pad(Math.max(hours_, 0), ' ');
         minutes = pad(Math.max(minutes_, 0));
         seconds = pad(Math.max(seconds_, 0))
