@@ -57,7 +57,7 @@
             minutes: minutes_,
             seconds: seconds_,
             millis: millis_
-        } = millisToDuration(end - start + offset);
+        } = millisToDuration(end - start - offset);
         hours = pad(Math.max(hours_, 0), ' ');
         minutes = pad(Math.max(minutes_, 0));
         seconds = pad(Math.max(seconds_, 0))
