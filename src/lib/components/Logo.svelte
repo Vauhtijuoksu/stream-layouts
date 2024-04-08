@@ -4,7 +4,7 @@
 
 <div class="logo">
     {#if logo === "sixteennine"}
-        <img src="/logos/logo23_169.png" alt="logo" />
+        <img src="/logos/LogoFull_png.png" alt="logo" />
     {:else if logo === "fourthree"}
         <img src="/logos/logo23_43.png" alt="logo" />
     {:else if logo === "extrawide"}
