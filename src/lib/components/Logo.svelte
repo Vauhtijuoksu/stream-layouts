@@ -1,18 +1,22 @@
 <script lang="ts">
+	import { themestore } from "$lib/stores/ThemeStore";
+    import { defaultTheme } from "$lib/themes";
+
     export let logo = "";
+    $: images = $themestore?.images ?? {};
 </script>
 
 <div class="logo">
     {#if logo === "sixteennine"}
-        <img src="/logos/logo23_169.png" alt="logo" />
+        <img src="{images.logo169}" alt="logo" />
     {:else if logo === "fourthree"}
-        <img src="/logos/logo23_43.png" alt="logo" />
+        <img src="{images.logo43}" alt="logo" />
     {:else if logo === "extrawide"}
-        <img src="/logos/logo23_extrawide.png" alt="logo" />
+        <img src="{images.logoExtraWide}" alt="logo" />
     {:else if logo === "setuptime"}
-        <img src="/logos/logo23_setuptime.png" alt="logo" />
+        <img src="{images.logoSetupTime}" alt="logo" />
     {:else}
-        <img src="/logos/logo2023.png" alt="logo" />
+        <img src="{images.logo}" alt="logo" />
     {/if}
 </div>
 

@@ -30,6 +30,13 @@ const vj2023base: LayoutTheme = {
   borderWidth: 3,
   borderRadius: 20,
   images:{
+    logo: '/logos/vj2023/logo.png',
+    logo169: '/logos/vj2023/169.png',
+    logo43: '/logos/vj2023/43.png',
+    logoExtraWide: '/logos/vj2023/extrawide.png',
+    logoSetupTime: '/logos/vj2023/setuptime.png',
+    logoSmall: '/logos/vj2023/logo.png',
+    logoWide: '/logos/vj2023/wide.png',
     counter: [
       '/images/skull.png',
       '/images/lightning.png',

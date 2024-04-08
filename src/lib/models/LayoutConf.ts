@@ -59,6 +59,11 @@ export interface LayoutTheme {
     images?: {
         logo?: string,
         logoSmall?: string,
+        logo169?: string,
+        logo43?: string,
+        logoWide?: string,
+        logoExtraWide?: string,
+        logoSetupTime?: string,
         timer?: string,
         defaultConsole?: string,
         counter?: string[],
