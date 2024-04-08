@@ -1,13 +1,16 @@
 <script lang="ts">
   import { metadata } from "$lib/stores/GameStore";
+  import { themestore } from "$lib/stores/ThemeStore";
 	import Movable from "./Movable.svelte";
+
+  $: heart = $themestore.images?.heart ?? '/images/2023/heart.png';
 </script>
 
 
 {#each $metadata?.heart_rates ?? [] as heart_rate, i}
 <Movable x={0 + i * 60} y={0}>
   <div class="hr">
-    <img src="/images/2023/heart.png" alt="hr" />
+    <img src="{heart}" alt="hr" />
     <div class="hr-num">{heart_rate}</div>
   </div>
 </Movable>

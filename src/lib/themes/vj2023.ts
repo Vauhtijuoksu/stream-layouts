@@ -44,6 +44,8 @@ const vj2023base: LayoutTheme = {
       '/images/2023/coin.png',
       '/images/2023/heart.png',
     ],
+    divider: '/images/2023/divider.png',
+    heart: '/images/2023/heart.png'
   },
   style: `
     --font-family: UbuntuTitling;

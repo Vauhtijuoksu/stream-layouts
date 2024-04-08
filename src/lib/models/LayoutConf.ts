@@ -66,6 +66,8 @@ export interface LayoutTheme {
         logoSetupTime?: string,
         timer?: string,
         defaultConsole?: string,
+        divider?: string,
+        heart?: string,
         counter?: string[],
     };
     sponsors?: Sponsor[];
