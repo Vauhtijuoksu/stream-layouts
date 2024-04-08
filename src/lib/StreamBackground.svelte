@@ -32,7 +32,7 @@
     </mask>
 
     <pattern id="vj2023" patternUnits="userSpaceOnUse" width="750" height="725">
-      <image href="/images/vj2023bg.png" x="0" y="0" width="750" height="725" />
+      <image href="/images/2023/vj2023bg.png" x="0" y="0" width="750" height="725" />
     </pattern>
   </defs>
   <rect class="background-color" x="0" y="0" {width} {height} mask="url(#holes)" />

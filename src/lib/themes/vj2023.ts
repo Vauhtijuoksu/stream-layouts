@@ -38,11 +38,11 @@ const vj2023base: LayoutTheme = {
     logoSmall: '/logos/vj2023/logo.png',
     logoWide: '/logos/vj2023/wide.png',
     counter: [
-      '/images/skull.png',
-      '/images/lightning.png',
-      '/images/diamond.png',
-      '/images/coin.png',
-      '/images/heart.png',
+      '/images/2023/skull.png',
+      '/images/2023/lightning.png',
+      '/images/2023/diamond.png',
+      '/images/2023/coin.png',
+      '/images/2023/heart.png',
     ],
   },
   style: `
@@ -56,8 +56,8 @@ const vj2023base: LayoutTheme = {
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background-color: #f1eeea;
     --background-color-2: #7acfd8;
-    --background: var(--background-color) url('/images/vj2023bg.png') repeat fixed top left;
-    --background-2: var(--background-color-2) url('/images/vj2023bg.png') repeat fixed top left;
+    --background: var(--background-color) url('/images/2023/vj2023bg.png') repeat fixed top left;
+    --background-2: var(--background-color-2) url('/images/2023/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
     --font-size-md: 24px;

@@ -65,7 +65,7 @@
         {game.game} - {playerNames(game.players)}
     </div>
     {#if i+1 < $upcoming.length}
-        <img class="divider" src="/images/divider.png" alt="divider" />
+        <img class="divider" src="/images/2023/divider.png" alt="divider" />
     {/if}
     {/each}
     {:else}

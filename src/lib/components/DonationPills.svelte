@@ -22,7 +22,7 @@
 {#each donations as donation (donation.id)}
   <div class="dono" in:rainbow animate:flip="{{duration: 300}}">
     <div class="donate">{donation.name} {donation.amount} €</div>
-    <img class="divider" src="/images/divider.png" alt="divider" />
+    <img class="divider" src="/images/2023/divider.png" alt="divider" />
   </div>
 {/each}
 

@@ -5,7 +5,7 @@
 	import type { Timer } from "$lib/models/Timer";
 
     export let name = '1';
-    export let icon = '/images/timer.png';
+    export let icon = '/images/2023/timer.png';
     export let showEstimate = true;
     export let showIcon = true;
     export let showWhen: "always" | "stopped" = "always";

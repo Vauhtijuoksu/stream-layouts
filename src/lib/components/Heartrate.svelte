@@ -7,7 +7,7 @@
 {#each $metadata?.heart_rates ?? [] as heart_rate, i}
 <Movable x={0 + i * 60} y={0}>
   <div class="hr">
-    <img src="/images/heart.png" alt="hr" />
+    <img src="/images/2023/heart.png" alt="hr" />
     <div class="hr-num">{heart_rate}</div>
   </div>
 </Movable>
