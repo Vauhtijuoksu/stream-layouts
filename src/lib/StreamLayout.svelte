@@ -11,12 +11,18 @@
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
+	let current_theme_name = theme.name
 
 	let apiClient = new ApiClient('https://api.dev.vauhtijuoksu.fi');
 
 	onMount(async () => {
 		const interval = setInterval(() => {
-			theme = $themestore;
+			let new_theme = $themestore;
+			if (new_theme.name != current_theme_name){
+		   		theme = new_theme;
+			   	current_theme_name = theme.name
+			}
+
 		}, 1000)
 
 		return async () => clearInterval(interval);
