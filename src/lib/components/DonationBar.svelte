@@ -12,9 +12,9 @@
 	import Upcoming from './Upcoming.svelte';
 	import type { Donation } from '$lib/models/Donation';
 
-	export let displays = ['incentives', 'upcoming', 'motd'];
+	export let displays = ['upcoming', 'incentives', 'motd'];
 	let i = 0;
-	let display = displays[i];
+	let display = get_display();
 	let delay = 20000;
 
 	let forcedDisplay = false;
@@ -31,11 +31,23 @@
 
 	let donations: Donation[] = [];
 
+	function get_display(){
+		let checked = false
+		while (!checked){
+			if (displays[i] == "incentives" && $upcomingIncentives.length == 0){
+				i = (i + 1) % displays.length;
+				continue
+			}
+			checked = true
+		}
+		return displays[i]
+	}
+
 	onMount(() => {
 		let interval = setInterval(() => {
 			if (!forcedDisplay) {
 				i = (i + 1) % displays.length;
-				display = displays[i];
+				display = get_display();
 			}
 		}, delay);
 
@@ -63,23 +75,48 @@
 <div class="donationbar">
 	<div class="current donationsum">{Math.floor($donationSumAnimated)} €</div>
 	<div class="fill-container">
-    <div class="fill" style="width: {fillWidth}" />
+		<div class="fill" style="width: {fillWidth}" ></div>
 		<div class="fill-content">
-		{#if display === 'donations'}
-			<DonationPills {donations}/>
-		{:else if display === 'incentives' && $upcomingIncentives.length }
-			<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
-		{:else if display === 'motd'}
-			<Motd messages={$metadata?.donatebar_info} />
-		{:else if display === 'upcoming'}
-			<Upcoming style="bar" />
-		{/if}
+			<div class="displayline {display === 'donations' ? 'showline' : 'hideline'}">
+	   			<DonationPills {donations}/>
+			</div>
+			<div class="displayline {display === 'incentives' ? 'showline' : 'hideline'}">
+			  	<IncentiveBar incentives={$upcomingIncentives.slice(0, 5)} />
+			</div>
+			<div class="displayline {display === 'motd' ? 'showline' : 'hideline'}">
+			   	<Motd messages={$metadata?.donatebar_info} />
+			</div>
+			<div class="displayline {display === 'upcoming' ? 'showline' : 'hideline'}">
+			   	<Upcoming style="bar" />
+			</div>
 		</div>
 	</div>
 	<div class="target donationsum">{$metadata?.donation_goal} €</div>
 </div>
 
 <style>
+	.displayline{
+		position: absolute;
+		width: 100%;
+		display: flex;
+	}
+    .showline{
+		animation: show 0.5s ease-in-out;
+        animation-fill-mode: forwards;
+	}
+	@keyframes show{
+		0%		{ margin-top: -100px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
+        100%	{ margin-top: 0; }
+	}
+	.hideline{
+		animation: hide 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	@keyframes hide{
+		0%	{ margin-top: 0; }
+		100%		{ margin-top: 100px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
+	}
+
 	.donationbar {
 		position: relative;
 		display: flex;

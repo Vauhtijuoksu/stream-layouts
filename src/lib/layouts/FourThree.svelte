@@ -130,7 +130,6 @@
 		border-top: none;
 		border-left: none;
 		border-bottom-right-radius: var(--border-radius);
-		margin-bottom: calc(0px - var(--border-width));
 	}
 	#donationbar {
 		position: absolute;

@@ -1,58 +1,44 @@
 <script lang="ts">
 	import type { Donation } from "$lib/models/Donation";
-	import Marquee from "svelte-fast-marquee";
-	import Pill from "./Pill.svelte";
-  export let donations: Donation[] = [];
-  export let fancyMaxAge = 4;
+    import { flip } from 'svelte/animate';
+    export let donations: Donation[] = [];
 
-  function ageInMinutes(date: Date) {
-    return (Date.now() - date.getTime()) / (1000 * 60);
-  }
+    function rainbow(node) {
+        return {
+            duration: 25000,
+            css: t => {
+                return `
+                    color: hsl(
+                        ${Math.trunc(t * 5 * 360)},
+                        ${Math.min(100, 1000 - 1000 * t)}%,
+                        ${Math.min(25, 500 - 500 * t)}%
+                    );`
+            }
+        };
+    }
 </script>
 
 
-{#each donations as donation, i}
-  {#if ageInMinutes(donation.timestamp) < fancyMaxAge }
-  <div class="donate fancy">{donation.name}: {donation.amount}€</div>
-  {:else}
-  <div class="donate">{donation.name}: {donation.amount}€</div>
-  {/if}
-  <img class="divider" src="/images/divider.png" alt="divider" />
+{#each donations as donation (donation.id)}
+  <div class="dono" in:rainbow animate:flip="{{duration: 300}}">
+    <div class="donate">{donation.name} {donation.amount} €</div>
+    <img class="divider" src="/images/divider.png" alt="divider" />
+  </div>
 {/each}
 
 <style>
+  .dono{
+    display: flex;
+    align-items: center;
+  }
   .donate{
     font-size:  var(--donation-bar-info-font-size);
     white-space: nowrap;
+
   }
   .divider{
     height: 32px;
     padding: 0 20px;
     text-shadow: none;
   }
-  .fancy{
-    animation: rainbow 6s linear;
-    animation-iteration-count: infinite;
-
-  }
-@keyframes rainbow{
-		100%,0%{
-			color: #751520;
-		}
-		8%{
-			color: #724914;
-		}
-		20%{
-			color: #7b8633;
-		}
-		33%{
-			color: #79981c;
-		}
-		58%{
-			color: #016172;
-		}
-		91%{
-			color: #732f37;
-		}
-}
 </style>
