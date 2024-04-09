@@ -11,7 +11,7 @@
   $: if (index > -1) {
     counter = $metadata?.counters[index];
   }
-  $: images = $themestore?.images?.counter ?? ['/images/counter.png'];
+  $: images = $themestore?.images?.counter ?? ['/images/2023/counter.png'];
 </script>
 
 

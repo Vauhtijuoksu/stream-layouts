@@ -79,7 +79,7 @@
 	</div>
 </div>
 {:else}
-<img class="noincentive" src="/images/viuhti_2.png" alt="noincentives" />
+<img class="noincentive" src="/images/2023/viuhti_2.png" alt="noincentives" />
 {/if}
 
 <style>

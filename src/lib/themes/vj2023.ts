@@ -30,13 +30,22 @@ const vj2023base: LayoutTheme = {
   borderWidth: 3,
   borderRadius: 20,
   images:{
+    logo: '/logos/vj2023/logo.png',
+    logo169: '/logos/vj2023/169.png',
+    logo43: '/logos/vj2023/43.png',
+    logoExtraWide: '/logos/vj2023/extrawide.png',
+    logoSetupTime: '/logos/vj2023/setuptime.png',
+    logoSmall: '/logos/vj2023/logo.png',
+    logoWide: '/logos/vj2023/wide.png',
     counter: [
-      '/images/skull.png',
-      '/images/lightning.png',
-      '/images/diamond.png',
-      '/images/coin.png',
-      '/images/heart.png',
+      '/images/2023/skull.png',
+      '/images/2023/lightning.png',
+      '/images/2023/diamond.png',
+      '/images/2023/coin.png',
+      '/images/2023/heart.png',
     ],
+    divider: '/images/2023/divider.png',
+    heart: '/images/2023/heart.png'
   },
   style: `
     --font-family: UbuntuTitling;
@@ -49,8 +58,8 @@ const vj2023base: LayoutTheme = {
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background-color: #f1eeea;
     --background-color-2: #7acfd8;
-    --background: var(--background-color) url('/images/vj2023bg.png') repeat fixed top left;
-    --background-2: var(--background-color-2) url('/images/vj2023bg.png') repeat fixed top left;
+    --background: var(--background-color) url('/images/2023/vj2023bg.png') repeat fixed top left;
+    --background-2: var(--background-color-2) url('/images/2023/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
     --font-size-lg: 32px;
     --font-size-md: 24px;
