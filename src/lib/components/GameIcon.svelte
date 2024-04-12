@@ -3,7 +3,7 @@
 </script>
 
 <div class="game icon">
-  <img src="/gameicons/{img_filename}"  alt="{img_filename}"/>
+  <img src="/gameicons/vj2024/{img_filename}"  alt="{img_filename}"/>
 </div>
 
 <style>
