@@ -31,7 +31,7 @@
 
 <div class="consoledata">
     <div class="console icon">
-        <img src="/consoles/{deviceImg}.png" onerror="this.src = '/consoles/default.png'" alt="{device}" />
+        <img src="/consoles/2023/{deviceImg}.png" onerror="this.src = '/consoles/default.png'" alt="{device}" />
     </div>
     <div class="consoleinfo">
         <div class="device" class:shortestname={(device?.length ?? 0) <= 3} class:shortername={(device?.length ?? 0) <= 4} class:shortname={(device?.length ?? 0) <= 5} >
