@@ -57,6 +57,10 @@ export class ThemeInterpolator implements LayoutTheme {
     return (this.base.style ?? '') + this.theme().style;
   }
 
+  get imageFolder() {
+    return this.theme().imageFolder ?? this.base.imageFolder;
+  }
+
   get images() {
     return this.theme().images ?? this.base.images;
   }
