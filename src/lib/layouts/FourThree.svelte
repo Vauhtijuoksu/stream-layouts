@@ -79,7 +79,10 @@
         <Logo logo="fourthree" />
         <div class="row" style="flex-grow: 1;">
           <div class="gameicon">
-            <img src="/gameicons/{$currentGame?.img_filename}"  alt="{$currentGame?.img_filename}"/>
+            <GameIcon
+              img_filename={$currentGame?.img_filename}
+              img_style="margin-bottom: -20px; max-height: 300px; z-index: 100;"
+              ></GameIcon>
           </div>
           <div class="sponsor col" style="flex-grow: 1">
             <Sponsors />
@@ -109,16 +112,11 @@
 </StreamLayout>
 
 <style>
-  .gameicon{
+  .gameicon {
     align-self: flex-end;
     z-index: 100;
     margin-left: -60px;
     margin-right: -20px;
-  }
-  .gameicon > img {
-    margin-bottom: -20px;
-    max-height: 300px;
-    z-index: 100;
   }
   .sponsor{
     overflow: visible;
