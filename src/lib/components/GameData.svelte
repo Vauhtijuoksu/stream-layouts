@@ -9,7 +9,7 @@
     $: game = $currentGame?.game;
     $: category = $currentGame?.category;
     $: device = $currentGame?.device;
-    $: deviceImg = device?.replaceAll(' ', '').toLowerCase();
+    $: deviceImg = device?.replaceAll(' ', '').toLowerCase() ?? 'default';
     $: published = $currentGame?.published;
 
 
