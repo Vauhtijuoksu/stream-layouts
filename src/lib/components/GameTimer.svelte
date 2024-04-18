@@ -3,14 +3,17 @@
     import { currentGame, metadata } from "$lib/stores/GameStore";
 	import { dateRangeToDuration, millisToDuration } from "$lib/utils/time";
 	import type { Timer } from "$lib/models/Timer";
+	import { themestore } from "$lib/stores/ThemeStore";
 
     export let name = '1';
-    export let icon = '/images/2024/timer.png';
     export let showEstimate = true;
     export let showIcon = true;
     export let showWhen: "always" | "stopped" = "always";
     export let timer: Timer | undefined = undefined;
     export let cls = '';
+
+
+    $:icon = $themestore.images?.timer ?? '/images/2023/timer.png';
 
     $: if (name === '1' || name === '2') {
         timer = $metadata?.timers?.find(timer => timer.name === name);

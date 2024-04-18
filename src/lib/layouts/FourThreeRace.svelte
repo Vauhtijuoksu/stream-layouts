@@ -153,14 +153,14 @@
           <Counter index={4} i={0} />
         </div>
       </div>
-      <div class="row gamedatarow">
+      <div class="row overflow gamedatarow">
         <GameData />
       </div>
   </AbsDiv>
 
   {#if $fixedPlayerNames}
   <AbsDiv name="bottomNames" cls="col" {...bottomNames}>
-    <PlayerNameWrapper side="middle">
+    <PlayerNameWrapper side="middle" fillHeight="fillHeight">
       <PlayerName />
     </PlayerNameWrapper>
   </AbsDiv>
@@ -220,10 +220,10 @@
 		height: calc(65px + var(--border-width));
 	}
 
-  .gamedatarow{
+  .gamedatarow {
     gap: 10px
   }
-  .centerchild{
+  .centerchild {
     flex-grow: 1;
     justify-content: center;
   }

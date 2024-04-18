@@ -1,8 +1,9 @@
 <script lang="ts">
   export let side = 'left';
+  export let fillHeight = '';
 </script>
 
-<div class="playernameWrapper {side}">
+<div class="playernameWrapper {side} {fillHeight}">
   <slot />
 </div>
 
@@ -26,5 +27,11 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
+  }
+  .playernameWrapper.fillHeight {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 </style>

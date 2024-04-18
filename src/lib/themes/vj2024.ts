@@ -5,19 +5,12 @@ import { ThemeInterpolator } from "./ThemeInterpolator";
 const vj2024base: LayoutTheme = {
   name: 'vj2024',
   sponsors: [
-    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-blue.png'},
-    {name: 'Buutti', img_url: '/sponsors/2023/Buutti-dark.png'},
     {name: 'Codemate', img_url: '/sponsors/2023/Codemate-black.png'},
-    {name: 'Digious', img_url: '/sponsors/2023/Digious-black.png'},
     {name: 'Fingersoft', img_url: '/sponsors/2023/Fingersoft-black.png'},
-    {name: 'Jimms', img_url: '/sponsors/2023/Jimms-black.png'},
-    {name: 'Mallaskellari', img_url: '/sponsors/2023/Make-black.png'},
     {name: 'Pullapirtti', img_url: '/sponsors/2023/Pullapirtti-red.png'},
     {name: 'RattoRadio', img_url: '/sponsors/2023/RR-orange.png'},
-    {name: 'Saagasi', img_url: '/sponsors/2023/Saagasi-orange.png'},
     {name: 'Teekkarilupi', img_url: '/sponsors/2023/Lupi-dark.png'},
     {name: 'TEK', img_url: '/sponsors/2023/TEK-black.png'},
-    {name: 'Peliliike', img_url: '/sponsors/2023/Peliliike-black.png'},
     {name: 'Vectorama', img_url: '/sponsors/2023/Vectorama-black.png'},
     {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE.png'},
   ],
@@ -34,7 +27,7 @@ const vj2024base: LayoutTheme = {
   borderWidth: 3,
   borderRadius: 20,
   imageFolder: 'vj2024',
-  images:{
+  images: {
     logo: '/logos/vj2024/wide.png',
     logo169: '/logos/vj2024/169.png',
     logo43: '/logos/vj2024/43.png',
@@ -42,14 +35,23 @@ const vj2024base: LayoutTheme = {
     logoSetupTime: '/logos/vj2024/setuptime.png',
     logoSmall: '/logos/vj2024/triangle.png',
     logoWide: '/logos/vj2024/wide.png',
+    defaultConsole: '/consoles/2023/default.png',
+    timer: '/images/2024/timer.png',
     counter: [
-      '/images/2024/grave_1.png',
-      '/images/2024/grave_2.png',
+      '/images/2024/grave1.png',
+      '/images/2024/grave2.png',
       '/images/2024/coin.png',
       '/images/2024/heart.png',
     ],
+    dividers: [
+      '/images/2024/divider.png',
+      '/images/2024/divider2.png',
+      '/images/2024/divider3.png',
+    ],
     divider: '/images/2024/divider.png',
-    heart: '/images/2024/heart.png'
+    heart: '/images/2024/heart.png',
+    pohinaDay: '/images/2024/pohinapaiva.png',
+    pohinaNight: '/images/2024/pohinayo.png',
   },
   style: `
     --darkblue: #152937;
@@ -172,6 +174,16 @@ const vj2024base: LayoutTheme = {
       1px 0px  1px var(--donation-bar-text-shadow-color),
       0px 1px  1px var(--donation-bar-text-shadow-color),
       0px -1px  1px var(--donation-bar-text-shadow-color);
+    --game-icon-filter: drop-shadow(1px 0px 0 #382218)
+      drop-shadow(0px -1px 0 #382218)
+      drop-shadow(-1px 0px 0 #382218)
+      drop-shadow(0px 1px 0 #382218);
+    --pohina-sponsor-right: 20px;
+    --pohina-sponsor-bottom: 108px;
+    --pohina-sponsor-width: 370px;
+    --pohina-sponsor-height: 370px;
+    --pohina-sponsor-border-radius: 185px;
+    --pohina-sponsor-padding: 40px;
   `
 }
 
@@ -184,19 +196,12 @@ const vj2024light: LayoutTheme = {
 const vj2024dark: LayoutTheme = {
   name: 'vj2024dark',
   sponsors: [
-    {name: 'Bittium', img_url: '/sponsors/2023/Bittium-white.png'},
-    {name: 'Buutti', img_url: '/sponsors/2023/Buutti-white.png'},
     {name: 'Codemate', img_url: '/sponsors/2023/Codemate-white.png'},
-    {name: 'Digious', img_url: '/sponsors/2023/Digious-white.png'},
     {name: 'Fingersoft', img_url: '/sponsors/2023/Fingersoft-white.png'},
-    {name: 'Jimms', img_url: '/sponsors/2023/Jimms-white.png'},
-    {name: 'Mallaskellari', img_url: '/sponsors/2023/Make-white.png'},
     {name: 'Pullapirtti', img_url: '/sponsors/2023/Pullapirtti-red.png'},
     {name: 'RattoRadio', img_url: '/sponsors/2023/RR-white.png'},
-    {name: 'Saagasi', img_url: '/sponsors/2023/Saagasi-orange.png'},
     {name: 'Teekkarilupi', img_url: '/sponsors/2023/Lupi-dark.png'},
     {name: 'TEK', img_url: '/sponsors/2023/TEK-white.png'},
-    {name: 'Peliliike', img_url: '/sponsors/2023/Peliliike-white.png'},
     {name: 'Vectorama', img_url: '/sponsors/2023/Vectorama-white.png'},
     {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE-light.png'},
   ],

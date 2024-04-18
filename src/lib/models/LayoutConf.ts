@@ -70,6 +70,9 @@ export interface LayoutTheme {
         divider?: string,
         heart?: string,
         counter?: string[],
+        dividers?: string[],
+        pohinaDay?: string,
+        pohinaNight?: string,
     };
     sponsors?: Sponsor[];
 }

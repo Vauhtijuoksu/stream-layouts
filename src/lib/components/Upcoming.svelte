@@ -2,6 +2,7 @@
     import { gamedata, metadata, playerdata } from "$lib/stores/GameStore";
 	import { derived } from "svelte/store";
 	import GameIcon from './GameIcon.svelte';
+	import Divider from "./Divider.svelte";
 
     export let n = 4;
     export let style = 'list';
@@ -67,15 +68,7 @@
         {game.game} ~ {playerNames(game.players)}
     </div>
     {#if i+1 < $upcoming.length}
-        {#if i % 3 === 0 }
-            <img class="divider" src="/images/2024/divider.png" alt="divider" />
-        {/if}
-        {#if i % 3 === 1 }
-            <img class="divider" src="/images/2024/divider2.png" alt="divider" />
-        {/if}
-        {#if i % 3 === 2 }
-            <img class="divider" src="/images/2024/divider3.png" alt="divider" />
-        {/if}
+        <Divider {i}></Divider>
     {/if}
     {/each}
     {:else}

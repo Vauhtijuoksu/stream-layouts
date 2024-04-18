@@ -27,6 +27,8 @@
     background,
     contents: [],
   }
+  $: pohinaDay = $themestore.images?.pohinaDay ?? '/logos/vj2023/pohinaoverlay.png'
+  $: pohinaNight = $themestore.images?.pohinaNight ?? '/logos/vj2023/pohinaoverlay.png'
 </script>
 
 <StreamLayout {layout}>
@@ -36,8 +38,8 @@
     </div>
     <div class="cornercase"></div>
     <div class="pohoverlay">
-      <img class="dayimg" src="/images/2024/pohinapaiva.png" alt="logo" />
-      <img class="nightimg" src="/images/2024/pohinayo.png" alt="logo" />
+      <img class="dayimg" src="{pohinaDay}" alt="logo" />
+      <img class="nightimg" src="{pohinaNight}" alt="logo" />
       <div class="sponsors">
         <Sponsors />
       </div>
@@ -46,7 +48,7 @@
 </StreamLayout>
 
 <style>
-  .cornercase{
+  .cornercase {
     position: absolute;
     height: 750px;
     width: 1200px;
@@ -56,10 +58,10 @@
     background: var(--background);
     border: var(--border);
     z-index: -1;
-    display: none;
+    display: var(--display-cornercase, none);
   }
 
-  .pohoverlay{
+  .pohoverlay {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -82,10 +84,13 @@
 
   .sponsors {
     position: absolute;
-    right: 50px;
-    bottom: 145px;
-    height: 310px;
-    width: 310px;
+    right: var(--pohina-sponsor-right, 0);
+    bottom: var(--pohina-sponsor-bottom, 65px);
+    height: var(--pohina-sponsor-height, 330px);
+    width: var(--pohina-sponsor-width, 300px);
+    padding: var(--pohina-sponsor-padding);
+    border-radius: var(--pohina-sponsor-border-radius, 0);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
   }

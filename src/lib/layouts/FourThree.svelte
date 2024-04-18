@@ -77,7 +77,7 @@
     <AbsDiv name="leftCol" cls="col" {...leftCol}>
       <div id="leftColWrapper" class="col">
         <Logo logo="fourthree" />
-        <div class="row" style="flex-grow: 1;">
+        <div class="row overflow" style="flex-grow: 1;">
           <div class="gameicon">
             <GameIcon
               img_filename={$currentGame?.img_filename}
