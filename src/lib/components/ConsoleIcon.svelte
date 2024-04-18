@@ -5,11 +5,12 @@
   export let img_alt = '';
   
   $: img_folder = $themestore.imageFolder ?? '2023';
+  $: default_console = $themestore.images?.defaultConsole ?? '/consoles/2023/default.png';
 </script>
 
 <img
   src="/consoles/{img_folder}/{img_filename}"
-  onerror="this.src = '/consoles/default.png'"
+  onerror="this.src = '{default_console}'"
   alt={img_alt}
   />
 

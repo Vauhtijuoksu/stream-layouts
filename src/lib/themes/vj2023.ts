@@ -38,6 +38,7 @@ const vj2023base: LayoutTheme = {
     logoSetupTime: '/logos/vj2023/setuptime.png',
     logoSmall: '/logos/vj2023/logo.png',
     logoWide: '/logos/vj2023/wide.png',
+    timer: '/images/2023/timer.png',
     counter: [
       '/images/2023/skull.png',
       '/images/2023/lightning.png',
@@ -45,6 +46,7 @@ const vj2023base: LayoutTheme = {
       '/images/2023/coin.png',
       '/images/2023/heart.png',
     ],
+    dividers: ['/images/2023/divider.png'],
     divider: '/images/2023/divider.png',
     heart: '/images/2023/heart.png'
   },
@@ -62,12 +64,13 @@ const vj2023base: LayoutTheme = {
     --background: var(--background-color) url('/images/2023/vj2023bg.png') repeat fixed top left;
     --background-2: var(--background-color-2) url('/images/2023/vj2023bg.png') repeat fixed top left;
     --setuptime-background: url('#vj2023');
+    --display-cornercase: visible;
     --font-size-lg: 32px;
     --font-size-md: 24px;
     --font-size-sm: 20px;
     --font-size-xs: 16px;
     --sponsors-font-size: 24px;
-    --donation-bar-font-color: white;
+    --donation-bar-font-color: #212126;
     --donation-bar-padding: 0 0;
     --donation-bar-background: white;
     --donation-bar-border-style: var(--border-style);
@@ -119,6 +122,15 @@ const vj2023base: LayoutTheme = {
       0px -2px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
+    --donation-bar-text-shadow:
+      -2px -2px 0 var(--donation-bar-background),
+      2px -2px 0 var(--donation-bar-background),
+      -2px 2px 0 var(--donation-bar-background),
+      2px 2px 0 var(--donation-bar-background),
+      -2px 0px 0 var(--donation-bar-background),
+      2px 0px 0 var(--donation-bar-background),
+      0px 2px 0 var(--donation-bar-background),
+      0px -2px 0 var(--donation-bar-background);
   `
 }
 

@@ -34,6 +34,12 @@
     <pattern id="vj2023" patternUnits="userSpaceOnUse" width="750" height="725">
       <image href="/images/2023/vj2023bg.png" x="0" y="0" width="750" height="725" />
     </pattern>
+    <pattern id="vj2024d" patternUnits="userSpaceOnUse" width="1920" height="1080">
+      <image href="/images/2024/daybg.png" x="0" y="0" width="1920" height="1080" />
+    </pattern>
+    <pattern id="vj2024n" patternUnits="userSpaceOnUse" width="1920" height="1080">
+      <image href="/images/2024/nightbg.png" x="0" y="0" width="1920" height="1080" />
+    </pattern>
   </defs>
   <rect class="background-color" x="0" y="0" {width} {height} mask="url(#holes)" />
   <rect class="background" x="0" y="0" {width} {height} mask="url(#holes)" />

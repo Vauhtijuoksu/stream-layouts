@@ -2,6 +2,7 @@
     import { gamedata, metadata, playerdata } from "$lib/stores/GameStore";
 	import { derived } from "svelte/store";
 	import GameIcon from './GameIcon.svelte';
+	import Divider from "./Divider.svelte";
 
     export let n = 4;
     export let style = 'list';
@@ -63,11 +64,11 @@
     {#each $upcoming as game, i}
     <div class="game">
         {game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}
-        -
-        {game.game} - {playerNames(game.players)}
+        ~
+        {game.game} ~ {playerNames(game.players)}
     </div>
     {#if i+1 < $upcoming.length}
-        <img class="divider" src="/images/2023/divider.png" alt="divider" />
+        <Divider {i}></Divider>
     {/if}
     {/each}
     {:else}

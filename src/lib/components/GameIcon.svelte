@@ -16,7 +16,17 @@
 </div>
 
 <style>
+  .game.icon {
+    width: 200px;
+    position: relative;
+  }
   .game.icon > img {
     max-height: 200px;
+    z-index: 20;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    filter: var(--game-icon-filter, none);
   }
 </style>

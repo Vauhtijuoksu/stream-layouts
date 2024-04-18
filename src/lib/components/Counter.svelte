@@ -16,7 +16,7 @@
 
 
 {#if counter > -1}
-<div class="counter" style="filter: brightness(150%) hue-rotate(calc(60deg * {i}));">
+<div class="counter" style="filter: hue-rotate(calc(60deg * {i}));">
   <ClickIcon {images} image={0} style="max-width: var(--counter-font-size);"/>
   <div class="number">
       {counter}

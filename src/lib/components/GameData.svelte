@@ -74,10 +74,12 @@
     }
     .gametitle, .published {
         font-size: var(--game-title-font-size, 34px);
+		letter-spacing: var(--letter-spacing);
         text-align: right;
     }
     .category, .device {
         font-size: var(--game-category-font-size, 24px);
+		letter-spacing: var(--letter-spacing);
     }
 
     .category {

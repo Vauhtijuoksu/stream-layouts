@@ -33,7 +33,7 @@
   const cameraY = gameHeight;
   const bottomCenterWidth = width - 2*smallCameraWidth;
   const bottomCenterX = smallCameraWidth;
-  const bottomNamesHeight = 72;
+  const bottomNamesHeight = 53; // How to change this?
 
   const bottomNames = {x: bottomSideWidth, y: bottomBarY, width: cameraWidth, height: bottomNamesHeight, style: "--playername-font-size: 22px;"};
   const bottomLeft = {x: 0, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'};
@@ -153,14 +153,14 @@
           <Counter index={4} i={0} />
         </div>
       </div>
-      <div class="row gamedatarow">
+      <div class="row overflow gamedatarow">
         <GameData />
       </div>
   </AbsDiv>
 
   {#if $fixedPlayerNames}
   <AbsDiv name="bottomNames" cls="col" {...bottomNames}>
-    <PlayerNameWrapper side="middle">
+    <PlayerNameWrapper side="middle" fillHeight="fillHeight">
       <PlayerName />
     </PlayerNameWrapper>
   </AbsDiv>
@@ -220,10 +220,10 @@
 		height: calc(65px + var(--border-width));
 	}
 
-  .gamedatarow{
+  .gamedatarow {
     gap: 10px
   }
-  .centerchild{
+  .centerchild {
     flex-grow: 1;
     justify-content: center;
   }

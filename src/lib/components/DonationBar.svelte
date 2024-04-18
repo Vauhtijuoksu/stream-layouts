@@ -123,7 +123,7 @@
 		flex-direction: row;
 		width: 100%;
 		height: 100%;
-		background-color: var(--donation-bar-background, black);
+		background: var(--donation-bar-background, black);
 		padding: var(--donation-bar-padding);
 		font-size: var(--donation-bar-font-size);
 		border: var(--donation-bar-border-style) var(--donation-bar-border-width)
@@ -144,15 +144,9 @@
 		flex-direction: row;
 		align-items: center;
 		overflow: hidden;
-        text-shadow:
-                -2px -2px 0 var(--donation-bar-background),
-                2px -2px 0 var(--donation-bar-background),
-                -2px 2px 0 var(--donation-bar-background),
-                2px 2px 0 var(--donation-bar-background),
-                -2px 0px 0 var(--donation-bar-background),
-                2px 0px 0 var(--donation-bar-background),
-                0px 2px 0 var(--donation-bar-background),
-                0px -2px 0 var(--donation-bar-background);
+		color: var(--donation-bar-font-color);
+        text-shadow: var(--donation-bar-text-shadow);
+		letter-spacing: var(--letter-spacing);
 	}
 
 	.fill-container {
@@ -166,7 +160,7 @@
 
 	.fill {
 		height: 100%;
-		background-color: var(--donation-bar-fill);
+		background: var(--donation-bar-fill);
 		border-radius: var(--donation-bar-border-radius, var(--border-radius));
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
@@ -192,7 +186,7 @@
 	.current {
 		left: 0;
 		color: var(--donation-bar-current-font-color);
-		background-color: var(--donation-bar-current-bg);
+		background: var(--donation-bar-current-bg);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left: none;
@@ -206,7 +200,7 @@
 	.target {
 		right: 0;
 		color: var(--donation-bar-goal-font-color);
-		background-color: var(--donation-bar-goal-bg);
+		background: var(--donation-bar-goal-bg);
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 		border-right: none;

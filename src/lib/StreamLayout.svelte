@@ -142,4 +142,7 @@
         flex-wrap: nowrap;
         overflow: hidden;
     }
+		:global(.row.overflow) {
+			overflow: visible;
+		}
 </style>
