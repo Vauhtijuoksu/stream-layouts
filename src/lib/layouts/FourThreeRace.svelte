@@ -33,7 +33,7 @@
   const cameraY = gameHeight;
   const bottomCenterWidth = width - 2*smallCameraWidth;
   const bottomCenterX = smallCameraWidth;
-  const bottomNamesHeight = 72;
+  const bottomNamesHeight = 53; // How to change this?
 
   const bottomNames = {x: bottomSideWidth, y: bottomBarY, width: cameraWidth, height: bottomNamesHeight, style: "--playername-font-size: 22px;"};
   const bottomLeft = {x: 0, y: bottomBarY, width: bottomSideWidth, height: bottomBarHeight, style: 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);'};

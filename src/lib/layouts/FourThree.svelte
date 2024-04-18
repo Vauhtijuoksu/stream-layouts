@@ -79,7 +79,7 @@
         <Logo logo="fourthree" />
         <div class="row" style="flex-grow: 1;">
           <div class="gameicon">
-            <img src="/gameicons/{$currentGame?.img_filename}"  alt="{$currentGame?.img_filename}"/>
+            <img src="/gameicons/vj2024/{$currentGame?.img_filename}"  alt="{$currentGame?.img_filename}"/>
           </div>
           <div class="sponsor col" style="flex-grow: 1">
             <Sponsors />

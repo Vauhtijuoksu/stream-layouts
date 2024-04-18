@@ -21,10 +21,19 @@
 </script>
 
 
-{#each donations as donation (donation.id)}
+{#each donations as donation, i (donation.id)}
   <div class="dono" in:rainbow animate:flip="{{duration: 300}}">
     <div class="donate">{donation.name} {donation.amount} €</div>
-    <img class="divider" src="{divider}" alt="divider" />
+
+        {#if i % 3 === 0 }
+            <img class="divider" src="/images/2024/divider.png" alt="divider" />
+        {/if}
+        {#if i % 3 === 1 }
+            <img class="divider" src="/images/2024/divider2.png" alt="divider" />
+        {/if}
+        {#if i % 3 === 2 }
+            <img class="divider" src="/images/2024/divider3.png" alt="divider" />
+        {/if}
   </div>
 {/each}
 

@@ -66,7 +66,7 @@ const vj2023base: LayoutTheme = {
     --font-size-sm: 20px;
     --font-size-xs: 16px;
     --sponsors-font-size: 24px;
-    --donation-bar-font-color: white;
+    --donation-bar-font-color: #212126;
     --donation-bar-padding: 0 0;
     --donation-bar-background: white;
     --donation-bar-border-style: var(--border-style);
@@ -118,6 +118,15 @@ const vj2023base: LayoutTheme = {
       0px -2px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
+    --donation-bar-text-outline: 
+      -2px -2px 0 var(--donation-bar-background),
+      2px -2px 0 var(--donation-bar-background),
+      -2px 2px 0 var(--donation-bar-background),
+      2px 2px 0 var(--donation-bar-background),
+      -2px 0px 0 var(--donation-bar-background),
+      2px 0px 0 var(--donation-bar-background),
+      0px 2px 0 var(--donation-bar-background),
+      0px -2px 0 var(--donation-bar-background);
   `
 }
 

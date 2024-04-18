@@ -61,11 +61,19 @@
     {#each $upcoming as game, i}
     <div class="game">
         {game.start_time.toLocaleTimeString("fi-FI", {hour: '2-digit', minute: '2-digit'})}
-        -
-        {game.game} - {playerNames(game.players)}
+        ~
+        {game.game} ~ {playerNames(game.players)}
     </div>
     {#if i+1 < $upcoming.length}
-        <img class="divider" src="/images/2023/divider.png" alt="divider" />
+        {#if i % 3 === 0 }
+            <img class="divider" src="/images/2024/divider.png" alt="divider" />
+        {/if}
+        {#if i % 3 === 1 }
+            <img class="divider" src="/images/2024/divider2.png" alt="divider" />
+        {/if}
+        {#if i % 3 === 2 }
+            <img class="divider" src="/images/2024/divider3.png" alt="divider" />
+        {/if}
     {/if}
     {/each}
     {:else}

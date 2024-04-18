@@ -23,19 +23,23 @@ const vj2024base: LayoutTheme = {
   ],
   fonts: [
     {
-      family: 'UbuntuTitling',
-      url: '/fonts/UbuntuTitling-Bold.ttf',
+      family: 'Solway',
+      url: '/fonts/Solway-Regular.ttf',
+    },
+    {
+      family: 'Amarante',
+      url: '/fonts/Amarante-Regular.ttf',
     }
   ],
   borderWidth: 3,
   borderRadius: 20,
   images:{
-    logo: '/logos/vj2024/logo.png',
+    logo: '/logos/vj2024/wide.png',
     logo169: '/logos/vj2024/169.png',
     logo43: '/logos/vj2024/43.png',
-    logoExtraWide: '/logos/vj2024/extrawide.png',
+    logoExtraWide: '/logos/vj2024/wide.png',
     logoSetupTime: '/logos/vj2024/setuptime.png',
-    logoSmall: '/logos/vj2024/logo.png',
+    logoSmall: '/logos/vj2024/triangle.png',
     logoWide: '/logos/vj2024/wide.png',
     counter: [
       '/images/2024/grave_1.png',
@@ -47,40 +51,62 @@ const vj2024base: LayoutTheme = {
     heart: '/images/2024/heart.png'
   },
   style: `
-    --font-family: UbuntuTitling;
-    --font-color: #212126;
+    --darkblue: #152937;
+    --darkgreen: #0b2d24;
+    --darkred: #382218;
+    --blue: #235576;
+    --yellow: #f1d590;
+    --grey: #718079;
+    --naturalwhite: #d8ccaf;
+    --green: #347868;
+    --greyblue: #60838a;
+    --orange: #de9b39;
+    --blueishgrey: #abbdca;
+    --white: #ebebdc;
+    --lightgreen: #a1c665;
+    --lightblue: #abcbbe;
+    --red: #c2473b;
+    
+    
+    --dayonly: default;
+    --nightonly: none;
+    
+    --font-family: Solway;
+    --font-color: var(--darkred);
+    --letter-spacing: -1.3px;
     --padding: 10px;
     --border-style: solid;
-    --border-color: #212126;
+    --border-color: var(--darkred);
     --border-width: 3px;
-    --border-radius: 20px;
+    --border-radius: 16px;
     --border: var(--border-width) var(--border-style) var(--border-color);
-    --background-color: #f1eeea;
-    --background-color-2: #7acfd8;
+    --background-color: var(--naturalwhite);
+    --background-color-2: var(--blueishgrey);
     --background: var(--background-color) url('/images/2024/daybg.png') repeat fixed top left;
     --background-2: var(--background-color-2) url('/images/2024/daybg.png') repeat fixed top left;
-    --setuptime-background: url('#vj2023');
+    --setuptime-background: url('#vj2024d');
     --font-size-lg: 32px;
     --font-size-md: 24px;
     --font-size-sm: 20px;
     --font-size-xs: 16px;
     --sponsors-font-size: 24px;
-    --donation-bar-font-color: white;
+    --donation-bar-font-color: var(--font-color);
     --donation-bar-padding: 0 0;
-    --donation-bar-background: white;
+    --donation-bar-background: var(--greyblue) url('/images/2024/boxbg.png') repeat fixed top left;
     --donation-bar-border-style: var(--border-style);
     --donation-bar-border-color: var(--border-color);
     --donation-bar-border-width: var(--border-width);
     --donation-bar-border-radius: 20px;
     --donation-bar-font-size: 32px;
-    --donation-bar-fill: #d4fffd;
-    --donation-bar-current-bg: #eaff66;
+    --donation-bar-fill: var(--lightblue) url('/images/2024/boxbg.png') repeat fixed top left;
+    --donation-bar-current-bg: var(--yellow) url('/images/2024/boxbg.png') repeat fixed top left;
     --donation-bar-current-font-color: var(--font-color);
-    --donation-bar-goal-bg: #a5b624;
+    --donation-bar-goal-bg: var(--yellow) url('/images/2024/boxbg.png') repeat fixed top left;
     --donation-bar-goal-font-color: var(--font-color);
     --donation-bar-info-font-size: 28px;
-    --playername-background: #e6f5d8;
+    --playername-background: var(--blue) url('/images/2024/boxbg.png') repeat fixed top left;
     --playername-font-size: 32px;
+    --playername-font-color: var(--yellow);
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
     --timer-font-size: 54px;
@@ -117,6 +143,34 @@ const vj2024base: LayoutTheme = {
       0px -2px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
+    --donation-bar-text-shadow-color: var(--lightblue);
+    --donation-bar-text-shadow2: 
+      -2px -2px 0 var(--donation-bar-text-shadow-color),
+      2px -2px 0 var(--donation-bar-text-shadow-color),
+      -2px 2px 0 var(--donation-bar-text-shadow-color),
+      2px 2px 0 var(--donation-bar-text-shadow-color),
+      -2px 0px 0 var(--donation-bar-text-shadow-color),
+      2px 0px 0 var(--donation-bar-text-shadow-color),
+      0px 2px 0 var(--donation-bar-text-shadow-color),
+      0px -2px 0 var(--donation-bar-text-shadow-color);
+    --donation-bar-text-shadow1: 
+      -1px -1px 0 var(--donation-bar-text-shadow-color),
+      1px -1px 0 var(--donation-bar-text-shadow-color),
+      -1px 1px 0 var(--donation-bar-text-shadow-color),
+      1px 1px 0 var(--donation-bar-text-shadow-color),
+      -1px 0px 0 var(--donation-bar-text-shadow-color),
+      1px 0px 0 var(--donation-bar-text-shadow-color),
+      0px 1px 0 var(--donation-bar-text-shadow-color),
+      0px -1px 0 var(--donation-bar-text-shadow-color);
+    --donation-bar-text-shadow: 
+      -1px -1px 1px var(--donation-bar-text-shadow-color),
+      1px -1px 1px var(--donation-bar-text-shadow-color),
+      -1px 1px 1px var(--donation-bar-text-shadow-color),
+      1px 1px 1px var(--donation-bar-text-shadow-color),
+      -1px 0px 1px var(--donation-bar-text-shadow-color),
+      1px 0px  1px var(--donation-bar-text-shadow-color),
+      0px 1px  1px var(--donation-bar-text-shadow-color),
+      0px -1px  1px var(--donation-bar-text-shadow-color);
   `
 }
 
@@ -146,15 +200,23 @@ const vj2024dark: LayoutTheme = {
     {name: 'WishlistEMUUROM', img_url: '/sponsors/2023/WLE-light.png'},
   ],
   style: `
-    --background-color: #789daa;
-    --background-color-2: #3ea0c5;
-    --playername-background: #c1cdb6;
-    --donation-bar-fill: #00a6c3;
-    --donation-bar-background: #d2d4cf;
-    --donation-bar-current-bg: #a5b624;
-    --donation-bar-goal-bg: #727e15;
-    --pill-background-1: #df5e6d;
-    --pill-background-2: #ef9a2b;
+    --dayonly: none;
+    --nightonly: default;
+  
+    --setuptime-background: url('#vj2024n');
+    --font-color: var(--orange);
+    --playername-font-color: var(--orange);
+    --donation-bar-text-shadow-color: var(--blue);
+    --donation-bar-font-color: var(--naturalwhite);
+    --donation-bar-goal-font-color: var(--yellow);
+    --donation-bar-current-font-color: var(--yellow);
+    --playername-background: var(--darkblue) url('/images/2024/boxbg.png') repeat fixed top left;
+    --donation-bar-current-bg: var(--red) url('/images/2024/boxbg.png') repeat fixed top left;
+    --donation-bar-goal-bg: var(--red) url('/images/2024/boxbg.png') repeat fixed top left;
+    --donation-bar-fill: var(--blue) url('/images/2024/boxbg.png') repeat fixed top left;
+    --donation-bar-background: var(--darkblue) url('/images/2024/boxbg.png') repeat fixed top left;
+    --background: var(--background-color) url('/images/2024/nightbg.png') repeat fixed top left;
+    --background-2: var(--background-color-2) url('/images/2024/nightbg.png') repeat fixed top left;
   `
 }
 
@@ -169,11 +231,11 @@ const breakpoints: Breakpoint<LayoutTheme>[] = [
   },
   {
     key: 8,
-    value: vj2024light,
+    value: vj2024light, // day
   },
   {
     key: 20,
-    value: vj2024light,
+    value: vj2024light, // day
   },
   {
     key: 22,

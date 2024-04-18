@@ -9,5 +9,11 @@
 <style>
   .game.icon > img {
     max-height: 200px;
+    z-index: 20;
+    position: relative;
+    filter: drop-shadow(1px 0px 0 #382218)
+        drop-shadow(0px -1px 0 #382218)
+        drop-shadow(-1px 0px 0 #382218)
+        drop-shadow(0px 1px 0 #382218);
   }
 </style>

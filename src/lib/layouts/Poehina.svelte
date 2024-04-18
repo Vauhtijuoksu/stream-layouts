@@ -36,7 +36,8 @@
     </div>
     <div class="cornercase"></div>
     <div class="pohoverlay">
-      <img class="pohoverlay" src="/logos/pohinaoverlay.png" alt="logo" />
+      <img class="dayimg" src="/images/2024/pohinapaiva.png" alt="logo" />
+      <img class="nightimg" src="/images/2024/pohinayo.png" alt="logo" />
       <div class="sponsors">
         <Sponsors />
       </div>
@@ -55,6 +56,7 @@
     background: var(--background);
     border: var(--border);
     z-index: -1;
+    display: none;
   }
 
   .pohoverlay{
@@ -64,12 +66,26 @@
     z-index: 100;
   }
 
-  .sponsors {
+  .dayimg{
     position: absolute;
     right: 0;
-    bottom: 65px;
-    height: 330px;
-    width: 300px;
+    bottom: 25px;
+    display: var(--dayonly);
+  }
+
+  .nightimg{
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+    display: var(--nightonly);
+  }
+
+  .sponsors {
+    position: absolute;
+    right: 50px;
+    bottom: 145px;
+    height: 310px;
+    width: 310px;
     display: flex;
     flex-direction: column;
   }
