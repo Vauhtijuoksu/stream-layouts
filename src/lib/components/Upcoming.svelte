@@ -1,6 +1,7 @@
 <script lang="ts">
     import { gamedata, metadata, playerdata } from "$lib/stores/GameStore";
 	import { derived } from "svelte/store";
+	import GameIcon from './GameIcon.svelte';
 
     export let n = 4;
     export let style = 'list';
@@ -33,8 +34,9 @@
     {#each $upcoming as game}
     <div class="gamerow">
         <div class="icon">
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <img src="/gameicons/{game.img_filename}" />
+            <GameIcon
+              img_filename="{game.img_filename}"
+              ></GameIcon>
         </div>
         <div class="col">
             <div class="game">
@@ -100,9 +102,6 @@
         display: flex;
         width: 160px;
         margin: -10px -10px -30px -10px;
-    }
-    .gamerow .icon > img {
-        max-width: 100%;
     }
     .gamerow .col {
         flex-grow: 1;

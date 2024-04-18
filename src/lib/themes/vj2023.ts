@@ -29,6 +29,7 @@ const vj2023base: LayoutTheme = {
   ],
   borderWidth: 3,
   borderRadius: 20,
+  imageFolder: '2023',
   images:{
     logo: '/logos/vj2023/logo.png',
     logo169: '/logos/vj2023/169.png',

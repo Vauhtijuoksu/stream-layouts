@@ -1,6 +1,7 @@
 <script lang="ts">
     import { hideGameData } from "$lib/stores/ConfStore";
     import { currentGame } from "$lib/stores/GameStore";
+	import ConsoleIcon from "./ConsoleIcon.svelte";
 	import GameIcon from "./GameIcon.svelte";
     export let showGameIcon = true;
 
@@ -8,7 +9,7 @@
     $: game = $currentGame?.game;
     $: category = $currentGame?.category;
     $: device = $currentGame?.device;
-    $: deviceImg = device?.replaceAll(' ', '').toLowerCase();
+    $: deviceImg = device?.replaceAll(' ', '').toLowerCase() ?? 'default';
     $: published = $currentGame?.published;
 
 
@@ -31,7 +32,10 @@
 
 <div class="consoledata">
     <div class="console icon">
-        <img src="/consoles/vj2024/{deviceImg}.png" onerror="this.src = '/consoles/vj2024/default.png'" alt="{device}" />
+        <ConsoleIcon
+          img_filename="{deviceImg}.png"
+          img_alt="{device}"
+          ></ConsoleIcon>
     </div>
     <div class="consoleinfo">
         <div class="device" class:shortestname={(device?.length ?? 0) <= 3} class:shortername={(device?.length ?? 0) <= 4} class:shortname={(device?.length ?? 0) <= 5} >
@@ -57,10 +61,6 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-    }
-
-    .console.icon > img {
-        max-height: 120px;
     }
 
     .gameinfo, .consoleinfo {

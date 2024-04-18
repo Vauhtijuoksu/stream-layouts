@@ -33,6 +33,7 @@ const vj2024base: LayoutTheme = {
   ],
   borderWidth: 3,
   borderRadius: 20,
+  imageFolder: 'vj2024',
   images:{
     logo: '/logos/vj2024/wide.png',
     logo169: '/logos/vj2024/169.png',

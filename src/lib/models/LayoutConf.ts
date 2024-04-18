@@ -56,6 +56,7 @@ export interface LayoutTheme {
     borderWidth?: number;
     borderRadius?: number;
     style?: string;
+    imageFolder?: string;
     images?: {
         logo?: string,
         logoSmall?: string,
