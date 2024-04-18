@@ -6,6 +6,7 @@
 	import IncentiveBar from './IncentiveBar.svelte';
 	import { fade } from 'svelte/transition';
 	import Pill from './Pill.svelte';
+	import GameIcon from './GameIcon.svelte';
 
 	export let n = 10;
 
@@ -67,8 +68,9 @@
 			{/if}
 		</div>
 		<div class="icon">
-			<!-- svelte-ignore a11y-missing-attribute -->
-			<img src="/gameicons/{game(incentive?.game_id)?.img_filename}" />
+			<GameIcon
+				img_filename="{game(incentive?.game_id)?.img_filename}"
+				></GameIcon>
 		</div>
 	</div>
 	{/key}
@@ -107,9 +109,6 @@
 	}
 	.icon {
 		margin: -20px;
-	}
-	.icon img {
-		max-height: 200px;
 	}
 	.title {
 		font-size: var(--font-size-md);
