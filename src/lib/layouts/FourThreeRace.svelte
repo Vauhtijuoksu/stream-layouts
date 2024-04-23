@@ -187,7 +187,7 @@
   <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
     <div class="col">
       <div class="row">
-        <GameTimer />
+        <RaceTimer />
         <Counters />
       </div>
       <div class="row overflow">
