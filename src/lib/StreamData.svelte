@@ -15,7 +15,6 @@
     export let donoUpdateFreq = 5000;
     export let syncFreq = 1000 * 60 * 10;
 
-    let timeserver = "http://worldtimeapi.org/api/timezone/utc"
 
     async function updateMeta() {
         let meta = await client.getMetadata();
@@ -38,13 +37,10 @@
     async function get_current_offset() {
         var pctime = Date.now();
         var diff = 0
-        await fetch(timeserver)
-            .then(r => r.json())
-            .then(r => {
-                let duration =  Date.now() - pctime;
-                let servertime = new Date(r.datetime).getTime();
-                diff = pctime - servertime + duration/2.0
-            })
+        let meta = await client.getMetadata();
+        let duration =  Date.now() - pctime;
+        let servertime = new Date(meta["server_time"]).getTime();
+        diff = pctime - servertime + duration/2.0
         return diff
     }
 

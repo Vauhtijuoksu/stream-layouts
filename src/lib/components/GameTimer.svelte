@@ -50,6 +50,9 @@
             stopped = true;
         } else {
             stopped = false;
+            if (!start_time) {
+                offset = 0
+            }
         }
         let end = end_time?.getTime() ?? Date.now();
         let {
