@@ -17,6 +17,7 @@
 	import { fixedPlayerNames } from "$lib/stores/ConfStore";
 	import { currentPlayers } from "$lib/stores/GameStore";
 	import { themestore } from "$lib/stores/ThemeStore";
+	import { onMount } from "svelte";
 
   const width = 1920;
   const height = 1080;
@@ -129,6 +130,11 @@
     background,
     contents: []
   }
+
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    splitBottom = urlParams.has('splitBottom');
+  })
 </script>
 
 <StreamLayout {layout}>

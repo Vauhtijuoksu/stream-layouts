@@ -6,8 +6,8 @@
 	import StreamData from './StreamData.svelte';
 	import type { LayoutConf, LayoutTheme } from './models/LayoutConf';
 	import Heartrate from './components/Heartrate.svelte';
-	import { fixedPlayerNames, hideGameData } from './stores/ConfStore';
 	import { onMount } from 'svelte';
+	import LayoutControls from './LayoutControls.svelte';
 
 	export let layout: LayoutConf;
 	export let theme: LayoutTheme = $themestore;
@@ -51,34 +51,11 @@
 </div>
 
 <div class="controls" style="top: {layout.height}px; left: 0; width: {layout.width}px; {theme.style}">
-	<div class="col">
-		<div style="height: 65px; width: 300px;">
-			<Heartrate />
-		</div>
-		<div>
-			Current theme: {theme.name}
-		</div>
-		<div>
-			<label>
-				<input type="checkbox" bind:checked={$fixedPlayerNames}>
-				Fixed player names
-			</label>
-		</div>
-		<div>
-			<label>
-				<input type="checkbox" bind:checked={$hideGameData}>
-				Hide game data
-			</label>
-		</div>
-	</div>
-	{#if $$slots.controls}
-	<div class="col">
-		<h1>Extra controls</h1>
-		<div>
+	<LayoutControls {theme}>
+		{#if $$slots.controls}
 			<slot name="controls" />
-		</div>
-	</div>
-	{/if}
+		{/if}
+	</LayoutControls>
 </div>
 
 <style>
