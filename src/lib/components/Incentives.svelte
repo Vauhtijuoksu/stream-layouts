@@ -7,6 +7,10 @@
 	import { fade } from 'svelte/transition';
 	import Pill from './Pill.svelte';
 	import GameIcon from './GameIcon.svelte';
+	import { themestore } from "$lib/stores/ThemeStore";
+
+
+  	$: endOfIncentives = $themestore.images?.endOfIncentives ?? '/images/2023/viuhti_2.png'
 
 	export let n = 10;
 
@@ -81,7 +85,7 @@
 	</div>
 </div>
 {:else}
-<img class="noincentive" src="/images/2023/viuhti_2.png" alt="noincentives" />
+<img class="noincentive" src="{endOfIncentives}" alt="noincentives" />
 {/if}
 
 <style>

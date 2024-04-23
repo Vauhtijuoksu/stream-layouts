@@ -17,5 +17,6 @@
 <style>
   img {
     max-height: 120px;
+    filter: var(--console-icon-filter, none);
   }
 </style>

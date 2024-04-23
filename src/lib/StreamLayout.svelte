@@ -118,6 +118,7 @@
 		bottom: 0;
 		font-family: var(--font-family);
 		color: var(--font-color);
+		text-shadow: var(--text-shadow);
 		overflow: hidden;
 	}
 

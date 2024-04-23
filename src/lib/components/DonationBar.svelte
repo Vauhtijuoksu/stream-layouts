@@ -195,6 +195,7 @@
 		padding-right: var(--donation-bar-border-radius, var(--border-radius));
 		align-items: center;
 		text-align: right;
+    	text-shadow: none;
 	}
 
 	.target {
@@ -206,5 +207,6 @@
 		border-right: none;
 		padding-right: 5px;
 		padding-left: var(--donation-bar-border-radius, var(--border-radius));
+    	text-shadow: none;
 	}
 </style>

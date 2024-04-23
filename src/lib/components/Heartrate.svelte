@@ -1,7 +1,7 @@
 <script lang="ts">
   import { metadata } from "$lib/stores/GameStore";
   import { themestore } from "$lib/stores/ThemeStore";
-	import Movable from "./Movable.svelte";
+  import Movable from "./Movable.svelte";
 
   $: heart = $themestore.images?.heart ?? '/images/2023/heart.png';
 </script>
@@ -22,7 +22,7 @@
     height: 50px;
     width: 50px;
     display: flex;
-    flex-direction: col;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -31,10 +31,12 @@
     position: absolute;
     max-width: 100%;
     max-height: 100%;
+    filter: var(--heartrate-icon-filter, none);
   }
 
   .hr-num {
     color: var(--heart-rate-font-color, var(--font-color));
+    text-shadow: var(--heart-rate-text-shadow);
     z-index: 10;
   }
 </style>

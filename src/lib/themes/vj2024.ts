@@ -35,10 +35,11 @@ const vj2024base: LayoutTheme = {
     logoSetupTime: '/logos/vj2024/setuptime.png',
     logoSmall: '/logos/vj2024/triangle.png',
     logoWide: '/logos/vj2024/wide.png',
-    defaultConsole: '/consoles/2023/default.png',
+    defaultConsole: '/consoles/2024/default.png',
     timer: '/images/2024/timer.png',
     counter: [
-      '/images/2024/grave1.png',
+      '/images/2024/skull.png',
+      '/images/2024/star.png',
       '/images/2024/grave2.png',
       '/images/2024/coin.png',
       '/images/2024/heart.png',
@@ -49,9 +50,11 @@ const vj2024base: LayoutTheme = {
       '/images/2024/divider3.png',
     ],
     divider: '/images/2024/divider.png',
-    heart: '/images/2024/heart.png',
+    heart: '/images/2024/heartrate.png',
     pohinaDay: '/images/2024/pohinapaiva.png',
     pohinaNight: '/images/2024/pohinayo.png',
+    DoublePoehina: '/images/2024/viuhtiPohina2.png',
+    endOfIncentives: '/images/2024/viuhtiEnd.png',
   },
   style: `
     --darkblue: #152937;
@@ -76,6 +79,7 @@ const vj2024base: LayoutTheme = {
     
     --font-family: Solway;
     --font-color: var(--darkred);
+    --text-shadow: 0px 0px 20px rgba(171, 189, 202, 0.50);
     --letter-spacing: -1.3px;
     --padding: 10px;
     --border-style: solid;
@@ -110,13 +114,14 @@ const vj2024base: LayoutTheme = {
     --playername-background: var(--blue) url('/images/2024/boxbg.png') repeat fixed top left;
     --playername-font-size: 32px;
     --playername-font-color: var(--yellow);
+    --playername-box-text-shadow: none;
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
     --timer-font-size: 54px;
     --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
-    --stopped-screen-timer-color: #2b84a5;
-    --stopped-timer-color: #121b2c;
+    --stopped-screen-timer-color: var(--dark-green);
+    --stopped-timer-color: var(--dark-green);
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
     --pill-background-1: #fdc5d6;
@@ -125,7 +130,6 @@ const vj2024base: LayoutTheme = {
     --pill-font-color-2: #var(--font-color);
     --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
     --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
-    --heart-rate-font-color: #ffffff;
     --screen-overlay-item-text-shadow:
       -3px -3px 0 var(--screen-overlay-item-stroke-color),
       3px -3px 0 var(--screen-overlay-item-stroke-color),
@@ -147,43 +151,39 @@ const vj2024base: LayoutTheme = {
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
     --donation-bar-text-shadow-color: var(--lightblue);
-    --donation-bar-text-shadow2: 
-      -2px -2px 0 var(--donation-bar-text-shadow-color),
-      2px -2px 0 var(--donation-bar-text-shadow-color),
-      -2px 2px 0 var(--donation-bar-text-shadow-color),
-      2px 2px 0 var(--donation-bar-text-shadow-color),
-      -2px 0px 0 var(--donation-bar-text-shadow-color),
-      2px 0px 0 var(--donation-bar-text-shadow-color),
-      0px 2px 0 var(--donation-bar-text-shadow-color),
-      0px -2px 0 var(--donation-bar-text-shadow-color);
-    --donation-bar-text-shadow1: 
-      -1px -1px 0 var(--donation-bar-text-shadow-color),
-      1px -1px 0 var(--donation-bar-text-shadow-color),
-      -1px 1px 0 var(--donation-bar-text-shadow-color),
-      1px 1px 0 var(--donation-bar-text-shadow-color),
-      -1px 0px 0 var(--donation-bar-text-shadow-color),
-      1px 0px 0 var(--donation-bar-text-shadow-color),
-      0px 1px 0 var(--donation-bar-text-shadow-color),
-      0px -1px 0 var(--donation-bar-text-shadow-color);
     --donation-bar-text-shadow: 
-      -1px -1px 1px var(--donation-bar-text-shadow-color),
-      1px -1px 1px var(--donation-bar-text-shadow-color),
-      -1px 1px 1px var(--donation-bar-text-shadow-color),
-      1px 1px 1px var(--donation-bar-text-shadow-color),
-      -1px 0px 1px var(--donation-bar-text-shadow-color),
-      1px 0px  1px var(--donation-bar-text-shadow-color),
-      0px 1px  1px var(--donation-bar-text-shadow-color),
-      0px -1px  1px var(--donation-bar-text-shadow-color);
+      -1px -1px 3px var(--donation-bar-text-shadow-color),
+      1px -1px 3px var(--donation-bar-text-shadow-color),
+      -1px 1px 3px var(--donation-bar-text-shadow-color),
+      1px 1px 3px var(--donation-bar-text-shadow-color);
     --game-icon-filter: drop-shadow(1px 0px 0 #382218)
       drop-shadow(0px -1px 0 #382218)
       drop-shadow(-1px 0px 0 #382218)
       drop-shadow(0px 1px 0 #382218);
+    --console-icon-filter: var(--game-icon-filter);
+    --clock-icon-filter: var(--game-icon-filter);
+    --counter-icon-filter: var(--game-icon-filter);
+    --heartrate-icon-filter: var(--game-icon-filter);
+    --heart-rate-font-color: var(--darkred);
+    --heart-rate-text-shadow: 
+      -1px -1px 0 var(--white),
+      1px -1px 0 var(--white),
+      -1px 1px 0 var(--white),
+      1px 1px 0 var(--white),
+      -1px 0px 0 var(--white),
+      1px 0px 0 var(--white),
+      0px 1px 0 var(--white),
+      0px -1px 0 var(--white);
     --pohina-sponsor-right: 20px;
     --pohina-sponsor-bottom: 108px;
     --pohina-sponsor-width: 370px;
     --pohina-sponsor-height: 370px;
     --pohina-sponsor-border-radius: 185px;
     --pohina-sponsor-padding: 40px;
+    --fourthree-gameicon-margin-left: -20px;
+    --fourthree-gameicon-margin-right: 0px;
+    --fourthree-gameicon-margin-bottom: 200px;
+    --setup-time-game-icon-scale: 0.8;
   `
 }
 
@@ -211,6 +211,7 @@ const vj2024dark: LayoutTheme = {
   
     --setuptime-background: url('#vj2024n');
     --font-color: var(--orange);
+    --text-shadow: 0px 0px 15px var(--darkblue);
     --playername-font-color: var(--orange);
     --donation-bar-text-shadow-color: var(--blue);
     --donation-bar-font-color: var(--naturalwhite);
@@ -223,6 +224,8 @@ const vj2024dark: LayoutTheme = {
     --donation-bar-background: var(--darkblue) url('/images/2024/boxbg.png') repeat fixed top left;
     --background: var(--background-color) url('/images/2024/nightbg.png') repeat fixed top left;
     --background-2: var(--background-color-2) url('/images/2024/nightbg.png') repeat fixed top left;
+    --stopped-screen-timer-color: var(--yellow);
+    --stopped-timer-color: var(--yellow);
   `
 }
 
