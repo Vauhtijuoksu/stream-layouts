@@ -11,7 +11,7 @@
 	import PlayerName from '$lib/components/PlayerName.svelte';
 	import PlayerNameWrapper from '$lib/components/PlayerNameWrapper.svelte';
 	import Sponsors from '$lib/components/Sponsors.svelte';
-	import type { LayoutBackground, LayoutConf, LayoutHole } from '$lib/models/LayoutConf';
+	import type { LayoutBackground, LayoutConf, LayoutDimension, LayoutHole } from '$lib/models/LayoutConf';
 	import { fixedPlayerNames } from '$lib/stores/ConfStore';
 	import { themestore } from '$lib/stores/ThemeStore';
 	import PlayerNamesGrid from '$lib/components/PlayerNamesGrid.svelte';
@@ -58,7 +58,7 @@
           x: gameWidth + borderWidth / 2,
           y: gameHeight + borderWidth / 2,
           width: gameWidth + borderRadius - borderWidth / 2,
-          height: gameHeight + borderRadius - borderWidth / 2,
+          height: gameHeight,
         }
       },
       {
@@ -72,6 +72,13 @@
       }
     ]
   };
+
+  let bottomBar = {
+    x: 0,
+    y: height - donationBarHeight,
+    width: width,
+    height: donationBarHeight
+  }
 
 
 	let layout: LayoutConf;
@@ -120,6 +127,10 @@
         <GameTimer></GameTimer>
       </div>
     </AbsDiv>
+
+    <div id="donationbar">
+			<DonationBar />
+		</div>
     <!--
 
       <AbsDiv name="leftCol" cls="col" {...leftCol}>
@@ -154,23 +165,6 @@
 </StreamLayout>
 
 <style>
-  #curved-corner-bottomleft {
-    overflow: hidden;
-    position: relative;
-  }
-  #curved-corner-bottomleft:before {
-    content: "";
-    display: block;
-    width: 200%;
-    height: 200%;
-    position: absolute;
-    border-radius: 50%;
-  }
-  #curved-corner-bottomleft:before {
-    bottom: 0;
-    left: 0;
-    box-shadow: -50px 50px 0 0 var(--background);
-  }
 	#sponsorWrapper {
 		flex-grow: 1;
 		background: var(--background);
@@ -186,5 +180,12 @@
 		border-top-right-radius: var(--border-radius);
 		margin-left: calc(0px - var(--border-width));
 		margin-bottom: calc(0px - var(--border-width));
+	}
+	#donationbar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: calc(0px - var(--border-width));
+		height: calc(65px + var(--border-width));
 	}
 </style>
