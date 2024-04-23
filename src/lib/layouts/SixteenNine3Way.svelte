@@ -58,7 +58,7 @@
           x: gameWidth + borderWidth / 2,
           y: gameHeight + borderWidth / 2,
           width: gameWidth + borderRadius - borderWidth / 2,
-          height: gameHeight,
+          height: gameHeight + borderRadius,
         }
       },
       {
