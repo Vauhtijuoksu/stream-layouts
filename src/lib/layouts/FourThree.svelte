@@ -115,8 +115,9 @@
   .gameicon {
     align-self: flex-end;
     z-index: 100;
-    margin-left: -60px;
-    margin-right: -20px;
+    margin-left: var(--fourthree-gameicon-margin-left, -60px);
+    margin-right: var(--fourthree-gameicon-margin-right, -20px);
+    margin-bottom: var(--fourthree-gameicon-margin-bottom, 0);
   }
   .sponsor{
     overflow: visible;

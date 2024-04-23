@@ -16,8 +16,10 @@
 
 
 {#if counter > -1}
-<div class="counter" style="filter: hue-rotate(calc(60deg * {i}));">
-  <ClickIcon {images} image={0} style="max-width: var(--counter-font-size);"/>
+<div class="counter">
+    <div class="counterimg" style="filter: hue-rotate(calc(60deg * {i})) var(--counter-icon-filter, none);">
+        <ClickIcon {images} image={0} style="max-width: var(--counter-font-size);"/>
+    </div>
   <div class="number">
       {counter}
   </div>

@@ -118,6 +118,7 @@
     .icon > img {
         max-width: 100px;
         margin-right: -20px;
+        filter: var(--clock-icon-filter, none);
     }
 
     .time {

@@ -95,6 +95,7 @@
         display: flex;
         width: 160px;
         margin: -10px -10px -30px -10px;
+        scale: var(--setup-time-game-icon-scale, 1);
     }
     .gamerow .col {
         flex-grow: 1;

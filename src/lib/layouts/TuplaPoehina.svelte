@@ -53,6 +53,7 @@
     background,
     contents: [],
   };
+  $: DoublePoehina = $themestore.images?.DoublePoehina ?? '/logos/vj2023/pohinaoverlay.png'
 </script>
 
 <StreamLayout {layout}>
@@ -63,7 +64,7 @@
     <AbsDiv name="bottomRight" cls="row" {...bottomRight} style="overflow: visible">
       <div class="bottomright row">
         <div class="viuhti">
-          <img src="/logos/pohinaoverlay.png" alt="viuhtista" />
+          <img  src="{DoublePoehina}" alt="viuhtista" />
         </div>
         <div class="col sponsors">
           <Sponsors />

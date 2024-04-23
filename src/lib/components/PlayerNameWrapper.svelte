@@ -17,6 +17,7 @@
     border-width: var(--playername-border-width, var(--border-width));
     border-radius: var(--playername-border-radius, var(--border-radius));
     color: var(--playername-font-color);
+    text-shadow: var(--playername-box-text-shadow);
   }
   .playernameWrapper.left {
     border-top-left-radius: 0;
