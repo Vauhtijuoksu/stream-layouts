@@ -88,7 +88,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
   const cameraY = bottomBarY;
 
   const topBar = abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'align-items: flex-end; justify-content: space-between; background: var(--background); border')
-  const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);')
+  const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); justify-content: space-around;')
   const bottomRight = abs_field('bottomRight', 'div', 'col', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
 
   topBar.contents = [
@@ -113,7 +113,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
 
   bottomLeft.contents = [
     { component: 'racetimer' },
-    wrap(gamedata(), 'div', { class: 'row', style: 'gap: 20px'}),
+    wrap(gamedata(), 'div', { class: 'row overflow', style: 'gap: 20px'}),
   ]
 
   bottomRight.contents = [
