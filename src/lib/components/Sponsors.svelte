@@ -26,8 +26,8 @@
 <div class="sponsors">
   {#key sponsor}
     <img
-      in:fly="{{ delay: 800, duration: 1000, x: 500 }}"
-      out:fly="{{ duration: 1000, x: -500 }}"
+      in:fly="{{ delay: 500, duration: 700, x: '50%' }}"
+      out:fly="{{ duration: 700, x: '-50%' }}"
       src="{sponsor.img_url}"
       class="sponsor"
       alt="{sponsor.name}"
