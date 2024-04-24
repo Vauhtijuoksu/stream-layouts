@@ -133,7 +133,7 @@
                     <div id="gamedatarow" class="row">
                         <GameData showGameIcon={false} />
                     </div>
-                    <div class="row">
+                    <div class="row timerow">
                         <GameTimer></GameTimer>
 
                         <Counters />
@@ -205,6 +205,10 @@
 	}
     #gamedatarow{
         padding-top: 20px;
+        justify-content: space-around;
+    }
+    .timerow{
+        margin-top: -15px;
         justify-content: space-around;
     }
 </style>
