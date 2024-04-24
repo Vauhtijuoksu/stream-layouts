@@ -5,6 +5,7 @@
 	import Counters from '$lib/components/Counters.svelte';
 	import DonationBar from '$lib/components/DonationBar.svelte';
 	import Frame from '$lib/components/Frame.svelte';
+	import GameIcon from '$lib/components/GameIcon.svelte';
 	import GameData from '$lib/components/GameData.svelte';
 	import GameTimer from '$lib/components/GameTimer.svelte';
 	import Logo from '$lib/components/Logo.svelte';
@@ -13,6 +14,7 @@
 	import Sponsors from '$lib/components/Sponsors.svelte';
 	import type { LayoutBackground, LayoutConf, LayoutDimension, LayoutHole } from '$lib/models/LayoutConf';
 	import { fixedPlayerNames } from '$lib/stores/ConfStore';
+	import { currentGame } from "$lib/stores/GameStore";
 	import { themestore } from '$lib/stores/ThemeStore';
 	import PlayerNamesGrid from '$lib/components/PlayerNamesGrid.svelte';
 	import { player } from './utils';
@@ -122,10 +124,23 @@
       width={gameWidth-borderWidth/2}
       height={gameHeight/2+borderWidth}
       >
-      <div id="bottomRowWrapper" class="row">
-        <GameData></GameData>
-        <GameTimer></GameTimer>
-      </div>
+
+        <div id="bottomRowWrapper">
+            <div class="row overflow">
+                <GameIcon img_filename={$currentGame?.img_filename} img_style="margin-top: 130px; max-height: 220px; z-index: 100;">
+                </GameIcon>
+                <div class="col" style="flex-grow: 2">
+                    <div id="gamedatarow" class="row">
+                        <GameData showGameIcon={false} />
+                    </div>
+                    <div class="row">
+                        <GameTimer></GameTimer>
+
+                        <Counters />
+                    </div>
+                </div>
+            </div>
+        </div>
     </AbsDiv>
 
     <div id="donationbar">
@@ -188,4 +203,8 @@
 		bottom: calc(0px - var(--border-width));
 		height: calc(65px + var(--border-width));
 	}
+    #gamedatarow{
+        padding-top: 20px;
+        justify-content: space-around;
+    }
 </style>
