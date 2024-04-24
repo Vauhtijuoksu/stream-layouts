@@ -11,8 +11,9 @@
 
 <style>
   .divider{
-    height: 32px;
-    padding: 0 20px;
-    text-shadow: none;
+      height: var(--divider-size, 32px);
+      filter: var(--divider-filter, none);
+      padding: 0 20px;
+      text-shadow: none;
   }
 </style>

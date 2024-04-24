@@ -120,8 +120,8 @@ const vj2024base: LayoutTheme = {
     --timer-font-size: 54px;
     --timer-estimate-font-size: 24px;
     --timer-millis-font-size: 32px;
-    --stopped-screen-timer-color: var(--dark-green);
-    --stopped-timer-color: var(--dark-green);
+    --stopped-screen-timer-color: var(--darkgreen);
+    --stopped-timer-color: var(--darkgreen);
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
     --pill-background-1: #fdc5d6;
@@ -163,6 +163,7 @@ const vj2024base: LayoutTheme = {
     --console-icon-filter: var(--game-icon-filter);
     --clock-icon-filter: var(--game-icon-filter);
     --counter-icon-filter: var(--game-icon-filter);
+    --divider-filter: var(--game-icon-filter);
     --heartrate-icon-filter: var(--game-icon-filter);
     --heart-rate-font-color: var(--darkred);
     --heart-rate-text-shadow: 
@@ -184,6 +185,7 @@ const vj2024base: LayoutTheme = {
     --fourthree-gameicon-margin-right: 0px;
     --fourthree-gameicon-margin-bottom: 200px;
     --setup-time-game-icon-scale: 0.8;
+    --divider-size: 40px
   `
 }
 

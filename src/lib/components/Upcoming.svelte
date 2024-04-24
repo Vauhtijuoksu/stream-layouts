@@ -59,7 +59,7 @@
 </div>
 {/if}
 {:else if style === "bar"}
-<div class="row">
+<div class="row overflow">
     {#if $upcoming.length}
     {#each $upcoming as game, i}
     <div class="game">

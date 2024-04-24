@@ -105,7 +105,7 @@
         animation-fill-mode: forwards;
 	}
 	@keyframes show{
-		0%		{ margin-top: -100px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
+		0%		{ margin-top: -120px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
         100%	{ margin-top: 0; }
 	}
 	.hideline{
@@ -114,7 +114,7 @@
 	}
 	@keyframes hide{
 		0%	{ margin-top: 0; }
-		100%		{ margin-top: 100px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
+		100%		{ margin-top: 120px; } /* the barsize is hardcoded to bottombar.svelte. maybe fix later.. */
 	}
 
 	.donationbar {
