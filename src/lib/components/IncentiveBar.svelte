@@ -29,14 +29,21 @@
   <span class="incentive">{title} {getGame(incentive?.game_id)?.game ?? ''} - {incentive?.title}</span>
 {#each statusSorted() as status}
   {#if status.type === 'milestone'}
+    <div class="pillholder">
   <Pill>{incentive?.total_amount} / {status.milestone_goal}€</Pill>
+    </div>
   {:else}
+    <div class="pillholder">
   <Pill>{status.option}: {status.amount}€</Pill>
+    </div>
   {/if}
 {/each}
 {/key}
 
 <style>
+  .pillholder{
+    margin-top: -5px;
+  }
   .incentive {
     font-size:  var(--donation-bar-info-font-size);
     margin-right: .75em;

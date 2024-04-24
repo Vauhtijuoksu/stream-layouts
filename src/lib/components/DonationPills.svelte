@@ -12,7 +12,7 @@
                     color: hsl(
                         ${Math.trunc(t * 5 * 360)},
                         ${Math.min(100, 1000 - 1000 * t)}%,
-                        ${Math.min(25, 500 - 500 * t)}%
+                        ${Math.min(35, 500 - 500 * t)}%
                     );`
             }
         };

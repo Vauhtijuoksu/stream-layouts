@@ -124,9 +124,9 @@ const vj2024base: LayoutTheme = {
     --stopped-timer-color: var(--darkgreen);
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
-    --pill-background-1: #fdc5d6;
+    --pill-background-1: var(--naturalwhite);
     --pill-font-color-1: var(--font-color);
-    --pill-background-2: #ffce8d;
+    --pill-background-2: var(--naturalwhite);
     --pill-font-color-2: #var(--font-color);
     --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
     --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
@@ -228,6 +228,8 @@ const vj2024dark: LayoutTheme = {
     --background-2: var(--background-color-2) url('/images/2024/nightbg.png') repeat fixed top left;
     --stopped-screen-timer-color: var(--yellow);
     --stopped-timer-color: var(--yellow);
+    --pill-background-1: var(--red);
+    --pill-background-2: var(--greyblue);
   `
 }
 

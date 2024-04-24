@@ -71,11 +71,14 @@
 				Ei vielä ehdotuksia!
 			{/if}
 		</div>
-		<div class="icon">
-			<GameIcon
-				img_filename="{game(incentive?.game_id)?.img_filename}"
-				></GameIcon>
+		<div class="iconwrapper">
+			<div class="icon">
+				<GameIcon
+					img_filename="{game(incentive?.game_id)?.img_filename}"
+					></GameIcon>
+			</div>
 		</div>
+
 	</div>
 	{/key}
 		
@@ -101,7 +104,6 @@
 	}
 	.incentive-wrapper {
 		height: 320px;
-		overflow: hidden;
 	}
 	.options {
 		display: flex;
@@ -112,7 +114,9 @@
 		font-size: var(--font-size-lg);
 	}
 	.icon {
-		margin: -20px;
+        scale: var(--setup-time-game-icon-scale, 1);
+		margin-left: -100px;
+		margin-top: 10px;
 	}
 	.title {
 		font-size: var(--font-size-md);
