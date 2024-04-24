@@ -68,6 +68,7 @@
 	}
 
 	.controls {
+		margin-top: 5px;
 		position: absolute;
 		display: flex;
 		flex-direction: row;
