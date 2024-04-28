@@ -184,7 +184,7 @@ const vj2024base: LayoutTheme = {
     --fourthree-gameicon-margin-left: -20px;
     --fourthree-gameicon-margin-right: 0px;
     --fourthree-gameicon-margin-bottom: 200px;
-    --setup-time-game-icon-scale: 0.8;
+    --setup-time-game-icon-scale: 80%;
     --divider-size: 40px;
   `
 }

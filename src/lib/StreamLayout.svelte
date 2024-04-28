@@ -124,4 +124,18 @@
 		:global(.row.overflow) {
 			overflow: visible;
 		}
+		:global(.debug) {
+			border: 1px solid red;
+		}
+		:global(.debug .debug) {
+			border-color: blue;
+		}
+
+		:global(.debug .debug .debug) {
+			border-color: greenyellow;
+		}
+
+		:global(.debug .debug .debug .debug) {
+			border-color: plum;
+		}
 </style>

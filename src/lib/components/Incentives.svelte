@@ -114,7 +114,7 @@
 		font-size: var(--font-size-lg);
 	}
 	.icon {
-        scale: var(--setup-time-game-icon-scale, 1);
+		transform: scale(var(--setup-time-game-icon-scale, 1));
 		margin-left: -100px;
 		margin-top: 10px;
 	}
