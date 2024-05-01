@@ -11,6 +11,7 @@ import SetupTime from './SetupTime.svelte';
 import SixteenNine from '$lib/layouts/SixteenNine.svelte';
 import SixteenNine3Way from "$lib/layouts/SixteenNine3Way.svelte";
 import SixteenNine4Way from '$lib/layouts/SixteenNine4Way.svelte';
+import VideoFrame from '$lib/layouts/VideoFrame.svelte';
 
 export type LayoutGenerator = (theme: LayoutTheme) => LayoutConf;
 
@@ -29,6 +30,7 @@ export const components: {[key: string]: ComponentType} = {
   SixteenNine,
   SixteenNine3Way,
   SixteenNine4Way,
+  VideoFrame,
 }
 
   /* TODO: 4:3 x2 co-op  playernames x8 */
