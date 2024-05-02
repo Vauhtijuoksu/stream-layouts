@@ -115,8 +115,8 @@
 	}
 	.icon {
 		transform: scale(var(--setup-time-game-icon-scale, 1));
-		margin-left: -100px;
-		margin-top: 10px;
+		margin-left: 250px;
+		margin-top: 120px;
 	}
 	.title {
 		font-size: var(--font-size-md);

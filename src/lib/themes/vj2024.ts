@@ -81,7 +81,7 @@ const vj2024base: LayoutTheme = {
     
     --font-family: Solway;
     --font-color: var(--darkred);
-    --text-shadow: 0px 0px 20px rgba(171, 189, 202, 0.50);
+    --text-shadow: 0px 0px 20px rgba(171, 189, 202, 0.60);
     --letter-spacing: -1.3px;
     --padding: 10px;
     --border-style: solid;
@@ -149,7 +149,15 @@ const vj2024base: LayoutTheme = {
       -2px 0px 0 var(--screen-overlay-item-stroke-color),
       2px 0px 0 var(--screen-overlay-item-stroke-color),
       0px 2px 0 var(--screen-overlay-item-stroke-color),
-      0px -2px 0 var(--screen-overlay-item-stroke-color);
+      0px -2px 0 var(--screen-overlay-item-stroke-color),
+      1px -2px 0 var(--screen-overlay-item-stroke-color),
+      -1px -2px 0 var(--screen-overlay-item-stroke-color),
+      1px 2px 0 var(--screen-overlay-item-stroke-color),
+      -1px 2px 0 var(--screen-overlay-item-stroke-color),
+      -2px 1px 0 var(--screen-overlay-item-stroke-color),
+      -2px -1px 0 var(--screen-overlay-item-stroke-color),
+      2px 1px 0 var(--screen-overlay-item-stroke-color),
+      2px -1px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
     --donation-bar-text-shadow-color: var(--lightblue);
@@ -216,6 +224,7 @@ const vj2024dark: LayoutTheme = {
     --nightonly: default;
   
     --setuptime-background: url('#vj2024n');
+    --screen-overlay-item-stroke-color: var(--darkred);
     --font-color: var(--orange);
     --text-shadow: 0px 0px 15px var(--darkblue);
     --playername-font-color: var(--orange);
