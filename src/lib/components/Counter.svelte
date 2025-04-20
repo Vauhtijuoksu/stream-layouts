@@ -3,7 +3,6 @@
 	import { themestore } from "$lib/stores/ThemeStore";
 	import ClickIcon from "./ClickIcon.svelte";
 
-
   export let index = -1;
   export let i = 0;
   export let counter: number = -1;
@@ -32,6 +31,6 @@
         flex-direction: column;
         justify-content: center;;
         align-items: center;
-        font-size: var(--counter-font-size);
+        font-size: var(--font-size-override, --counter-font-size);
     }
 </style>

@@ -238,11 +238,13 @@ export function game_dimensions(
   donationBarWidth?: number,
   cameraWidth?: number,
   cameraHeight?: number,
+  separateNames?: boolean
 ) {
   const leftColWidth = width - gameWidth;
   cameraWidth ??= leftColWidth;
   cameraHeight ??= height - gameHeight;
-  const leftColHeight = height - donationBarHeight - cameraHeight;
+  const playerNameHeight =  separateNames ? 50 : 0
+  const leftColHeight = height - donationBarHeight - cameraHeight - playerNameHeight;
   const bottomBarWidth = width - cameraWidth;
   const bottomBarHeight = height - gameHeight - donationBarHeight;
   const bottomBarX = cameraWidth;
@@ -263,6 +265,12 @@ export function game_dimensions(
       y: leftColY,
       width: leftColWidth,
       height: leftColHeight,
+    },
+    leftPlayerNames: {
+      x: leftColX,
+      y: leftColHeight + cameraHeight,
+      width: leftColWidth,
+      height: playerNameHeight,
     },
     bottomBar: {
       x: bottomBarX,

@@ -1,10 +1,20 @@
 <script lang="ts">
+  const currentCasters = []
   export let side = 'left';
+  export let caster = false;
   export let fillHeight = '';
+
+  const show = !(caster && currentCasters.length == 0)
+
 </script>
 
 <div class="playernameWrapper {side} {fillHeight}">
+  {#if show}
+  <div class="playernameHeader">
+    {#if caster}Sohvalla {currentCasters}{:else}Juoksija{/if}
+  </div>
   <slot />
+  {/if}
 </div>
 
 <style>
@@ -23,6 +33,9 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
   .playernameWrapper.right {
     border-top-right-radius: 0;
@@ -34,5 +47,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+  }
+  .playernameHeader{
+    font-family: var(--header-font);
+    font-size: var(--player-name-header-font-size,0px);
+    line-height: calc(var(--playername-font-size,0px) * 1.3 );
+    flex-grow: 0.5;
   }
 </style>

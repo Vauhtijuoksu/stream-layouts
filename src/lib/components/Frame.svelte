@@ -19,5 +19,6 @@
         position: absolute;
         border: var(--border);
         border-radius: var(--border-radius);
+        border-right: var(--camera-game-separation)  var(--border-style) var(--border-color);
     }
 </style>

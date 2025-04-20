@@ -31,7 +31,7 @@
 	export let cameraHeight = undefined;
 	export let divisions = 1;
 
-	export const { leftCol, bottomBar, donationBar, camera, game } = game_dimensions(
+	export const { leftCol, bottomBar, donationBar, camera, game, leftPlayerNames } = game_dimensions(
 		width,
 		height,
 		gameWidth,
@@ -39,7 +39,8 @@
 		donationBarHeight,
 		donationBarWidth,
 		cameraWidth,
-		cameraHeight
+		cameraHeight,
+		true
 	);
 
 	let background: LayoutBackground = {
@@ -67,12 +68,17 @@
 				<Sponsors />
 				<Counters />
 			</div>
-			{#if $fixedPlayerNames}
+			<PlayerNameWrapper caster={true}>
+					<PlayerName  caster={true}/>
+			</PlayerNameWrapper>
+		</AbsDiv>
+		{#if $fixedPlayerNames}
+			<AbsDiv name="leftCol2" cls="col" {...leftPlayerNames}>
 			<PlayerNameWrapper>
 					<PlayerName />
 			</PlayerNameWrapper>
-			{/if}
-		</AbsDiv>
+			</AbsDiv>
+		{/if}
 		<AbsDiv name="bottomBar" cls="row" {...bottomBar}>
 			<div id="bottomBarWrapper" class="row">
 				<GameTimer name={'1'} />

@@ -22,7 +22,7 @@ const vj2025base: LayoutTheme = {
       url: '/fonts/Jaini-Regular.ttf',
     }
   ],
-  borderWidth: 3,
+  borderWidth: 0,
   borderRadius: 0,
   imageFolder: 'vj2025',
   images: {
@@ -72,6 +72,7 @@ const vj2025base: LayoutTheme = {
   --gray2: #bccdd7;
   --gray3: #e2e1e7;
   --white: #FFFFFF;
+  --donabarbg: #270506;
   
     --darkblue: #00FF00;
     --darkgreen: #00FF00;
@@ -97,13 +98,17 @@ const vj2025base: LayoutTheme = {
     --header-font: Berosong;
     --font-family: Jaini;
     --font-color: var(--white);
-    --text-shadow: 0px 0px 20px rgba(171, 189, 202, 0.60);
-    --letter-spacing: -1.3px;
+    
+    --text-shadow: none;
+    --text-shadow2: 0px 0px 20px rgba(171, 189, 202, 0.60);
+    --letter-spacing: default;
+    --spaced-lettering: default;
     --padding: 10px;
     --border-style: solid;
-    --border-color: var(--FIXME);
-    --border-width: 3px;
-    --border-radius: 0;
+    --border-color: var(--black);
+    --border-width: 0px;
+    --border-radius: 0px;
+    --camera-game-separation: 3px;
     --border: var(--border-width) var(--border-style) var(--border-color);
     --background-color: var(--black);
     --background-color-2: var(--black);
@@ -114,32 +119,38 @@ const vj2025base: LayoutTheme = {
     --font-size-md: 24px;
     --font-size-sm: 20px;
     --font-size-xs: 16px;
-    --sponsors-font-size: 24px;
+    --sponsors-font-size: 46px;
+    --fourthree-sponsors-font-size: 40px;
     --donation-bar-font-color: var(--font-color);
     --donation-bar-padding: 0 0;
-    --donation-bar-background: var(--black);
+    --donation-bar-left-padding-extra: 15px;
+    --donation-bar-background: var(--donabarbg);
     --donation-bar-border-style: var(--border-style);
     --donation-bar-border-color: var(--border-color);
     --donation-bar-border-width: var(--border-width);
     --donation-bar-border-radius: 0;
     --donation-bar-font-size: 32px;
-    --donation-bar-fill: var(--FIXME);
-    --donation-bar-current-bg: var(--FIXME);
+    --donation-bar-fill: var(--green1);
+    --donation-bar-current-bg: var(--red0);
     --donation-bar-current-font-color: var(--font-color);
-    --donation-bar-goal-bg: var(--FIXME);
+    --donation-bar-goal-bg: var(--red0);
     --donation-bar-goal-font-color: var(--font-color);
     --donation-bar-info-font-size: 28px;
     --playername-background: var(--black);
     --playername-font-size: 32px;
+    --player-name-header-font-size: 36px;
     --playername-font-color: var(--font-color);
     --playername-box-text-shadow: none;
+    --playername-padding: 3px;
     --hole-border-stroke: #080808;
     --hole-border-stroke-width: 4;
-    --timer-font-size: 54px;
-    --timer-estimate-font-size: 24px;
-    --timer-millis-font-size: 32px;
-    --stopped-screen-timer-color: var(--FIXME);
-    --stopped-timer-color: var(--FIXME);
+    --timer-font-size: 64px;
+    --timer-estimate-font-size: 26px;
+    --timer-estimate-margin: -12px;
+    --timer-millis-font-size: 36px;
+    --stopped-screen-timer-color: var(--green2);
+    --stopped-timer-color: var(--green2);
+    --timer-overtime-color: var(--red2);
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: var(--timer-font-size);
     --pill-background-1: var(--naturalwhite);
@@ -157,7 +168,8 @@ const vj2025base: LayoutTheme = {
       3px 0px 0 var(--screen-overlay-item-stroke-color),
       0px 3px 0 var(--screen-overlay-item-stroke-color),
       0px -3px 0 var(--screen-overlay-item-stroke-color);
-    --screen-player-name-text-shadow: 
+    --screen-player-name-text-shadow: none;
+    --screen-player-name-text-shadow2: 
       -2px -2px 0 var(--screen-overlay-item-stroke-color),
       2px -2px 0 var(--screen-overlay-item-stroke-color),
       -2px 2px 0 var(--screen-overlay-item-stroke-color),
@@ -176,17 +188,22 @@ const vj2025base: LayoutTheme = {
       2px -1px 0 var(--screen-overlay-item-stroke-color);
     --screen-player-name-font-color: var(--screen-timer-color);
     --screen-player-name-font-size: var(--font-size-md);
-    --donation-bar-text-shadow-color: var(--lightblue);
-    --donation-bar-text-shadow: 
+    --donation-bar-text-shadow-color: var(--black);
+    --donation-bar-text-shadow: none;
+    --donation-bar-text-shadow2: 
       -1px -1px 3px var(--donation-bar-text-shadow-color),
       1px -1px 3px var(--donation-bar-text-shadow-color),
       -1px 1px 3px var(--donation-bar-text-shadow-color),
       1px 1px 3px var(--donation-bar-text-shadow-color);
-    --game-icon-filter: drop-shadow(1px 0px 0 #382218)
+    --game-icon-filter: none;
+    --game-icon-filter2: drop-shadow(1px 0px 0 #382218)
       drop-shadow(0px -1px 0 #382218)
       drop-shadow(-1px 0px 0 #382218)
       drop-shadow(0px 1px 0 #382218);
-    --console-icon-filter: var(--game-icon-filter);
+    --game-icon-max-height: 155px;
+    --game-icon-max-width: 200px;
+    --game-icon-padding: 10px;
+    --console-icon-filter: drop-shadow(0px 0px 6px #4a0c0d) drop-shadow(0px 0px 10px #4a0c0d) drop-shadow(0px 0px 16px #4a0c0d);
     --clock-icon-filter: var(--game-icon-filter);
     --counter-icon-filter: var(--game-icon-filter);
     --divider-filter: var(--game-icon-filter);

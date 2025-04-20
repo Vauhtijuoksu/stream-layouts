@@ -133,7 +133,7 @@
 	}
 
 	.fill-content {
-		padding-left: var(--border-radius);
+		padding-left: calc(0px + var(--border-radius) + var(--donation-bar-left-padding-extra, 0px));
 		position: absolute;
 		top: 0;
 		bottom: 0;

@@ -17,11 +17,24 @@
             }
         };
     }
+    function flash(node) {
+        return {
+            duration: 15000,
+            css: t => {
+                return `
+                    color: rgb(
+                        255,
+                        ${255 * Math.max(0, 2*t-1)},
+                        ${255 * Math.max(0, 2*t-1)}
+                    );`
+            }
+        };
+    }
 </script>
 
 
 {#each donations as donation, i (donation.id)}
-  <div class="dono" in:rainbow animate:flip="{{duration: 300}}">
+  <div class="dono" in:flash animate:flip="{{duration: 300}}">
     <div class="donate">{donation.name} {donation.amount} €</div>
         <Divider {i}></Divider>
   </div>

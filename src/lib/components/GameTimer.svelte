@@ -13,6 +13,7 @@
     export let timer: Timer | undefined = undefined;
     export let cls = '';
 
+    let timerClass = ""
 
     $:icon = $themestore.images?.timer ?? '/images/2023/timer.png';
 
@@ -36,7 +37,6 @@
     let stopped = false;
 
     $: show = (showWhen === "always") || stopped;
-
     const reset = () => {
         hours = " 0";
         minutes = "00";
@@ -68,6 +68,12 @@
         minutes = pad(Math.max(minutes_, 0));
         seconds = pad(Math.max(seconds_, 0))
         millis = Math.floor(Math.max(millis_, 0) / 100).toString();
+        if (stopped){
+            timerClass = 'stopped'
+        } else if (hours_ * 60 + minutes_ + seconds_/60 > estimate.hours * 60 + estimate.minutes){
+            timerClass = " overtime"
+        }
+
     };
 
     onMount(() => {
@@ -87,7 +93,7 @@
     </div>
     {/if}
     <div class="time {cls}">
-        <div class="numbers" class:stopped>
+        <div class="numbers {timerClass}">
             <div class="digit tenhour">{hours[0]}</div>
             <div class="digit">{hours[1]}</div>
             <div class="colon">:</div>
@@ -148,15 +154,22 @@
 
     }
 
+    .overtime {
+        color: var(--timer-overtime-color, #FFF);
+    }
     .screentimer > .stopped {
         color: var(--stopped-screen-timer-color, #888);
     }
     .stopped {
         color: var(--stopped-timer-color, #345);
     }
+    .overtime {
+        color: var(--timer-overtime-color, #FFF);
+    }
 
     .estimate {
         font-size: var(--timer-estimate-font-size);
+        margin-top: var(--timer-estimate-margin, 0px);
     }
 
     .numbers {
@@ -166,7 +179,7 @@
     }
 
     .digit {
-        width: .7em;
+        width: .5em;
         font-size: var(--timer-font-size);
     }
 
@@ -175,7 +188,7 @@
     }
 
     .colon {
-        width: .3em;
+        width: .2em;
         font-size: var(--timer-font-size);
         align-self: center;
     }

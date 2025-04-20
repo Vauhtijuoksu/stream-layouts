@@ -31,15 +31,13 @@
 </div>
 
 <div class="consoledata">
-    <div class="console icon">
-        <ConsoleIcon
-          img_filename="{deviceImg}.png"
-          img_alt="{device}"
-          ></ConsoleIcon>
-    </div>
     <div class="consoleinfo">
-        <div class="device" class:shortestname={(device?.length ?? 0) <= 3} class:shortername={(device?.length ?? 0) <= 4} class:shortname={(device?.length ?? 0) <= 5} >
-            {device}
+
+        <div class="console icon">
+            <ConsoleIcon
+              img_filename="{deviceImg}.png"
+              img_alt="{device}"
+              ></ConsoleIcon>
         </div>
         <div class="published">
             {published}
@@ -68,6 +66,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
+    }
+    .gameinfo{
+        padding-left: var(--game-icon-padding, 0);
     }
     .consoleinfo{
         align-items: center;

@@ -22,7 +22,7 @@
   })
 </script>
 
-<h1 class="header">Yhteistyössä</h1>
+<span class="header">Yhteistyössä</span>
 <div class="sponsors">
   {#key sponsor}
     <img
@@ -37,8 +37,12 @@
 
 <style>
   .header {
-    height: 10%;
-    font-size: var(--sponsors-font-size);
+    padding-left: var(--header-padding-override, 0px);
+    height: var(--header-size-override, 10%);
+    font-size: var(--font-size-override, --sponsors-font-size);
+    font-family: var(--header-font);
+    letter-spacing: var(--spaced-lettering);
+    font-weight: normal;
   }
   .sponsors {
     position: relative;
@@ -54,7 +58,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    max-height: 95%;
-    max-width: 95%;
+    max-height: 85%;
+    max-width: 90%;
   }
 </style>
