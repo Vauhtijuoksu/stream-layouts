@@ -65,6 +65,7 @@
 		margin: 0;
 		padding: 0;
 		text-align: center;
+		overflow: hidden;
 	}
 
 	.controls {
