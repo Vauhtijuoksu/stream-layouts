@@ -25,6 +25,17 @@ export const currentPlayers = derived(
     }
 )
 
+export const currentCasters = derived(
+    [playerdata, currentGame],
+    ([$players, $game]) => {
+        let players = $game
+            ?.players
+            ?.map((p_id) =>  $players?.find((p) => p.id === p_id))
+            .filter((p) => p !== undefined) ?? [];
+        return players;
+    }
+)
+
 export function getGame(game_id?: string): GameInfo | undefined {
     return get(gamedata).find((g) => g.id === game_id);
 }

@@ -21,7 +21,8 @@
     position: relative;
   }
   .game.icon > img {
-    max-height: 200px;
+    max-height: var(--game-icon-max-height, 200px);
+    max-width: var(--game-icon-max-width, auto);
     z-index: 20;
     position: absolute;
     left: 50%;

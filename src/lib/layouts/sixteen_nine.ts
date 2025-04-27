@@ -1,5 +1,17 @@
 import type { LayoutBackground, LayoutConf, LayoutField, LayoutTheme, Sponsor } from "$lib/models/LayoutConf";
-import { abs_field, camera_frame, donation_bar, game_layout_fields, gamedata, left_col_wrapper, player, sponsors_field, timer, wrap } from "./utils";
+import {
+  abs_field,
+  camera_frame,
+  camera_hole,
+  donation_bar,
+  game_layout_fields,
+  gamedata,
+  left_col_wrapper,
+  player,
+  sponsors_field,
+  timer,
+  wrap
+} from "./utils";
 
 function sixteen_nine_leftcol_contents(
   borderWidth = 0,
@@ -25,7 +37,7 @@ function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
     { component: 'counters' },
     wrap(timer(), 'div', { class: 'row', style: 'justify-content: center; flex-grow: 1;' }),
-    wrap(gamedata(), 'div', { class: 'row', style: 'flex-grow: 1;' }),
+    wrap(gamedata(), 'div', { class: 'row', style: 'flex-grow: 1; justify-content: space-between;' }),
   ];
 }
 
@@ -58,6 +70,8 @@ export function sixteen_nine_bigcam({
 
   layout.contents.leftCol.contents = sixteen_nine_leftcol_contents(borderRadius, borderWidth, sponsors);
   layout.contents.bottomBar.contents = sixteen_nine_bottombar_contents();
+  layout.contents.cameraFrame.params.style = "top: 610px;width: 560px;height: 405px; border-top: 3px solid black;  border-right: 3px solid black; border-radius: var(--border-radius);"
+  layout.contents.leftCol.params.style = "width: 400px;height: 610px; --font-size-override: 30px; --header-size-override: 30px;"
 
   return {
     name: 'sixteen_nine_bigcam',
