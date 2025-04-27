@@ -51,6 +51,7 @@
         let start = start_time?.getTime() ?? Date.now();
         if (end_time) {
             stopped = true;
+            offset = 0;
         } else {
             stopped = false;
             if (!start_time) {
