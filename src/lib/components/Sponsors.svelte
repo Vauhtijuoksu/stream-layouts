@@ -39,7 +39,7 @@
   .header {
     padding-left: var(--header-padding-override, 0px);
     height: var(--header-size-override, 10%);
-    font-size: var(--font-size-override, --sponsors-font-size);
+    font-size: var(--font-size-override, var(--sponsors-font-size));
     font-family: var(--header-font);
     letter-spacing: var(--spaced-lettering);
     font-weight: normal;
@@ -49,6 +49,7 @@
     flex-grow: 1;
     padding: 10px;
     overflow: visible;
+
   }
 
   .sponsor {

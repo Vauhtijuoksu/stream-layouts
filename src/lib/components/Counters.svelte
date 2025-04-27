@@ -20,6 +20,7 @@
 		flex-direction: row;
 		justify-content: center;
 		gap: 0px;
+		line-height: var(--counter-font-size);
 	}
 	.counters.small{
 		--font-size-override: calc(var(--counter-font-size) * 0.7);

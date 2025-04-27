@@ -31,6 +31,6 @@
         flex-direction: column;
         justify-content: center;;
         align-items: center;
-        font-size: var(--font-size-override, --counter-font-size);
+        font-size: var(--font-size-override, var(--counter-font-size));
     }
 </style>

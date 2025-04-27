@@ -119,7 +119,11 @@
         align-content: flex-start;
         text-align: start;
     }
-
+    h1 {
+        font-family: var(--header-font);
+        font-weight: normal;
+        margin-block-end: 0;
+    }
     .empty {
         height: 100%;
         justify-content: center;

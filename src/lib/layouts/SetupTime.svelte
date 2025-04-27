@@ -65,7 +65,7 @@
         <Incentives />
       </div>
     </AbsDiv>
-    <AbsDiv name="bottomRight" cls="col" style="overflow: visible;" {...bottomRight}>
+    <AbsDiv name="bottomRight" cls="col" style="overflow: visible; --header-size-override: 20%;" {...bottomRight}>
       <Sponsors />
     </AbsDiv>
     <AbsDiv
@@ -84,6 +84,7 @@
 </StreamLayout>
 
 <style>
+
   .np {
     height: 100%;
     display: flex;
@@ -91,7 +92,7 @@
     align-items: flex-end;
   }
   .logo {
-    margin-bottom: -60px;
+    margin-bottom: -40px;
   }
   .wrapper {
     flex-grow: 1;

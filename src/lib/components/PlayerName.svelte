@@ -2,6 +2,7 @@
     import { currentPlayers } from "$lib/stores/GameStore";
     import { currentCasters } from "$lib/stores/GameStore";
 
+    export let extraClass = '';
     export let caster = false;
     export let index = -1;
     let text = '';
@@ -11,7 +12,7 @@
         text = caster ? $currentCasters[index]?.display_name : $currentPlayers[index]?.display_name;
     }
 </script>
-<div class="playername">
+<div class="playername {extraClass}">
     {text}
 </div>
 
@@ -21,5 +22,13 @@
         flex-grow: 1;
         width: 50%;
         text-align: left;
+    }
+    .middle{
+        width: 100%;
+        text-align: center;
+    }
+    .large{
+        font-size: calc(var(--playername-font-size) * 1.4);
+
     }
 </style>

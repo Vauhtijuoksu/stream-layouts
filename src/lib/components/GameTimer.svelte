@@ -70,8 +70,10 @@
         millis = Math.floor(Math.max(millis_, 0) / 100).toString();
         if (stopped){
             timerClass = 'stopped'
-        } else if (hours_ * 60 + minutes_ + seconds_/60 > estimate.hours * 60 + estimate.minutes){
-            timerClass = " overtime"
+        } else if (Math.max(hours_, 0) * 60 + Math.max(minutes_, 0) >= estimate.hours * 60 + estimate.minutes){
+            timerClass = 'overtime'
+        } else {
+            timerClass = ''
         }
 
     };

@@ -56,7 +56,7 @@ export function player(index = 0, side='left'): LayoutField {
     params: {
       index
     },
-  }, 'playernamewrapper', {side});
+  }, 'playernamewrapper', {side, showTitle:false});
 }
 
 export function timer(name = '1'): LayoutField {

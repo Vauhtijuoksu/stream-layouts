@@ -147,6 +147,14 @@
       <GameTimer name="2" cls="screentimer" showWhen="stopped" showEstimate={false} showIcon={false}/>
     </div>
 
+    <AbsDiv name="line" cls="row" y={gameHeight} width={1920} height={3}>
+      <div style="background-color: black; height: 100%; width: 100%">
+      </div>
+    </AbsDiv>
+    <AbsDiv name="line" cls="row" y={0} width={4} height={gameHeight} x={gameWidth-1}>
+      <div style="background-color: black; height: 100%; width: 100%">
+      </div>
+    </AbsDiv>
     {#if splitBottom}
     <AbsDiv name="bottomLeft" cls="col" {...bottomLeft}>
       <div class="row" style="overflow: visible">
@@ -166,8 +174,8 @@
 
   {#if $fixedPlayerNames}
   <AbsDiv name="bottomNames" cls="col" {...bottomNames}>
-    <PlayerNameWrapper side="middle" fillHeight="fillHeight">
-      <PlayerName />
+    <PlayerNameWrapper side="middle" fillHeight="fillHeight" showTitle={false}>
+      <PlayerName extraClass="middle large"/>
     </PlayerNameWrapper>
   </AbsDiv>
   {/if}
@@ -185,8 +193,8 @@
   {:else}
 
   <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
-    <div class="col">
-      <div class="row">
+    <div class="col" style="flex-grow: 1; justify-content: space-between; padding-bottom: 10px">
+      <div class="row" style="padding-left: 30px;">
         <RaceTimer />
         <Counters />
       </div>
@@ -194,7 +202,7 @@
         <GameData />
       </div>
     </div>
-    <div class="col sponsors">
+    <div class="col sponsors"  style="flex-grow: 2;">
       <Sponsors />
     </div>
   </AbsDiv>
@@ -243,5 +251,7 @@
   .sponsors {
     flex-grow: 1;
     overflow: visible;
+    --header-size-override: auto;
+    --font-size-override: 30px
   }
 </style>

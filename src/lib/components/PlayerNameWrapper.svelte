@@ -3,16 +3,18 @@
   export let side = 'left';
   export let caster = false;
   export let fillHeight = '';
-
+  export let showTitle = true;
   const show = !(caster && currentCasters.length == 0)
 
 </script>
 
 <div class="playernameWrapper {side} {fillHeight}">
   {#if show}
+    {#if showTitle}
   <div class="playernameHeader">
     {#if caster}Sohvalla {currentCasters}{:else}Juoksija{/if}
   </div>
+  {/if}
   <slot />
   {/if}
 </div>

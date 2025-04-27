@@ -32,7 +32,7 @@ const vj2025base: LayoutTheme = {
     logoExtraWide: '/logos/vj2025/wide.png',
     logoSetupTime: '/logos/vj2025/setuptime.png',
     logoSmall: '/logos/vj2025/triangle.png',
-    logoWide: '/logos/vj2025/wide.png',
+    logoWide: '/logos/vj2025/setuptime.png',
     defaultConsole: '/consoles/2025/default.png',
     timer: '/images/2025/timer.png',
     counter: [
@@ -50,7 +50,7 @@ const vj2025base: LayoutTheme = {
     heart: '/images/2025/heartrate.png',
     pohinaDay: '/images/2025/pohinapaiva.png',
     pohinaNight: '/images/2025/pohinayo.png',
-    DoublePoehina: '/images/2025/viuhtiPohina2.png',
+    DoublePoehina: '/images/2025/viuhtimoshaa15.webp',
     endOfIncentives: '/images/2025/viuhtiEnd.png',
   },
   style: `
@@ -74,20 +74,7 @@ const vj2025base: LayoutTheme = {
   --white: #FFFFFF;
   --donabarbg: #270506;
   
-    --darkblue: #00FF00;
-    --darkgreen: #00FF00;
-    --darkred: #00FF00;
-    --blue: #00FF00;
-    --yellow: #00FF00;
-    --grey: #00FF00;
-    --naturalwhite: #00FF00;
-    --green: #00FF00;
-    --greyblue: #00FF00;
-    --orange: #00FF00;
-    --blueishgrey: #00FF00;
-    --lightgreen: #00FF00;
-    --lightblue: #00FF00;
-    --red: #00FF00;
+
     --FIXME: #0000FF;
     
     
@@ -152,13 +139,12 @@ const vj2025base: LayoutTheme = {
     --stopped-timer-color: var(--green2);
     --timer-overtime-color: var(--red2);
     --screen-overlay-item-stroke-color: #edf0ea;
-    --counter-font-size: var(--timer-font-size);
-    --pill-background-1: var(--naturalwhite);
+    --counter-font-size: 42px;
+    --pill-background-1: var(--gray0);
     --pill-font-color-1: var(--font-color);
-    --pill-background-2: var(--naturalwhite);
+    --pill-background-2: var(--gray1);
     --pill-font-color-2: #var(--font-color);
-    --pill-fancy-background-1: conic-gradient(blue, turquoise, green, yellow, red, purple);
-    --pill-fancy-background-2: conic-gradient(red, orange, yellow, violet, purple);
+
     --screen-overlay-item-text-shadow:
       -3px -3px 0 var(--screen-overlay-item-stroke-color),
       3px -3px 0 var(--screen-overlay-item-stroke-color),
@@ -168,7 +154,11 @@ const vj2025base: LayoutTheme = {
       3px 0px 0 var(--screen-overlay-item-stroke-color),
       0px 3px 0 var(--screen-overlay-item-stroke-color),
       0px -3px 0 var(--screen-overlay-item-stroke-color);
-    --screen-player-name-text-shadow: none;
+    --screen-player-name-text-shadow: 
+    -1px -1px 3px var(--black),
+      1px -1px 3px var(--black),
+      -1px 1px 3px var(--black),
+      1px 1px 3px var(--black);
     --screen-player-name-text-shadow2: 
       -2px -2px 0 var(--screen-overlay-item-stroke-color),
       2px -2px 0 var(--screen-overlay-item-stroke-color),
@@ -208,16 +198,16 @@ const vj2025base: LayoutTheme = {
     --counter-icon-filter: var(--game-icon-filter);
     --divider-filter: var(--game-icon-filter);
     --heartrate-icon-filter: var(--game-icon-filter);
-    --heart-rate-font-color: var(--darkred);
+    --heart-rate-font-color: var(--white);
     --heart-rate-text-shadow: 
-      -1px -1px 0 var(--white),
-      1px -1px 0 var(--white),
-      -1px 1px 0 var(--white),
-      1px 1px 0 var(--white),
-      -1px 0px 0 var(--white),
-      1px 0px 0 var(--white),
-      0px 1px 0 var(--white),
-      0px -1px 0 var(--white);
+      -1px -1px 0 var(--black),
+      1px -1px 0 var(--black),
+      -1px 1px 0 var(--black),
+      1px 1px 0 var(--black),
+      -1px 0px 0 var(--black),
+      1px 0px 0 var(--black),
+      0px 1px 0 var(--black),
+      0px -1px 0 var(--black);
     --pohina-sponsor-right: 20px;
     --pohina-sponsor-bottom: 108px;
     --pohina-sponsor-width: 370px;
@@ -227,7 +217,7 @@ const vj2025base: LayoutTheme = {
     --fourthree-gameicon-margin-left: -20px;
     --fourthree-gameicon-margin-right: 0px;
     --fourthree-gameicon-margin-bottom: 200px;
-    --setup-time-game-icon-scale: 80%;
+    --setup-time-game-icon-scale: 60%;
     --divider-size: 40px;
   `
 }
@@ -241,40 +231,18 @@ const vj2025light: LayoutTheme = {
 const vj2025dark: LayoutTheme = {
   name: 'vj2025dark',
   style: `
-    --dayonly: none;
-    --nightonly: default;
   
-    --setuptime-background: url('#vj2025n');
-    --screen-overlay-item-stroke-color: var(--darkred);
-    --font-color: var(--orange);
-    --text-shadow: 0px 0px 15px var(--darkblue);
-    --playername-font-color: var(--orange);
-    --donation-bar-text-shadow-color: var(--blue);
-    --donation-bar-font-color: var(--naturalwhite);
-    --donation-bar-goal-font-color: var(--yellow);
-    --donation-bar-current-font-color: var(--yellow);
-    --playername-background: var(--darkblue) url('/images/2024/boxbg.png') repeat fixed top left;
-    --donation-bar-current-bg: var(--red) url('/images/2024/boxbg.png') repeat fixed top left;
-    --donation-bar-goal-bg: var(--red) url('/images/2024/boxbg.png') repeat fixed top left;
-    --donation-bar-fill: var(--blue) url('/images/2024/boxbg.png') repeat fixed top left;
-    --donation-bar-background: var(--darkblue) url('/images/2024/boxbg.png') repeat fixed top left;
-    --background: var(--background-color) url('/images/2024/nightbg.png') repeat fixed top left;
-    --background-2: var(--background-color-2) url('/images/2024/nightbg.png') repeat fixed top left;
-    --stopped-screen-timer-color: var(--yellow);
-    --stopped-timer-color: var(--yellow);
-    --pill-background-1: var(--red);
-    --pill-background-2: var(--greyblue);
   `
 }
 
 const breakpoints: Breakpoint<LayoutTheme>[] = [
   {
     key: 0,
-    value: vj2025dark,
+    value: vj2025light,
   },
   {
     key: 7,
-    value: vj2025dark,
+    value: vj2025light,
   },
   {
     key: 8,
@@ -286,7 +254,7 @@ const breakpoints: Breakpoint<LayoutTheme>[] = [
   },
   {
     key: 22,
-    value: vj2025dark,
+    value: vj2025light,
   }
 ];
 

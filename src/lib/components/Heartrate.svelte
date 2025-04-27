@@ -19,12 +19,13 @@
 <style>
   .hr {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 1.2rem;
   }
 
   .hr > img {

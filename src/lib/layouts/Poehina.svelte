@@ -83,6 +83,7 @@
   }
 
   .sponsors {
+    --header-size-override: auto;
     position: absolute;
     right: var(--pohina-sponsor-right, 0);
     bottom: var(--pohina-sponsor-bottom, 65px);

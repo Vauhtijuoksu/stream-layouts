@@ -61,6 +61,11 @@
     <BottomBar height={donationBarHeight}>
       <DonationBar />
     </BottomBar>
+
+    <AbsDiv name="line" cls="row" y={0} width={3} height={1080} x={bottomRight.x}>
+      <div style="background-color: black; height: 100%; width: 100%">
+      </div>
+    </AbsDiv>
     <AbsDiv name="bottomRight" cls="row" {...bottomRight} style="overflow: visible">
       <div class="bottomright row">
         <div class="viuhti">
