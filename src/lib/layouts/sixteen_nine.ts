@@ -20,7 +20,7 @@ function sixteen_nine_leftcol_contents(
   return [
     left_col_wrapper(
       [
-        wrap({ component: 'logo', params: {logo: 'sixteennine'} }, 'div', { style: 'padding: 10px' }),
+        wrap({ component: 'logo', params: {logo: 'sixteennine'} }, 'div', { style: 'width: 90%; margin: auto' }),
         wrap(sponsors_field(), 'div', { class: 'col', style: 'flex-grow: 1' }),
       ]
     ),
@@ -104,6 +104,8 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
   const topBar = abs_field('topBar', 'div', 'row', 0, 0, width, topBarHeight, 'align-items: flex-end; justify-content: space-between; background: var(--background); border')
   const bottomLeft = abs_field('bottomLeft', 'div', 'col', 0, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-right-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); justify-content: space-around;')
   const bottomRight = abs_field('bottomRight', 'div', 'col', bottomBarRightX, bottomBarY, bottomSideWidth, bottomBarHeight, 'padding: 10px; background: var(--background); border-top-left-radius: var(--border-radius); border-bottom-left-radius: var(--border-radius);');
+  const line = abs_field('Line', 'div', 'row', 0, bottomBarY-1, width, 3, "background: var(--background);")
+  const divider = abs_field('Divider', 'div', 'row', gameWidth-2, topBarHeight, 4, gameHeight, "background: var(--background);")
 
   topBar.contents = [
     wrap(
@@ -112,7 +114,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
         { component: 'counter', params: { index: 0 } },
         { component: 'counter', params: { index: 2 } },
       ],
-      'div', { class: 'row', style: 'align-items: flex-end;' }
+      'div', { class: 'row', style: 'align-items: flex-end; width: 25%; gap: 30px;' }
     ),
     wrap({ component: 'logo' }, 'div', { style: `height: ${topBarHeight}px; width: 50%;` }),
     wrap(
@@ -121,7 +123,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
         { component: 'counter', params: { index: 1 } },
         wrap(player(1, 'right'), 'div', { style: `margin-bottom: ${-borderWidth}px; margin-top: ${borderWidth}px;` }),
       ],
-      'div', { class: 'row', style: 'align-items: flex-end;' }
+      'div', { class: 'row', style: 'align-items: flex-end; width: 25%; text-align: right; justify-content: right; gap: 30px;' }
     )
   ]
 
@@ -178,6 +180,8 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
 
   const contents: LayoutField[] = [
     topBar,
+      line,
+      divider,
     bottomLeft,
     bottomRight,
     timer1,

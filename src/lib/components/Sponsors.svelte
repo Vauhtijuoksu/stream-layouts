@@ -38,11 +38,12 @@
 <style>
   .header {
     padding-left: var(--header-padding-override, 0px);
-    height: var(--header-size-override, 10%);
+    height: var(--header-size-override, auto);
     font-size: var(--font-size-override, var(--sponsors-font-size));
     font-family: var(--header-font);
     letter-spacing: var(--spaced-lettering);
     font-weight: normal;
+    margin-bottom: 4px;
   }
   .sponsors {
     position: relative;

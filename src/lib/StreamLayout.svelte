@@ -65,6 +65,9 @@
 		margin: 0;
 		padding: 0;
 		text-align: center;
+		width: 1920px;
+		height: 1080px;
+		overflow: hidden;
 	}
 
 	.controls {

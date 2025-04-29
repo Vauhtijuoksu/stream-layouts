@@ -147,7 +147,7 @@
       <GameTimer name="2" cls="screentimer" showWhen="stopped" showEstimate={false} showIcon={false}/>
     </div>
 
-    <AbsDiv name="line" cls="row" y={gameHeight} width={1920} height={3}>
+    <AbsDiv name="line" cls="row" y={gameHeight - 1} width={1920} height={3}>
       <div style="background-color: black; height: 100%; width: 100%">
       </div>
     </AbsDiv>

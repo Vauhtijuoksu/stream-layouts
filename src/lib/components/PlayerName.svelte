@@ -27,6 +27,10 @@
         width: 100%;
         text-align: center;
     }
+    .right{
+        width: 100%;
+        text-align: right;
+    }
     .large{
         font-size: calc(var(--playername-font-size) * 1.4);
 

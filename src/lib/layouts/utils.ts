@@ -54,7 +54,8 @@ export function player(index = 0, side='left'): LayoutField {
   return wrap({
     component: 'playername',
     params: {
-      index
+      index,
+      extraClass:side
     },
   }, 'playernamewrapper', {side, showTitle:false});
 }

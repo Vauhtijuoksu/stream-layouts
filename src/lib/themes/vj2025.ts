@@ -75,8 +75,6 @@ const vj2025base: LayoutTheme = {
   --donabarbg: #270506;
   
 
-    --FIXME: #0000FF;
-    
     
     --dayonly: default;
     --nightonly: none;
