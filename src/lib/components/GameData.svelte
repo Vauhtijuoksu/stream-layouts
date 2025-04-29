@@ -3,7 +3,8 @@
     import { currentGame } from "$lib/stores/GameStore";
 	import ConsoleIcon from "./ConsoleIcon.svelte";
 	import GameIcon from "./GameIcon.svelte";
-    export let showGameIcon = true;
+    export let showGameIcon = true;;
+    export let align = "right";
 
     $: img_filename = $currentGame?.img_filename;
     $: game = $currentGame?.game;
@@ -16,7 +17,7 @@
 </script>
 
 {#if !$hideGameData}
-<div class="gamedata">
+<div class="gamedata {align} ">
     {#if showGameIcon}
     <GameIcon {img_filename} />
     {/if}
@@ -69,6 +70,7 @@
     }
     .gameinfo{
         padding-left: var(--game-icon-padding, 0);
+        align-items: flex-start;
     }
     .consoleinfo{
         align-items: center;
@@ -77,6 +79,14 @@
         font-size: var(--game-title-font-size, 34px);
 		letter-spacing: var(--letter-spacing);
         text-align: right;
+    }
+    .gametitle{
+        line-height: 0.9em;
+        margin-bottom: 0.1em;
+    }
+    .gametitle, .category {
+
+        text-align: left;
     }
     .category, .device {
         font-size: var(--game-category-font-size, 24px);
@@ -94,6 +104,9 @@
     }
     .shortestname {
         font-size: 50px;
+    }
+    .left{
+        align-self: flex-start;
     }
 
 

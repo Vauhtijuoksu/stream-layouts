@@ -95,6 +95,12 @@
 </div>
 
 <style>
+	@font-face {
+	  font-family: "jainiii";
+	  src: url('/fonts/Jaini-Regular.ttf');
+	  descent-override: 45%;
+
+	}
 	.displayline{
 		position: absolute;
 		width: 100%;
@@ -118,6 +124,7 @@
 	}
 
 	.donationbar {
+		font-family: "jainiii";
 		position: relative;
 		display: flex;
 		flex-direction: row;

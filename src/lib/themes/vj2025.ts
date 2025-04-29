@@ -11,6 +11,7 @@ const vj2025base: LayoutTheme = {
     {name: 'pop', img_url: '/sponsors/2025/pop.png'},
     {name: 'RattoRadio', img_url: '/sponsors/2025/rattoradio.png'},
     {name: 'Vectorama', img_url: '/sponsors/2025/vectorama.png'},
+    {name: 'Tek', img_url: '/sponsors/2025/TEK.png'},
   ],
   fonts: [
     {
@@ -138,10 +139,10 @@ const vj2025base: LayoutTheme = {
     --timer-overtime-color: var(--red2);
     --screen-overlay-item-stroke-color: #edf0ea;
     --counter-font-size: 42px;
-    --pill-background-1: var(--gray0);
-    --pill-font-color-1: var(--font-color);
-    --pill-background-2: var(--gray1);
-    --pill-font-color-2: #var(--font-color);
+    --pill-background-1: transparent;
+    --pill-font-color-1: var(--gray2);
+    --pill-background-2: transparent;
+    --pill-font-color-2: var(--green2);
 
     --screen-overlay-item-text-shadow:
       -3px -3px 0 var(--screen-overlay-item-stroke-color),
@@ -216,6 +217,7 @@ const vj2025base: LayoutTheme = {
     --fourthree-gameicon-margin-right: 0px;
     --fourthree-gameicon-margin-bottom: 200px;
     --setup-time-game-icon-scale: 60%;
+    --setup-time-incentive-game-icon-scale: 100%;
     --divider-size: 40px;
   `
 }

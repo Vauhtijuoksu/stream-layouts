@@ -91,10 +91,10 @@
                 <div class="col bottom">
                     <div class="float">
                         <div class="col gamedata" style="gap: 20px; margin: 0 10px 0 4px; justify-content: right; overflow: visible">
-                            <GameData showGameIcon={false}/>
+                            <GameData showGameIcon={false} align={"left"}/>
                         </div>
                         <div class="left">
-                            <div class="col">
+                            <div class="col visible" style="overflow: visible;">
                                 <div class="gameicon">
                                     <div>
                                         <GameIcon
@@ -168,12 +168,11 @@
 
     .gamedata {
         position: absolute;
-        width: 60%;
+        width: 55%;
         bottom: 0px;
         right: 10px;
         align-items: flex-end;
     }
-
     .sponsor {
         position: absolute;
         right: 0;
@@ -201,5 +200,11 @@
         right: 0;
         bottom: calc(0px - var(--border-width));
         height: calc(65px + var(--border-width));
+    }
+    .visible{
+        overflow: visible !important;
+    }
+    .col{
+        overflow: visible;
     }
 </style>

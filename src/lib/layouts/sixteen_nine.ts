@@ -24,7 +24,7 @@ function sixteen_nine_leftcol_contents(
         wrap(sponsors_field(), 'div', { class: 'col', style: 'flex-grow: 1' }),
       ]
     ),
-    wrap(player(-1), 'div',
+    wrap(player(-1, 'left', true), 'div',
       {
         style: `
           margin-left: ${-borderRadius}px;
@@ -129,7 +129,7 @@ export function sixteen_nine_race({ borderRadius = 0, borderWidth = 0, sponsors 
 
   bottomLeft.contents = [
     { component: 'racetimer' },
-    wrap(gamedata(), 'div', { class: 'row overflow', style: 'gap: 20px'}),
+    wrap(gamedata(), 'div', { class: 'row overflow', style: 'padding-right: 20px; justify-content: space-between;'}),
   ]
 
   bottomRight.contents = [

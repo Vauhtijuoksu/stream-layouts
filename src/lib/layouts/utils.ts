@@ -50,14 +50,14 @@ export function sponsors_field(): LayoutField {
   };
 }
 
-export function player(index = 0, side='left'): LayoutField {
+export function player(index = 0, side='left', showTitle= false): LayoutField {
   return wrap({
     component: 'playername',
     params: {
       index,
       extraClass:side
     },
-  }, 'playernamewrapper', {side, showTitle:false});
+  }, 'playernamewrapper', {side, showTitle:showTitle});
 }
 
 export function timer(name = '1'): LayoutField {

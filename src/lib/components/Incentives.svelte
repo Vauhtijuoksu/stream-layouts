@@ -109,14 +109,21 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+		gap: 10px;
 	}
 	.gametitle {
 		font-size: var(--font-size-lg);
 	}
+	.iconwrapper{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
 	.icon {
-		transform: scale(var(--setup-time-game-icon-scale, 1));
-		margin-left: 250px;
-		margin-top: 120px;
+		transform: scale(var(--setup-time-incentive-game-icon-scale, var(--setup-time-game-icon-scale,1)));
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 110px;
 	}
 	.title {
 		font-size: var(--font-size-md);

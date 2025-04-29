@@ -46,8 +46,8 @@
     align-items: center;
   }
   .donate{
-    font-size:  var(--donation-bar-info-font-size);
-    white-space: nowrap;
+      font-size:  var(--donation-bar-info-font-size);
+      white-space: nowrap;
 
   }
 </style>

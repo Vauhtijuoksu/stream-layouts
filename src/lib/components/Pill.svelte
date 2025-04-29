@@ -11,7 +11,7 @@
     white-space: nowrap;
     margin-top: 0;
     margin-bottom: 0;
-    padding: .25em;
+    padding: .1em 0.3em;
     border: var(--pill-border, var(--border));
     border-radius: var(--pill-border-radius, var(--border-radius));
     font-size: var(--pill-font-size, var(--font-size-md));
