@@ -90,7 +90,7 @@
                 </div>
                 <div class="col bottom">
                     <div class="float">
-                        <div class="col gamedata" style="gap: 20px; margin: 0 10px 0 4px; justify-content: right">
+                        <div class="col gamedata" style="gap: 20px; margin: 0 10px 0 4px; justify-content: right; overflow: visible">
                             <GameData showGameIcon={false}/>
                         </div>
                         <div class="left">

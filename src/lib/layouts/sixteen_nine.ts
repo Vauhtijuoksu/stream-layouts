@@ -37,7 +37,7 @@ function sixteen_nine_bottombar_contents(): LayoutField[] {
   return [
     { component: 'counters' },
     wrap(timer(), 'div', { class: 'row', style: 'justify-content: center; flex-grow: 1;' }),
-    wrap(gamedata(), 'div', { class: 'row', style: 'flex-grow: 1; justify-content: space-between;' }),
+    wrap(gamedata(), 'div', { class: 'row', style: 'flex-grow: 1; justify-content: space-between; padding-right:10px' }),
   ];
 }
 

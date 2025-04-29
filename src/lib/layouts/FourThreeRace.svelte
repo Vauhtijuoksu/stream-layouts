@@ -193,7 +193,7 @@
   {:else}
 
   <AbsDiv name="bottomCenter" cls="row" {...bottomCenter}>
-    <div class="col" style="flex-grow: 1; justify-content: space-between; padding-bottom: 10px">
+    <div class="col" style="flex-grow: 1; justify-content: space-between; padding-bottom: 10px; overflow: visible">
       <div class="row" style="padding-left: 30px;">
         <RaceTimer />
         <Counters />
