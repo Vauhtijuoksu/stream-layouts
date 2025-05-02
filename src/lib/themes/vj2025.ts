@@ -12,6 +12,7 @@ const vj2025base: LayoutTheme = {
     {name: 'RattoRadio', img_url: '/sponsors/2025/rattoradio.png'},
     {name: 'Vectorama', img_url: '/sponsors/2025/vectorama.png'},
     {name: 'Tek', img_url: '/sponsors/2025/TEK.png'},
+    {name: 'startupoulu', img_url: '/sponsors/2025/startupoulu.svg'},
   ],
   fonts: [
     {
