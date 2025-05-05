@@ -8,6 +8,7 @@ const vj2025base: LayoutTheme = {
     {name: 'Mieli', img_url: '/sponsors/2025/mieli.png'},
     {name: 'azsh', img_url: '/sponsors/2025/azsh.png'},
     {name: 'Tiedot', img_url: '/sponsors/2025/tiedot.svg'},
+    {name: 'teekkaritalo', img_url: '/sponsors/2025/tt.png'},
     {name: 'pop', img_url: '/sponsors/2025/pop.png'},
     {name: 'RattoRadio', img_url: '/sponsors/2025/rattoradio.png'},
     {name: 'Vectorama', img_url: '/sponsors/2025/vectorama.png'},
