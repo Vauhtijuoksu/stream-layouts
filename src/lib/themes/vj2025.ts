@@ -14,6 +14,7 @@ const vj2025base: LayoutTheme = {
     {name: 'Vectorama', img_url: '/sponsors/2025/vectorama.png'},
     {name: 'Tek', img_url: '/sponsors/2025/TEK.png'},
     {name: 'startupoulu', img_url: '/sponsors/2025/startupoulu.svg'},
+    {name: 'oamk', img_url: '/sponsors/2025/oamk.png'},
   ],
   fonts: [
     {
