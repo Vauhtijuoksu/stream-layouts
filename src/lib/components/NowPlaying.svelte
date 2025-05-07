@@ -12,7 +12,7 @@
 
 <style>
   .nowPlaying {
-    font-size: var(--font-size-sm);
-    text-shadow: var(--screen-player-name-text-shadow);
+    font-size: var(--now-playing-font-size, var(--font-size-sm));
+    text-shadow: var(--now-playing-shadow);
   }
 </style>

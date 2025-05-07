@@ -161,6 +161,16 @@ const vj2025base: LayoutTheme = {
       1px -1px 3px var(--black),
       -1px 1px 3px var(--black),
       1px 1px 3px var(--black);
+      --now-playing-font-size: 30px;
+    --now-playing-shadow: 
+    -1px -1px 3px var(--black),
+      1px -1px 3px var(--black),
+      -1px 1px 3px var(--black),
+      1px 1px 3px var(--black),
+    -1px -1px 3px var(--black),
+      1px -1px 3px var(--black),
+      -1px 1px 3px var(--black),
+      1px 1px 3px var(--black);
     --screen-player-name-text-shadow2: 
       -2px -2px 0 var(--screen-overlay-item-stroke-color),
       2px -2px 0 var(--screen-overlay-item-stroke-color),
